@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://transfer.silverdium.fr/</loc>
+        <lastmod>2025-01-30</lastmod>
+        <changefreq>always</changefreq>
+        <priority>1</priority>
+    </url>
+    <!-- <url>
+        <loc>https://t.silverdium.fr/</loc>
+        <lastmod>2025-01-30</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.9</priority>
+    </url> -->
+</urlset>
+<!-- 
+Les valeurs possibles pour <changefreq> incluent :
+    always : Utilisé si la page change fréquemment, par exemple, plusieurs fois par jour (parfait pour les pages d'actualités ou les sites de données en temps réel).
+    hourly : La page change fréquemment, à peu près toutes les heures.
+    daily : La page est mise à jour une fois par jour, comme un blog avec des publications quotidiennes.
+    weekly : La page change environ une fois par semaine.
+    monthly : La page change une fois par mois, par exemple, une page avec des mises à jour moins fréquentes.
+    yearly : La page est mise à jour une fois par an.
+    never : La page ne change jamais, comme une page d'informations statiques (par exemple, une page de contact ou une page légale).
+ -->
