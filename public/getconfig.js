@@ -24,10 +24,11 @@ fetch(config)
     });
 
 function tipeee() {
-    document.getElementById('footer').style.display = 'none'
-    window.location.href = 'https://tipeee.com/silverdium'
+    window.open('https://tipeee.com/silverdium', '_blank');
 }
 function silvercore() {
-    document.getElementById('footer').style.display = 'none'
-    window.location.href = 'https://core.silverdium.fr'
+    window.open('https://core.silverdium.fr', '_blank');
+}
+function github() {
+    window.open('https://github.com/SilverCore-Git/SilverTransfer', '_blank');
 }

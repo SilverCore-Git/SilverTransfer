@@ -18,16 +18,16 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="author" content="SilverCore, SilverTransfer | MisterPapaye">
 
-        <link rel="icon" href="https://t.silverdium.fr/public/logoST.png" type="image/png">
+        <link rel="icon" href="https://t.silverdium.fr/logoST.png" type="image/png">
 
 
-        <title>SilverTransfer | Fichier non trouver</title>
+        <title>SilverTransfer | ERREUR = <%= error %></title>
 
         <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
         <style>
-            @import url("https://t.silverdium.fr/public/body.css");
-            @import url("https://t.silverdium.fr/public/footer.css");
+            @import url("https://t.silverdium.fr/body.css");
+            @import url("https://t.silverdium.fr/footer.css");
             body { background: #0d0d0d; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; font-family: Arial, sans-serif; }
             h1 { font-size: 3rem; background: linear-gradient(90deg, #ff00ff, #6a00ff, #00d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
             label { font-size: 1.5rem; color: white; margin-bottom: 15px; }
@@ -39,9 +39,9 @@
 
     <body>
 
-        <a href="https://transfer.silverdium.fr"><h1>ERREUR : Fichier non trouver !</h1></a>
+        <a href="https://transfer.silverdium.fr"><h1>ERREUR : <%= error %></h1></a>
 
-        <label>Télécharger votre fichier avec SilverTransfer</label>
+        <label><%= describ %></label>
 
         <button class="download-btn" onclick="window.location.href='/'">
             <i class="fas fa-download"></i> SilverTransfer

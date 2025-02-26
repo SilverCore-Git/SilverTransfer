@@ -4,22 +4,21 @@
  * @author MisterPapaye
  */
 
+// alert('SilverTransfer est actuellement en maintenance, merci de repasser plus tard !')
+
 const htostname = "https://t.silverdium.fr";
 
 function updateProgressBar(value) {
-    const progressBar = document.getElementById("progressBar");
-    const progressText = document.getElementById("progressText");
+    const progressBar = document.getElementById('prog-bar')
+    const progressText = document.getElementById('prog-text')
 
-    // S'assurer que la valeur est entre 1 et 100
     value = Math.min(100, Math.max(1, value));
 
     progressBar.style.width = value + "%";
     progressText.textContent = value + "%";
 
-    // Changer le dégradé de couleur dynamiquement
     progressBar.style.background = `linear-gradient(90deg, hsl(${value * 1.2}, 100%, 50%), #00ff88)`;
 
-    // Ajout d'un effet lumineux à 100%
     if (value === 100) {
         progressBar.style.boxShadow = "0 0 30px rgba(255, 255, 0, 1)";
     } else {
@@ -35,6 +34,8 @@ function sendFile() {
         alert("Veuillez sélectionner un fichier avant d'envoyer !");
         return;
     }
+    const maxSize = 1024 * 1024 * 1024; // 1024Mo
+    if (file.size >= maxSize) { alert('Fichier trop volumineux !'); return; }
 
     const formData = new FormData();
     formData.append("file", file);
@@ -64,7 +65,6 @@ function sendFile() {
             document.querySelector('.loader').style.display = "none";
             document.querySelector('.download').style.display = "flex";
 
-            // Forcer la barre de progression à 100% à la fin
             updateProgressBar(100);
         } else {
             console.error("Erreur :", xhr.statusText);
@@ -83,7 +83,6 @@ function sendFile() {
 document.getElementById("send").addEventListener('click', sendFile);
 
 
-// Fonction pour copier l'URL dans le presse-papier
 document.getElementById('copyButton').addEventListener('click', () => {
     const urlInput = document.getElementById('urlInput');
 
