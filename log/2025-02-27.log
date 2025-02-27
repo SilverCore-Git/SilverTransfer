@@ -1,0 +1,172 @@
+[2025-02-27 - 10:39:06] > Démarrage de Express...
+[2025-02-27 - 10:39:06] > Express chargé
+[2025-02-27 - 10:39:06] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-02-27 - 10:40:34] > Démarrage de Express...
+[2025-02-27 - 10:40:34] > Express chargé
+[2025-02-27 - 10:40:34] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-02-27 - 10:40:40] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-02-27 - 10:40:40] > Fichier reçu, chiffrement en cours...
+[2025-02-27 - 10:40:40] > Fichier enregistré et chiffré !
+[2025-02-27 - 10:40:40] > ✅ Fichier chiffré : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\30e0c20ecbd72e56_t.html.enc
+[2025-02-27 - 10:41:04] > ____Réception d'une requête :  '/t/30e0c20ecbd72e56_t'
+[2025-02-27 - 10:41:06] > ____Réception d'une requête :  '/data/30e0c20ecbd72e56_t.html.enc'
+[2025-02-27 - 10:41:06] > ✅ Fichier déchiffré : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\dec_30e0c20ecbd72e56_t.html
+[2025-02-27 - 10:41:06] > ✅ Fichier envoyé et supprimé : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\dec_30e0c20ecbd72e56_t.html
+[2025-02-27 - 10:52:03] > Démarrage de Express...
+[2025-02-27 - 10:52:03] > Express chargé
+[2025-02-27 - 10:52:03] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-02-27 - 10:52:28] > Démarrage de Express...
+[2025-02-27 - 10:52:28] > Express chargé
+[2025-02-27 - 10:52:28] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-02-27 - 10:57:03] > Démarrage de Express...
+[2025-02-27 - 10:57:03] > Express chargé
+[2025-02-27 - 10:57:03] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-02-27 - 10:57:12] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-02-27 - 10:57:12] > Fichier reçu, chiffrement en cours...
+[2025-02-27 - 10:57:12] > Fichier enregistré et chiffré !
+[2025-02-27 - 10:57:12] > ✅ Fichier chiffré : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\d7217bf8961a19a1a459ef519375d31a.enc
+[2025-02-27 - 10:57:54] > ____Réception d'une requête :  '/t/d7217bf8961a19a1a459ef519375d31a'
+[2025-02-27 - 10:57:56] > ____Réception d'une requête :  '/data/d7217bf8961a19a1a459ef519375d31a.enc'
+[2025-02-27 - 10:57:56] > ✅ Fichier déchiffré : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\dec_d7217bf8961a19a1a459ef519375d31a
+[2025-02-27 - 10:57:56] > ✅ Fichier envoyé et supprimé : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\dec_d7217bf8961a19a1a459ef519375d31a
+[2025-02-27 - 10:59:17] > Démarrage de Express...
+[2025-02-27 - 10:59:17] > Express chargé
+[2025-02-27 - 10:59:17] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-02-27 - 10:59:26] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-02-27 - 10:59:26] > Fichier reçu, chiffrement en cours...
+[2025-02-27 - 10:59:26] > Fichier enregistré et chiffré !
+[2025-02-27 - 10:59:26] > ✅ Fichier chiffré : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\740fe66d16d8cbff4197cf21a272bed2.enc
+[2025-02-27 - 11:02:27] > Démarrage de Express...
+[2025-02-27 - 11:02:27] > Express chargé
+[2025-02-27 - 11:02:27] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-02-27 - 11:02:33] > ____Réception d'une requête :  '/t/740fe66d16d8cbff4197cf21a272bed2'
+[2025-02-27 - 11:02:35] > ____Réception d'une requête :  '/data/740fe66d16d8cbff4197cf21a272bed2.enc'
+[2025-02-27 - 11:02:35] > TypeError: Cannot read properties of undefined (reading 'iv')
+    at C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\server.js:191:46
+    at Layer.handle [as handle_request] (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\index.js:365:14)
+    at param (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\index.js:421:3)
+    at next (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\index.js:280:10)
+[2025-02-27 - 11:02:49] > Démarrage de Express...
+[2025-02-27 - 11:02:49] > Express chargé
+[2025-02-27 - 11:02:49] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-02-27 - 11:02:50] > ____Réception d'une requête :  '/data/740fe66d16d8cbff4197cf21a272bed2.enc'
+[2025-02-27 - 11:02:50] > TypeError: Cannot read properties of undefined (reading 'iv')
+    at C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\server.js:191:45
+    at Layer.handle [as handle_request] (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\index.js:365:14)
+    at param (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\index.js:421:3)
+    at next (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\index.js:280:10)
+[2025-02-27 - 11:02:53] > ____Réception d'une requête :  '/data/740fe66d16d8cbff4197cf21a272bed2'
+[2025-02-27 - 11:02:53] > TypeError: Cannot read properties of undefined (reading 'iv')
+    at C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\server.js:191:45
+    at Layer.handle [as handle_request] (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\index.js:365:14)
+    at param (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\index.js:421:3)
+    at next (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\index.js:280:10)
+[2025-02-27 - 11:05:18] > Démarrage de Express...
+[2025-02-27 - 11:05:18] > Express chargé
+[2025-02-27 - 11:05:18] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-02-27 - 11:05:20] > ____Réception d'une requête :  '/data/740fe66d16d8cbff4197cf21a272bed2'
+[2025-02-27 - 11:05:25] > ____Réception d'une requête :  '/data/740fe66d16d8cbff4197cf21a272bed2.enc'
+[2025-02-27 - 11:05:39] > ____Réception d'une requête :  '/data/740fe66d16d8cbff4197cf21a272bed2'
+[2025-02-27 - 11:05:43] > ____Réception d'une requête :  '/t/740fe66d16d8cbff4197cf21a272bed2'
+[2025-02-27 - 11:05:45] > ____Réception d'une requête :  '/data/740fe66d16d8cbff4197cf21a272bed2.enc'
+[2025-02-27 - 11:08:09] > Démarrage de Express...
+[2025-02-27 - 11:08:09] > Express chargé
+[2025-02-27 - 11:08:09] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-02-27 - 11:08:12] > ____Réception d'une requête :  '/data/740fe66d16d8cbff4197cf21a272bed2.enc'
+[2025-02-27 - 11:08:13] > ____Réception d'une requête :  '/data/740fe66d16d8cbff4197cf21a272bed2.enc'
+[2025-02-27 - 11:08:21] > ____Réception d'une requête :  '/data/740fe66d16d8cbff4197cf21a272bed2'
+[2025-02-27 - 11:08:28] > ____Réception d'une requête :  '/data/740fe66d16d8cbff4197cf21a272bed2'
+[2025-02-27 - 11:09:41] > Démarrage de Express...
+[2025-02-27 - 11:09:41] > Express chargé
+[2025-02-27 - 11:09:41] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-02-27 - 11:09:43] > ____Réception d'une requête :  '/data/740fe66d16d8cbff4197cf21a272bed2'
+[2025-02-27 - 11:09:43] > 740fe66d16d8cbff4197cf21a272bed2
+[2025-02-27 - 11:09:43] > veux.vbs
+[2025-02-27 - 11:11:19] > Démarrage de Express...
+[2025-02-27 - 11:11:19] > Express chargé
+[2025-02-27 - 11:11:19] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-02-27 - 11:11:21] > 📥 Réception d'une requête : '/data/740fe66d16d8cbff4197cf21a272bed2'
+[2025-02-27 - 11:11:47] > 📥 Réception d'une requête : '/data/740fe66d16d8cbff4197cf21a272bed2.env'
+[2025-02-27 - 11:11:50] > 📥 Réception d'une requête : '/data/740fe66d16d8cbff4197cf21a272bed2.enc'
+[2025-02-27 - 11:11:50] > 🔓 Déchiffrement du fichier en cours...
+[2025-02-27 - 11:11:50] > ✅ Fichier déchiffré : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\veux.vbs
+[2025-02-27 - 11:11:50] > ✅ Fichier envoyé avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\veux.vbs
+[2025-02-27 - 11:11:50] > 🗑️ Fichier temporaire supprimé : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\veux.vbs
+[2025-02-27 - 11:19:09] > Démarrage de Express...
+[2025-02-27 - 11:19:09] > Express chargé
+[2025-02-27 - 11:19:09] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-02-27 - 11:19:22] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-02-27 - 11:19:22] > Fichier reçu, chiffrement en cours...
+[2025-02-27 - 11:19:22] > Fichier enregistré et chiffré !
+[2025-02-27 - 11:19:22] > ✅ Fichier chiffré : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\ec5b2a8468c21e6ad34ad2a3bc0445e5.enc
+[2025-02-27 - 11:19:34] > ____Réception d'une requête :  '/t/ec5b2a8468c21e6ad34ad2a3bc0445e5'
+[2025-02-27 - 11:19:36] > 📥 Réception d'une requête : '/data/ec5b2a8468c21e6ad34ad2a3bc0445e5.enc'
+[2025-02-27 - 11:20:24] > Démarrage de Express...
+[2025-02-27 - 11:20:24] > Express chargé
+[2025-02-27 - 11:20:24] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-02-27 - 11:20:26] > 📥 Réception d'une requête : '/data/ec5b2a8468c21e6ad34ad2a3bc0445e5.enc'
+[2025-02-27 - 11:25:37] > ❌ Erreur lors du chargement de la base de données : ReferenceError: fs is not defined
+[2025-02-27 - 11:25:37] > Démarrage de Express...
+[2025-02-27 - 11:25:37] > Express chargé
+[2025-02-27 - 11:25:37] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-02-27 - 11:25:58] > ❌ Erreur lors du chargement de la base de données : ReferenceError: DB_FILE is not defined
+[2025-02-27 - 11:25:58] > Démarrage de Express...
+[2025-02-27 - 11:25:58] > Express chargé
+[2025-02-27 - 11:25:58] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-02-27 - 11:26:44] > Démarrage de Express...
+[2025-02-27 - 11:26:44] > Express chargé
+[2025-02-27 - 11:26:44] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-02-27 - 11:26:47] > 📥 Réception d'une requête : '/data/ec5b2a8468c21e6ad34ad2a3bc0445e5.enc'
+[2025-02-27 - 11:28:14] > Démarrage de Express...
+[2025-02-27 - 11:28:14] > Express chargé
+[2025-02-27 - 11:28:15] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-02-27 - 11:28:18] > 📥 Réception d'une requête : '/data/ec5b2a8468c21e6ad34ad2a3bc0445e5.enc'
+[2025-02-27 - 11:28:18] > ✅ Base de données mise à jour !
+[2025-02-27 - 11:28:18] > 🗑️ Entrée supprimée : ec5b2a8468c21e6ad34ad2a3bc0445e5
+[2025-02-27 - 11:28:41] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-02-27 - 11:28:41] > Fichier reçu, chiffrement en cours...
+[2025-02-27 - 11:28:41] > ✅ Base de données mise à jour !
+[2025-02-27 - 11:28:41] > Fichier enregistré et chiffré !
+[2025-02-27 - 11:28:41] > ✅ Fichier chiffré : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\153849e13174df0d3b705573a9d2287a.enc
+[2025-02-27 - 11:29:00] > Démarrage de Express...
+[2025-02-27 - 11:29:00] > Express chargé
+[2025-02-27 - 11:29:00] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-02-27 - 11:29:06] > ____Réception d'une requête :  '/t/153849e13174df0d3b705573a9d2287a'
+[2025-02-27 - 11:29:07] > 📥 Réception d'une requête : '/data/153849e13174df0d3b705573a9d2287a.enc'
+[2025-02-27 - 11:29:07] > ✅ Base de données mise à jour !
+[2025-02-27 - 11:29:07] > 🗑️ Entrée supprimée : 153849e13174df0d3b705573a9d2287a
+[2025-02-27 - 11:31:13] > Démarrage de Express...
+[2025-02-27 - 11:31:13] > Express chargé
+[2025-02-27 - 11:31:13] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-02-27 - 11:31:15] > 📥 Réception d'une requête : '/data/153849e13174df0d3b705573a9d2287a.enc'
+[2025-02-27 - 11:31:37] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-02-27 - 11:31:37] > Fichier reçu, chiffrement en cours...
+[2025-02-27 - 11:31:37] > ✅ Base de données mise à jour !
+[2025-02-27 - 11:31:37] > Fichier enregistré et chiffré !
+[2025-02-27 - 11:31:37] > ✅ Fichier chiffré : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\6fd9c1511751b2b35fc0d203926aafdb.enc
+[2025-02-27 - 11:31:45] > ____Réception d'une requête :  '/t/6fd9c1511751b2b35fc0d203926aafdb'
+[2025-02-27 - 11:31:47] > 📥 Réception d'une requête : '/data/6fd9c1511751b2b35fc0d203926aafdb.enc'
+[2025-02-27 - 11:31:47] > 🔓 Déchiffrement du fichier en cours...
+[2025-02-27 - 11:31:47] > ✅ Fichier déchiffré !
+[2025-02-27 - 11:31:47] > ✅ Fichier envoyé avec succès !
+[2025-02-27 - 11:31:47] > ✅ Base de données mise à jour !
+[2025-02-27 - 11:31:47] > 🗑️ Entrée supprimée : 6fd9c1511751b2b35fc0d203926aafdb
+[2025-02-27 - 11:31:47] > 🗑️ Fichier temporaire supprimé !

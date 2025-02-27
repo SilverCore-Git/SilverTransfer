@@ -10,7 +10,7 @@ console.log('Démarrage du serveur...');
 const express = require("express");
 const multer = require("multer");
 const fs = require("fs");
-const https = require("https");
+const http = require("http");
 const cors = require("cors");
 const path = require("path");
 const crypto = require("crypto");
@@ -59,34 +59,25 @@ console.warn = (...args) => {
     logToFile(args.join(" "));
 };
 
-const maintenance = require("../www.api/SilverConfig/maintenance.json");
-const config = require("../www.api/SilverConfig/transfer/backend.json");
-const { encryptFile, decryptFile } = require("./crypt.js");
+// const maintenance = require("../www.api/SilverConfig/maintenance.json");
 
-const DB_FILE = config.DBFile;
+const config = require('./config/config.json');
+
+const { encryptFile, decryptFile, encryptText, decryptText } = require("./src/crypt.js");
+const { loadDatabase, saveDatabase, deleteFiledb, resetDatabase, deleteDatabaseFile } = require('./src/database.js');
+
+
 let fileDatabase = {};
-
-// Charger la base de données
-const loadDatabase = () => {
-    try {
-        return JSON.parse(fs.readFileSync(DB_FILE, "utf8"));
-    } catch {
-        return {};
-    }
-};
-
-// Sauvegarder la base de données
-const saveDatabase = (data) => {
-    fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 4));
-};
-
 fileDatabase = loadDatabase();
 
+
+
+
 // SSL key & cert path
-const options = {
-    key: fs.readFileSync(config.SSLkeyPath, "utf8"),
-    cert: fs.readFileSync(config.SSLcertPath, "utf8"),
-};
+// const options = {
+//     key: fs.readFileSync(config.SSLkeyPath, "utf8"),
+//     cert: fs.readFileSync(config.SSLcertPath, "utf8"),
+// };
 
 const corsOptions = {
     origin: [
@@ -106,11 +97,11 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.set("view engine", "ejs");
 
-if (!maintenance.maintenance) {
+// if (!maintenance.maintenance) {
     app.use(express.static("public"));
-} else {
-    app.use(express.static("https://api.silverdium.fr/maintenance"));
-}
+// } else {
+//     app.use(express.static("https://api.silverdium.fr/maintenance"));
+// }
 
 console.log("Express chargé");
 
@@ -121,8 +112,9 @@ const storage = multer.diskStorage({
         cb(null, uploadDir);
     },
     filename: (req, file, cb) => {
-        const fileID = crypto.randomBytes(8).toString("hex");
-        const newFileName = `${fileID}_${file.originalname}`;
+        const encryptedText = encryptText(file.originalname);
+        req.body.Textiv = encryptedText.iv;
+        const newFileName = encryptedText.encryptedData;
         cb(null, newFileName);
     },
 });
@@ -130,8 +122,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Route pour l'upload de fichier
-app.post(config.pushfilepath, upload.single("file"), (req, res) => {
-    console.log("____Réception d'une requête : ", `'/${config.pushfilepath}'`);
+app.post(config.pushfilepath, upload.single("file"), async (req, res) => {
+    console.log("____Réception d'une requête : ", `' ${config.pushfilepath} '`);
 
     if (!req.file) {
         return res.status(400).json({ message: "Aucun fichier reçu" });
@@ -141,7 +133,6 @@ app.post(config.pushfilepath, upload.single("file"), (req, res) => {
     const tempFilePath = req.file.path;  // Chemin du fichier temporaire sauvegardé par Multer
     const encryptedFileName = `${req.file.filename}.enc`;
     const encryptedFilePath = path.join(__dirname, "data", encryptedFileName);
-    const fileSize = req.file.size;
 
     res.json({
         status: "processing",
@@ -152,11 +143,16 @@ app.post(config.pushfilepath, upload.single("file"), (req, res) => {
     console.log('Fichier reçu, chiffrement en cours...');
 
     try {
-        encryptFile(tempFilePath, encryptedFilePath);
-        fs.unlinkSync(tempFilePath);
 
-        fileDatabase[fileID] = { fileName: encryptedFileName, date: `${getCurrentDate()} - ${getCurrentTime()}` };
-        saveDatabase(fileDatabase);
+        await encryptFile(tempFilePath, encryptedFilePath);
+        await fs.unlinkSync(tempFilePath);
+
+        fileDatabase[fileID] = { 
+            fileName: encryptedFileName,
+            iv: req.body.Textiv,
+            date: `${getCurrentDate()} - ${getCurrentTime()}` 
+        };
+        await saveDatabase(fileDatabase);
 
         console.log('Fichier enregistré et chiffré !');
     } catch (err) {
@@ -166,7 +162,7 @@ app.post(config.pushfilepath, upload.single("file"), (req, res) => {
 
 
 // Route pour afficher le bouton de téléchargement
-app.get("/t/:id", (req, res) => {
+app.get("/t/:id", async (req, res) => {
     console.log("____Réception d'une requête : ", `'/t/${req.params.id}'`);
     const fileID = req.params.id;
     const fileEntry = fileDatabase[fileID];
@@ -178,35 +174,57 @@ app.get("/t/:id", (req, res) => {
 });
 
 // Route pour servir le fichier déchiffré
-app.get("/data/:filename", (req, res) => {
-    console.log("____Réception d'une requête : ", `'/data/${req.params.filename}'`);
-    const fileName = req.params.filename;
-    const filePath = path.join(__dirname, "data", fileName);
-    const decryptedPath = path.join(__dirname, "temp", `dec_${fileName.replace(".enc", "")}`);
+app.get("/data/:filename", async (req, res) => {
+    console.log("📥 Réception d'une requête :", `'/data/${req.params.filename}'`);
+    
+    const fileNameEnc = req.params.filename; // Nom chiffré du fichier
+    const fileID = fileNameEnc.replace(".enc", ""); // ID du fichier sans ".enc"
 
-    if (fs.existsSync(filePath)) {
-        try {
-            decryptFile(filePath, decryptedPath);
+    const fileDB = fileDatabase[fileID]; // Récupération de la base de données
+    if (!fileDB) {
+        return res.status(404).json({ error: "Fichier non trouvé dans la base de données" });
+    }
 
-            res.setHeader("Content-Disposition", `attachment; filename=${fileName.replace(".enc", "")}`);
-            res.sendFile(decryptedPath, (err) => {
-                if (err) {
-                    console.error("Erreur lors de l'envoi du fichier :", err);
-                    res.status(500).render("fatherfile", { error: "Erreur lors de l'envoi du fichier", describ: err });
-                } else {
-                    fs.unlinkSync(decryptedPath);
-                    console.log(`✅ Fichier envoyé et supprimé : ${decryptedPath}`);
-                }
-            });
+    const iv = fileDB.iv; // Récupérer l'IV stocké
+    const decryptedFileName = decryptText(fileID, iv); // Déchiffrer le vrai nom du fichier
 
-        } catch (err) {
-            console.error("Erreur lors du déchiffrement :", err);
-            res.status(500).render("fatherfile", { error: "Erreur lors du déchiffrement !", describ: err });
-        }
-    } else {
-        res.status(404).render("fatherfile", { error: "Fichier non trouvé !", describ: "Fichier non trouvé..." });
+    const encryptedFilePath = path.join(__dirname, "data", fileNameEnc); // Fichier chiffré
+    const decryptedFilePath = path.join(__dirname, "temp", decryptedFileName); // Destination du déchiffrement
+
+    if (!fs.existsSync(encryptedFilePath)) {
+        return res.status(404).json({ error: "Fichier chiffré non trouvé sur le serveur" });
+    }
+
+    try {
+        console.log("🔓 Déchiffrement du fichier en cours...");
+        await decryptFile(encryptedFilePath, decryptedFilePath); // Déchiffrement du contenu
+
+        fs.unlink(encryptedFilePath, (err) => {});
+
+        await res.setHeader("Content-Disposition", `attachment; filename=${decryptedFileName}`);
+        await res.sendFile(decryptedFilePath, async (err) => {
+            if (err) {
+                console.error("❌ Erreur lors de l'envoi du fichier :", err);
+                res.status(500).json({ error: "Erreur lors de l'envoi du fichier", describ: err });
+            } else {
+                console.log(`✅ Fichier envoyé avec succès !`);
+                // Supprimer le fichier temporaire après envoi
+                await fs.unlink(decryptedFilePath, (err) => {
+                    if (err) console.error("❌ Erreur lors de la suppression du fichier temporaire :", err);
+                    else console.log(`🗑️ Fichier temporaire supprimé !`);
+                });
+                await deleteFiledb(fileID)
+            }
+        });
+
+
+    } catch (err) {
+        console.error("❌ Erreur lors du déchiffrement :", err);
+        res.status(500).json({ error: "Erreur lors du déchiffrement", describ: err });
     }
 });
+
+
 
 // Générer une clé
 app.get("/key/:bytes", (req, res) => {
@@ -241,6 +259,6 @@ app.get("/key/:bytes", (req, res) => {
 });
 
 const PORT = config.Port;
-https.createServer(options, app).listen(PORT, () => {
+http.createServer(app).listen(PORT, () => {
     console.log(`Serveur HTTPS en ligne sur https://transfer.silverdium.fr:${PORT}`);
 });

@@ -1,0 +1,27 @@
+{
+
+    "expiretime": 15,
+
+    "maxbyteforkey": 256,
+
+    "pushfilepath": "/upload/yourmother",
+
+
+
+    "allowedURL": "https://transfer.silverdium.fr",
+
+    "Port": 84,
+
+
+
+    "DBFile": "database.json",
+
+    "DATAdir": "data",
+
+
+
+    "SSLkeyPath": "/etc/letsencrypt/live/transfer.silverdium.fr/privkey.pem",
+
+    "SSLcertPath": "/etc/letsencrypt/live/transfer.silverdium.fr/fullchain.pem"
+
+}

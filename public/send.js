@@ -6,7 +6,6 @@
 
 // alert('SilverTransfer est actuellement en maintenance, merci de repasser plus tard !')
 
-const htostname = "https://t.silverdium.fr";
 
 function updateProgressBar(value) {
     const progressBar = document.getElementById('prog-bar')
@@ -34,7 +33,7 @@ function sendFile() {
         alert("Veuillez sélectionner un fichier avant d'envoyer !");
         return;
     }
-    const maxSize = 1024 * 1024 * 1024; // 1024Mo
+    const maxSize = 10024 * 1024 * 1024; // 1024Mo
     if (file.size >= maxSize) { alert('Fichier trop volumineux !'); return; }
 
     const formData = new FormData();
@@ -45,7 +44,7 @@ function sendFile() {
     document.querySelector('.loader').style.display = "block";
 
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", `${htostname}:84/upload/yourmother`, true);
+    xhr.open("POST", `/upload/yourmother`, true);
 
     xhr.upload.onprogress = (event) => {
         if (event.lengthComputable) {
@@ -60,7 +59,7 @@ function sendFile() {
             const data = JSON.parse(xhr.responseText);
             console.log("Upload réussi :", data);
             document.getElementById('confirmbox').innerHTML = `<strong><h2 style="color: rgb(35, 209, 151)">${data.message}</h2></strong>`;
-            document.getElementById('urlInput').value = `${htostname}:84/t/${data.id}`;
+            document.getElementById('urlInput').value = `/t/${data.id}`;
 
             document.querySelector('.loader').style.display = "none";
             document.querySelector('.download').style.display = "flex";
