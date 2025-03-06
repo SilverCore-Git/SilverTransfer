@@ -1,0 +1,37 @@
+/**
+ * @author SilverCore
+ * @author SilverTransfer
+ * @author MisterPapaye
+ */
+
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    
+    background-image: url('/assets/img/background/background1.jpg');
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    text-align: center;
+    align-content: center;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/assets/img/background/background1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    filter: blur(3px) brightness(1.2) contrast(1.3);
+    z-index: -1;
+}

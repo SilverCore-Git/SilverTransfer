@@ -1,0 +1,65 @@
+<!-- 
+ * @author SilverCore
+ * @author SilverTransfer
+ * @author MisterPapaye
+-->
+
+<!DOCTYPE html>
+
+<html lang="fr">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta name="copyright" content="2025 SilverTransfer | SilverCore">
+        <meta name="theme-color" content="#9316d3">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="author" content="SilverCore, SilverTransfer | MisterPapaye">
+
+        <link rel="icon" href="https://t.silverdium.fr/logoST.png" type="image/png">
+
+
+        <title>SilverTransfer | ERREUR = <%= error %></title>
+
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+        <style>
+            @import url("https://t.silverdium.fr/body.css");
+            @import url("https://t.silverdium.fr/footer.css");
+            body { background: #0d0d0d; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; font-family: Arial, sans-serif; }
+            h1 { font-size: 3rem; background: linear-gradient(90deg, #ff00ff, #6a00ff, #00d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+            label { font-size: 1.5rem; color: white; margin-bottom: 15px; }
+            .download-btn { margin-top: 60px; font-size: 22px; font-weight: bold; color: white; background: linear-gradient(90deg, #ff00ff, #6a00ff, #00d4ff); padding: 20px 50px; border: none; border-radius: 50px; cursor: pointer; transition: 0.4s; }
+            .download-btn:hover { transform: scale(1.1); }
+        </style>
+
+    </head>
+
+    <body>
+
+        <a href="https://transfer.silverdium.fr"><h1>ERREUR : <%= error %></h1></a>
+
+        <label><%= describ %></label>
+
+        <button class="download-btn" onclick="window.location.href='/'">
+            <i class="fas fa-download"></i> SilverTransfer
+        </button>
+
+        <section style="margin-top: 60px">
+
+            <h2>👑 Merci de soutenir les projets <a href="https://core.silverdium.fr">SilverCore</a> ! ❤️<br></h2>
+            <h2 class="btn_tipeee" onclick="tipeee()">
+                <span class="text"><strong>😎 VOUS POUVEZ NOUS AIDER ! 💸</strong></span>
+            </h2>
+
+        </section>
+
+        <footer id="footer">
+            <strong><p>&copy; 2025 SilverTransfert | <a href="https://core.silverdium.fr">SilverCore</a>. Tous droits réservés.</p></strong>
+        </footer>
+
+    </body>
+
+</html>

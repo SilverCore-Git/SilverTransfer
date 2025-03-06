@@ -1,0 +1,185 @@
+
+#loader {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+
+
+/* From Uiverse.io by adamgiebl */ 
+.dots-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .dot {
+    height: 25px;
+    width: 25px;
+    margin-right: 20px;
+    border-radius: 200px;
+    background-color: #b3d4fc;
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+  
+  .dot:last-child {
+    margin-right: 0;
+  }
+  
+  .dot:nth-child(1) {
+    animation-delay: -0.3s;
+  }
+  
+  .dot:nth-child(2) {
+    animation-delay: -0.1s;
+  }
+  
+  .dot:nth-child(3) {
+    animation-delay: 0.1s;
+  }
+
+  .dot:nth-child(4) {
+    animation-delay: 0.3s;
+  }
+
+  .dot:nth-child(5) {
+    animation-delay: 0.5s;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(0.8);
+      background-color: #b3d4fc;
+      box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
+    }
+  
+    50% {
+      transform: scale(1.2);
+      background-color: #6793fb;
+      box-shadow: 0 0 0 10px rgba(178, 212, 252, 0);
+    }
+  
+    100% {
+      transform: scale(0.8);
+      background-color: #b3d4fc;
+      box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
+    }
+  }
+
+
+
+
+
+/* progressbar */
+.progress {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+
+.progress .bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.bar .div {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+  flex-direction: column;
+  width: 40%;
+  height: 40rem;
+  border-radius: 15px;
+  box-shadow: 0 0 10px #000000b4;
+  background:rgba(141, 141, 141, 0.2)
+}
+
+
+.bar progress {
+  width: 70%;
+  height: 15px;
+  margin-bottom: 5rem;
+  border-radius: 10px;
+  overflow: hidden;
+  appearance: none;
+}
+
+/* Style pour WebKit (Chrome, Safari) */
+.bar progress::-webkit-progress-bar {
+  background: #ddd;
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.bar progress::-webkit-progress-value {
+  background: linear-gradient(90deg, #ff416c, #ff4b2b);
+  border-radius: 10px;
+  transition: width 0.5s ease-in-out;
+}
+
+/* Style pour Firefox */
+.bar progress::-moz-progress-bar {
+  background: linear-gradient(90deg, #ff416c, #ff4b2b);
+  border-radius: 10px;
+}
+
+/* Animation de glow */
+.bar progress::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.bar progress:hover::after {
+  opacity: 1;
+}
+
+
+
+
+
+/* From Uiverse.io by satyamchaudharydev */ 
+.loader {
+  --size: 40px;
+  display: flex;
+  gap: 3rem;
+ }
+ 
+ .box {
+  width: var(--size);
+  height: var(--size);
+  background: linear-gradient(45deg, 
+  #00f4ff, #0048ff, #7a00ff, #ff00c8, #ff0073);
+  border-radius: 10rem;
+  animation: rotate 2s infinite;
+ }
+ 
+ .box:nth-child(2) {
+  animation-delay: 0.25s;
+ }
+ 
+ .box:nth-child(3) {
+  animation-delay: 0.5s;
+ }
+ 
+ @keyframes rotate {
+  50% {
+   transform: rotate(180deg)
+  }
+ }

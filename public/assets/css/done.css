@@ -1,0 +1,150 @@
+/**
+ * @author SilverCore
+ * @author SilverTransfer
+ * @author MisterPapaye
+ */
+
+
+#done {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+}
+
+#done .card {
+    padding-right: 2.5rem;
+    padding-left: 2.5rem;
+    padding-top: 0.001rem;
+}
+
+#done div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 50px;
+    max-width: 500px;
+    margin: auto;
+    margin-bottom: 2.5rem;
+    margin-top: 1.5rem;
+
+    background: rgba(255, 255, 255, 0.39);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.input-container label {
+    margin-bottom: 0.4rem;
+    font-size: 1.3rem;
+}
+
+input {
+    flex: 1;
+    width: 18rem;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+    font-size: 16px;
+    outline: none;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid #6a11cb;
+    transition: 0.3s;
+}
+
+
+.copy-btn {
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-left: 5px;
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.3);
+}
+
+.copy-btn:hover {
+    background: #e0e0e0;
+}
+
+.copy-btn:active {
+    transform: scale(0.95);
+}
+
+
+
+
+.qr-container label {
+    margin-top: 0.4rem;
+    font-size: 1.3rem;
+}
+
+.download-btn {
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    border: none;
+    padding: 15px 25px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(42, 82, 190, 0.5);
+    transition: all 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    margin-top: 20px;
+    letter-spacing: 1px;
+}
+
+.download-btn:active {
+    transform: scale(0.92);
+    box-shadow: 0 3px 10px rgba(42, 82, 190, 0.8);
+}
+
+.download-btn::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.5s ease;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+.download-btn:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.download-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 20px rgba(42, 82, 190, 0.8), 0 0 40px rgba(42, 82, 190, 0.6);
+}
+
+.qr-container {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+canvas {
+    width: 200px;
+    height: 200px;
+}
