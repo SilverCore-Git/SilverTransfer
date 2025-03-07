@@ -5,6 +5,7 @@
  */
 
 import { link, progressbar, valuetext } from "./idclassloader.js";
+import { sendFile, openform } from "../../index.js";
 import { salert } from "./salert.js";
 
 
@@ -35,7 +36,7 @@ export function send(FILE) {
         return;
     }
 
-    const maxSize = 1024 * 1024 * 1024; // 1024Mo
+    const maxSize = 10024 * 1024 * 1024; // 1024Mo
     if (file.size >= maxSize) { 
         salert('Fichier trop volumineux !', 'error'); 
         return; 
@@ -71,6 +72,9 @@ export function send(FILE) {
             });
 
             updateProgressBar(100);
+
+            sendFile('close')
+            openform('success')
 
         } else {
             console.error("Erreur :", xhr.statusText);

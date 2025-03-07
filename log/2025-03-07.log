@@ -265,3 +265,34 @@
 [2025-03-07 - 18:50:37] > Fichier enregistré et chiffré !
 [2025-03-07 - 18:50:37] > ✅ Fichier chiffré : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\4cf1f4772f9dc8c666eaab100e7d3b33.vbs.enc
 [2025-03-07 - 18:55:31] > ____Réception d'une requête :  '/t/4cf1f4772f9dc8c666eaab100e7d3b33'
+[2025-03-07 - 19:04:33] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 19:04:33] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 19:04:33] > ✅ Base de données mise à jour !
+[2025-03-07 - 19:04:33] > Fichier enregistré et chiffré !
+[2025-03-07 - 19:04:35] > ✅ Fichier chiffré : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc
+[2025-03-07 - 19:07:06] > ____Réception d'une requête :  '/t/c17d7e5985675fa1f01d4956ee107a68'
+[2025-03-07 - 19:07:19] > 📥 Réception d'une requête : '/data/c17d7e5985675fa1f01d4956ee107a68.avi.enc'
+[2025-03-07 - 19:07:19] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 19:07:21] > ✅ Fichier déchiffré !
+[2025-03-07 - 19:07:22] > ✅ Fichier envoyé avec succès !
+[2025-03-07 - 19:07:22] > ✅ Base de données mise à jour !
+[2025-03-07 - 19:07:22] > 🗑️ Entrée supprimée : c17d7e5985675fa1f01d4956ee107a68
+[2025-03-07 - 19:07:22] > 🗑️ Fichier temporaire supprimé !
+[2025-03-07 - 19:08:19] > ____Réception d'une requête :  '/t/c17d7e5985675fa1f01d4956ee107a68'
+[2025-03-07 - 19:08:20] > 📥 Réception d'une requête : '/data/c17d7e5985675fa1f01d4956ee107a68.avi.enc'
+[2025-03-07 - 19:08:43] > 📥 Réception d'une requête : '/data/4cf1f4772f9dc8c666eaab100e7d3b33.vbs.enc'
+[2025-03-07 - 19:08:43] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 19:08:43] > ✅ Fichier déchiffré !
+[2025-03-07 - 19:08:43] > ✅ Fichier envoyé avec succès !
+[2025-03-07 - 19:08:43] > ✅ Base de données mise à jour !
+[2025-03-07 - 19:08:43] > 🗑️ Entrée supprimée : 4cf1f4772f9dc8c666eaab100e7d3b33
+[2025-03-07 - 19:08:43] > 🗑️ Fichier temporaire supprimé !
+[2025-03-07 - 19:09:18] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 19:09:18] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 19:09:18] > ✅ Base de données mise à jour !
+[2025-03-07 - 19:09:18] > Fichier enregistré et chiffré !
+[2025-03-07 - 19:09:34] > ✅ Fichier chiffré : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\8240ba09937ddf314036814d984197cf.mkv.enc
+[2025-03-07 - 19:09:49] > ____Réception d'une requête :  '/t/8240ba09937ddf314036814d984197cf'
+[2025-03-07 - 19:09:53] > 📥 Réception d'une requête : '/data/8240ba09937ddf314036814d984197cf.mkv.enc'
+[2025-03-07 - 19:09:53] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 19:09:53] > ❌ Erreur lors du déchiffrement : RangeError [ERR_FS_FILE_TOO_LARGE]: File size (3302402612) is greater than 2 GiB

@@ -10,7 +10,7 @@ import { send } from './assets/js/send.js';
 import popups from './popups.js';
 
 
-
+ 
 main.style.display = 'none';
 upload.style.display = 'none';
 progress.style.display = 'none';
@@ -31,7 +31,7 @@ function closemain() {
     main.style.display = 'none'
 };
 
-function openform(page) {
+export function openform(page) {
 
     if (page === 'upload') {
 
@@ -60,7 +60,7 @@ function setFlach() {
     const randomAlert = popups[Math.floor(Math.random() * popups.length)];
     flach.innerHTML = randomAlert;
 }
-function sendFile(arg) {
+export function sendFile(arg) {
     if (arg === 'close') {
 
         progress.style.display = 'none';
@@ -103,7 +103,7 @@ async function loadApp() {
 
     dropZone.addEventListener('dragleave', () => {
         dropZone.style.backgroundColor = '';
-    });
+    }); 
 
     dropZone.addEventListener('drop', (event) => {
         event.preventDefault();
@@ -136,8 +136,6 @@ async function loadApp() {
         } else {
             await send(file);
         }
-        await sendFile('close')
-        await openform('success')
         
     });
 
