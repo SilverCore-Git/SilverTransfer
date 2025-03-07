@@ -154,7 +154,7 @@ app.post(config.pushfilepath, upload.single("file"), async (req, res) => {
     try {
 
         await encryptFile(tempFilePath, encryptedFilePath);
-        await fs.unlinkSync(tempFilePath);
+        // await fs.unlinkSync(tempFilePath);
 
         fileDatabase[fileID] = {
             fileName: encryptedFileName,

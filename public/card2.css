@@ -1,0 +1,135 @@
+ /**
+ * @author Silvercore 
+ * @author SilverTransfer
+ * @author MisterPapaye
+**/
+
+
+.download {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: rgb(35, 209, 151);
+    color: white;
+    width: 350px;
+    height: 50%;
+
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.card form {
+
+    margin-top: 5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center; 
+    text-align: center;
+
+    margin-bottom: 5px;
+}
+
+ /* From Uiverse.io by adamgiebl */ 
+.card {
+    width: 380px;
+    height: 550px;
+
+    border-radius: 20px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center; 
+    text-align: center;
+
+    box-shadow: rgba(151, 65, 252, 0.6) 0 0px 30px 8px;
+    background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+    
+    transition: all 0.3s;
+}
+
+
+  
+
+.url-container {
+    border-radius: 20px;
+
+    box-shadow: rgba(151, 65, 252, 0.6) 0 0px 30px 8px;
+    background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+    
+    width: 350px;
+    height: 500px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    
+    margin-top: 5%;
+    transition: all 0.3s;
+}
+.url-container:hover {
+    box-shadow: rgba(151, 65, 252, 0.6) 0 0px 50px 10px;
+    transform: scale(1.02);
+}
+
+.url-container h2 {
+    margin-bottom: 20px;
+    font-size: 1.6em;
+    text-transform: uppercase;
+}
+
+.url-container form div {
+    margin-top: 120px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center; 
+    text-align: center;
+}
+
+.url-input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 1.2em;
+    border: none;
+    background-color: #fff;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.copy-button {
+    margin-top: 16px;
+    background: linear-gradient(135deg, #ff9a56, #ff6f56);
+    color: white;
+    border: none;
+    padding: 12px 10px;
+    font-size: 1.2em;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.copy-button:hover {
+    background: linear-gradient(135deg, #ff6f56, #ff9a56);
+    box-shadow: #ff9a56 0px 0px 30px 6px;
+    transform: scale(1.1);
+}

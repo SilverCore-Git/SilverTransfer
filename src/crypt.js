@@ -8,7 +8,7 @@ const crypto = require('crypto');
 const fs = require('fs');
 require('dotenv').config();
 const fatherKey = Buffer.from(process.env.SECRET_KEY, 'hex');
-const babyKey = Buffer.from(process.env.TEXT_SECRET_KEY, 'hex'); // clée de 20bytes
+const babyKey = Buffer.from(process.env.TEXT_SECRET_KEY, 'hex'); // clée de 32bytes
 if (fatherKey.length !== 32) {
     throw new Error("FATHER_KEY doit être de 32 octets en hexadécimal !");
     console.error("FATHER_KEY doit être de 32 octets en hexadécimal !");
