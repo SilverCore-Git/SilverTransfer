@@ -65,8 +65,23 @@ console.warn = (...args) => {
 const config = require('./config/config.json');
 
 const { encryptFile, decryptFile, encryptText, decryptText } = require("./src/crypt.js");
-const { loadDatabase, saveDatabase, deleteFiledb, resetDatabase, deleteDatabaseFile } = require('./src/database.js');
+const { loadDatabase, saveDatabase, deleteFiledb, resetDatabase, deleteDatabaseFile, createDatabaseFile } = require('./src/database.js');
+const { setTimeout } = require("timers/promises");
 
+async function resetDB() {
+
+    if (config.resetDB) {
+
+        // await deleteDatabaseFile();
+
+        // await createDatabaseFile();
+
+        await resetDatabase();
+
+    };
+
+}
+resetDB()
 
 let fileDatabase = {};
 fileDatabase = loadDatabase();
@@ -103,10 +118,14 @@ app.set("view engine", "ejs");
 console.log("Express chargé");
 
 
-const uploadDir = path.join(__dirname, "temp");
+const uploadDir = path.join(__dirname, config.TEMPdir);
 if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir);
-    console.log('Répertoire "temp" créé');
+    console.log('Répertoire "',config.TEMPdir,'" créé');
+}
+if (!fs.existsSync(path.join(__dirname, config.DATAdir))) {
+    fs.mkdirSync(path.join(__dirname, config.DATAdir));
+    console.log('Répertoire "',config.DATAdir,'" créé');
 }
 
 // Configuration de Multer pour stocker les fichiers sur disque
@@ -141,8 +160,8 @@ app.post(config.pushfilepath, upload.single("file"), async (req, res) => {
     const fileID = path.basename(req.file.filename, path.extname(req.file.filename));
     const tempFilePath = req.file.path;  // Chemin du fichier temporaire sauvegardé par Multer
     const encryptedFileName = `${req.file.filename}.enc`;
-    const encryptedFilePath = path.join(__dirname, "data", encryptedFileName);
-    
+    const encryptedFilePath = path.join(__dirname, config.DATAdir, encryptedFileName);
+
     res.json({
         status: "processing",
         message: "Fichier reçu, chiffrement en cours...",
@@ -154,7 +173,7 @@ app.post(config.pushfilepath, upload.single("file"), async (req, res) => {
     try {
 
         await encryptFile(tempFilePath, encryptedFilePath);
-        // await fs.unlinkSync(tempFilePath);
+        await fs.promises.unlink(tempFilePath);
 
         fileDatabase[fileID] = {
             fileName: encryptedFileName,
@@ -189,7 +208,7 @@ app.get("/data/:filename", async (req, res) => {
     console.log("📥 Réception d'une requête :", `'/data/${req.params.filename}'`);
     
     const fileNameEnc = req.params.filename; // Nom chiffré du fichier
-    const fileID = fileNameEnc.replace(".enc", ""); // ID du fichier sans ".enc"
+    const fileID = fileNameEnc.split('.')[0];
 
     const fileDB = fileDatabase[fileID]; // Récupération de la base de données
     if (!fileDB) {

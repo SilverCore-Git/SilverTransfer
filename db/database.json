@@ -1,1 +1,12 @@
-{}
+{
+    "DBinfo": {
+        "CreateDate": "2025-03-07 - 18:27:39",
+        "Path": "db/database.json",
+        "id": "2284"
+    },
+    "4cf1f4772f9dc8c666eaab100e7d3b33": {
+        "fileName": "4cf1f4772f9dc8c666eaab100e7d3b33.vbs.enc",
+        "size": 909,
+        "date": "2025-03-07 - 18:50:37"
+    }
+}

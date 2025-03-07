@@ -5,3 +5,263 @@
 [2025-03-07 - 17:28:04] > Fichier reçu, chiffrement en cours...
 [2025-03-07 - 17:28:04] > ✅ Base de données mise à jour !
 [2025-03-07 - 17:28:04] > Fichier enregistré et chiffré !
+[2025-03-07 - 17:32:56] > Démarrage de Express...
+[2025-03-07 - 17:32:56] > Express chargé
+[2025-03-07 - 17:32:56] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 17:33:03] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 17:33:03] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 17:33:03] > ✅ Base de données mise à jour !
+[2025-03-07 - 17:33:03] > Fichier enregistré et chiffré !
+[2025-03-07 - 17:33:03] > ✅ Fichier chiffré : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\4cf1f4772f9dc8c666eaab100e7d3b33.vbs.enc
+[2025-03-07 - 17:33:45] > ____Réception d'une requête :  '/t/4cf1f4772f9dc8c666eaab100e7d3b33'
+[2025-03-07 - 17:33:51] > 📥 Réception d'une requête : '/data/4cf1f4772f9dc8c666eaab100e7d3b33.vbs.enc'
+[2025-03-07 - 17:34:29] > 📥 Réception d'une requête : '/data/4cf1f4772f9dc8c666eaab100e7d3b33.vbs.enc'
+[2025-03-07 - 17:38:29] > Démarrage de Express...
+[2025-03-07 - 17:38:29] > Express chargé
+[2025-03-07 - 17:38:29] > Répertoire "temp" créé
+[2025-03-07 - 17:38:29] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 17:44:11] > Démarrage de Express...
+[2025-03-07 - 17:44:11] > Express chargé
+[2025-03-07 - 17:44:11] > Répertoire " data " créé
+[2025-03-07 - 17:44:11] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 17:44:36] > Démarrage de Express...
+[2025-03-07 - 17:44:36] > Express chargé
+[2025-03-07 - 17:44:36] > Répertoire " temp " créé
+[2025-03-07 - 17:44:36] > Répertoire " data " créé
+[2025-03-07 - 17:44:36] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 17:51:35] > Démarrage de Express...
+[2025-03-07 - 17:51:35] > Express chargé
+[2025-03-07 - 17:51:35] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 17:55:53] > ⚠️ Le fichier de base de données n'existe pas.
+[2025-03-07 - 17:55:53] > Démarrage de Express...
+[2025-03-07 - 17:55:53] > Express chargé
+[2025-03-07 - 17:55:53] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 17:55:53] > ❌ Erreur lors de la réinitialisation : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\db\database.json'
+[2025-03-07 - 17:58:26] > Démarrage de Express...
+[2025-03-07 - 17:58:26] > Express chargé
+[2025-03-07 - 17:58:26] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 17:58:26] > ❌ Erreur lors de la réinitialisation : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\db\database.json'
+[2025-03-07 - 18:00:58] > ⚠️ Le fichier de base de données n'existe pas.
+[2025-03-07 - 18:00:58] > Démarrage de Express...
+[2025-03-07 - 18:00:58] > Express chargé
+[2025-03-07 - 18:00:58] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:00:58] > ❌ Erreur lors de la réinitialisation : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\db\database.json'
+[2025-03-07 - 18:04:03] > ⚠️ Le fichier de base de données n'existe pas.
+[2025-03-07 - 18:04:03] > Démarrage de Express...
+[2025-03-07 - 18:04:03] > Express chargé
+[2025-03-07 - 18:04:03] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:04:03] > ❌ Erreur lors de la suppression du fichier : TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+[2025-03-07 - 18:04:03] > ❌ Erreur lors de la réinitialisation : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\db\database.json'
+[2025-03-07 - 18:04:35] > ⚠️ Le fichier de base de données n'existe pas.
+[2025-03-07 - 18:04:35] > Démarrage de Express...
+[2025-03-07 - 18:04:35] > Express chargé
+[2025-03-07 - 18:04:35] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:04:36] > ❌ Erreur lors de la création du fichier : TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+[2025-03-07 - 18:04:36] > ❌ Erreur lors de la réinitialisation : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\db\database.json'
+[2025-03-07 - 18:05:20] > ⚠️ Le fichier de base de données n'existe pas.
+[2025-03-07 - 18:05:20] > Démarrage de Express...
+[2025-03-07 - 18:05:20] > Express chargé
+[2025-03-07 - 18:05:20] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:05:20] > ❌ Erreur lors de la création du fichier : TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+[2025-03-07 - 18:05:20] > ❌ Erreur lors de la réinitialisation : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\db\database.json'
+[2025-03-07 - 18:13:15] > ⚠️ Le fichier de base de données n'existe pas.
+[2025-03-07 - 18:13:15] > Démarrage de Express...
+[2025-03-07 - 18:13:15] > Express chargé
+[2025-03-07 - 18:13:15] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:13:15] > ❌ Erreur lors de la création du fichier : TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+[2025-03-07 - 18:13:15] > ❌ Erreur lors de la réinitialisation : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\db\database.json'
+[2025-03-07 - 18:14:01] > ⚠️ Le fichier de base de données n'existe pas.
+[2025-03-07 - 18:14:01] > Démarrage de Express...
+[2025-03-07 - 18:14:01] > Express chargé
+[2025-03-07 - 18:14:01] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:14:01] > ✅ Fichier de base de données créer !
+[2025-03-07 - 18:14:01] > ❌ Erreur lors de la réinitialisation : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\db\database.json'
+[2025-03-07 - 18:15:05] > ⚠️ Le fichier de base de données n'existe pas.
+[2025-03-07 - 18:15:05] > Démarrage de Express...
+[2025-03-07 - 18:15:05] > Express chargé
+[2025-03-07 - 18:15:05] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:15:05] > ❌ Erreur lors de la réinitialisation : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\db\database.json'
+[2025-03-07 - 18:15:05] > ❌ Erreur lors de la création du fichier : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\db\database.json'
+[2025-03-07 - 18:15:35] > ⚠️ Le fichier de base de données n'existe pas.
+[2025-03-07 - 18:15:35] > Démarrage de Express...
+[2025-03-07 - 18:15:35] > Express chargé
+[2025-03-07 - 18:15:35] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:15:35] > ❌ Erreur lors de la réinitialisation : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\db\database.json'
+[2025-03-07 - 18:15:35] > ❌ Erreur lors de la création du fichier : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\db\database.json'
+[2025-03-07 - 18:16:15] > ⚠️ Le fichier de base de données n'existe pas.
+[2025-03-07 - 18:16:15] > Démarrage de Express...
+[2025-03-07 - 18:16:15] > Express chargé
+[2025-03-07 - 18:16:15] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:16:15] > ❌ Erreur lors de la réinitialisation : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\db\database.json'
+[2025-03-07 - 18:17:22] > ⚠️ Le fichier de base de données n'existe pas.
+[2025-03-07 - 18:17:22] > Démarrage de Express...
+[2025-03-07 - 18:17:22] > Express chargé
+[2025-03-07 - 18:17:22] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:17:48] > ⚠️ Le fichier de base de données n'existe pas.
+[2025-03-07 - 18:17:48] > Démarrage de Express...
+[2025-03-07 - 18:17:48] > Express chargé
+[2025-03-07 - 18:17:48] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:17:48] > ❌ Erreur lors de la réinitialisation : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\db\database.json'
+[2025-03-07 - 18:17:48] > ❌ Erreur lors de la création du fichier : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\db\database.json'
+[2025-03-07 - 18:18:52] > ⚠️ Le fichier de base de données n'existe pas.
+[2025-03-07 - 18:18:52] > Démarrage de Express...
+[2025-03-07 - 18:18:52] > Express chargé
+[2025-03-07 - 18:18:52] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:19:00] > ⚠️ Le fichier de base de données n'existe pas.
+[2025-03-07 - 18:19:00] > Démarrage de Express...
+[2025-03-07 - 18:19:00] > Express chargé
+[2025-03-07 - 18:19:00] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:19:00] > ❌ Erreur lors de la réinitialisation : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\db\database.json'
+[2025-03-07 - 18:19:00] > ❌ Erreur lors de la création du fichier : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\db\database.json'
+[2025-03-07 - 18:19:48] > ⚠️ Le fichier de base de données n'existe pas.
+[2025-03-07 - 18:19:48] > Démarrage de Express...
+[2025-03-07 - 18:19:48] > Express chargé
+[2025-03-07 - 18:19:48] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:19:48] > ❌ Erreur lors de la création du fichier : TypeError: fs.promises.writeFileSync is not a function
+[2025-03-07 - 18:19:48] > ❌ Erreur lors de la réinitialisation : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\db\database.json'
+[2025-03-07 - 18:20:05] > ⚠️ Le fichier de base de données n'existe pas.
+[2025-03-07 - 18:20:05] > Démarrage de Express...
+[2025-03-07 - 18:20:05] > Express chargé
+[2025-03-07 - 18:20:05] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:20:05] > ❌ Erreur lors de la création du fichier : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\db\database.json'
+[2025-03-07 - 18:20:05] > ❌ Erreur lors de la réinitialisation : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\db\database.json'
+[2025-03-07 - 18:20:42] > ⚠️ Le fichier de base de données n'existe pas.
+[2025-03-07 - 18:20:42] > Démarrage de Express...
+[2025-03-07 - 18:20:42] > Express chargé
+[2025-03-07 - 18:20:42] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:20:42] > ❌ Erreur lors de la création du fichier : TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+[2025-03-07 - 18:20:42] > ❌ Erreur lors de la réinitialisation : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\db\database.json'
+[2025-03-07 - 18:22:11] > Démarrage de Express...
+[2025-03-07 - 18:22:11] > Express chargé
+[2025-03-07 - 18:22:11] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:22:11] > ❌ Erreur lors de la réinitialisation : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\db\database.json'
+[2025-03-07 - 18:22:50] > ⚠️ Le fichier de base de données n'existe pas.
+[2025-03-07 - 18:22:50] > Démarrage de Express...
+[2025-03-07 - 18:22:50] > Express chargé
+[2025-03-07 - 18:22:50] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:22:50] > ❌ Erreur lors de la création du fichier : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\db\database.json'
+[2025-03-07 - 18:22:50] > ❌ Erreur lors de la réinitialisation : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\db\database.json'
+[2025-03-07 - 18:23:18] > ⚠️ Le fichier de base de données n'existe pas.
+[2025-03-07 - 18:23:18] > Démarrage de Express...
+[2025-03-07 - 18:23:18] > Express chargé
+[2025-03-07 - 18:23:18] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:23:18] > ✅ Fichier de base de données créer !
+[2025-03-07 - 18:23:18] > ❌ Erreur lors de la réinitialisation : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\db\database.json'
+[2025-03-07 - 18:24:04] > ❌ Erreur lors du chargement de la base de données : SyntaxError: Unexpected end of JSON input
+[2025-03-07 - 18:24:04] > Démarrage de Express...
+[2025-03-07 - 18:24:04] > Express chargé
+[2025-03-07 - 18:24:04] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:24:04] > 🗑️ Base de données réinitialisée !
+[2025-03-07 - 18:25:17] > ❌ Erreur lors du chargement de la base de données : SyntaxError: Expected ',' or '}' after property value in JSON at position 81 (line 4 column 39)
+[2025-03-07 - 18:25:17] > Démarrage de Express...
+[2025-03-07 - 18:25:17] > Express chargé
+[2025-03-07 - 18:25:17] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:25:17] > 🗑️ Base de données réinitialisée !
+[2025-03-07 - 18:26:19] > Démarrage de Express...
+[2025-03-07 - 18:26:19] > Express chargé
+[2025-03-07 - 18:26:19] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:26:19] > 🗑️ Base de données réinitialisée !
+[2025-03-07 - 18:27:16] > Démarrage de Express...
+[2025-03-07 - 18:27:16] > Express chargé
+[2025-03-07 - 18:27:16] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:27:16] > 🗑️ Base de données réinitialisée !
+[2025-03-07 - 18:27:31] > Démarrage de Express...
+[2025-03-07 - 18:27:31] > Express chargé
+[2025-03-07 - 18:27:31] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:27:31] > 🗑️ Base de données réinitialisée !
+[2025-03-07 - 18:27:32] > Démarrage de Express...
+[2025-03-07 - 18:27:32] > Express chargé
+[2025-03-07 - 18:27:32] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:27:32] > 🗑️ Base de données réinitialisée !
+[2025-03-07 - 18:27:33] > Démarrage de Express...
+[2025-03-07 - 18:27:33] > Express chargé
+[2025-03-07 - 18:27:33] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:27:33] > 🗑️ Base de données réinitialisée !
+[2025-03-07 - 18:27:39] > Démarrage de Express...
+[2025-03-07 - 18:27:39] > Express chargé
+[2025-03-07 - 18:27:39] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:27:39] > 🗑️ Base de données réinitialisée !
+[2025-03-07 - 18:27:58] > Démarrage de Express...
+[2025-03-07 - 18:27:58] > Express chargé
+[2025-03-07 - 18:27:58] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:28:21] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 18:28:21] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 18:28:21] > ✅ Base de données mise à jour !
+[2025-03-07 - 18:28:21] > Fichier enregistré et chiffré !
+[2025-03-07 - 18:28:21] > ✅ Fichier chiffré : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\4cf1f4772f9dc8c666eaab100e7d3b33.vbs.enc
+[2025-03-07 - 18:28:45] > ____Réception d'une requête :  '/t/4cf1f4772f9dc8c666eaab100e7d3b33'
+[2025-03-07 - 18:28:48] > 📥 Réception d'une requête : '/data/4cf1f4772f9dc8c666eaab100e7d3b33.vbs.enc'
+[2025-03-07 - 18:31:17] > 📥 Réception d'une requête : '/data/4cf1f4772f9dc8c666eaab100e7d3b33.vbs.enc'
+[2025-03-07 - 18:31:29] > Démarrage de Express...
+[2025-03-07 - 18:31:29] > Express chargé
+[2025-03-07 - 18:31:29] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:31:32] > ____Réception d'une requête :  '/t/4cf1f4772f9dc8c666eaab100e7d3b33'
+[2025-03-07 - 18:31:34] > 📥 Réception d'une requête : '/data/4cf1f4772f9dc8c666eaab100e7d3b33.vbs.enc'
+[2025-03-07 - 18:31:53] > Démarrage de Express...
+[2025-03-07 - 18:31:53] > Express chargé
+[2025-03-07 - 18:31:53] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:31:57] > ____Réception d'une requête :  '/t/4cf1f4772f9dc8c666eaab100e7d3b33'
+[2025-03-07 - 18:31:58] > 📥 Réception d'une requête : '/data/4cf1f4772f9dc8c666eaab100e7d3b33.vbs.enc'
+[2025-03-07 - 18:31:58] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 18:31:58] > ✅ Fichier déchiffré !
+[2025-03-07 - 18:31:58] > ✅ Fichier envoyé avec succès !
+[2025-03-07 - 18:31:58] > ✅ Base de données mise à jour !
+[2025-03-07 - 18:31:58] > 🗑️ Entrée supprimée : 4cf1f4772f9dc8c666eaab100e7d3b33
+[2025-03-07 - 18:31:58] > 🗑️ Fichier temporaire supprimé !
+[2025-03-07 - 18:40:53] > Démarrage de Express...
+[2025-03-07 - 18:40:53] > Express chargé
+[2025-03-07 - 18:40:53] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:41:05] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 18:41:05] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 18:41:05] > ✅ Base de données mise à jour !
+[2025-03-07 - 18:41:05] > Fichier enregistré et chiffré !
+[2025-03-07 - 18:41:05] > ✅ Fichier chiffré : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\4cf1f4772f9dc8c666eaab100e7d3b33.vbs.enc
+[2025-03-07 - 18:41:25] > ____Réception d'une requête :  '/t/4cf1f4772f9dc8c666eaab100e7d3b33'
+[2025-03-07 - 18:42:14] > Démarrage de Express...
+[2025-03-07 - 18:42:14] > Express chargé
+[2025-03-07 - 18:42:14] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:42:14] > 🗑️ Base de données réinitialisée !
+[2025-03-07 - 18:42:45] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 18:42:45] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 18:42:45] > ✅ Base de données mise à jour !
+[2025-03-07 - 18:42:45] > Fichier enregistré et chiffré !
+[2025-03-07 - 18:42:45] > ✅ Fichier chiffré : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\b070c99671b96a7a812ef08a0bd1b6cb.html.enc
+[2025-03-07 - 18:45:32] > Démarrage de Express...
+[2025-03-07 - 18:45:32] > Express chargé
+[2025-03-07 - 18:45:32] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:45:38] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 18:45:38] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 18:45:38] > ✅ Base de données mise à jour !
+[2025-03-07 - 18:45:38] > Fichier enregistré et chiffré !
+[2025-03-07 - 18:47:01] > Démarrage de Express...
+[2025-03-07 - 18:47:01] > Express chargé
+[2025-03-07 - 18:47:01] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:47:12] > ____Réception d'une requête :  '/t/b070c99671b96a7a812ef08a0bd1b6cb'
+[2025-03-07 - 18:47:20] > Démarrage de Express...
+[2025-03-07 - 18:47:20] > Express chargé
+[2025-03-07 - 18:47:20] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:47:29] > Démarrage de Express...
+[2025-03-07 - 18:47:29] > Express chargé
+[2025-03-07 - 18:47:29] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:47:38] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 18:47:38] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 18:47:38] > ✅ Base de données mise à jour !
+[2025-03-07 - 18:47:38] > Fichier enregistré et chiffré !
+[2025-03-07 - 18:47:38] > ✅ Fichier chiffré : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\4cf1f4772f9dc8c666eaab100e7d3b33.vbs.enc
+[2025-03-07 - 18:47:53] > ____Réception d'une requête :  '/t/4cf1f4772f9dc8c666eaab100e7d3b33'
+[2025-03-07 - 18:47:54] > 📥 Réception d'une requête : '/data/4cf1f4772f9dc8c666eaab100e7d3b33.vbs.enc'
+[2025-03-07 - 18:47:54] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 18:47:54] > ✅ Fichier déchiffré !
+[2025-03-07 - 18:47:54] > ✅ Fichier envoyé avec succès !
+[2025-03-07 - 18:47:54] > ✅ Base de données mise à jour !
+[2025-03-07 - 18:47:54] > 🗑️ Entrée supprimée : 4cf1f4772f9dc8c666eaab100e7d3b33
+[2025-03-07 - 18:47:54] > 🗑️ Fichier temporaire supprimé !
+[2025-03-07 - 18:49:50] > Démarrage de Express...
+[2025-03-07 - 18:49:50] > Express chargé
+[2025-03-07 - 18:49:50] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 18:50:37] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 18:50:37] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 18:50:37] > ✅ Base de données mise à jour !
+[2025-03-07 - 18:50:37] > Fichier enregistré et chiffré !
+[2025-03-07 - 18:50:37] > ✅ Fichier chiffré : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\4cf1f4772f9dc8c666eaab100e7d3b33.vbs.enc
+[2025-03-07 - 18:55:31] > ____Réception d'une requête :  '/t/4cf1f4772f9dc8c666eaab100e7d3b33'

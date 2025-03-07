@@ -1,5 +1,7 @@
 {
 
+    "resetDB": false,
+
     "expiretime": 15,
 
     "maxbyteforkey": 256,
@@ -14,9 +16,10 @@
 
 
 
-    "DBFile": "database.json",
+    "DBFile": "db/database.json",
 
     "DATAdir": "data",
+    "TEMPdir": "temp",
 
 
 

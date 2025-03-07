@@ -5,10 +5,25 @@
  */
 
 const fs = require("fs");
+const crypto = require('crypto');
 
 const config = require('../config/config.json');
 
 const DB_FILE = config.DBFile;
+
+
+// Fonction pour obtenir la date au format "YYYY-MM-DD"
+const getCurrentDate = () => {
+    const today = new Date();
+    return today.toISOString().split("T")[0];
+};
+
+// Fonction pour obtenir l'heure actuelle au format "HH:MM:SS"
+const getCurrentTime = () => {
+    return new Date().toLocaleTimeString("fr-FR", { hour12: false });
+};
+
+
 
 // Charger la base de données
 const loadDatabase = () => {
@@ -32,7 +47,7 @@ const saveDatabase = (data) => {
 };
 
 // Supprimer une entrée spécifique de la base de données
-function deleteFiledb(fileID) {
+async function deleteFiledb(fileID) {
     let data = loadDatabase();
 
     if (!data[fileID]) {
@@ -47,20 +62,35 @@ function deleteFiledb(fileID) {
 }
 
 // Supprimer complètement la base de données
-function resetDatabase() {
+async function resetDatabase() {
+
+    const h = await getCurrentTime();
+    const d = await getCurrentDate();
+    const date = `${d} - ${h}`
+
     try {
-        fs.writeFileSync(DB_FILE, "{}"); // Réinitialiser en un objet vide
+
+        await fs.writeFileSync(DB_FILE, 
+`{
+    "DBinfo": {
+        "CreateDate": "${date}",
+        "Path": "${config.DBFile}",
+        "id": "${Math.floor(Math.random() * 9000) + 1000}"
+    }
+}`);
+
         console.log("🗑️ Base de données réinitialisée !");
     } catch (error) {
         console.error("❌ Erreur lors de la réinitialisation :", error);
     }
+
 }
 
 // Supprimer entièrement le fichier DB_FILE
-function deleteDatabaseFile() {
+async function deleteDatabaseFile() {
     try {
         if (fs.existsSync(DB_FILE)) {
-            fs.unlinkSync(DB_FILE);
+            await fs.unlinkSync(DB_FILE);
             console.log("🚮 Fichier de base de données supprimé !");
         } else {
             console.log("⚠️ Le fichier de base de données n'existe pas.");
@@ -70,10 +100,21 @@ function deleteDatabaseFile() {
     }
 }
 
+// Créer le fichier DB_FILE
+async function createDatabaseFile() {
+    try {
+        fs.promises.writeFile(DB_FILE, ""); // marche pas !!
+        console.log("✅ Fichier de base de données créer !");
+    } catch (error) {
+        console.error("❌ Erreur lors de la création du fichier :", error);
+    }
+}
+
 module.exports = {
     loadDatabase,
     saveDatabase,
     deleteFiledb,
     resetDatabase,
+    createDatabaseFile,
     deleteDatabaseFile
 }
