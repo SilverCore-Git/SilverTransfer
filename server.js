@@ -16,6 +16,7 @@ const path = require("path");
 const crypto = require("crypto");
 const formatFileSize = require('./src/filesize.js')
 
+
 // Fonction pour obtenir la date au format "YYYY-MM-DD"
 const getCurrentDate = () => {
     const today = new Date();
@@ -67,6 +68,8 @@ const config = require('./config/config.json');
 const { encryptFile, decryptFile, encryptText, decryptText } = require("./src/crypt.js");
 const { loadDatabase, saveDatabase, deleteFiledb, resetDatabase, deleteDatabaseFile, createDatabaseFile } = require('./src/database.js');
 const { setTimeout } = require("timers/promises");
+const { removeExpirFile } = require("./src/removeData.js");
+
 
 async function resetDB() {
 
@@ -86,6 +89,8 @@ let fileDatabase = {};
 fileDatabase = loadDatabase();
 
 
+// initialisation de la suprésion des fichier expirer
+setInterval(() => { removeExpirFile() }, 3600000);
 
 
 // SSL key & cert path
@@ -194,6 +199,45 @@ app.post(config.pushfilepath, upload.single("file"), async (req, res) => {
 app.get("/t/:id", async (req, res) => {
     console.log("____Réception d'une requête : ", `'/t/${req.params.id}'`);
     const fileID = req.params.id;
+
+        //assets
+        if (fileID == 'assets') {
+            const fileName = req.query.file
+            const ext = req.query.ext
+            res.sendFile(path.join(__dirname, 'views', 'assets', ext, `${fileName}.${ext}`))
+            return
+        }
+
+        // dev access
+        const dev = req.query.dev
+
+        if (dev === 'true') {
+
+            console.warn('⚠️ </> Acces développeur ! id?=',fileID)
+
+            const type = req.query.type
+            const err = req.query.err
+
+            if (type === 'err') {
+
+                if (err === '500') {
+
+                }
+                else if (err === '404') {
+                    await res.status(404).render("fatherfile", { error: "ID non trouver !", describ: "ID de fichier non trouver..." });
+                    return
+                }
+
+            } else {
+
+                await res.render("download", { fileName: 'fileName', fileID: 'fileID', fileSize: 'fSize' });
+                return
+
+            }
+
+        }
+
+    
     const fileEntry = fileDatabase[fileID];
     const fSize = await formatFileSize(fileEntry.size);
     const fileName = fileEntry.fileName.split('.')[1];
@@ -211,7 +255,29 @@ app.get("/data/:filename", async (req, res) => {
     
     const fileID = req.params.filename; // Nom chiffré du fichier
 
-    
+            // dev access
+        const dev = req.query.dev
+        const err = req.query.err
+
+        if (dev === 'true') {
+
+            console.warn('⚠️ </> Acces développeur ! id?=',fileID)
+
+            if (err === '404') {
+                res.status(404).json({ error: "Fichier non trouvé dans la base de données" });
+                return
+            }
+            else if (err === 'end') {
+                res.render("end", {  });
+            }
+
+            res.render("data", { status: 'status' });
+            return
+
+        }
+
+    res.render("data", { status: 'initialisation' });
+
     const fileDB = fileDatabase[fileID]; // Récupération de la base de données
     if (!fileDB) {
         return res.status(404).json({ error: "Fichier non trouvé dans la base de données" });
@@ -231,6 +297,8 @@ app.get("/data/:filename", async (req, res) => {
 
     console.log("🔓 Déchiffrement du fichier en cours...");
 
+    res.render("data", { status: 'Déchiffrement' });
+
     await decryptFile(encryptedFilePath, decryptedFilePath); // Déchiffrement du fichier
 
     await res.setHeader("Content-Disposition", `attachment; filename=${decryptedFileName}`);
@@ -241,6 +309,7 @@ app.get("/data/:filename", async (req, res) => {
         await setTimeout(1000);
 
         await new Promise((resolve, reject) => {
+            res.render("data", { status: 'Téléchargement' });
             res.sendFile(decryptedFilePath, (err) => {
                 if (err) {
                     console.error("❌ Erreur lors de l'envoi du fichier :", err);
@@ -264,6 +333,8 @@ app.get("/data/:filename", async (req, res) => {
         console.error(error);
         res.status(error.status || 500).json({ error: error.error, describ: error.describ });
     }
+
+    res.render("data", {  });
 });
 
 

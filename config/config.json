@@ -22,9 +22,13 @@
     "TEMPdir": "temp",
 
 
+    "devAccess": {
+        "id": 12345678
+    },
+
+
 
     "SSLkeyPath": "/etc/letsencrypt/live/transfer.silverdium.fr/privkey.pem",
-
     "SSLcertPath": "/etc/letsencrypt/live/transfer.silverdium.fr/fullchain.pem"
 
 }

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-const { loadDatabase, saveDatabase, deleteFiledb } = require('./src/database.js');
-const config = require('./config/config.json');
+const { loadDatabase, saveDatabase, deleteFiledb } = require('./database.js');
+const config = require('../config/config.json');
 
 
 const dataDir = path.join(__dirname, 'data');
@@ -72,3 +72,6 @@ function removeExpirFile() {
     saveDatabase(fileDatabase);
     console.log("✅ Nettoyage des dossiers expirés terminé.");
 }
+
+
+module.exports = removeExpirFile

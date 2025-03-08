@@ -376,3 +376,491 @@
 [2025-03-08 - 10:12:23] > Démarrage de Express...
 [2025-03-08 - 10:12:23] > Express chargé
 [2025-03-08 - 10:12:23] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 10:19:15] > Démarrage de Express...
+[2025-03-08 - 10:19:15] > Express chargé
+[2025-03-08 - 10:19:15] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 10:31:53] > ____Réception d'une requête :  '/t/85444681'
+[2025-03-08 - 10:38:38] > Démarrage de Express...
+[2025-03-08 - 10:38:38] > Express chargé
+[2025-03-08 - 10:38:38] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 10:38:41] > ____Réception d'une requête :  '/t/12345678'
+[2025-03-08 - 10:39:44] > Démarrage de Express...
+[2025-03-08 - 10:39:44] > Express chargé
+[2025-03-08 - 10:39:44] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 10:39:46] > ____Réception d'une requête :  '/t/12345678'
+[2025-03-08 - 10:40:23] > Démarrage de Express...
+[2025-03-08 - 10:40:23] > Express chargé
+[2025-03-08 - 10:40:23] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 10:40:25] > ____Réception d'une requête :  '/t/12345678'
+[2025-03-08 - 10:40:46] > Démarrage de Express...
+[2025-03-08 - 10:40:46] > Express chargé
+[2025-03-08 - 10:40:46] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 10:40:47] > ____Réception d'une requête :  '/t/12345678'
+[2025-03-08 - 10:42:06] > Démarrage de Express...
+[2025-03-08 - 10:42:06] > Express chargé
+[2025-03-08 - 10:42:06] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 10:42:07] > ____Réception d'une requête :  '/t/12345678'
+[2025-03-08 - 10:42:07] > ⚠️ </> Acces développeur ! id?= 12345678
+[2025-03-08 - 10:42:22] > Démarrage de Express...
+[2025-03-08 - 10:42:22] > Express chargé
+[2025-03-08 - 10:42:22] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 10:42:25] > ____Réception d'une requête :  '/t/12345678'
+[2025-03-08 - 10:42:25] > ⚠️ </> Acces développeur ! id?= 12345678
+[2025-03-08 - 10:43:54] > ____Réception d'une requête :  '/t/12345678'
+[2025-03-08 - 10:43:54] > ⚠️ </> Acces développeur ! id?= 12345678
+[2025-03-08 - 10:43:58] > ____Réception d'une requête :  '/t/12345678'
+[2025-03-08 - 10:43:58] > ⚠️ </> Acces développeur ! id?= 12345678
+[2025-03-08 - 10:45:42] > ____Réception d'une requête :  '/t/12345678'
+[2025-03-08 - 10:45:42] > ⚠️ </> Acces développeur ! id?= 12345678
+[2025-03-08 - 10:45:42] > ____Réception d'une requête :  '/t/12345678'
+[2025-03-08 - 10:45:42] > ⚠️ </> Acces développeur ! id?= 12345678
+[2025-03-08 - 10:45:43] > ____Réception d'une requête :  '/t/12345678'
+[2025-03-08 - 10:45:43] > ⚠️ </> Acces développeur ! id?= 12345678
+[2025-03-08 - 10:45:58] > ____Réception d'une requête :  '/t/12345678'
+[2025-03-08 - 10:45:58] > ⚠️ </> Acces développeur ! id?= 12345678
+[2025-03-08 - 10:45:59] > ____Réception d'une requête :  '/t/12345678'
+[2025-03-08 - 10:45:59] > ⚠️ </> Acces développeur ! id?= 12345678
+[2025-03-08 - 10:45:59] > ____Réception d'une requête :  '/t/12345678'
+[2025-03-08 - 10:45:59] > ⚠️ </> Acces développeur ! id?= 12345678
+[2025-03-08 - 10:45:59] > ____Réception d'une requête :  '/t/12345678'
+[2025-03-08 - 10:45:59] > ⚠️ </> Acces développeur ! id?= 12345678
+[2025-03-08 - 10:46:08] > ____Réception d'une requête :  '/t/12345678'
+[2025-03-08 - 10:46:08] > ⚠️ </> Acces développeur ! id?= 12345678
+[2025-03-08 - 10:48:04] > Démarrage de Express...
+[2025-03-08 - 10:48:04] > Express chargé
+[2025-03-08 - 10:48:04] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 10:48:06] > ____Réception d'une requête :  '/t/12345678'
+[2025-03-08 - 10:48:06] > ⚠️ </> Acces développeur ! id?= 12345678
+[2025-03-08 - 10:48:23] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 10:50:29] > Démarrage de Express...
+[2025-03-08 - 10:50:29] > Express chargé
+[2025-03-08 - 10:50:29] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 10:50:41] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 10:50:57] > ____Réception d'une requête :  '/t/12345678'
+[2025-03-08 - 10:50:57] > ⚠️ </> Acces développeur ! id?= 12345678
+[2025-03-08 - 10:50:57] > ____Réception d'une requête :  '/t/12345678'
+[2025-03-08 - 10:50:57] > ⚠️ </> Acces développeur ! id?= 12345678
+[2025-03-08 - 10:50:58] > ____Réception d'une requête :  '/t/12345678'
+[2025-03-08 - 10:50:58] > ⚠️ </> Acces développeur ! id?= 12345678
+[2025-03-08 - 10:51:00] > ____Réception d'une requête :  '/t/12345678'
+[2025-03-08 - 10:51:00] > ⚠️ </> Acces développeur ! id?= 12345678
+[2025-03-08 - 10:51:00] > ____Réception d'une requête :  '/t/12345678'
+[2025-03-08 - 10:51:00] > ⚠️ </> Acces développeur ! id?= 12345678
+[2025-03-08 - 10:51:01] > ____Réception d'une requête :  '/t/12345678'
+[2025-03-08 - 10:51:01] > ⚠️ </> Acces développeur ! id?= 12345678
+[2025-03-08 - 10:51:12] > ____Réception d'une requête :  '/t/12345678'
+[2025-03-08 - 10:51:12] > ⚠️ </> Acces développeur ! id?= 12345678
+[2025-03-08 - 10:51:12] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 10:51:38] > ____Réception d'une requête :  '/t/12345678'
+[2025-03-08 - 10:51:38] > ⚠️ </> Acces développeur ! id?= 12345678
+[2025-03-08 - 11:14:04] > ____Réception d'une requête :  '/t/12345678'
+[2025-03-08 - 11:14:04] > ⚠️ </> Acces développeur ! id?= 12345678
+[2025-03-08 - 11:14:04] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:17:36] > Démarrage de Express...
+[2025-03-08 - 11:17:36] > Express chargé
+[2025-03-08 - 11:17:36] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 11:17:42] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:19:25] > Démarrage de Express...
+[2025-03-08 - 11:19:25] > Express chargé
+[2025-03-08 - 11:19:25] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 11:19:27] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:19:27] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:21:03] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:21:03] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:21:03] > 📥 Réception d'une requête : '/data/assets'
+[2025-03-08 - 11:21:24] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:21:24] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:21:24] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:24:08] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:24:08] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:24:08] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:25:46] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:25:46] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:25:46] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:25:46] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:25:46] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:25:47] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:25:47] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:25:47] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:25:47] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:25:47] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:25:47] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:25:47] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:25:47] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:25:47] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:25:47] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:25:48] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:25:48] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:25:48] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:25:59] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:25:59] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:25:59] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:26:05] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:26:05] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:26:05] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:26:32] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:26:32] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:26:32] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:26:39] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:26:39] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:26:39] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:26:49] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:26:49] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:26:49] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:26:57] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:26:57] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:26:57] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:27:00] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:27:00] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:27:00] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:27:05] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:27:05] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:27:05] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:27:10] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:27:10] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:27:10] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:27:26] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:27:26] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:27:26] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:27:47] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:27:47] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:27:47] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:27:51] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:27:51] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:27:51] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:28:09] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:28:09] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:28:09] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:28:13] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:28:13] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:28:13] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:28:30] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:28:30] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:28:30] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:28:33] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:28:33] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:28:33] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:28:35] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:28:35] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:28:35] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:28:39] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:28:39] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:28:39] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:28:43] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:28:43] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:28:43] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:28:49] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:28:49] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:28:49] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:28:51] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:28:51] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:28:51] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:28:57] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:28:57] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:28:57] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:30:27] > Démarrage de Express...
+[2025-03-08 - 11:30:27] > Express chargé
+[2025-03-08 - 11:30:27] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 11:30:32] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:30:32] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:30:32] > Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:699:11)
+    at ServerResponse.header (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:174:12)
+    at done (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:1045:10)
+    at tryHandleCache (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:280:5)
+    at exports.renderFile [as engine] (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:1049:7)
+[2025-03-08 - 11:30:32] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:30:49] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:30:49] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:30:49] > Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:699:11)
+    at ServerResponse.header (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:174:12)
+    at done (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:1045:10)
+    at tryHandleCache (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:280:5)
+    at exports.renderFile [as engine] (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:1049:7)
+[2025-03-08 - 11:30:49] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:32:06] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:32:06] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:32:06] > Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:699:11)
+    at ServerResponse.header (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:174:12)
+    at done (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:1045:10)
+    at tryHandleCache (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:280:5)
+    at exports.renderFile [as engine] (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:1049:7)
+[2025-03-08 - 11:32:06] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:32:16] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:32:16] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:32:16] > Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:699:11)
+    at ServerResponse.header (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:174:12)
+    at done (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:1045:10)
+    at tryHandleCache (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:280:5)
+    at exports.renderFile [as engine] (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:1049:7)
+[2025-03-08 - 11:32:16] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:32:29] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:32:29] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:32:29] > Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:699:11)
+    at ServerResponse.header (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:174:12)
+    at done (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:1045:10)
+    at tryHandleCache (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:280:5)
+    at exports.renderFile [as engine] (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:1049:7)
+[2025-03-08 - 11:32:29] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:32:35] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:32:35] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:32:35] > Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:699:11)
+    at ServerResponse.header (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:174:12)
+    at done (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:1045:10)
+    at tryHandleCache (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:280:5)
+    at exports.renderFile [as engine] (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:1049:7)
+[2025-03-08 - 11:32:35] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:33:17] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:33:17] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:33:17] > Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:699:11)
+    at ServerResponse.header (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:174:12)
+    at done (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:1045:10)
+    at tryHandleCache (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:280:5)
+    at exports.renderFile [as engine] (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:1049:7)
+[2025-03-08 - 11:33:17] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:33:21] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:33:21] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:33:21] > Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:699:11)
+    at ServerResponse.header (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:174:12)
+    at done (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:1045:10)
+    at tryHandleCache (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:280:5)
+    at exports.renderFile [as engine] (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:1049:7)
+[2025-03-08 - 11:33:21] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:34:38] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:34:38] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:34:38] > Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:699:11)
+    at ServerResponse.header (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:174:12)
+    at done (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:1045:10)
+    at tryHandleCache (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:280:5)
+    at exports.renderFile [as engine] (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:1049:7)
+[2025-03-08 - 11:34:38] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:34:43] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:34:43] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:34:43] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:35:09] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:35:09] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:35:09] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:35:11] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:35:11] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:35:11] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:35:39] > Démarrage de Express...
+[2025-03-08 - 11:35:39] > Express chargé
+[2025-03-08 - 11:35:39] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 11:35:40] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:35:40] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:35:40] > ReferenceError: C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\views\data.ejs:17
+    15|     <section id="download">
+    16| 
+ >> 17|         <h1><%= status %> du fichier...</h1>
+    18| 
+    19|         <div class="loader">
+    20|             <!-- From Uiverse.io by Pradeepsaranbishnoi --> 
+
+status is not defined
+    at eval ("C:\\Users\\felix\\OneDrive\\Documents\\SilverCore\\app\\SilverTransfert\\app\\views\\data.ejs":12:26)
+    at data (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:1049:7)
+    at C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\server.js:275:17
+    at Layer.handle [as handle_request] (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\layer.js:95:5)
+[2025-03-08 - 11:35:41] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:35:41] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:35:41] > ReferenceError: C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\views\data.ejs:17
+    15|     <section id="download">
+    16| 
+ >> 17|         <h1><%= status %> du fichier...</h1>
+    18| 
+    19|         <div class="loader">
+    20|             <!-- From Uiverse.io by Pradeepsaranbishnoi --> 
+
+status is not defined
+    at eval ("C:\\Users\\felix\\OneDrive\\Documents\\SilverCore\\app\\SilverTransfert\\app\\views\\data.ejs":12:26)
+    at data (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:1049:7)
+    at C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\server.js:275:17
+    at Layer.handle [as handle_request] (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\layer.js:95:5)
+[2025-03-08 - 11:35:53] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:35:53] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:35:53] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:36:32] > Démarrage de Express...
+[2025-03-08 - 11:36:32] > Express chargé
+[2025-03-08 - 11:36:32] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 11:36:33] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:36:33] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:36:33] > ReferenceError: C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\views\data.ejs:17
+    15|     <section id="download">
+    16| 
+ >> 17|         <h1><%= status %> du fichier...</h1>
+    18| 
+    19|         <div class="loader">
+    20|             <!-- From Uiverse.io by Pradeepsaranbishnoi --> 
+
+status is not defined
+    at eval ("C:\\Users\\felix\\OneDrive\\Documents\\SilverCore\\app\\SilverTransfert\\app\\views\\data.ejs":12:26)
+    at data (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:1049:7)
+    at C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\server.js:275:17
+    at Layer.handle [as handle_request] (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\layer.js:95:5)
+[2025-03-08 - 11:36:34] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:36:34] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:36:34] > ReferenceError: C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\views\data.ejs:17
+    15|     <section id="download">
+    16| 
+ >> 17|         <h1><%= status %> du fichier...</h1>
+    18| 
+    19|         <div class="loader">
+    20|             <!-- From Uiverse.io by Pradeepsaranbishnoi --> 
+
+status is not defined
+    at eval ("C:\\Users\\felix\\OneDrive\\Documents\\SilverCore\\app\\SilverTransfert\\app\\views\\data.ejs":12:26)
+    at data (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:1049:7)
+    at C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\server.js:275:17
+    at Layer.handle [as handle_request] (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\layer.js:95:5)
+[2025-03-08 - 11:37:22] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:37:22] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:37:22] > ReferenceError: C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\views\data.ejs:17
+    15|     <section id="download">
+    16| 
+ >> 17|         <h1><%= status %> du fichier...</h1>
+    18| 
+    19|         <div class="loader">
+    20|             <!-- From Uiverse.io by Pradeepsaranbishnoi --> 
+
+status is not defined
+    at eval ("C:\\Users\\felix\\OneDrive\\Documents\\SilverCore\\app\\SilverTransfert\\app\\views\\data.ejs":12:26)
+    at data (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:1049:7)
+    at C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\server.js:275:17
+    at Layer.handle [as handle_request] (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\layer.js:95:5)
+[2025-03-08 - 11:37:22] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:37:22] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:37:22] > ReferenceError: C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\views\data.ejs:17
+    15|     <section id="download">
+    16| 
+ >> 17|         <h1><%= status %> du fichier...</h1>
+    18| 
+    19|         <div class="loader">
+    20|             <!-- From Uiverse.io by Pradeepsaranbishnoi --> 
+
+status is not defined
+    at eval ("C:\\Users\\felix\\OneDrive\\Documents\\SilverCore\\app\\SilverTransfert\\app\\views\\data.ejs":12:26)
+    at data (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:1049:7)
+    at C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\server.js:275:17
+    at Layer.handle [as handle_request] (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\layer.js:95:5)
+[2025-03-08 - 11:37:22] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:37:22] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:37:22] > ReferenceError: C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\views\data.ejs:17
+    15|     <section id="download">
+    16| 
+ >> 17|         <h1><%= status %> du fichier...</h1>
+    18| 
+    19|         <div class="loader">
+    20|             <!-- From Uiverse.io by Pradeepsaranbishnoi --> 
+
+status is not defined
+    at eval ("C:\\Users\\felix\\OneDrive\\Documents\\SilverCore\\app\\SilverTransfert\\app\\views\\data.ejs":12:26)
+    at data (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\response.js:1049:7)
+    at C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\server.js:275:17
+    at Layer.handle [as handle_request] (C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\node_modules\express\lib\router\layer.js:95:5)
+[2025-03-08 - 11:37:30] > Démarrage de Express...
+[2025-03-08 - 11:37:30] > Express chargé
+[2025-03-08 - 11:37:30] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 11:37:31] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:37:31] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:37:31] > ____Réception d'une requête :  '/t/assets'
+[2025-03-08 - 11:39:31] > Démarrage de Express...
+[2025-03-08 - 11:39:31] > Express chargé
+[2025-03-08 - 11:39:31] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 11:39:33] > 📥 Réception d'une requête : '/data/fileID'
+[2025-03-08 - 11:39:33] > ⚠️ </> Acces développeur ! id?= fileID
+[2025-03-08 - 11:39:33] > ____Réception d'une requête :  '/t/assets'
