@@ -48,7 +48,7 @@
                         .then(res => res.json())
                         .then(res => {
                             if (res.data === 'end') {
-                                window.close()
+                                document.getElementById('ah').innerText = "Veuillez fermer l'onglais"
                             }
                         })
                         .catch(error => {
@@ -109,7 +109,7 @@
         </div>
 
         <section id="success">
-            <h1>Veuillez patenter, la fenettre va se fermer automatiquement...</h1>
+            <h1 id="ah">Veuillez patenter, la fenettre va se fermer automatiquement...</h1>
         </section>
 
         <section style="margin-top: 60px">

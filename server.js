@@ -284,6 +284,7 @@ app.get('/data/status', (req, res) => {
     }
 })
 
+
 // ➤ **Route principale** : Déchiffrement et téléchargement du fichier
 app.get("/data/:filename", async (req, res) => {
     console.log("📥 Requête reçue : /data/", req.params.filename);
