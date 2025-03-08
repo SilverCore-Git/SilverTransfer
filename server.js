@@ -72,11 +72,10 @@ async function resetDB() {
 
     if (config.resetDB) {
 
-        // await deleteDatabaseFile();
+        await resetDatabase(); 
 
-        // await createDatabaseFile();
-
-        await resetDatabase();
+        const { setTimeout } = require('timers/promises');
+        await setTimeout(1000);
 
     };
 
@@ -136,7 +135,7 @@ const storage = multer.diskStorage({
     filename: (req, file, cb) => {
         const encryptedText = encryptText(file.originalname);
         const fileExt = path.extname(file.originalname);
-        const newFileName = `${encryptedText}${fileExt}`; 
+        const newFileName = `${encryptedText}${fileExt}`;
         cb(null, newFileName);
     },
 });
@@ -157,9 +156,12 @@ app.post(config.pushfilepath, upload.single("file"), async (req, res) => {
         return res.status(400).json({ message: "Aucun fichier reçu" });
     }
 
-    const fileID = path.basename(req.file.filename, path.extname(req.file.filename));
+    let randomNumber = Math.floor(Math.random() * 100000000);
+    randomNumber = randomNumber.toString().padStart(8, '0');
+
+    const fileID = randomNumber;
     const tempFilePath = req.file.path;  // Chemin du fichier temporaire sauvegardé par Multer
-    const encryptedFileName = `${req.file.filename}.enc`;
+    const encryptedFileName = `${fileID}.${req.file.filename}.enc`;
     const encryptedFilePath = path.join(__dirname, config.DATAdir, encryptedFileName);
 
     res.json({
@@ -173,7 +175,6 @@ app.post(config.pushfilepath, upload.single("file"), async (req, res) => {
     try {
 
         await encryptFile(tempFilePath, encryptedFilePath);
-        await fs.promises.unlink(tempFilePath);
 
         fileDatabase[fileID] = {
             fileName: encryptedFileName,
@@ -182,7 +183,7 @@ app.post(config.pushfilepath, upload.single("file"), async (req, res) => {
         };
         await saveDatabase(fileDatabase);
 
-        console.log('Fichier enregistré et chiffré !');
+        console.log('✅✅__Fichier enregistré ! ', `?id=${fileID}`);
     } catch (err) {
         console.error("Erreur lors du chiffrement :", err);
     }
@@ -195,61 +196,73 @@ app.get("/t/:id", async (req, res) => {
     const fileID = req.params.id;
     const fileEntry = fileDatabase[fileID];
     const fSize = await formatFileSize(fileEntry.size);
-    const decryptedFileName = decryptText(fileEntry.fileName);
+    const fileName = fileEntry.fileName.split('.')[1];
+    const decryptedFileName = decryptText(fileName);
     if (!fileEntry) {
         return res.status(404).render("fatherfile", { error: "ID non trouver !", describ: "ID de fichier non trouver..." });
     }
 
-    res.render("download", { fileName: decryptedFileName, fileID: fileEntry.fileName, fileSize: fSize });
+    res.render("download", { fileName: decryptedFileName, fileID: fileID, fileSize: fSize });
 });
 
 // Route pour servir le fichier déchiffré
 app.get("/data/:filename", async (req, res) => {
     console.log("📥 Réception d'une requête :", `'/data/${req.params.filename}'`);
     
-    const fileNameEnc = req.params.filename; // Nom chiffré du fichier
-    const fileID = fileNameEnc.split('.')[0];
+    const fileID = req.params.filename; // Nom chiffré du fichier
 
+    
     const fileDB = fileDatabase[fileID]; // Récupération de la base de données
     if (!fileDB) {
         return res.status(404).json({ error: "Fichier non trouvé dans la base de données" });
     }
 
-    const decryptedFileName = decryptText(fileID); // Déchiffrer le vrai nom du fichier
+    const fileName = fileDB.fileName.split('.')[1];
 
-    const encryptedFilePath = path.join(__dirname, "data", fileNameEnc); // Fichier chiffré
+
+    const decryptedFileName = decryptText(fileName); // Déchiffrer le vrai nom du fichier
+
+    const encryptedFilePath = path.join(__dirname, "data", fileDB.fileName); // Fichier chiffré
     const decryptedFilePath = path.join(__dirname, "temp", decryptedFileName); // Destination du déchiffrement
 
     if (!fs.existsSync(encryptedFilePath)) {
         return res.status(404).json({ error: "Fichier chiffré non trouvé sur le serveur" });
     }
 
+    console.log("🔓 Déchiffrement du fichier en cours...");
+
+    await decryptFile(encryptedFilePath, decryptedFilePath); // Déchiffrement du fichier
+
+    await res.setHeader("Content-Disposition", `attachment; filename=${decryptedFileName}`);
+
     try {
-        console.log("🔓 Déchiffrement du fichier en cours...");
-        await decryptFile(encryptedFilePath, decryptedFilePath); // Déchiffrement du contenu
 
-        fs.unlink(encryptedFilePath, (err) => {});
+        let { setTimeout } = require('timers/promises');
+        await setTimeout(1000);
 
-        await res.setHeader("Content-Disposition", `attachment; filename=${decryptedFileName}`);
-        await res.sendFile(decryptedFilePath, async (err) => {
-            if (err) {
-                console.error("❌ Erreur lors de l'envoi du fichier :", err);
-                res.status(500).json({ error: "Erreur lors de l'envoi du fichier", describ: err });
-            } else {
-                console.log(`✅ Fichier envoyé avec succès !`);
-                // Supprimer le fichier temporaire après envoi
-                await fs.unlink(decryptedFilePath, (err) => {
-                    if (err) console.error("❌ Erreur lors de la suppression du fichier temporaire :", err);
-                    else console.log(`🗑️ Fichier temporaire supprimé !`);
-                });
-                await deleteFiledb(fileID)
-            }
+        await new Promise((resolve, reject) => {
+            res.sendFile(decryptedFilePath, (err) => {
+                if (err) {
+                    console.error("❌ Erreur lors de l'envoi du fichier :", err);
+                    reject({ status: 500, error: "Erreur lors de l'envoi du fichier", describ: err });
+                } else {
+                    console.log(`✅ Fichier envoyé avec succès !`);
+                    resolve();
+                }
+            });
         });
+    
+        // Supprimer le fichier temporaire après envoi
+        await fs.promises.unlink(decryptedFilePath);
+        console.log(`🗑️ Fichier temporaire supprimé !`);
+    
+        // Suppression du fichier de la base de données
+        await deleteFiledb(fileID);
 
 
-    } catch (err) {
-        console.error("❌ Erreur lors du déchiffrement :", err);
-        res.status(500).json({ error: "Erreur lors du déchiffrement", describ: err });
+    } catch (error) {
+        console.error(error);
+        res.status(error.status || 500).json({ error: error.error, describ: error.describ });
     }
 });
 

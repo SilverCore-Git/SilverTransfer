@@ -70,7 +70,9 @@ async function resetDatabase() {
 
     try {
 
-        await fs.writeFileSync(DB_FILE, 
+        await fs.promises.unlink(DB_FILE);
+
+        await fs.promises.writeFile(DB_FILE, 
 `{
     "DBinfo": {
         "CreateDate": "${date}",

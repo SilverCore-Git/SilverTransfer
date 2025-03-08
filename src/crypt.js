@@ -13,40 +13,146 @@ if (fatherKey.length !== 32) {
     throw new Error("FATHER_KEY doit être de 32 octets en hexadécimal !");
     console.error("FATHER_KEY doit être de 32 octets en hexadécimal !");
 }
+const MAX_CONCURRENT_FILES = 5;
 
-// 🔒 Chiffrement AES-256-GCM d'un fichier
-async function encryptFile(inputFile, outputFile) {
-    const iv = await crypto.randomBytes(16);
-    const cipher = await crypto.createCipheriv('aes-256-gcm', fatherKey, iv);
-    const input = await fs.createReadStream(inputFile);
-    const output = await fs.createWriteStream(outputFile);
 
-    await output.write(iv); // On stocke l'IV au début du fichier
-    const authTagStream = await cipher.pipe(output); // Chiffrer et écrire dans le fichier
 
-    await input.pipe(cipher);
 
-    authTagStream.on('finish', () => {
-        const authTag = cipher.getAuthTag();
-        fs.appendFileSync(outputFile, authTag); // Ajouter l'authTag à la fin 
-        console.log(`✅ Fichier chiffré : ${outputFile}`);
-    });
+// 🔒 Chiffrement AES-256-CBC d'un fichier en plusieurs morceaux
+async function encryptFile(inputFile, outputFolder) {
+    try {
+        const CHUNK_SIZE = 100 * 1024 * 1024; // 100 Mo par fichier
+        const fileStats = await fs.promises.stat(inputFile);
+        const totalSize = fileStats.size;
+
+        const inputStream = fs.createReadStream(inputFile);
+        let chunkIndex = 0;
+
+        // Créer un dossier de sortie si nécessaire
+        await fs.promises.mkdir(outputFolder, { recursive: true });
+
+        // Fonction pour traiter un morceau et créer le fichier de sortie
+        async function processChunk(startPosition) {
+            const outputFile = `${outputFolder}/part${chunkIndex}.enc`;
+            const iv = crypto.randomBytes(16);  // Générer un IV unique pour chaque morceau
+            const cipher = crypto.createCipheriv('aes-256-cbc', fatherKey, iv);
+            const output = fs.createWriteStream(outputFile);
+            
+            output.write(iv);  // Écrire l'IV au début du fichier
+
+            // Créer un stream de lecture à partir de la position actuelle du fichier
+            const buffer = Buffer.alloc(CHUNK_SIZE);
+            const inputStream = fs.createReadStream(inputFile, { start: startPosition, end: startPosition + CHUNK_SIZE - 1 });
+
+            let chunkWritten = 0;
+
+            return new Promise((resolve, reject) => {
+                // Lire les données du fichier à partir de la position
+                inputStream.on('data', (chunk) => {
+                    const encryptedChunk = cipher.update(chunk);
+                    output.write(encryptedChunk);
+                    chunkWritten += chunk.length;
+                });
+
+                inputStream.once('end', () => {
+                    const finalEncrypted = cipher.final();
+                    output.write(finalEncrypted);  // Ajouter la fin du chiffrement
+                    output.end();
+                    console.log(`✅ Partie ${chunkIndex} chiffrée avec succès : ${outputFile}`);
+
+                    chunkIndex++;  // Passer au prochain fichier
+                    resolve();
+                });
+
+                inputStream.once('error', (err) => {
+                    reject(err);
+                });
+
+                output.once('error', (err) => {
+                    reject(err);
+                });
+            });
+        }
+
+        // Découper le fichier en morceaux et les traiter
+        while ((chunkIndex * CHUNK_SIZE) < totalSize) {
+            await processChunk(chunkIndex * CHUNK_SIZE);
+        }
+
+        // Suppression du fichier d'entrée après chiffrement
+        await fs.promises.unlink(inputFile);
+        console.log(`✅ Le fichier d'entrée "${inputFile}" a été supprimé après chiffrement.`);
+
+        console.log('✅ Chiffrement terminé avec succès !');
+
+    } catch (error) {
+        console.error('❌ Erreur lors du chiffrement du fichier :', error);
+    }
 }
 
-// 🔓 Déchiffrement AES-256-GCM d'un fichier
-function decryptFile(encryptedFile, outputFile) {
-    const input = fs.readFileSync(encryptedFile);
-    const iv = input.slice(0, 16); // Lire l'IV
-    const authTag = input.slice(-16); // Lire l'authTag
-    const encryptedData = input.slice(16, -16); // Extraire les données chiffrées
 
-    const decipher = crypto.createDecipheriv('aes-256-gcm', fatherKey, iv);
-    decipher.setAuthTag(authTag);
 
-    const decrypted = Buffer.concat([decipher.update(encryptedData), decipher.final()]);
-    fs.writeFileSync(outputFile, decrypted);
-    console.log(`✅ Fichier déchiffré !`);
+
+
+
+
+// 🔓 Déchiffrement AES-256-CBC d'un fichier en plusieurs morceaux
+async function decryptFile(inputFolder, outputFile) {
+    try {
+        const files = await fs.promises.readdir(inputFolder); // Lire les fichiers dans le dossier
+        const sortedFiles = files.filter(file => file.endsWith('.enc')).sort(); // Trier par ordre croissant
+        const outputStream = fs.createWriteStream(outputFile);
+
+        for (const file of sortedFiles) {
+            const inputFile = `${inputFolder}/${file}`;
+            const inputStream = fs.createReadStream(inputFile);
+
+            await new Promise((resolve, reject) => {
+                let iv;
+                let decipher;
+                let isFirstChunk = true;
+
+                inputStream.on('data', (chunk) => {
+                    if (isFirstChunk) {
+                        iv = chunk.slice(0, 16); // Extraire l'IV
+                        decipher = crypto.createDecipheriv('aes-256-cbc', fatherKey, iv);
+                        chunk = chunk.slice(16); // Supprimer l'IV du chunk
+                        isFirstChunk = false;
+                    }
+
+                    const decryptedChunk = decipher.update(chunk);
+                    outputStream.write(decryptedChunk);
+                });
+
+                inputStream.on('end', () => {
+                    try {
+                        const finalDecrypted = decipher.final();
+                        outputStream.write(finalDecrypted);
+                        console.log(`✅ Partie déchiffrée : ${inputFile}`);
+                        resolve();
+                    } catch (error) {
+                        reject(error);
+                    }
+                });
+
+                inputStream.on('error', reject);
+            });
+        }
+
+        outputStream.end();
+        console.log(`✅ Déchiffrement terminé avec succès : ${outputFile}`);
+
+    } catch (error) {
+        console.error('❌ Erreur lors du déchiffrement du fichier :', error);
+    }
 }
+
+
+
+
+
+
+
 
 const algorithm = 'AES-256-ECB';
 

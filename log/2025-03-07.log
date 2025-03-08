@@ -296,3 +296,674 @@
 [2025-03-07 - 19:09:53] > 📥 Réception d'une requête : '/data/8240ba09937ddf314036814d984197cf.mkv.enc'
 [2025-03-07 - 19:09:53] > 🔓 Déchiffrement du fichier en cours...
 [2025-03-07 - 19:09:53] > ❌ Erreur lors du déchiffrement : RangeError [ERR_FS_FILE_TOO_LARGE]: File size (3302402612) is greater than 2 GiB
+[2025-03-07 - 19:19:16] > Démarrage de Express...
+[2025-03-07 - 19:19:16] > Express chargé
+[2025-03-07 - 19:19:16] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 19:19:51] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 19:19:51] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 19:23:52] > Démarrage de Express...
+[2025-03-07 - 19:23:52] > Express chargé
+[2025-03-07 - 19:23:52] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 19:24:23] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 19:24:23] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 19:26:12] > Démarrage de Express...
+[2025-03-07 - 19:26:12] > Express chargé
+[2025-03-07 - 19:26:12] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 19:26:31] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 19:26:31] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 19:26:31] > ✅ Base de données mise à jour !
+[2025-03-07 - 19:26:31] > Fichier enregistré et chiffré !
+[2025-03-07 - 19:28:33] > Démarrage de Express...
+[2025-03-07 - 19:28:33] > Express chargé
+[2025-03-07 - 19:28:34] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 19:28:51] > Démarrage de Express...
+[2025-03-07 - 19:28:51] > Express chargé
+[2025-03-07 - 19:28:51] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 19:29:12] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 19:29:12] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 19:29:12] > ✅ Base de données mise à jour !
+[2025-03-07 - 19:29:12] > Fichier enregistré et chiffré !
+[2025-03-07 - 19:29:53] > Démarrage de Express...
+[2025-03-07 - 19:29:53] > Express chargé
+[2025-03-07 - 19:29:53] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 19:30:17] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 19:30:17] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 19:30:17] > ✅ Base de données mise à jour !
+[2025-03-07 - 19:30:17] > Fichier enregistré et chiffré !
+[2025-03-07 - 19:30:28] > ✅ Fichier chiffré : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\8240ba09937ddf314036814d984197cf.mkv.enc
+[2025-03-07 - 19:30:59] > ____Réception d'une requête :  '/t/8240ba09937ddf314036814d984197cf'
+[2025-03-07 - 19:31:01] > 📥 Réception d'une requête : '/data/8240ba09937ddf314036814d984197cf.mkv.enc'
+[2025-03-07 - 19:31:01] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 19:31:01] > ✅ Fichier envoyé avec succès !
+[2025-03-07 - 19:31:01] > ✅ Base de données mise à jour !
+[2025-03-07 - 19:31:01] > 🗑️ Entrée supprimée : 8240ba09937ddf314036814d984197cf
+[2025-03-07 - 19:31:01] > 🗑️ Fichier temporaire supprimé !
+[2025-03-07 - 19:37:37] > Démarrage de Express...
+[2025-03-07 - 19:37:37] > Express chargé
+[2025-03-07 - 19:37:37] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 19:38:01] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 19:38:01] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 19:38:01] > ✅ Base de données mise à jour !
+[2025-03-07 - 19:38:01] > Fichier enregistré !
+[2025-03-07 - 19:38:11] > ✅ Fichier chiffré : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\8240ba09937ddf314036814d984197cf.mkv.enc
+[2025-03-07 - 19:38:12] > ____Réception d'une requête :  '/t/8240ba09937ddf314036814d984197cf'
+[2025-03-07 - 19:38:14] > 📥 Réception d'une requête : '/data/8240ba09937ddf314036814d984197cf.mkv.enc'
+[2025-03-07 - 19:38:14] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 19:38:14] > ✅ Fichier envoyé avec succès !
+[2025-03-07 - 19:38:14] > ✅ Base de données mise à jour !
+[2025-03-07 - 19:38:14] > 🗑️ Entrée supprimée : 8240ba09937ddf314036814d984197cf
+[2025-03-07 - 19:38:14] > 🗑️ Fichier temporaire supprimé !
+[2025-03-07 - 19:42:41] > Démarrage de Express...
+[2025-03-07 - 19:42:41] > Express chargé
+[2025-03-07 - 19:42:41] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 19:43:09] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 19:43:09] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 19:43:09] > ✅ Base de données mise à jour !
+[2025-03-07 - 19:43:09] > Fichier enregistré !
+[2025-03-07 - 19:43:21] > ✅ Fichier chiffré : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\8240ba09937ddf314036814d984197cf.mkv.enc
+[2025-03-07 - 19:43:28] > ____Réception d'une requête :  '/t/8240ba09937ddf314036814d984197cf'
+[2025-03-07 - 19:43:31] > 📥 Réception d'une requête : '/data/8240ba09937ddf314036814d984197cf.mkv.enc'
+[2025-03-07 - 19:43:31] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 19:43:31] > ✅ Fichier envoyé avec succès !
+[2025-03-07 - 19:43:31] > ✅ Base de données mise à jour !
+[2025-03-07 - 19:43:31] > 🗑️ Entrée supprimée : 8240ba09937ddf314036814d984197cf
+[2025-03-07 - 19:43:31] > 🗑️ Fichier temporaire supprimé !
+[2025-03-07 - 20:00:03] > Démarrage de Express...
+[2025-03-07 - 20:00:03] > Express chargé
+[2025-03-07 - 20:00:03] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 20:00:22] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 20:00:22] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 20:00:22] > ✅ Base de données mise à jour !
+[2025-03-07 - 20:00:22] > Fichier enregistré !
+[2025-03-07 - 20:00:43] > ✅ Fichier chiffré : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\8240ba09937ddf314036814d984197cf.mkv.enc
+[2025-03-07 - 20:00:47] > ____Réception d'une requête :  '/t/8240ba09937ddf314036814d984197cf'
+[2025-03-07 - 20:00:49] > 📥 Réception d'une requête : '/data/8240ba09937ddf314036814d984197cf.mkv.enc'
+[2025-03-07 - 20:00:49] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 20:04:06] > Démarrage de Express...
+[2025-03-07 - 20:04:06] > Express chargé
+[2025-03-07 - 20:04:06] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 20:04:29] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 20:04:29] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 20:04:29] > ✅ Base de données mise à jour !
+[2025-03-07 - 20:04:29] > Fichier enregistré !
+[2025-03-07 - 20:04:38] > ✅ Fichier chiffré : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\8240ba09937ddf314036814d984197cf.mkv.enc
+[2025-03-07 - 20:05:13] > ____Réception d'une requête :  '/t/8240ba09937ddf314036814d984197cf'
+[2025-03-07 - 20:05:19] > 📥 Réception d'une requête : '/data/8240ba09937ddf314036814d984197cf.mkv.enc'
+[2025-03-07 - 20:05:19] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 20:05:25] > ❌ Erreur de déchiffrement final : Error: Unsupported state or unable to authenticate data
+[2025-03-07 - 20:05:25] > ❌ Erreur lors du déchiffrement : Error: Unsupported state or unable to authenticate data
+[2025-03-07 - 20:07:49] > Démarrage de Express...
+[2025-03-07 - 20:07:49] > Express chargé
+[2025-03-07 - 20:07:49] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 20:08:13] > Démarrage de Express...
+[2025-03-07 - 20:08:13] > Express chargé
+[2025-03-07 - 20:08:13] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 20:08:30] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 20:08:30] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 20:08:30] > ✅ Base de données mise à jour !
+[2025-03-07 - 20:08:30] > Fichier enregistré !
+[2025-03-07 - 20:08:42] > ✅ Fichier chiffré avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\8240ba09937ddf314036814d984197cf.mkv.enc
+[2025-03-07 - 20:08:54] > 📥 Réception d'une requête : '/data/8240ba09937ddf314036814d984197cf.mkv.enc'
+[2025-03-07 - 20:08:54] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 20:09:01] > ❌ Erreur de déchiffrement final : Error: Unsupported state or unable to authenticate data
+[2025-03-07 - 20:09:01] > ❌ Erreur lors du déchiffrement : Error: Unsupported state or unable to authenticate data
+[2025-03-07 - 20:10:56] > Démarrage de Express...
+[2025-03-07 - 20:10:56] > Express chargé
+[2025-03-07 - 20:10:56] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 20:11:56] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 20:11:56] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 20:11:56] > ✅ Base de données mise à jour !
+[2025-03-07 - 20:11:56] > Fichier enregistré !
+[2025-03-07 - 20:12:04] > 📥 Réception d'une requête : '/data/8240ba09937ddf314036814d984197cf.mkv.enc'
+[2025-03-07 - 20:12:04] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 20:13:08] > Démarrage de Express...
+[2025-03-07 - 20:13:08] > Express chargé
+[2025-03-07 - 20:13:08] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 20:13:26] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 20:13:26] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 20:13:26] > ✅ Base de données mise à jour !
+[2025-03-07 - 20:13:26] > Fichier enregistré !
+[2025-03-07 - 20:13:33] > 📥 Réception d'une requête : '/data/8240ba09937ddf314036814d984197cf.mkv.enc'
+[2025-03-07 - 20:13:33] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 20:13:36] > ✅ Fichier chiffré avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\8240ba09937ddf314036814d984197cf.mkv.enc
+[2025-03-07 - 20:13:40] > ❌ Erreur de déchiffrement final : ReferenceError: chunk is not defined
+[2025-03-07 - 20:13:40] > ❌ Erreur lors du déchiffrement : ReferenceError: chunk is not defined
+[2025-03-07 - 20:15:24] > Démarrage de Express...
+[2025-03-07 - 20:15:24] > Express chargé
+[2025-03-07 - 20:15:24] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 20:15:37] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 20:15:37] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 20:15:37] > ✅ Base de données mise à jour !
+[2025-03-07 - 20:15:37] > Fichier enregistré !
+[2025-03-07 - 20:15:40] > ✅ Fichier chiffré avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc
+[2025-03-07 - 20:15:49] > 📥 Réception d'une requête : '/data/15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.mkv.enc'
+[2025-03-07 - 20:16:10] > 📥 Réception d'une requête : '/data/15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc'
+[2025-03-07 - 20:16:10] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 20:16:12] > ❌ Erreur de déchiffrement final : Error: Unsupported state or unable to authenticate data
+[2025-03-07 - 20:16:12] > ❌ Erreur lors du déchiffrement : Error: Unsupported state or unable to authenticate data
+[2025-03-07 - 20:17:36] > Démarrage de Express...
+[2025-03-07 - 20:17:36] > Express chargé
+[2025-03-07 - 20:17:36] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 20:17:55] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 20:17:55] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 20:17:55] > ✅ Base de données mise à jour !
+[2025-03-07 - 20:17:55] > Fichier enregistré !
+[2025-03-07 - 20:17:57] > ✅ Fichier chiffré avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc
+[2025-03-07 - 20:18:01] > 📥 Réception d'une requête : '/data/c17d7e5985675fa1f01d4956ee107a68.avi.enc'
+[2025-03-07 - 20:18:01] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 20:18:03] > ❌ Erreur de déchiffrement final : Error: Unsupported state or unable to authenticate data
+[2025-03-07 - 20:18:03] > ❌ Erreur lors du déchiffrement : Error: Unsupported state or unable to authenticate data
+[2025-03-07 - 20:19:46] > Démarrage de Express...
+[2025-03-07 - 20:19:46] > Express chargé
+[2025-03-07 - 20:19:46] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 20:20:15] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 20:20:15] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 20:20:15] > ✅ Base de données mise à jour !
+[2025-03-07 - 20:20:15] > Fichier enregistré !
+[2025-03-07 - 20:20:18] > ✅ Fichier chiffré avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc
+[2025-03-07 - 20:20:27] > 📥 Réception d'une requête : '/data/15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc'
+[2025-03-07 - 20:20:27] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 20:20:28] > ❌ Erreur de déchiffrement final : Error: Unsupported state or unable to authenticate data
+[2025-03-07 - 20:20:28] > ❌ Erreur lors du déchiffrement : Error: Unsupported state or unable to authenticate data
+[2025-03-07 - 20:22:13] > Démarrage de Express...
+[2025-03-07 - 20:22:13] > Express chargé
+[2025-03-07 - 20:22:13] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 20:22:29] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 20:22:29] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 20:22:29] > ✅ Base de données mise à jour !
+[2025-03-07 - 20:22:29] > Fichier enregistré !
+[2025-03-07 - 20:22:32] > ✅ Fichier chiffré avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc
+[2025-03-07 - 20:22:35] > 📥 Réception d'une requête : '/data/c17d7e5985675fa1f01d4956ee107a68.avi.enc'
+[2025-03-07 - 20:22:35] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 20:22:36] > ✅ Déchiffrement terminé avec succès !
+[2025-03-07 - 20:22:37] > ✅ Fichier envoyé avec succès !
+[2025-03-07 - 20:22:37] > ✅ Base de données mise à jour !
+[2025-03-07 - 20:22:37] > 🗑️ Entrée supprimée : c17d7e5985675fa1f01d4956ee107a68
+[2025-03-07 - 20:22:37] > 🗑️ Fichier temporaire supprimé !
+[2025-03-07 - 20:26:19] > Démarrage de Express...
+[2025-03-07 - 20:26:19] > Express chargé
+[2025-03-07 - 20:26:19] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 20:26:37] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 20:26:37] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 20:26:37] > ✅ Base de données mise à jour !
+[2025-03-07 - 20:26:37] > Fichier enregistré !
+[2025-03-07 - 20:26:39] > ✅ Fichier chiffré avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc
+[2025-03-07 - 20:26:42] > 📥 Réception d'une requête : '/data/c17d7e5985675fa1f01d4956ee107a68.avi.enc'
+[2025-03-07 - 20:26:42] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 20:26:43] > ✅ Déchiffrement terminé avec succès !
+[2025-03-07 - 20:26:44] > ✅ Fichier envoyé avec succès !
+[2025-03-07 - 20:26:44] > ✅ Base de données mise à jour !
+[2025-03-07 - 20:26:44] > 🗑️ Entrée supprimée : c17d7e5985675fa1f01d4956ee107a68
+[2025-03-07 - 20:26:44] > 🗑️ Fichier temporaire supprimé !
+[2025-03-07 - 20:28:06] > Démarrage de Express...
+[2025-03-07 - 20:28:06] > Express chargé
+[2025-03-07 - 20:28:06] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 20:28:18] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 20:28:18] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 20:28:18] > ✅ Base de données mise à jour !
+[2025-03-07 - 20:28:18] > Fichier enregistré !
+[2025-03-07 - 20:28:21] > ✅ Fichier chiffré avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc
+[2025-03-07 - 20:28:29] > 📥 Réception d'une requête : '/data/15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc'
+[2025-03-07 - 20:28:29] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 20:28:30] > ✅ Déchiffrement terminé avec succès !
+[2025-03-07 - 20:28:32] > ✅ Fichier envoyé avec succès !
+[2025-03-07 - 20:31:56] > Démarrage de Express...
+[2025-03-07 - 20:31:56] > Express chargé
+[2025-03-07 - 20:31:56] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 20:32:07] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 20:32:07] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 20:32:07] > ✅ Base de données mise à jour !
+[2025-03-07 - 20:32:07] > Fichier enregistré !
+[2025-03-07 - 20:32:09] > ✅ Fichier chiffré avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc
+[2025-03-07 - 20:32:13] > 📥 Réception d'une requête : '/data/15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc'
+[2025-03-07 - 20:32:13] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 20:32:14] > ✅ Déchiffrement terminé avec succès !
+[2025-03-07 - 20:32:14] > ✅ Fichier envoyé avec succès !
+[2025-03-07 - 20:32:14] > 🗑️ Fichier temporaire supprimé !
+[2025-03-07 - 20:32:14] > ✅ Base de données mise à jour !
+[2025-03-07 - 20:32:14] > 🗑️ Entrée supprimée : 15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998
+[2025-03-07 - 20:32:54] > Démarrage de Express...
+[2025-03-07 - 20:32:54] > Express chargé
+[2025-03-07 - 20:32:54] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 20:33:13] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 20:33:13] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 20:33:13] > ✅ Base de données mise à jour !
+[2025-03-07 - 20:33:13] > Fichier enregistré !
+[2025-03-07 - 20:33:16] > ✅ Fichier chiffré avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc
+[2025-03-07 - 20:33:19] > 📥 Réception d'une requête : '/data/c17d7e5985675fa1f01d4956ee107a68.avi.enc'
+[2025-03-07 - 20:33:19] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 20:33:20] > ✅ Déchiffrement terminé avec succès !
+[2025-03-07 - 20:33:20] > ✅ Fichier envoyé avec succès !
+[2025-03-07 - 20:34:55] > Démarrage de Express...
+[2025-03-07 - 20:34:55] > Express chargé
+[2025-03-07 - 20:34:55] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 20:35:05] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 20:35:05] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 20:35:05] > ✅ Base de données mise à jour !
+[2025-03-07 - 20:35:05] > Fichier enregistré !
+[2025-03-07 - 20:35:07] > ✅ Fichier chiffré avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc
+[2025-03-07 - 20:35:12] > 📥 Réception d'une requête : '/data/15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc'
+[2025-03-07 - 20:35:12] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 20:35:13] > ✅ Déchiffrement terminé avec succès !
+[2025-03-07 - 20:36:20] > Démarrage de Express...
+[2025-03-07 - 20:36:20] > Express chargé
+[2025-03-07 - 20:36:20] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 20:36:32] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 20:36:32] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 20:36:32] > ✅ Base de données mise à jour !
+[2025-03-07 - 20:36:32] > Fichier enregistré !
+[2025-03-07 - 20:36:34] > ✅ Fichier chiffré avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc
+[2025-03-07 - 20:36:40] > 📥 Réception d'une requête : '/data/c17d7e5985675fa1f01d4956ee107a68.avi.enc'
+[2025-03-07 - 20:36:40] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 20:36:41] > ✅ Déchiffrement terminé avec succès !
+[2025-03-07 - 20:36:45] > ✅ Fichier envoyé avec succès !
+[2025-03-07 - 20:37:27] > 📥 Réception d'une requête : '/data/c17d7e5985675fa1f01d4956ee107a68.avi.enc'
+[2025-03-07 - 20:37:41] > Démarrage de Express...
+[2025-03-07 - 20:37:41] > Express chargé
+[2025-03-07 - 20:37:41] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 20:37:55] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 20:37:55] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 20:37:55] > ✅ Base de données mise à jour !
+[2025-03-07 - 20:37:55] > Fichier enregistré !
+[2025-03-07 - 20:37:58] > ✅ Fichier chiffré avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc
+[2025-03-07 - 20:38:00] > 📥 Réception d'une requête : '/data/15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc'
+[2025-03-07 - 20:38:00] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 20:38:02] > ✅ Déchiffrement terminé avec succès !
+[2025-03-07 - 20:38:04] > ✅ Fichier envoyé avec succès !
+[2025-03-07 - 20:39:32] > Démarrage de Express...
+[2025-03-07 - 20:39:32] > Express chargé
+[2025-03-07 - 20:39:32] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 20:39:56] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 20:39:56] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 20:39:56] > ✅ Base de données mise à jour !
+[2025-03-07 - 20:39:56] > Fichier enregistré !
+[2025-03-07 - 20:40:08] > ✅ Fichier chiffré avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\8240ba09937ddf314036814d984197cf.mkv.enc
+[2025-03-07 - 20:40:12] > 📥 Réception d'une requête : '/data/8240ba09937ddf314036814d984197cf.avi.enc'
+[2025-03-07 - 20:40:19] > 📥 Réception d'une requête : '/data/8240ba09937ddf314036814d984197cf.mkv.enc'
+[2025-03-07 - 20:40:19] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 20:40:25] > ❌ Erreur de déchiffrement final : RangeError [ERR_OUT_OF_RANGE]: The value of "length" is out of range. It must be >= 0 && <= 2147483647. Received 3302402580
+[2025-03-07 - 20:44:10] > Démarrage de Express...
+[2025-03-07 - 20:44:10] > Express chargé
+[2025-03-07 - 20:44:10] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 20:44:33] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 20:44:33] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 20:44:33] > ✅ Base de données mise à jour !
+[2025-03-07 - 20:44:33] > Fichier enregistré !
+[2025-03-07 - 20:44:37] > 📥 Réception d'une requête : '/data/8240ba09937ddf314036814d984197cf.mkv.enc'
+[2025-03-07 - 20:44:37] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 20:44:44] > ✅ Fichier chiffré avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\8240ba09937ddf314036814d984197cf.mkv.enc
+[2025-03-07 - 20:44:47] > ❌ Erreur de déchiffrement final : RangeError [ERR_OUT_OF_RANGE]: The value of "length" is out of range. It must be >= 0 && <= 2147483647. Received 3302402580
+[2025-03-07 - 20:51:10] > Démarrage de Express...
+[2025-03-07 - 20:51:10] > Express chargé
+[2025-03-07 - 20:51:10] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 20:51:24] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 20:51:24] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 20:51:24] > (node:12200) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 data listeners added to [ReadStream]. MaxListeners is 10. Use emitter.setMaxListeners() to increase limit
+(Use `node --trace-warnings ...` to show where the warning was created)
+[2025-03-07 - 20:51:24] > (node:12200) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 end listeners added to [ReadStream]. MaxListeners is 10. Use emitter.setMaxListeners() to increase limit
+[2025-03-07 - 20:51:24] > (node:12200) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 error listeners added to [ReadStream]. MaxListeners is 10. Use emitter.setMaxListeners() to increase limit
+[2025-03-07 - 20:58:28] > Démarrage de Express...
+[2025-03-07 - 20:58:28] > Express chargé
+[2025-03-07 - 20:58:28] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 20:58:39] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 20:58:39] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 20:58:39] > ❌ Erreur lors du chiffrement du fichier : ReferenceError: Cannot access 'inputStream' before initialization
+[2025-03-07 - 20:58:39] > ✅ Base de données mise à jour !
+[2025-03-07 - 20:58:39] > Fichier enregistré !
+[2025-03-07 - 20:59:45] > Démarrage de Express...
+[2025-03-07 - 20:59:45] > Express chargé
+[2025-03-07 - 20:59:45] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 20:59:55] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 20:59:55] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 20:59:55] > ❌ Erreur lors du chiffrement du fichier : ReferenceError: Cannot access 'inputStream' before initialization
+[2025-03-07 - 20:59:55] > ✅ Base de données mise à jour !
+[2025-03-07 - 20:59:55] > Fichier enregistré !
+[2025-03-07 - 21:00:47] > Démarrage de Express...
+[2025-03-07 - 21:00:47] > Express chargé
+[2025-03-07 - 21:00:47] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 21:00:55] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 21:00:55] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 21:00:56] > (node:12116) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 21 data listeners added to [ReadStream]. MaxListeners is 20. Use emitter.setMaxListeners() to increase limit
+(Use `node --trace-warnings ...` to show where the warning was created)
+[2025-03-07 - 21:00:56] > (node:12116) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 21 end listeners added to [ReadStream]. MaxListeners is 20. Use emitter.setMaxListeners() to increase limit
+[2025-03-07 - 21:00:56] > (node:12116) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 21 error listeners added to [ReadStream]. MaxListeners is 20. Use emitter.setMaxListeners() to increase limit
+[2025-03-07 - 21:01:38] > Démarrage de Express...
+[2025-03-07 - 21:01:38] > Express chargé
+[2025-03-07 - 21:01:38] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 21:01:46] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 21:01:46] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 21:01:48] > (node:21368) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 101 data listeners added to [ReadStream]. MaxListeners is 100. Use emitter.setMaxListeners() to increase limit
+(Use `node --trace-warnings ...` to show where the warning was created)
+[2025-03-07 - 21:01:48] > (node:21368) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 101 end listeners added to [ReadStream]. MaxListeners is 100. Use emitter.setMaxListeners() to increase limit
+[2025-03-07 - 21:01:48] > (node:21368) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 101 error listeners added to [ReadStream]. MaxListeners is 100. Use emitter.setMaxListeners() to increase limit
+[2025-03-07 - 21:03:08] > Démarrage de Express...
+[2025-03-07 - 21:03:08] > Express chargé
+[2025-03-07 - 21:03:08] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 21:03:17] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 21:03:17] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 21:03:17] > ✅ Base de données mise à jour !
+[2025-03-07 - 21:03:17] > Fichier enregistré !
+[2025-03-07 - 21:03:19] > ✅ Fichier chiffré avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc
+[2025-03-07 - 21:03:43] > 📥 Réception d'une requête : '/data/c17d7e5985675fa1f01d4956ee107a68.avi.enc'
+[2025-03-07 - 21:03:43] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 21:03:44] > ✅ Déchiffrement terminé avec succès !
+[2025-03-07 - 21:03:45] > 🗑️ Fichier chiffré supprimé avec succès !
+[2025-03-07 - 21:03:47] > ✅ Fichier envoyé avec succès !
+[2025-03-07 - 21:03:47] > 🗑️ Fichier temporaire supprimé !
+[2025-03-07 - 21:03:47] > ✅ Base de données mise à jour !
+[2025-03-07 - 21:03:47] > 🗑️ Entrée supprimée : c17d7e5985675fa1f01d4956ee107a68
+[2025-03-07 - 21:04:06] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 21:04:06] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 21:04:06] > ✅ Base de données mise à jour !
+[2025-03-07 - 21:04:06] > Fichier enregistré !
+[2025-03-07 - 21:04:13] > 📥 Réception d'une requête : '/data/8240ba09937ddf314036814d984197cf.mkv.enc'
+[2025-03-07 - 21:04:13] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 21:04:16] > ✅ Fichier chiffré avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\8240ba09937ddf314036814d984197cf.mkv.enc
+[2025-03-07 - 21:04:20] > ❌ Erreur de déchiffrement final : RangeError [ERR_OUT_OF_RANGE]: The value of "length" is out of range. It must be >= 0 && <= 2147483647. Received 3302402580
+[2025-03-07 - 21:06:47] > Démarrage de Express...
+[2025-03-07 - 21:06:47] > Express chargé
+[2025-03-07 - 21:06:47] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 21:07:03] > Démarrage de Express...
+[2025-03-07 - 21:07:03] > Express chargé
+[2025-03-07 - 21:07:03] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 21:07:14] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 21:07:14] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 21:07:14] > ✅ Base de données mise à jour !
+[2025-03-07 - 21:07:14] > Fichier enregistré !
+[2025-03-07 - 21:09:26] > Démarrage de Express...
+[2025-03-07 - 21:09:26] > Express chargé
+[2025-03-07 - 21:09:26] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 21:09:35] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 21:09:35] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 21:09:36] > ❌ Erreur lors du chiffrement du fichier : RangeError: Maximum call stack size exceeded
+[2025-03-07 - 21:09:36] > ✅ Base de données mise à jour !
+[2025-03-07 - 21:09:36] > Fichier enregistré !
+[2025-03-07 - 21:09:36] > (node:6228) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 data listeners added to [ReadStream]. MaxListeners is 10. Use emitter.setMaxListeners() to increase limit
+(Use `node --trace-warnings ...` to show where the warning was created)
+[2025-03-07 - 21:09:36] > (node:6228) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 end listeners added to [ReadStream]. MaxListeners is 10. Use emitter.setMaxListeners() to increase limit
+[2025-03-07 - 21:11:14] > Démarrage de Express...
+[2025-03-07 - 21:11:14] > Express chargé
+[2025-03-07 - 21:11:14] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 21:11:24] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 21:11:24] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 21:11:24] > ✅ Chiffrement terminé avec succès !
+[2025-03-07 - 21:11:24] > ✅ Base de données mise à jour !
+[2025-03-07 - 21:11:24] > Fichier enregistré !
+[2025-03-07 - 21:11:25] > ✅ Partie 0 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part0.enc
+[2025-03-07 - 21:11:50] > 📥 Réception d'une requête : '/data/c17d7e5985675fa1f01d4956ee107a68.avi.enc'
+[2025-03-07 - 21:11:50] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 21:11:50] > ✅ Déchiffrement terminé avec succès !
+[2025-03-07 - 21:11:50] > (node:19148) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 21 error listeners added to [WriteStream]. MaxListeners is 20. Use emitter.setMaxListeners() to increase limit
+(Use `node --trace-warnings ...` to show where the warning was created)
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\:'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\C'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\U'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\s'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\r'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\s'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\e'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\f'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\l'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\e'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\i'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\x'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\O'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\n'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\e'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\D'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\i'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\r'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\v'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\e'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\c'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\o'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\u'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\D'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\m'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\e'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\n'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\t'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\s'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\S'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\i'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\l'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\e'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\v'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\r'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\C'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\o'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\r'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\e'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\a'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\p'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\p'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\S'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\i'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\l'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\v'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\e'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\r'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\T'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\r'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\n'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\a'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\s'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\f'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\e'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\r'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\t'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\a'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\p'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\p'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\d'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\a'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\t'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\a'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\c'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\1'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\7'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\d'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\7'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\e'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\9'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\8'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\5'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\6'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\7'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\5'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\f'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\a'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\1'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\5'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\f'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\0'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\1'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\4'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\d'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\5'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\9'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\6'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\e'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\e'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\0'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\1'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\7'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\a'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\8'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\6'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\a'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\v'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\i'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\e'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\c'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\n'
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: EISDIR: illegal operation on a directory, read
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: EISDIR: illegal operation on a directory, read
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: EISDIR: illegal operation on a directory, read
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: EISDIR: illegal operation on a directory, read
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: EISDIR: illegal operation on a directory, read
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: EISDIR: illegal operation on a directory, read
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: EISDIR: illegal operation on a directory, read
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: EISDIR: illegal operation on a directory, read
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: EISDIR: illegal operation on a directory, read
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: EISDIR: illegal operation on a directory, read
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: EISDIR: illegal operation on a directory, read
+[2025-03-07 - 21:11:50] > ❌ Erreur lors de la lecture du fichier chiffré : Error: EISDIR: illegal operation on a directory, read
+[2025-03-07 - 21:11:51] > ✅ Fichier envoyé avec succès !
+[2025-03-07 - 21:11:51] > 🗑️ Fichier temporaire supprimé !
+[2025-03-07 - 21:11:51] > ✅ Base de données mise à jour !
+[2025-03-07 - 21:11:51] > 🗑️ Entrée supprimée : c17d7e5985675fa1f01d4956ee107a68
+[2025-03-07 - 21:14:46] > Démarrage de Express...
+[2025-03-07 - 21:14:46] > Express chargé
+[2025-03-07 - 21:14:46] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 21:14:55] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 21:14:55] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 21:14:55] > ✅ Chiffrement terminé avec succès !
+[2025-03-07 - 21:14:55] > ✅ Base de données mise à jour !
+[2025-03-07 - 21:14:55] > Fichier enregistré !
+[2025-03-07 - 21:14:56] > ✅ Partie 0 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part0.enc
+[2025-03-07 - 21:26:47] > Démarrage de Express...
+[2025-03-07 - 21:26:47] > Express chargé
+[2025-03-07 - 21:26:47] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 21:26:58] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 21:26:58] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 21:26:58] > ✅ Chiffrement terminé avec succès !
+[2025-03-07 - 21:26:58] > ✅ Base de données mise à jour !
+[2025-03-07 - 21:26:58] > Fichier enregistré !
+[2025-03-07 - 21:26:58] > ✅ Partie 0 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part0.enc
+[2025-03-07 - 21:28:35] > Démarrage de Express...
+[2025-03-07 - 21:28:35] > Express chargé
+[2025-03-07 - 21:28:35] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 21:28:44] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 21:28:44] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 21:28:45] > ✅ Partie 0 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part0.enc
+[2025-03-07 - 21:33:14] > Démarrage de Express...
+[2025-03-07 - 21:33:14] > Express chargé
+[2025-03-07 - 21:33:14] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 21:33:25] > Démarrage de Express...
+[2025-03-07 - 21:33:25] > Express chargé
+[2025-03-07 - 21:33:25] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 21:33:34] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 21:33:34] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 21:33:35] > ✅ Partie 0 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc/part0.enc
+[2025-03-07 - 21:35:43] > Démarrage de Express...
+[2025-03-07 - 21:35:43] > Express chargé
+[2025-03-07 - 21:35:43] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 21:35:57] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 21:35:57] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 21:37:46] > ✅ Partie 0 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part0.enc
+[2025-03-07 - 21:43:01] > Démarrage de Express...
+[2025-03-07 - 21:43:01] > Express chargé
+[2025-03-07 - 21:43:01] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 21:43:11] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 21:43:11] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 21:43:11] > ✅ Partie 0 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part0.enc
+[2025-03-07 - 21:43:12] > ✅ Partie 1 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part1.enc
+[2025-03-07 - 21:43:12] > ✅ Partie 2 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part2.enc
+[2025-03-07 - 21:43:12] > ✅ Partie 3 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part3.enc
+[2025-03-07 - 21:43:13] > ✅ Partie 4 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part4.enc
+[2025-03-07 - 21:43:13] > ✅ Partie 5 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part5.enc
+[2025-03-07 - 21:43:13] > ✅ Partie 6 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part6.enc
+[2025-03-07 - 21:43:13] > ✅ Chiffrement terminé avec succès !
+[2025-03-07 - 21:43:13] > ✅ Base de données mise à jour !
+[2025-03-07 - 21:43:13] > Fichier enregistré !
+[2025-03-07 - 21:43:43] > 📥 Réception d'une requête : '/data/c17d7e5985675fa1f01d4956ee107a68.avi.enc'
+[2025-03-07 - 21:43:43] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 21:43:43] > ❌ Erreur lors du déchiffrement des fichiers : ReferenceError: MAX_CONCURRENT_FILES is not defined
+[2025-03-07 - 21:43:43] > ❌ Erreur lors de la lecture du fichier chiffré : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\C'
+[2025-03-07 - 21:45:56] > Démarrage de Express...
+[2025-03-07 - 21:45:56] > Express chargé
+[2025-03-07 - 21:45:56] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 21:46:07] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 21:46:07] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 21:46:07] > ✅ Partie 0 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc/part0.enc
+[2025-03-07 - 21:46:07] > ✅ Partie 1 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc/part1.enc
+[2025-03-07 - 21:46:07] > ✅ Partie 2 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc/part2.enc
+[2025-03-07 - 21:46:08] > ✅ Partie 3 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc/part3.enc
+[2025-03-07 - 21:46:08] > ✅ Partie 4 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc/part4.enc
+[2025-03-07 - 21:46:08] > ✅ Partie 5 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc/part5.enc
+[2025-03-07 - 21:46:08] > ✅ Partie 6 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc/part6.enc
+[2025-03-07 - 21:46:08] > ✅ Partie 7 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc/part7.enc
+[2025-03-07 - 21:46:08] > ✅ Chiffrement terminé avec succès !
+[2025-03-07 - 21:46:08] > ✅ Base de données mise à jour !
+[2025-03-07 - 21:46:08] > Fichier enregistré !
+[2025-03-07 - 21:47:47] > 📥 Réception d'une requête : '/data/15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc'
+[2025-03-07 - 21:47:47] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 21:47:47] > ❌ Erreur lors de la lecture du fichier chiffré (part 0): Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\C'
+[2025-03-07 - 21:47:47] > ❌ Erreur lors du déchiffrement des fichiers : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\C'
+[2025-03-07 - 21:47:47] > ❌ Erreur lors de la lecture du fichier chiffré (part 1): Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\:'
+[2025-03-07 - 21:47:47] > ❌ Erreur lors de la lecture du fichier chiffré (part 3): Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\U'
+[2025-03-07 - 21:47:47] > ❌ Erreur lors de la lecture du fichier chiffré (part 4): Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\s'
+[2025-03-07 - 21:47:47] > ❌ Erreur lors de la lecture du fichier chiffré (part 5): Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\e'
+[2025-03-07 - 21:47:47] > ❌ Erreur lors de la lecture du fichier chiffré (part 2): Error: EISDIR: illegal operation on a directory, read
+[2025-03-07 - 21:47:48] > ✅ Fichier envoyé avec succès !
+[2025-03-07 - 21:47:48] > 🗑️ Fichier temporaire supprimé !
+[2025-03-07 - 21:47:48] > ✅ Base de données mise à jour !
+[2025-03-07 - 21:47:48] > 🗑️ Entrée supprimée : 15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998
+[2025-03-07 - 21:48:24] > Démarrage de Express...
+[2025-03-07 - 21:48:24] > Express chargé
+[2025-03-07 - 21:48:24] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 21:48:33] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 21:48:33] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 21:48:34] > ✅ Partie 0 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part0.enc
+[2025-03-07 - 21:48:34] > ✅ Partie 1 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part1.enc
+[2025-03-07 - 21:48:34] > ✅ Partie 2 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part2.enc
+[2025-03-07 - 21:48:35] > ✅ Partie 3 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part3.enc
+[2025-03-07 - 21:48:35] > ✅ Partie 4 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part4.enc
+[2025-03-07 - 21:48:35] > ✅ Partie 5 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part5.enc
+[2025-03-07 - 21:48:35] > ✅ Partie 6 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part6.enc
+[2025-03-07 - 21:48:35] > ✅ Chiffrement terminé avec succès !
+[2025-03-07 - 21:48:35] > ✅ Base de données mise à jour !
+[2025-03-07 - 21:48:35] > Fichier enregistré !
+[2025-03-07 - 21:51:59] > Démarrage de Express...
+[2025-03-07 - 21:51:59] > Express chargé
+[2025-03-07 - 21:51:59] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 21:52:08] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-07 - 21:52:08] > Fichier reçu, chiffrement en cours...
+[2025-03-07 - 21:52:09] > ✅ Partie 0 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part0.enc
+[2025-03-07 - 21:52:09] > ✅ Partie 1 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part1.enc
+[2025-03-07 - 21:52:09] > ✅ Partie 2 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part2.enc
+[2025-03-07 - 21:52:10] > ✅ Partie 3 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part3.enc
+[2025-03-07 - 21:52:10] > ✅ Partie 4 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part4.enc
+[2025-03-07 - 21:52:10] > ✅ Partie 5 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part5.enc
+[2025-03-07 - 21:52:10] > ✅ Partie 6 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part6.enc
+[2025-03-07 - 21:52:10] > ✅ Le fichier d'entrée "C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\c17d7e5985675fa1f01d4956ee107a68.avi" a été supprimé après chiffrement.
+[2025-03-07 - 21:52:10] > ✅ Chiffrement terminé avec succès !
+[2025-03-07 - 21:52:10] > ✅ Base de données mise à jour !
+[2025-03-07 - 21:52:10] > Fichier enregistré !
+[2025-03-07 - 21:52:27] > 📥 Réception d'une requête : '/data/c17d7e5985675fa1f01d4956ee107a68.avi.enc'
+[2025-03-07 - 21:52:27] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 21:52:27] > ❌ Erreur lors de la lecture du fichier chiffré (part 0): Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\C'
+[2025-03-07 - 21:52:27] > ❌ Erreur lors du déchiffrement des fichiers : Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\C'
+[2025-03-07 - 21:52:27] > ❌ Erreur lors de la lecture du fichier chiffré (part 1): Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\:'
+[2025-03-07 - 21:52:27] > ❌ Erreur lors de la lecture du fichier chiffré (part 3): Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\U'
+[2025-03-07 - 21:52:27] > ❌ Erreur lors de la lecture du fichier chiffré (part 4): Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\s'
+[2025-03-07 - 21:52:27] > ❌ Erreur lors de la lecture du fichier chiffré (part 5): Error: ENOENT: no such file or directory, open 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\e'
+[2025-03-07 - 21:52:27] > ❌ Erreur lors de la lecture du fichier chiffré (part 2): Error: EISDIR: illegal operation on a directory, read
+[2025-03-07 - 21:52:28] > ✅ Fichier envoyé avec succès !
+[2025-03-07 - 21:52:28] > 🗑️ Fichier temporaire supprimé !
+[2025-03-07 - 21:52:28] > ✅ Base de données mise à jour !
+[2025-03-07 - 21:52:28] > 🗑️ Entrée supprimée : c17d7e5985675fa1f01d4956ee107a68
+[2025-03-07 - 21:53:24] > Démarrage de Express...
+[2025-03-07 - 21:53:24] > Express chargé
+[2025-03-07 - 21:53:24] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 21:53:36] > Démarrage de Express...
+[2025-03-07 - 21:53:36] > Express chargé
+[2025-03-07 - 21:53:36] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 21:53:39] > 📥 Réception d'une requête : '/data/c17d7e5985675fa1f01d4956ee107a68.avi.enc'
+[2025-03-07 - 21:53:39] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-07 - 21:53:39] > ❌ Erreur lors du déchiffrement des fichiers : Error: ENOENT: no such file or directory, stat 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\C'
+[2025-03-07 - 21:53:40] > ✅ Fichier envoyé avec succès !
+[2025-03-07 - 21:53:40] > 🗑️ Fichier temporaire supprimé !
+[2025-03-07 - 21:53:40] > ✅ Base de données mise à jour !
+[2025-03-07 - 21:53:40] > 🗑️ Entrée supprimée : c17d7e5985675fa1f01d4956ee107a68
+[2025-03-07 - 21:55:58] > Démarrage de Express...
+[2025-03-07 - 21:55:58] > Express chargé
+[2025-03-07 - 21:55:58] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-07 - 21:56:01] > 📥 Réception d'une requête : '/data/c17d7e5985675fa1f01d4956ee107a68.avi.enc'
+[2025-03-07 - 21:56:03] > 📥 Réception d'une requête : '/data/c17d7e5985675fa1f01d4956ee107a68.avi.enc'
+[2025-03-07 - 21:56:14] > 📥 Réception d'une requête : '/data/c17d7e5985675fa1f01d4956ee107a68.avi.enc'
+[2025-03-07 - 21:57:11] > ____Réception d'une requête :  '/t/c17d7e5985675fa1f01d4956ee107a68'
+[2025-03-07 - 21:57:25] > Démarrage de Express...
+[2025-03-07 - 21:57:25] > Express chargé
+[2025-03-07 - 21:57:25] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84

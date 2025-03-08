@@ -1,0 +1,378 @@
+[2025-03-08 - 09:09:13] > Démarrage de Express...
+[2025-03-08 - 09:09:13] > Express chargé
+[2025-03-08 - 09:09:13] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 09:09:46] > Démarrage de Express...
+[2025-03-08 - 09:09:46] > Express chargé
+[2025-03-08 - 09:09:46] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 09:10:36] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-08 - 09:10:36] > Fichier reçu, chiffrement en cours...
+[2025-03-08 - 09:10:36] > ✅ Partie 0 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part0.enc
+[2025-03-08 - 09:10:37] > ✅ Partie 1 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part1.enc
+[2025-03-08 - 09:10:37] > ✅ Partie 2 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part2.enc
+[2025-03-08 - 09:10:37] > ✅ Partie 3 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part3.enc
+[2025-03-08 - 09:10:37] > ✅ Partie 4 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part4.enc
+[2025-03-08 - 09:10:38] > ✅ Partie 5 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part5.enc
+[2025-03-08 - 09:10:38] > ✅ Partie 6 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part6.enc
+[2025-03-08 - 09:10:38] > ✅ Le fichier d'entrée "C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\c17d7e5985675fa1f01d4956ee107a68.avi" a été supprimé après chiffrement.
+[2025-03-08 - 09:10:38] > ✅ Chiffrement terminé avec succès !
+[2025-03-08 - 09:10:38] > ✅ Base de données mise à jour !
+[2025-03-08 - 09:10:38] > Fichier enregistré !
+[2025-03-08 - 09:11:06] > ____Réception d'une requête :  '/t/c17d7e5985675fa1f01d4956ee107a68'
+[2025-03-08 - 09:11:11] > 📥 Réception d'une requête : '/data/c17d7e5985675fa1f01d4956ee107a68.avi.enc'
+[2025-03-08 - 09:11:11] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-08 - 09:12:53] > Démarrage de Express...
+[2025-03-08 - 09:12:53] > Express chargé
+[2025-03-08 - 09:12:53] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 09:14:52] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-08 - 09:14:52] > Fichier reçu, chiffrement en cours...
+[2025-03-08 - 09:14:52] > ✅ Partie 0 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part0.enc
+[2025-03-08 - 09:14:53] > ✅ Partie 1 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part1.enc
+[2025-03-08 - 09:14:53] > ✅ Partie 2 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part2.enc
+[2025-03-08 - 09:14:53] > ✅ Partie 3 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part3.enc
+[2025-03-08 - 09:14:54] > ✅ Partie 4 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part4.enc
+[2025-03-08 - 09:14:54] > ✅ Partie 5 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part5.enc
+[2025-03-08 - 09:14:54] > ✅ Partie 6 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi.enc/part6.enc
+[2025-03-08 - 09:14:54] > ✅ Le fichier d'entrée "C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\c17d7e5985675fa1f01d4956ee107a68.avi" a été supprimé après chiffrement.
+[2025-03-08 - 09:14:54] > ✅ Chiffrement terminé avec succès !
+[2025-03-08 - 09:14:54] > ✅ Base de données mise à jour !
+[2025-03-08 - 09:14:54] > Fichier enregistré !
+[2025-03-08 - 09:15:04] > 📥 Réception d'une requête : '/data/c17d7e5985675fa1f01d4956ee107a68.avi.enc'
+[2025-03-08 - 09:15:04] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-08 - 09:16:12] > Démarrage de Express...
+[2025-03-08 - 09:16:12] > Express chargé
+[2025-03-08 - 09:16:12] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 09:16:12] > 🗑️ Base de données réinitialisée !
+[2025-03-08 - 09:16:36] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-08 - 09:16:36] > Fichier reçu, chiffrement en cours...
+[2025-03-08 - 09:16:37] > ✅ Partie 0 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc/part0.enc
+[2025-03-08 - 09:16:37] > ✅ Partie 1 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc/part1.enc
+[2025-03-08 - 09:16:37] > ✅ Partie 2 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc/part2.enc
+[2025-03-08 - 09:16:37] > ✅ Partie 3 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc/part3.enc
+[2025-03-08 - 09:16:38] > ✅ Partie 4 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc/part4.enc
+[2025-03-08 - 09:16:38] > ✅ Partie 5 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc/part5.enc
+[2025-03-08 - 09:16:38] > ✅ Partie 6 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc/part6.enc
+[2025-03-08 - 09:16:38] > ✅ Partie 7 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc/part7.enc
+[2025-03-08 - 09:16:38] > ✅ Le fichier d'entrée "C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi" a été supprimé après chiffrement.
+[2025-03-08 - 09:16:38] > ✅ Chiffrement terminé avec succès !
+[2025-03-08 - 09:16:38] > ✅ Base de données mise à jour !
+[2025-03-08 - 09:16:38] > Fichier enregistré !
+[2025-03-08 - 09:16:42] > 📥 Réception d'une requête : '/data/15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc'
+[2025-03-08 - 09:16:42] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-08 - 09:16:42] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc/part0.enc
+[2025-03-08 - 09:16:42] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc/part1.enc
+[2025-03-08 - 09:16:42] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc/part2.enc
+[2025-03-08 - 09:16:42] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc/part3.enc
+[2025-03-08 - 09:16:43] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc/part4.enc
+[2025-03-08 - 09:16:43] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc/part5.enc
+[2025-03-08 - 09:16:43] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc/part6.enc
+[2025-03-08 - 09:16:43] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998.avi.enc/part7.enc
+[2025-03-08 - 09:16:43] > ✅ Déchiffrement terminé avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\Les Tuches 3.avi
+[2025-03-08 - 09:16:45] > ✅ Fichier envoyé avec succès !
+[2025-03-08 - 09:16:45] > 🗑️ Fichier temporaire supprimé !
+[2025-03-08 - 09:16:45] > ✅ Base de données mise à jour !
+[2025-03-08 - 09:16:45] > 🗑️ Entrée supprimée : 15cc0a4530a47a36ff9605c9066fb342f323369440ea76e4072f55acc75d6998
+[2025-03-08 - 09:27:41] > Démarrage de Express...
+[2025-03-08 - 09:27:41] > Express chargé
+[2025-03-08 - 09:27:41] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 09:27:41] > 🗑️ Base de données réinitialisée !
+[2025-03-08 - 09:27:58] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-08 - 09:27:58] > Fichier reçu, chiffrement en cours...
+[2025-03-08 - 09:27:58] > ✅ Partie 0 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi_id=45210566.enc/part0.enc
+[2025-03-08 - 09:27:59] > ✅ Partie 1 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi_id=45210566.enc/part1.enc
+[2025-03-08 - 09:27:59] > ✅ Partie 2 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi_id=45210566.enc/part2.enc
+[2025-03-08 - 09:27:59] > ✅ Partie 3 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi_id=45210566.enc/part3.enc
+[2025-03-08 - 09:27:59] > ✅ Partie 4 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi_id=45210566.enc/part4.enc
+[2025-03-08 - 09:28:00] > ✅ Partie 5 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi_id=45210566.enc/part5.enc
+[2025-03-08 - 09:28:00] > ✅ Partie 6 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi_id=45210566.enc/part6.enc
+[2025-03-08 - 09:28:00] > ✅ Le fichier d'entrée "C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\c17d7e5985675fa1f01d4956ee107a68.avi" a été supprimé après chiffrement.
+[2025-03-08 - 09:28:00] > ✅ Chiffrement terminé avec succès !
+[2025-03-08 - 09:28:00] > ✅ Base de données mise à jour !
+[2025-03-08 - 09:28:00] > Fichier enregistré !
+[2025-03-08 - 09:30:15] > ____Réception d'une requête :  '/t/45210566'
+[2025-03-08 - 09:30:19] > 📥 Réception d'une requête : '/data/c17d7e5985675fa1f01d4956ee107a68.avi_id=45210566.enc'
+[2025-03-08 - 09:30:19] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-08 - 09:30:19] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi_id=45210566.enc/part0.enc
+[2025-03-08 - 09:30:19] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi_id=45210566.enc/part1.enc
+[2025-03-08 - 09:30:19] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi_id=45210566.enc/part2.enc
+[2025-03-08 - 09:30:19] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi_id=45210566.enc/part3.enc
+[2025-03-08 - 09:30:19] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi_id=45210566.enc/part4.enc
+[2025-03-08 - 09:30:20] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi_id=45210566.enc/part5.enc
+[2025-03-08 - 09:30:20] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi_id=45210566.enc/part6.enc
+[2025-03-08 - 09:30:20] > ✅ Déchiffrement terminé avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\Les Tuches.avi
+[2025-03-08 - 09:30:22] > ✅ Fichier envoyé avec succès !
+[2025-03-08 - 09:30:22] > Error: ENOENT: no such file or directory, rmdir 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\Les Tuches.avi'
+[2025-03-08 - 09:33:52] > ❌ Erreur lors du chargement de la base de données : SyntaxError: Unexpected end of JSON input
+[2025-03-08 - 09:33:52] > Démarrage de Express...
+[2025-03-08 - 09:33:52] > Express chargé
+[2025-03-08 - 09:33:52] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 09:33:52] > 🗑️ Base de données réinitialisée !
+[2025-03-08 - 09:34:06] > Démarrage de Express...
+[2025-03-08 - 09:34:06] > Express chargé
+[2025-03-08 - 09:34:06] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 09:37:26] > Démarrage de Express...
+[2025-03-08 - 09:37:26] > Express chargé
+[2025-03-08 - 09:37:26] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 09:37:38] > Démarrage de Express...
+[2025-03-08 - 09:37:38] > Express chargé
+[2025-03-08 - 09:37:38] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 09:37:38] > 🗑️ Base de données réinitialisée !
+[2025-03-08 - 09:38:13] > Démarrage de Express...
+[2025-03-08 - 09:38:13] > Express chargé
+[2025-03-08 - 09:38:13] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 09:38:13] > 🗑️ Base de données réinitialisée !
+[2025-03-08 - 09:38:31] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-08 - 09:38:31] > Fichier reçu, chiffrement en cours...
+[2025-03-08 - 09:38:32] > ✅ Partie 0 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi_id=63416994.enc/part0.enc
+[2025-03-08 - 09:38:32] > ✅ Partie 1 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi_id=63416994.enc/part1.enc
+[2025-03-08 - 09:38:32] > ✅ Partie 2 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi_id=63416994.enc/part2.enc
+[2025-03-08 - 09:38:33] > ✅ Partie 3 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi_id=63416994.enc/part3.enc
+[2025-03-08 - 09:38:33] > ✅ Partie 4 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi_id=63416994.enc/part4.enc
+[2025-03-08 - 09:38:33] > ✅ Partie 5 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi_id=63416994.enc/part5.enc
+[2025-03-08 - 09:38:33] > ✅ Partie 6 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi_id=63416994.enc/part6.enc
+[2025-03-08 - 09:38:33] > ✅ Le fichier d'entrée "C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\c17d7e5985675fa1f01d4956ee107a68.avi" a été supprimé après chiffrement.
+[2025-03-08 - 09:38:33] > ✅ Chiffrement terminé avec succès !
+[2025-03-08 - 09:38:33] > ✅ Base de données mise à jour !
+[2025-03-08 - 09:38:33] > ✅✅__Fichier enregistré !  ?id=63416994
+[2025-03-08 - 09:40:12] > ____Réception d'une requête :  '/t/63416994'
+[2025-03-08 - 09:40:13] > 📥 Réception d'une requête : '/data/c17d7e5985675fa1f01d4956ee107a68.avi_id=63416994.enc'
+[2025-03-08 - 09:40:24] > Démarrage de Express...
+[2025-03-08 - 09:40:24] > Express chargé
+[2025-03-08 - 09:40:24] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 09:40:24] > ❌ Erreur lors de la réinitialisation : TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+[2025-03-08 - 09:41:04] > Démarrage de Express...
+[2025-03-08 - 09:41:04] > Express chargé
+[2025-03-08 - 09:41:04] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 09:41:04] > ❌ Erreur lors de la réinitialisation : Error: ENOENT: no such file or directory, unlink 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\db\database.json'
+[2025-03-08 - 09:41:29] > ❌ Erreur lors du chargement de la base de données : SyntaxError: Unexpected end of JSON input
+[2025-03-08 - 09:41:29] > Démarrage de Express...
+[2025-03-08 - 09:41:29] > Express chargé
+[2025-03-08 - 09:41:29] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 09:41:29] > 🗑️ Base de données réinitialisée !
+[2025-03-08 - 09:42:13] > Démarrage de Express...
+[2025-03-08 - 09:42:13] > Express chargé
+[2025-03-08 - 09:42:13] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 09:42:13] > 🗑️ Base de données réinitialisée !
+[2025-03-08 - 09:42:53] > Démarrage de Express...
+[2025-03-08 - 09:42:53] > Express chargé
+[2025-03-08 - 09:42:53] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 09:42:53] > 🗑️ Base de données réinitialisée !
+[2025-03-08 - 09:43:03] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-08 - 09:43:03] > Fichier reçu, chiffrement en cours...
+[2025-03-08 - 09:43:03] > ✅ Partie 0 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi_id=93143436.enc/part0.enc
+[2025-03-08 - 09:43:03] > ✅ Partie 1 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi_id=93143436.enc/part1.enc
+[2025-03-08 - 09:43:04] > ✅ Partie 2 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi_id=93143436.enc/part2.enc
+[2025-03-08 - 09:43:04] > ✅ Partie 3 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi_id=93143436.enc/part3.enc
+[2025-03-08 - 09:43:04] > ✅ Partie 4 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi_id=93143436.enc/part4.enc
+[2025-03-08 - 09:43:04] > ✅ Partie 5 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi_id=93143436.enc/part5.enc
+[2025-03-08 - 09:43:05] > ✅ Partie 6 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\c17d7e5985675fa1f01d4956ee107a68.avi_id=93143436.enc/part6.enc
+[2025-03-08 - 09:43:05] > ✅ Le fichier d'entrée "C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\c17d7e5985675fa1f01d4956ee107a68.avi" a été supprimé après chiffrement.
+[2025-03-08 - 09:43:05] > ✅ Chiffrement terminé avec succès !
+[2025-03-08 - 09:43:05] > ✅ Base de données mise à jour !
+[2025-03-08 - 09:43:05] > ✅✅__Fichier enregistré !  ?id=93143436
+[2025-03-08 - 09:43:10] > ____Réception d'une requête :  '/t/93143436'
+[2025-03-08 - 09:43:12] > 📥 Réception d'une requête : '/data/c17d7e5985675fa1f01d4956ee107a68.avi_id=93143436.enc'
+[2025-03-08 - 09:43:35] > 📥 Réception d'une requête : '/data/93143436'
+[2025-03-08 - 09:47:44] > Démarrage de Express...
+[2025-03-08 - 09:47:44] > Express chargé
+[2025-03-08 - 09:47:44] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 09:47:44] > 🗑️ Base de données réinitialisée !
+[2025-03-08 - 09:47:45] > ____Réception d'une requête :  '/t/93143436'
+[2025-03-08 - 09:48:43] > Démarrage de Express...
+[2025-03-08 - 09:48:43] > Express chargé
+[2025-03-08 - 09:48:43] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 09:48:43] > 🗑️ Base de données réinitialisée !
+[2025-03-08 - 09:48:45] > ____Réception d'une requête :  '/t/93143436'
+[2025-03-08 - 09:49:19] > Démarrage de Express...
+[2025-03-08 - 09:49:19] > Express chargé
+[2025-03-08 - 09:49:19] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 09:49:19] > 🗑️ Base de données réinitialisée !
+[2025-03-08 - 09:49:38] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-08 - 09:49:38] > Fichier reçu, chiffrement en cours...
+[2025-03-08 - 09:49:38] > ✅ Partie 0 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\66361533.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part0.enc
+[2025-03-08 - 09:49:38] > ✅ Partie 1 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\66361533.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part1.enc
+[2025-03-08 - 09:49:39] > ✅ Partie 2 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\66361533.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part2.enc
+[2025-03-08 - 09:49:39] > ✅ Partie 3 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\66361533.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part3.enc
+[2025-03-08 - 09:49:39] > ✅ Partie 4 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\66361533.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part4.enc
+[2025-03-08 - 09:49:39] > ✅ Partie 5 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\66361533.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part5.enc
+[2025-03-08 - 09:49:40] > ✅ Partie 6 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\66361533.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part6.enc
+[2025-03-08 - 09:49:40] > ✅ Le fichier d'entrée "C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\c17d7e5985675fa1f01d4956ee107a68.avi" a été supprimé après chiffrement.
+[2025-03-08 - 09:49:40] > ✅ Chiffrement terminé avec succès !
+[2025-03-08 - 09:49:40] > ✅ Base de données mise à jour !
+[2025-03-08 - 09:49:40] > ✅✅__Fichier enregistré !  ?id=66361533
+[2025-03-08 - 09:49:42] > ____Réception d'une requête :  '/t/66361533'
+[2025-03-08 - 09:51:55] > Démarrage de Express...
+[2025-03-08 - 09:51:55] > Express chargé
+[2025-03-08 - 09:51:55] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 09:51:57] > ____Réception d'une requête :  '/t/66361533'
+[2025-03-08 - 09:52:02] > 📥 Réception d'une requête : '/data/66361533'
+[2025-03-08 - 09:54:55] > Démarrage de Express...
+[2025-03-08 - 09:54:55] > Express chargé
+[2025-03-08 - 09:54:55] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 09:54:57] > 📥 Réception d'une requête : '/data/66361533'
+[2025-03-08 - 09:55:24] > Démarrage de Express...
+[2025-03-08 - 09:55:24] > Express chargé
+[2025-03-08 - 09:55:24] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 09:55:26] > 📥 Réception d'une requête : '/data/66361533'
+[2025-03-08 - 09:55:26] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-08 - 09:55:27] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\66361533.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part0.enc
+[2025-03-08 - 09:55:27] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\66361533.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part1.enc
+[2025-03-08 - 09:55:27] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\66361533.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part2.enc
+[2025-03-08 - 09:55:27] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\66361533.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part3.enc
+[2025-03-08 - 09:55:27] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\66361533.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part4.enc
+[2025-03-08 - 09:55:28] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\66361533.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part5.enc
+[2025-03-08 - 09:55:28] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\66361533.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part6.enc
+[2025-03-08 - 09:55:28] > ✅ Déchiffrement terminé avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\Les Tuches.avi
+[2025-03-08 - 09:55:28] > ❌ Erreur lors du déchiffrement du fichier : ReferenceError: error is not defined
+[2025-03-08 - 09:55:30] > ✅ Fichier envoyé avec succès !
+[2025-03-08 - 09:55:30] > 🗑️ Fichier temporaire supprimé !
+[2025-03-08 - 09:55:30] > ✅ Base de données mise à jour !
+[2025-03-08 - 09:55:30] > 🗑️ Entrée supprimée : 66361533
+[2025-03-08 - 09:57:33] > Démarrage de Express...
+[2025-03-08 - 09:57:33] > Express chargé
+[2025-03-08 - 09:57:33] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 09:57:42] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-08 - 09:57:42] > Fichier reçu, chiffrement en cours...
+[2025-03-08 - 09:57:42] > ✅ Partie 0 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\91539616.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part0.enc
+[2025-03-08 - 09:57:42] > ✅ Partie 1 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\91539616.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part1.enc
+[2025-03-08 - 09:57:42] > ✅ Partie 2 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\91539616.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part2.enc
+[2025-03-08 - 09:57:43] > ✅ Partie 3 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\91539616.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part3.enc
+[2025-03-08 - 09:57:43] > ✅ Partie 4 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\91539616.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part4.enc
+[2025-03-08 - 09:57:43] > ✅ Partie 5 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\91539616.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part5.enc
+[2025-03-08 - 09:57:44] > ✅ Partie 6 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\91539616.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part6.enc
+[2025-03-08 - 09:57:44] > ✅ Le fichier d'entrée "C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\c17d7e5985675fa1f01d4956ee107a68.avi" a été supprimé après chiffrement.
+[2025-03-08 - 09:57:44] > ✅ Chiffrement terminé avec succès !
+[2025-03-08 - 09:57:44] > ✅ Base de données mise à jour !
+[2025-03-08 - 09:57:44] > ✅✅__Fichier enregistré !  ?id=91539616
+[2025-03-08 - 09:57:51] > ____Réception d'une requête :  '/t/91539616'
+[2025-03-08 - 09:57:52] > 📥 Réception d'une requête : '/data/91539616'
+[2025-03-08 - 09:57:52] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-08 - 09:57:52] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\91539616.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part0.enc
+[2025-03-08 - 09:57:53] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\91539616.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part1.enc
+[2025-03-08 - 09:57:53] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\91539616.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part2.enc
+[2025-03-08 - 09:57:53] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\91539616.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part3.enc
+[2025-03-08 - 09:57:53] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\91539616.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part4.enc
+[2025-03-08 - 09:57:53] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\91539616.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part5.enc
+[2025-03-08 - 09:57:53] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\91539616.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part6.enc
+[2025-03-08 - 09:57:53] > ✅ Déchiffrement terminé avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\Les Tuches.avi
+[2025-03-08 - 09:57:53] > ❌ Erreur lors de la supréssion du fichier de "data" : Error: ENOTEMPTY: directory not empty, rmdir 'C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\91539616.c17d7e5985675fa1f01d4956ee107a68.avi.enc'
+[2025-03-08 - 09:57:56] > ✅ Fichier envoyé avec succès !
+[2025-03-08 - 09:57:56] > 🗑️ Fichier temporaire supprimé !
+[2025-03-08 - 09:57:56] > ✅ Base de données mise à jour !
+[2025-03-08 - 09:57:56] > 🗑️ Entrée supprimée : 91539616
+[2025-03-08 - 09:59:10] > Démarrage de Express...
+[2025-03-08 - 09:59:10] > Express chargé
+[2025-03-08 - 09:59:10] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 09:59:21] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-08 - 09:59:21] > Fichier reçu, chiffrement en cours...
+[2025-03-08 - 09:59:21] > ✅ Partie 0 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\01870633.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part0.enc
+[2025-03-08 - 09:59:22] > ✅ Partie 1 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\01870633.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part1.enc
+[2025-03-08 - 09:59:22] > ✅ Partie 2 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\01870633.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part2.enc
+[2025-03-08 - 09:59:22] > ✅ Partie 3 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\01870633.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part3.enc
+[2025-03-08 - 09:59:22] > ✅ Partie 4 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\01870633.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part4.enc
+[2025-03-08 - 09:59:23] > ✅ Partie 5 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\01870633.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part5.enc
+[2025-03-08 - 09:59:23] > ✅ Partie 6 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\01870633.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part6.enc
+[2025-03-08 - 09:59:23] > ✅ Le fichier d'entrée "C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\c17d7e5985675fa1f01d4956ee107a68.avi" a été supprimé après chiffrement.
+[2025-03-08 - 09:59:23] > ✅ Chiffrement terminé avec succès !
+[2025-03-08 - 09:59:23] > ✅ Base de données mise à jour !
+[2025-03-08 - 09:59:23] > ✅✅__Fichier enregistré !  ?id=01870633
+[2025-03-08 - 09:59:26] > ____Réception d'une requête :  '/t/01870633'
+[2025-03-08 - 09:59:27] > 📥 Réception d'une requête : '/data/01870633'
+[2025-03-08 - 09:59:27] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-08 - 09:59:27] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\01870633.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part0.enc
+[2025-03-08 - 09:59:28] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\01870633.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part1.enc
+[2025-03-08 - 09:59:28] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\01870633.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part2.enc
+[2025-03-08 - 09:59:28] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\01870633.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part3.enc
+[2025-03-08 - 09:59:28] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\01870633.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part4.enc
+[2025-03-08 - 09:59:28] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\01870633.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part5.enc
+[2025-03-08 - 09:59:28] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\01870633.c17d7e5985675fa1f01d4956ee107a68.avi.enc/part6.enc
+[2025-03-08 - 09:59:28] > ✅ Déchiffrement terminé avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\Les Tuches.avi
+[2025-03-08 - 09:59:28] > ❌ Erreur lors de la supréssion du fichier de "data" : ReferenceError: folderPath is not defined
+[2025-03-08 - 09:59:31] > ✅ Fichier envoyé avec succès !
+[2025-03-08 - 09:59:31] > 🗑️ Fichier temporaire supprimé !
+[2025-03-08 - 09:59:31] > ✅ Base de données mise à jour !
+[2025-03-08 - 09:59:31] > 🗑️ Entrée supprimée : 01870633
+[2025-03-08 - 10:00:24] > Démarrage de Express...
+[2025-03-08 - 10:00:24] > Express chargé
+[2025-03-08 - 10:00:24] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
+[2025-03-08 - 10:00:43] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-08 - 10:00:43] > Fichier reçu, chiffrement en cours...
+[2025-03-08 - 10:00:43] > ✅ Partie 0 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part0.enc
+[2025-03-08 - 10:00:44] > ✅ Partie 1 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part1.enc
+[2025-03-08 - 10:00:44] > ✅ Partie 2 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part2.enc
+[2025-03-08 - 10:00:44] > ✅ Partie 3 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part3.enc
+[2025-03-08 - 10:00:45] > ✅ Partie 4 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part4.enc
+[2025-03-08 - 10:00:45] > ✅ Partie 5 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part5.enc
+[2025-03-08 - 10:00:45] > ✅ Partie 6 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part6.enc
+[2025-03-08 - 10:00:46] > ✅ Partie 7 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part7.enc
+[2025-03-08 - 10:00:46] > ✅ Partie 8 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part8.enc
+[2025-03-08 - 10:00:46] > ✅ Partie 9 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part9.enc
+[2025-03-08 - 10:00:47] > ✅ Partie 10 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part10.enc
+[2025-03-08 - 10:00:47] > ✅ Partie 11 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part11.enc
+[2025-03-08 - 10:00:47] > ✅ Partie 12 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part12.enc
+[2025-03-08 - 10:00:47] > ✅ Partie 13 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part13.enc
+[2025-03-08 - 10:00:48] > ✅ Partie 14 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part14.enc
+[2025-03-08 - 10:00:48] > ✅ Partie 15 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part15.enc
+[2025-03-08 - 10:00:49] > ✅ Partie 16 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part16.enc
+[2025-03-08 - 10:00:49] > ✅ Partie 17 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part17.enc
+[2025-03-08 - 10:00:50] > ✅ Partie 18 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part18.enc
+[2025-03-08 - 10:00:51] > ✅ Partie 19 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part19.enc
+[2025-03-08 - 10:00:52] > ✅ Partie 20 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part20.enc
+[2025-03-08 - 10:00:52] > ✅ Partie 21 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part21.enc
+[2025-03-08 - 10:00:53] > ✅ Partie 22 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part22.enc
+[2025-03-08 - 10:00:54] > ✅ Partie 23 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part23.enc
+[2025-03-08 - 10:00:54] > ✅ Partie 24 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part24.enc
+[2025-03-08 - 10:00:55] > ✅ Partie 25 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part25.enc
+[2025-03-08 - 10:00:55] > ✅ Partie 26 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part26.enc
+[2025-03-08 - 10:00:56] > ✅ Partie 27 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part27.enc
+[2025-03-08 - 10:00:57] > ✅ Partie 28 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part28.enc
+[2025-03-08 - 10:00:58] > ✅ Partie 29 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part29.enc
+[2025-03-08 - 10:00:59] > ✅ Partie 30 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part30.enc
+[2025-03-08 - 10:00:59] > ✅ Partie 31 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part31.enc
+[2025-03-08 - 10:00:59] > ✅ Le fichier d'entrée "C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\8240ba09937ddf314036814d984197cf.mkv" a été supprimé après chiffrement.
+[2025-03-08 - 10:00:59] > ✅ Chiffrement terminé avec succès !
+[2025-03-08 - 10:00:59] > ✅ Base de données mise à jour !
+[2025-03-08 - 10:00:59] > ✅✅__Fichier enregistré !  ?id=85444681
+[2025-03-08 - 10:01:38] > ____Réception d'une requête :  '/t/85444681'
+[2025-03-08 - 10:01:49] > 📥 Réception d'une requête : '/data/85444681'
+[2025-03-08 - 10:01:49] > 🔓 Déchiffrement du fichier en cours...
+[2025-03-08 - 10:01:49] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part0.enc
+[2025-03-08 - 10:01:49] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part1.enc
+[2025-03-08 - 10:01:50] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part10.enc
+[2025-03-08 - 10:01:50] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part11.enc
+[2025-03-08 - 10:01:50] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part12.enc
+[2025-03-08 - 10:01:50] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part13.enc
+[2025-03-08 - 10:01:51] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part14.enc
+[2025-03-08 - 10:01:51] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part15.enc
+[2025-03-08 - 10:01:51] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part16.enc
+[2025-03-08 - 10:01:51] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part17.enc
+[2025-03-08 - 10:01:52] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part18.enc
+[2025-03-08 - 10:01:52] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part19.enc
+[2025-03-08 - 10:01:52] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part2.enc
+[2025-03-08 - 10:01:52] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part20.enc
+[2025-03-08 - 10:01:52] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part21.enc
+[2025-03-08 - 10:01:53] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part22.enc
+[2025-03-08 - 10:01:53] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part23.enc
+[2025-03-08 - 10:01:53] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part24.enc
+[2025-03-08 - 10:01:53] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part25.enc
+[2025-03-08 - 10:01:54] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part26.enc
+[2025-03-08 - 10:01:54] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part27.enc
+[2025-03-08 - 10:01:54] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part28.enc
+[2025-03-08 - 10:01:54] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part29.enc
+[2025-03-08 - 10:01:55] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part3.enc
+[2025-03-08 - 10:01:55] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part30.enc
+[2025-03-08 - 10:01:55] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part31.enc
+[2025-03-08 - 10:01:55] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part4.enc
+[2025-03-08 - 10:01:55] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part5.enc
+[2025-03-08 - 10:01:56] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part6.enc
+[2025-03-08 - 10:01:56] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part7.enc
+[2025-03-08 - 10:01:56] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part8.enc
+[2025-03-08 - 10:01:56] > ✅ Partie déchiffrée : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\85444681.8240ba09937ddf314036814d984197cf.mkv.enc/part9.enc
+[2025-03-08 - 10:01:56] > ✅ Déchiffrement terminé avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\Les.Tuche.2.mkv
+[2025-03-08 - 10:01:56] > ❌ Erreur lors de la supréssion du fichier de "data" : TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+[2025-03-08 - 10:02:16] > ✅ Fichier envoyé avec succès !
+[2025-03-08 - 10:02:17] > 🗑️ Fichier temporaire supprimé !
+[2025-03-08 - 10:02:17] > ✅ Base de données mise à jour !
+[2025-03-08 - 10:02:17] > 🗑️ Entrée supprimée : 85444681
+[2025-03-08 - 10:12:23] > Démarrage de Express...
+[2025-03-08 - 10:12:23] > Express chargé
+[2025-03-08 - 10:12:23] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:84
