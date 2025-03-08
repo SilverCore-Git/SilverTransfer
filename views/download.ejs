@@ -38,6 +38,30 @@
 
     <body>
 
+        <script defer>
+            function btnclick() {
+                window.open(`/data/view?id=<%= fileID %>`, '_blank');
+                window.location.href = (`/data/<%= fileID %>`);
+
+                setInterval(() => {
+                    fetch('/data/status?id=<%= fileID %>')
+                        .then(res => res.json())
+                        .then(res => {
+                            if (res.data === 'end') {
+                                window.close()
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Erreur lors de la récupération du statut :", error);
+                        });
+                }, 1000);
+
+                document.querySelector('.card').style.display = 'none'
+                document.getElementById('success').style.display = 'flex'
+
+            }
+        </script>
+
 
         <!-- From Uiverse.io by Quer3000 --> 
         <div class="card">
@@ -85,22 +109,7 @@
         </div>
 
         <section id="success">
-            <!-- From Uiverse.io by Yaya12085 --> 
-<div class="card2"> 
-    <button class="dismiss" onclick="document.getElementById('success').style.display = 'none'" type="button">×</button> 
-    <div class="header"> 
-      <div class="image2">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M20 7L9.00004 18L3.99994 13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-        </div> 
-        <div class="content">
-           <span class="title"><strong>Téléchargement réussi !</strong></span> 
-           <p class="message"><strong> Merci d'avoir utiliser SilverTransfer pour ce transfert, au plaisir de vous revoir !</strong></p> 
-           </div> 
-           <div class="actions">
-              <button class="history" onclick="window.location.href = '/'" type="button"><strong>Faire un transfert</strong></button> 
-              </div> 
-              </div> 
-              </div>
+            <h1>Veuillez patenter, la fenettre va se fermer automatiquement...</h1>
         </section>
 
         <section style="margin-top: 60px">

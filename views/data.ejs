@@ -14,7 +14,7 @@
 
     <section id="download">
 
-        <h1><%= status %> du fichier...</h1>
+        <h1 id="status">Chargement en cours...</h1>
 
         <div class="loader">
             <!-- From Uiverse.io by Pradeepsaranbishnoi --> 
@@ -29,6 +29,26 @@
         </div>
 
     </section>
+
+    <script>
+        setInterval(() => {
+            fetch('/data/status?id=<%= id %>')
+                .then(res => res.json())
+                .then(res => {
+                    if (res.data === 'end') {
+                        document.getElementById('status').innerHTML = 'Téléchargement terminé !';
+                        setTimeout(() => {
+                            window.location.href = '/data/end';
+                        }, 1000);
+                        return;
+                    }
+                })
+                .catch(error => {
+                    console.error("Erreur lors de la récupération du statut :", error);
+                });
+        }, 1000);
+    </script>
+    
 
     <section style="margin-top: 60px">
 

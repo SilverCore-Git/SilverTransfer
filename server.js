@@ -67,8 +67,8 @@ const config = require('./config/config.json');
 
 const { encryptFile, decryptFile, encryptText, decryptText } = require("./src/crypt.js");
 const { loadDatabase, saveDatabase, deleteFiledb, resetDatabase, deleteDatabaseFile, createDatabaseFile } = require('./src/database.js');
-const { setTimeout } = require("timers/promises");
 const { removeExpirFile } = require("./src/removeData.js");
+const { render } = require("ejs");
 
 
 async function resetDB() {
@@ -85,9 +85,13 @@ async function resetDB() {
 }
 resetDB()
 
+ 
 let fileDatabase = {};
 fileDatabase = loadDatabase();
 
+setInterval(() => {
+    fileDatabase = loadDatabase();
+}, 5000)
 
 // initialisation de la suprésion des fichier expirer
 setInterval(() => { removeExpirFile() }, 3600000);
@@ -195,6 +199,9 @@ app.post(config.pushfilepath, upload.single("file"), async (req, res) => {
 });
 
 
+
+
+
 // Route pour afficher le bouton de téléchargement
 app.get("/t/:id", async (req, res) => {
     console.log("____Réception d'une requête : ", `'/t/${req.params.id}'`);
@@ -239,102 +246,114 @@ app.get("/t/:id", async (req, res) => {
 
     
     const fileEntry = fileDatabase[fileID];
+
+    if (!fileEntry) {
+        return res.status(404).render("errfile", { status: "ID de fichier non trouver..." });
+    }
+
     const fSize = await formatFileSize(fileEntry.size);
+    
     const fileName = fileEntry.fileName.split('.')[1];
     const decryptedFileName = decryptText(fileName);
-    if (!fileEntry) {
-        return res.status(404).render("fatherfile", { error: "ID non trouver !", describ: "ID de fichier non trouver..." });
-    }
+
 
     res.render("download", { fileName: decryptedFileName, fileID: fileID, fileSize: fSize });
 });
 
-// Route pour servir le fichier déchiffré
+
+app.get('/data/view', (req, res) => {
+    res.render("data", { id: req.query.id })
+})
+app.get('/data/end', (req, res) => {
+    res.render("end", {})
+})
+app.get('/data/status', (req, res) => {
+    const id = req.query.id
+    if (id) {
+        
+        const fileEntry = fileDatabase[id];
+        if (!fileEntry) {
+            res.json({
+                data: 'end'
+            })
+        } else {
+            res.json({
+                data: 'processing'
+            })
+        }
+    }
+})
+
+// ➤ **Route principale** : Déchiffrement et téléchargement du fichier
 app.get("/data/:filename", async (req, res) => {
-    console.log("📥 Réception d'une requête :", `'/data/${req.params.filename}'`);
-    
-    const fileID = req.params.filename; // Nom chiffré du fichier
+    console.log("📥 Requête reçue : /data/", req.params.filename);
+    const fileID = req.params.filename;
 
-            // dev access
-        const dev = req.query.dev
-        const err = req.query.err
+    // Gestion accès développeur
+    const dev = req.query.dev;
+    const err = req.query.err;
+    if (dev === "true") {
+        console.warn("⚠️ Accès développeur ! ID =", fileID);
 
-        if (dev === 'true') {
-
-            console.warn('⚠️ </> Acces développeur ! id?=',fileID)
-
-            if (err === '404') {
-                res.status(404).json({ error: "Fichier non trouvé dans la base de données" });
-                return
-            }
-            else if (err === 'end') {
-                res.render("end", {  });
-            }
-
-            res.render("data", { status: 'status' });
-            return
-
+        if (err === "404") {
+            return res.status(404).render("errfile", { status: "Erreur 404" });
+        } else if (err === "end") {
+            return res.status(200).render("end");
         }
 
-    res.render("data", { status: 'initialisation' });
-
-    const fileDB = fileDatabase[fileID]; // Récupération de la base de données
+        return res.status(200).render("data", { status: "Statut inconnu" });
+    }
+    
+    const fileDB = fileDatabase[fileID];
     if (!fileDB) {
-        return res.status(404).json({ error: "Fichier non trouvé dans la base de données" });
+        return res.status(404).json({ error: "Fichier non trouvé" });
     }
 
-    const fileName = fileDB.fileName.split('.')[1];
-
-
-    const decryptedFileName = decryptText(fileName); // Déchiffrer le vrai nom du fichier
-
-    const encryptedFilePath = path.join(__dirname, "data", fileDB.fileName); // Fichier chiffré
-    const decryptedFilePath = path.join(__dirname, "temp", decryptedFileName); // Destination du déchiffrement
+    const fileName = fileDB.fileName.split(".")[1];
+    const decryptedFileName = decryptText(fileName);
+    const encryptedFilePath = path.join(__dirname, "data", fileDB.fileName);
+    const decryptedFilePath = path.join(__dirname, "temp", decryptedFileName);
 
     if (!fs.existsSync(encryptedFilePath)) {
-        return res.status(404).json({ error: "Fichier chiffré non trouvé sur le serveur" });
+        return res.status(404).json({ error: "Fichier chiffré non trouvé" });
     }
 
-    console.log("🔓 Déchiffrement du fichier en cours...");
+    console.log("🔓 Déchiffrement...");
 
-    res.render("data", { status: 'Déchiffrement' });
 
-    await decryptFile(encryptedFilePath, decryptedFilePath); // Déchiffrement du fichier
 
-    await res.setHeader("Content-Disposition", `attachment; filename=${decryptedFileName}`);
+    await decryptFile(encryptedFilePath, decryptedFilePath);
+
+
+    
+    res.setHeader("Content-Disposition", `attachment; filename=${decryptedFileName}`);
 
     try {
-
-        let { setTimeout } = require('timers/promises');
-        await setTimeout(1000);
-
         await new Promise((resolve, reject) => {
-            res.render("data", { status: 'Téléchargement' });
+
             res.sendFile(decryptedFilePath, (err) => {
                 if (err) {
-                    console.error("❌ Erreur lors de l'envoi du fichier :", err);
-                    reject({ status: 500, error: "Erreur lors de l'envoi du fichier", describ: err });
+                    console.error("❌ Erreur d'envoi :", err);
+                    reject({ status: 500, error: "Erreur d'envoi", detail: err });
                 } else {
-                    console.log(`✅ Fichier envoyé avec succès !`);
+                    console.log("✅ Fichier envoyé !");
                     resolve();
                 }
             });
+
         });
-    
-        // Supprimer le fichier temporaire après envoi
+
+        // Supprime le fichier temporaire après l'envoi
         await fs.promises.unlink(decryptedFilePath);
-        console.log(`🗑️ Fichier temporaire supprimé !`);
-    
-        // Suppression du fichier de la base de données
+        console.log("🗑️ Fichier temporaire supprimé !");
         await deleteFiledb(fileID);
+
 
 
     } catch (error) {
         console.error(error);
-        res.status(error.status || 500).json({ error: error.error, describ: error.describ });
+        res.status(error.status || 500).json({ error: error.error, detail: error.detail });
     }
-
-    res.render("data", {  });
 });
 
 
@@ -375,3 +394,5 @@ const PORT = config.Port;
 http.createServer(app).listen(PORT, () => {
     console.log(`Serveur HTTPS en ligne sur https://transfer.silverdium.fr:${PORT}`);
 });
+
+

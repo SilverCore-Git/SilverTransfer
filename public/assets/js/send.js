@@ -58,10 +58,24 @@ export function send(FILE) {
         }
     };
 
-    xhr.onload = () => {
+    xhr.onload = async () => {
         if (xhr.status === 200) {
             const data = JSON.parse(xhr.responseText);
             console.log("Upload réussi :", data);
+
+            let delay;
+            if (file.size < 1024 * 1024 * 1024) {
+                delay = 1000;
+            } else if (file.size > 1024 * 1024 * 1024) {
+                delay = 3000;
+            } else if (file.size > 5024 * 1024 * 1024) {
+                delay = 6000;
+            }
+
+            setTimeout(() => {
+                document.getElementById('statusl').innerText = 'Vérification...';
+            }, delay);
+
 
             const Link = `https://t.silverdium.fr/t/${data.id}`
             link.value = Link
