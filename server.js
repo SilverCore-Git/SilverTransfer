@@ -94,7 +94,7 @@ setInterval(() => {
 }, 5000)
 
 // initialisation de la suprésion des fichier expirer
-setInterval(() => { removeExpirFile() }, 3600000);
+// setInterval(() => { removeExpirFile() }, 3600000); // marche pas, fait crach remplacer dans la fin de la root /data
 
 
 // SSL key & cert path
@@ -284,6 +284,58 @@ app.get('/data/status', (req, res) => {
     }
 })
 
+app.get('/data/close', (req, res) => {
+    res.write(`
+        <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fermeture de l'onglet</title>
+    <script>
+        function closeTab() {
+            window.close();  // Tente de fermer l'onglet
+        }
+
+        window.onload = function() {
+            setTimeout(() => {
+                closeTab();
+            }, 1000); // Essaye de fermer l'onglet après 1 seconde
+
+            setTimeout(() => {
+                document.getElementById("manual-close").style.display = "block"; // Affiche un bouton si la fermeture automatique échoue
+            }, 1500);
+        };
+    </script>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>👋 Fermeture de l'onglet...</h1>
+    <p>Si l'onglet ne se ferme pas automatiquement, cliquez sur le bouton ci-dessous.</p>
+
+    <button id="manual-close" onclick="closeTab()">Fermer l'onglet</button>
+
+</body>
+</html>
+`)
+})
 
 // ➤ **Route principale** : Déchiffrement et téléchargement du fichier
 app.get("/data/:filename", async (req, res) => {
@@ -347,6 +399,8 @@ app.get("/data/:filename", async (req, res) => {
         // Supprime le fichier temporaire après l'envoi
         await fs.promises.unlink(decryptedFilePath);
         console.log("🗑️ Fichier temporaire supprimé !");
+        await fs.promises.rm(encryptedFilePath, { recursive: true, force: true });
+        console.log("🗑️ Fichier local supprimé !");
         await deleteFiledb(fileID);
 
 

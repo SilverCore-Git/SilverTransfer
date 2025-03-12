@@ -74,4 +74,4 @@ function removeExpirFile() {
 }
 
 
-module.exports = removeExpirFile
+module.exports = { removeExpirFile }

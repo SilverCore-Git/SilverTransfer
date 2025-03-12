@@ -77,7 +77,7 @@ export function send(FILE) {
             }, delay);
 
 
-            const Link = `https://t.silverdium.fr/t/${data.id}`
+            const Link = `https://test.silverdium.fr:8445/t/${data.id}`
             link.value = Link
             const qr = new QRious({
                 element: document.getElementById('codeQR'),
