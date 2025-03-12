@@ -1,0 +1,34 @@
+{
+
+    "resetDB": false,
+
+    "expiretime": 15,
+
+    "maxbyteforkey": 256,
+
+    "pushfilepath": "/upload/yourmother",
+
+
+
+    "allowedURL": "https://transfer.silverdium.fr",
+
+    "Port": 7894,
+
+
+
+    "DBFile": "db/database.json",
+
+    "DATAdir": "data",
+    "TEMPdir": "temp",
+
+
+    "devAccess": {
+        "id": 12345678
+    },
+
+
+
+    "SSLkeyPath": "/etc/letsencrypt/live/transfer.silverdium.fr/privkey.pem",
+    "SSLcertPath": "/etc/letsencrypt/live/transfer.silverdium.fr/fullchain.pem"
+
+}

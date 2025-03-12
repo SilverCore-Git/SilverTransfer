@@ -1,10 +1,5 @@
-<!-- 
-    @author SilverCore
-    @author SilverTransfert
-    @author MisterPapaye
--->
-
 <!DOCTYPE html>
+
 <html lang="en">
 
     <head>
@@ -13,178 +8,283 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="hostname" content="transfer.silverdium.fr">
-        <meta name="copyright" content="2025 SilverTransfer | SilverCore">
-        <meta name="theme-color" content="#9316d3">
+        <meta name="copyright" content="2024 - 2025 SilverTransfer | SilverCore">
+        <meta name="author" content="SilverCore | SilverTransfer | MisterPapaye">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="author" content="SilverCore, SilverTransfer | MisterPapaye">
-        <link rel="icon" href="https://t.silverdium.fr/public/logoST.png" type="image/png">
+        <meta name="theme-color" content="#AF40FF">
 
+        <link id="favicon" rel="icon" href="./assets/img/logo.png" type="image/png">
+        <link rel="apple-touch-icon" href="./assets/img/logo.png" type="image/png">
+        <link rel="icon" href="./assets/img/logo.png" type="image/png">
 
-        <!-- SEO -->
-        <meta name="keywords" content="SilverTransfert, silver, Transfert, 50go, gratuit, illimité, weTransfert, swissTransfert silvercore, silverdium, MisterPapaye, jemy5">
-        <meta name="description" content="SilverTransfert outils de Transfertt de fichier !! by silvercore">
+        <!-- meta SEO -->
+        <meta name="keywords" content="SilverTransfer, fichier, transfer, transfert, 10Go, 50Go, GRATUIT, open source, éthique, français, France, SilverCore, Silverdium, MisterPapaye, Jemy5">
+        <meta name="description" content="SilverTransfer est un outil de transfert de fichiers français, open source, GRATUIT avec une politique éthique et protectrice des données personnelles, by SilverCore">
         <meta name="language" content="fr">
         <meta name="geo.region" content="FR">
-        <meta name="rating" content="general">
         <meta name="googlebot" content="index, follow">
+        <meta name="rating" content="general">
         <meta name="format-detection" content="telephone=no">
 
-        <!-- Open Graph -->
-        <meta property="og:title" content="SilverTransfert">
-        <meta property="og:site_name" content="SilverTransfer - Outils de Transfert de fichier">
-        <meta property="og:description" content="Transfert de ficher GRATIUT, heberger en France !! by silvercore">
-        <meta property="og:image" content="https://t.silverdium.fr/public/logoST.png">
+        <!-- meta open graph -->
+        <meta property="og:title" content="SilverTransfer">
+        <meta property="og:description" content="SilverTransfer est un outil de transfert de fichiers français, open source, GRATUIT avec une politique éthique et protectrice des données personnelles, by SilverCore">
+        <meta property="og:image" content="https://transfer.silverdium.fr/assets/img/logo.png">
+        <meta property="og:site_name" content="SilverTransfer">
         <meta property="og:locale" content="fr_FR">
 
-        <!-- google adsense -->
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3220302522823811" crossorigin="anonymous"></script>
+        <script src="https://corsproxy.io/https://t.silverdium.fr/popup.js" type="module"></script>
 
-
-        <!-- style sheet -->
-        <link rel="stylesheet" href="./body.css">
-        <link rel="stylesheet" href="./card1.css">
-        <link rel="stylesheet" href="./card2.css">
-        <link rel="stylesheet" href="./footer.css">
-        <link rel="stylesheet" href="./loader.css">
-
-        
         <!-- Google Analytics  -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y1S2EJD13P"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y1S2EJD13P" defer></script>
         <script>
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-        
           gtag('config', 'G-Y1S2EJD13P');
         </script>
 
+        <!-- reCAPTCHA for your security !! -->
+        <script src="https://www.google.com/recaptcha/api.js?render=6LcSAs4qAAAAAC65G0pzxb3I5pQh9Na-l7oDaEF-" defer></script>
 
-        <!-- SilverPopups -->
+        <!-- libs  -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="./popup.js" type="module"></script>
-        <script src="./popups.js" type="module"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
 
-        <title>SilverTransfert</title>
+        <!-- Style sheet -->
+        <link rel="stylesheet" href="./assets/css/body.css"> <!-- Doit toujours être en premier -->
+        <link rel="stylesheet" href="./assets/css/loader.css">
+        <link rel="stylesheet" href="./assets/css/main.css">
+        <link rel="stylesheet" href="./assets/css/upload.css"> 
+        <link rel="stylesheet" href="./assets/css/footer.css">
+        <link rel="stylesheet" href="./assets/css/done.css">
 
+        <script src="./index.js" type="module"></script>
+    
+        <title>SilverTransfer</title>
+    
     </head>
-
-    <body>
+    
+    <body class="body">
         
-        <section class="upload">
-
-            <section>
-
-                <h1 style="font-size: 2.3rem;"><strong>SilverTransfert</strong></h1>
+        <main class="main">
+            <div class="hero">
+                <h1>SilverTransfer</h1>
+                <h2>Outil de transfert de fichiers</h2>
                 
-                <ul>
-                    <li><a style="color: white;" href="https://tipeee.com/silverdium" target="_blank">Chiffré de bout en bout</a></li>
-                    <li><a style="color: white;" href="https://youtu.be/dQw4w9WgXcQ" target="_blank">Supprimé après 15 jours</a></li>
-                    <li><a style="color: white;" href="https://github.com/SilverCore-Git/SilverTransfer" target="_blank">Open Source | Ethique</a></li>
-                    <li><a style="color: white;" href="https://core.silverdium.fr" target="_blank">by SilverCore</a></li>
-                </ul>
+                <ul><strong>
+                    <li><i>🇫🇷</i> Hébergé en France</li>
+                    <li><i class="bi bi-lock"></i> Chiffré de bout en bout</li>
+                    <li><i class="bi bi-github"></i> Open source</li>
+                    <li><i class="bi bi-heart"></i> Politique éthique</li>
+                    <li><i class="bi bi-trash"></i> Supprimé après téléchargement</li>
+                    <li><img style="width: 20px; height: 20px;" src="https://api.silverdium.fr/img/core/logo.png"> By SilverCore</li>
+                </strong></ul>
 
-            </section>
+                <button class="btn-savoir">En savoir plus</button>
+                <button id="go-btn" class="btn-go">
+                    <div class="svg-wrapper-1">
+                        <div class="svg-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                <path fill="none" d="M0 0h24v24H0z"></path>
+                                <path fill="currentColor" d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <span><strong>Faire un transfert !</strong></span>
+                </button>
+            </div>
+        </main>
 
-            <div class="container">
+        <section id="upload">
 
-                <div class="folder">
+            <div class="card">
+        
+                <h1>SilverTransfer</h1>
+        
+                <h2>Choisissez votre fichier</h2>
+        
+                <!-- From Uiverse.io by Yaya12085 --> 
+                <div id="dropZone" class="container"> 
+                    <label for="file" class="header"> 
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 10V9C7 6.23858 9.23858 4 12 4C14.7614 4 17 6.23858 17 9V10C19.2091 10 21 11.7909 21 14C21 15.4806 20.1956 16.8084 19 17.5M7 10C4.79086 10 3 11.7909 3 14C3 15.4806 3.8044 16.8084 5 17.5M7 10C7.43285 10 7.84965 10.0688 8.24006 10.1959M12 12V21M12 12L15 15M12 12L9 15" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg> 
+                        <p>Glissez ou sélectionnez le fichier ici !</p>
+                    </label> 
+                    <label for="file" class="footer"> 
+                        <svg fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.331 6H8.5v20h15V14.154h-8.169z"></path>
+                            <path d="M18.153 6h-.009v5.342H23.5v-.002z"></path>
+                        </svg> 
+                        <p id="p">Aucun fichier sélectionné</p> 
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.16565 10.1534C5.07629 8.99181 5.99473 8 7.15975 8H16.8402C18.0053 8 18.9237 8.9918 18.8344 10.1534L18.142 19.1534C18.0619 20.1954 17.193 21 16.1479 21H7.85206C6.80699 21 5.93811 20.1954 5.85795 19.1534L5.16565 10.1534Z" stroke="#000000" stroke-width="2"></path> 
+                            <path d="M19.5 5H4.5" stroke="#000000" stroke-width="2" stroke-linecap="round"></path> 
+                            <path d="M10 3C10 2.44772 10.4477 2 11 2H13C13.5523 2 14 2.44772 14 3V5H10V3Z" stroke="#000000" stroke-width="2"></path> 
+                        </svg>
+                    </label> 
+                    <input id="file" type="file">
+                </div>
+        
+                <!-- From Uiverse.io by eirikvold --> 
+                <button class="send-btn">
+                    <div class="svg-wrapper-1">
+                        <div class="svg-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                <path fill="none" d="M0 0h24v24H0z"></path>
+                                <path fill="currentColor" d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <span>Envoyer !</span>
+                </button>
+        
+                <style>
+                    .send-btn {
+                        opacity: 0;
+                        transition: opacity 1.5s ease-in-out;
+                    }
+                </style>
+        
+                <script defer>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const file = document.getElementById('file');
+                        const p = document.getElementById('p');
+                        const sendBtn = document.querySelector('.send-btn');
+        
+                        file.addEventListener('change', function() {
+                            if (file.files.length > 0) {
+                                p.innerText = `Fichier sélectionné : ${file.files[0].name}`;
+                                sendBtn.style.display = 'flex';
+                                setTimeout(() => {
+                                    sendBtn.style.opacity = 1;
+                                }, 10);
+                            } else {
+                                p.innerText = 'Aucun fichier sélectionné';
+                                sendBtn.style.opacity = 0;
+                                setTimeout(() => {
+                                    sendBtn.style.display = 'none';
+                                }, 3000);
+                            }
+                        });
+                    });
+                </script>
+        
+            </div>
+        
+        </section>
+        
 
-                  <div class="front-side">
 
-                    <div class="tip"></div>
-                    <div class="cover"></div>
+        <section id="done">
 
-                  </div>
+            <div class="card">
 
-                  <div class="back-side cover"></div>
+                <h1>SilverTransfer</h1>
+
+                <h2>Téléversement terminer !</h2>
+
+                <div class="input-container">
+
+                    <label>Lien de téléchargement :</label>
+                    <input type="url" id="linkInput" placeholder="Tu m'a trouver gg !!" required>
+                    <button class="copy-btn" onclick="copyLink()"><i class="bi bi-copy"></i> ‏‎ Copier le lien</button>
 
                 </div>
 
-                <label class="custom-file-upload"> 
+                <script>
+                    function copyLink() {
+                        const link = document.getElementById('linkInput').value;
+                        navigator.clipboard.writeText(link).then(() => {
+                            const btn = document.querySelector('.copy-btn');
+                            btn.innerHTML = '<i class="bi bi-star"></i> ‏‎ Copié !';
+                            btn.classList.add('copied');
+            
+                            setTimeout(() => {
+                                btn.innerHTML = '<i class="bi bi-copy"></i> ‏‎ Copier le lien';
+                                btn.classList.remove('copied');
+                            }, 2000);
+                        }).catch(err => console.error('Erreur de copie :', err));
+                    }
+                </script>
 
-                    <input id="file" class="title" type="file"/>
-                    <span>SELECTIONNER<br>un fichier</span>
-    
-                </label>
+                <div class="qr-container">
+                    <canvas id="codeQR"></canvas>
+                    <label>Qr code by <a style="color: initial; text-decoration: none;" href="https://qr.silverdium.fr">SilverQR</a></label>
+
+                    <button class="download-btn" onclick="downloadQR()">📥 Télécharger le QR Code</button>
+                </div>
+                
+
+                <script>
+                    function downloadQR() {
+                        const canvas = document.getElementById("codeQR");
+                        const link = document.createElement("a");
+                        link.href = canvas.toDataURL("image/png");
+                        link.download = "QRCode.png";
+                        link.click();
+                    }
+                </script>
+
+                <label style="margin-top: 20px; margin-bottom: -20px; font-size: 1.3rem; color: purple;"><a href="/"><strong>Refaire un transfert ?</strong></a></label>
 
             </div>
+
+        </section>
+
+
+
+        <div id="loader">
 
             <!-- From Uiverse.io by adamgiebl --> 
-            <button id="send">
-                <div class="svg-wrapper-1">
-                    <div class="svg-wrapper">
-                        <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        width="24"
-                        height="24"
-                        >
-                        <path fill="none" d="M0 0h24v24H0z"></path>
-                        <path
-                            fill="currentColor"
-                            d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
-                        ></path>
-                        </svg>
-                    </div>
-                </div>
-                <span><strong>ENVOYER</strong></span>
-            </button>
-<!-- 
-            <button onclick="alert('Fonction en développement !')" class="discrd-embed">
-                <strong>Embed discord</strong>
-            </button> -->
-  
-        </section>
+            <section class="dots-container">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </section>  
 
-        <section>
-            <h2>👑 Merci de soutenir les projets <a href="https://core.silverdium.fr">SilverCore</a> ! ❤️<br></h2>
-            <h2 class="btn_tipeee" onclick="tipeee()" style="margin-bottom: 90px;">
-                <span class="text"><strong>😎 VOUS POUVEZ NOUS AIDER ! 💸</strong></span>
-            </h2>
-        </section>
+        </div>
 
-        <section class="download">
-            <!-- From Uiverse.io by adamgiebl -->
-            <div class="url-container">
-                <form>
-                    <h2><strong>Téléchargement</strong></h2>
-    
-                    <div>
-                        <input class="url-input" id="urlInput" type="text" value="Chargement..." readonly>
-                        <button class="copy-button" id="copyButton"><strong style="font-size: 1.7rem;">Copier l'URL</strong></button>
-                        <span id="confirmbox"></span>
+        <div class="progress">
+            <div class="bar">
+                
+                <div class="div">
+
+                    <h1 style="margin-bottom: 3rem;">
+                        SilverTransfer
+                        <br><div id="statusl">Téléversement en cours...</div>
+                    </h1>
+
+                    <h2 id="value">0%</h2>
+
+                    <progress id="progressbar" value="10" max="100"></progress>
+
+                    <!-- From Uiverse.io by satyamchaudharydev --> 
+                    <div class="loader">
+                        <div class="box"></div>
+                        <div class="box"></div>
+                        <div class="box"></div>
                     </div>
 
-                </form>
-            </div>
-        </section>     
-        
-        <section class="loader">
+                    <h2 style="margin-top: 3rem;" id="flach">Le savait tu : je suis une web app !</h2>
 
-            <!-- From Uiverse.io by Nawsome --> 
-            <svg class="pl" width="240" height="240" viewBox="0 0 240 240">
-                <circle class="pl__ring pl__ring--a" cx="120" cy="120" r="105" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 660" stroke-dashoffset="-330" stroke-linecap="round"></circle>
-                <circle class="pl__ring pl__ring--b" cx="120" cy="120" r="35" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 220" stroke-dashoffset="-110" stroke-linecap="round"></circle>
-                <circle class="pl__ring pl__ring--c" cx="85" cy="120" r="70" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 440" stroke-linecap="round"></circle>
-                <circle class="pl__ring pl__ring--d" cx="155" cy="120" r="70" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 440" stroke-linecap="round"></circle>
-            </svg>
-
-            <div class="progress-container">
-                <div class="progress-bar" id="prog-bar">
-                    <label class="progress-text" id="prog-text">0%</label>
                 </div>
+            
             </div>
-
-        </section>
-
-
-        <script src="./send.js"></script>
-        <script src="./getconfig.js"></script>
+        </div>
 
         <footer id="footer">
             <strong><p>&copy; 2025 SilverTransfert | <a href="https://core.silverdium.fr">SilverCore</a>. Tous droits réservés.</p></strong>
         </footer>
 
+
     </body>
+
+
 
 </html>

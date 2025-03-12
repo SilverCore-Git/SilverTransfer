@@ -11,7 +11,7 @@
     <head>
 
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
         <meta name="copyright" content="2025 SilverTransfer | SilverCore">
         <meta name="theme-color" content="#9316d3">
@@ -28,29 +28,89 @@
 
         <title>SilverTransfer | Télécharger : <%= fileName %></title>
 
+        <link rel="stylesheet" href="assets?file=download&ext=css">
+        <script src="assets?file=download&ext=js" defer></script>
+
         <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
-        <style>
-            @import url("https://t.silverdium.fr/body.css");
-            @import url("https://t.silverdium.fr/footer.css");
-            body { background: #0d0d0d; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; font-family: Arial, sans-serif; }
-            h1 { font-size: 3rem; background: linear-gradient(90deg, #ff00ff, #6a00ff, #00d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-            label { font-size: 1.5rem; color: white; margin-bottom: 15px; }
-            .download-btn { margin-top: 60px; font-size: 22px; font-weight: bold; color: white; background: linear-gradient(90deg, #ff00ff, #6a00ff, #00d4ff); padding: 20px 50px; border: none; border-radius: 50px; cursor: pointer; transition: 0.4s; }
-            .download-btn:hover { transform: scale(1.1); }
-        </style>
 
     </head>
 
     <body>
 
-        <a href="https://transfer.silverdium.fr"><h1>Télécharger votre fichier avec SilverTransfer</h1></a>
+        <script defer>
+            function btnclick() {
+                window.open(`/data/view?id=<%= fileID %>`, '_blank');
+                window.location.href = (`/data/<%= fileID %>`);
 
-        <label><%= fileName %></label>
+                setInterval(() => {
+                    fetch('/data/status?id=<%= fileID %>')
+                        .then(res => res.json())
+                        .then(res => {
+                            if (res.data === 'end') {
+                                document.getElementById('ah').innerText = "Veuillez fermer l'onglais"
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Erreur lors de la récupération du statut :", error);
+                        });
+                }, 1000);
 
-        <button class="download-btn" onclick="window.location.href='/data/<%= fileName %>'">
-            <i class="fas fa-download"></i> Télécharger
-        </button>
+                document.querySelector('.card').style.display = 'none'
+                document.getElementById('success').style.display = 'flex'
+
+            }
+        </script>
+
+
+        <!-- From Uiverse.io by Quer3000 --> 
+        <div class="card">
+            <div class="image_container">
+                <img class="image" src="/assets/img/logo.png">
+            </div>
+            <div class="title1">
+            <span>SilverTransfer</span>
+            </div>
+            <div class="size">
+            <span>Informations</span>
+            <ul class="list-size">
+                <li class="item-list item-list-button">
+                    <strong>Taille</strong>
+                    <br><%= fileSize %>
+                </li>
+                <li class="item-list item-list-button">
+                    <strong>Nom</strong>
+                    <br><%= fileName %>
+                </li>
+            </ul>
+            </div>
+            <div class="action">
+            <button class="download-button" onclick="btnclick()">
+                <span class="button-text" style="text-transform: uppercase;">Télécharger</span>
+                <span class="button-icon">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 35 35"
+                    class="download-svg"
+                >
+                    <path
+                    d="M17.5,22.131a1.249,1.249,0,0,1-1.25-1.25V2.187a1.25,1.25,0,0,1,2.5,0V20.881A1.25,1.25,0,0,1,17.5,22.131Z"
+                    ></path>
+                    <path
+                    d="M17.5,22.693a3.189,3.189,0,0,1-2.262-.936L8.487,15.006a1.249,1.249,0,0,1,1.767-1.767l6.751,6.751a.7.7,0,0,0,.99,0l6.751-6.751a1.25,1.25,0,0,1,1.768,1.767l-6.752,6.751A3.191,3.191,0,0,1,17.5,22.693Z"
+                    ></path>
+                    <path
+                    d="M31.436,34.063H3.564A3.318,3.318,0,0,1,.25,30.749V22.011a1.25,1.25,0,0,1,2.5,0v8.738a.815.815,0,0,0,.814.814H31.436a.815.815,0,0,0,.814-.814V22.011a1.25,1.25,0,1,1,2.5,0v8.738A3.318,3.318,0,0,1,31.436,34.063Z"
+                    ></path>
+                </svg>
+                </span>
+            </button>
+            </div>
+        </div>
+
+        <section id="success">
+            <h1 id="ah">Veuillez patenter, la fenettre va se fermer automatiquement...</h1>
+        </section>
 
         <section style="margin-top: 60px">
 

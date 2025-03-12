@@ -1,0 +1,40 @@
+@import url("https://t.silverdium.fr/body.css");
+@import url("https://t.silverdium.fr/footer.css");
+body { overflow: hidden; background: #0d0d0d; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; font-family: Arial, sans-serif; }
+
+#end {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+
+    padding: 0 2rem 6rem 2rem;
+
+    background: #c5c5c531;
+    border-radius: 15px;
+}
+#end h1 {
+    font-size: 3rem;
+    margin-bottom: 5rem;
+}
+
+
+/* From Uiverse.io by SteveBloX */ 
+button {
+  width: 250px;
+  height: 60px;
+  border: 3px solid #fd31ca;
+  border-radius: 45px;
+  transition: all 0.3s;
+  cursor: pointer;
+  background: white;
+  font-size: 1.2em;
+  font-weight: 550;
+}
+
+button:hover {
+  background: #fd31f3;
+  color: white;
+  font-size: 1.5em;
+}

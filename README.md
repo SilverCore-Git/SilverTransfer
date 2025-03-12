@@ -1,7 +1,17 @@
 # [SilverTransfer](https://transfer.silverdium.fr)
 
+
 SilverTransfer outils de transfer de fichiers :
 https://transfer.silverdium.fr
+
+## FrameWork :
+- express
+- multer
+- fs
+- cors
+- parh
+- crypto
+- dotenv
 
 ---
 

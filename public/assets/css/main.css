@@ -1,0 +1,207 @@
+/**
+ * @author SilverCore
+ * @author SilverTransfer
+ * @author MisterPapaye
+ */
+
+main {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+}
+main h1 {
+    font-size: 3rem;
+}
+main h2 {
+    margin-top: -1rem;
+}
+
+.hero {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    background: linear-gradient(144deg,#AF40FF, #5B42F3,#00DDEB);
+    padding: 1rem 2rem 3rem 2rem;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+
+}
+
+
+
+.hero ul {
+    list-style: none;
+
+    font-size: 1.3rem;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding-right: 2rem;
+    padding-left: 1.7rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+
+    text-align: left;
+    border-radius: 15px;
+}
+.hero ul li:not(:last-child) {
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid black;
+}
+.hero ul li {
+    margin-left: 5px;
+}
+.hero ul i,
+.hero ul img {
+    margin-right: 15px;
+}
+.hero ul img {
+    transform: translateY(3px);
+    border-radius: 1rem;
+}
+
+
+
+
+
+/* From Uiverse.io by cssbuttons-io */ 
+.btn-savoir {
+    --color: #560bad;
+    font-family: inherit;
+    display: inline-block;
+    width: 8em;
+    height: 2.6em;
+    line-height: 2.5em;
+    margin: 20px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border: 2px solid var(--color);
+    transition: color 0.5s;
+    z-index: 1;
+    font-size: 17px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: var(--color);
+  }
+  
+  .btn-savoir:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--color);
+    height: 150px;
+    width: 200px;
+    border-radius: 50%;
+  }
+  
+  .btn-savoir:hover {
+    color: #fff;
+  }
+  
+  .btn-savoir:before {
+    top: 100%;
+    left: 100%;
+    transition: all 0.7s;
+  }
+  
+  .btn-savoir:hover:before {
+    top: -30px;
+    left: -30px;
+  }
+  
+  .btn-savoir:active:before {
+    background: #3a0ca3;
+    transition: background 0s;
+  }
+  .btn-savoir:active {
+    transform: scale(0.95);
+  }
+  
+
+
+
+
+
+
+
+/* From Uiverse.io by adamgiebl */ 
+.btn-go {
+    font-family: inherit;
+  
+    width: 350px;
+    height: 80px;
+    font-size: 30px;
+  
+    margin-bottom: 8%;
+  
+    background: linear-gradient(to bottom, rgb(255, 20, 165) 0%,#e413ff 100%);
+    color: white;
+    padding: 0.7em 1em;
+    padding-left: 0.9em;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  
+  .btn-go span {
+    display: block;
+    margin-left: 0.3em;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .btn-go svg {
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .btn-go:hover .svg-wrapper {
+    animation: fly-1 0.6s ease-in-out infinite alternate;
+  }
+  .btn-go:active .svg-wrapper {
+    animation: go 5s ease-in-out, goReverse 0.5s ease-in-out 0.5s forwards;
+    animation-play-state: running;
+  }
+  
+  .btn-go:hover svg {
+    transform: translateX(1.2em) rotate(45deg) scale(1.5);
+  }
+  
+  .btn-go:hover span {
+    transform: translateX(10em);
+  }
+  
+  .btn-go:active {
+    transform: scale(0.95);
+  }
+  .btn-go:hover {
+    box-shadow: 0 0 10px #ff40f5c4;
+  }
+  
+  @keyframes fly-1 {
+    from {
+      transform: translateY(0.1em);
+    }
+  
+    to {
+      transform: translateY(-0.1em);
+    }
+  }
+  @keyframes go {
+    100% {
+        transform: translateX(200em);
+    }
+  }
