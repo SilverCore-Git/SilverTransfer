@@ -10,7 +10,7 @@ console.log('Démarrage du serveur...');
 const express = require("express");
 const multer = require("multer");
 const fs = require("fs");
-const http = require("http");
+const https = require("https");
 const cors = require("cors");
 const path = require("path");
 const crypto = require("crypto");
@@ -98,10 +98,10 @@ setInterval(() => {
 
 
 // SSL key & cert path
-// const options = {
-//     key: fs.readFileSync(config.SSLkeyPath, "utf8"),
-//     cert: fs.readFileSync(config.SSLcertPath, "utf8"),
-// };
+const options = {
+    key: fs.readFileSync(config.SSLkeyPath, "utf8"),
+    cert: fs.readFileSync(config.SSLcertPath, "utf8"),
+};
 
 const corsOptions = {
     origin: [
@@ -117,11 +117,18 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.set("view engine", "ejs");
 
-// if (!maintenance.maintenance) {
-    app.use(express.static("public"));
-// } else {
-//     app.use(express.static("https://api.silverdium.fr/maintenance"));
-// }
+app.use((req, res, next) => {
+    if (req.hostname !== "transfer.silverdium.fr") {
+
+        res.set("X-Robots-Tag", "noindex, nofollow");
+
+        return res.send('<h1>Tu utilise le mauvais nom de domaine, le bon est :</h1><br><a href="https://transfer.silverdium.fr"><button><h2>https://transfer.silverdium.fr</h2></button></a>');
+    }
+    next();
+});
+
+app.use(express.static("public"));
+
 
 console.log("Express chargé");
 
@@ -153,7 +160,12 @@ const upload = multer({ storage });
 
 
 // route fontend
-
+app.get("/sitemap.xml", (req, res) => {
+    res.sendFile(path.join(__dirname, 'sitemap.xml'))
+})
+app.get("/robots.txt", (req, res) => {
+    res.sendFile(path.join(__dirname, 'robots.txt'))
+})
 
 
 
@@ -445,8 +457,16 @@ app.get("/key/:bytes", (req, res) => {
     res.json({ "status": statu, "message": message, "key": key, "bytes": bytes });
 });
 
+
+
+app.use((req, res) => {
+    res.status(404).redirect('https://api.silverdium.fr/www.errors/404.html');
+});
+
+
+
 const PORT = config.Port;
-http.createServer(app).listen(PORT, () => {
+https.createServer(options, app).listen(PORT, () => {
     console.log(`Serveur HTTPS en ligne sur https://transfer.silverdium.fr:${PORT}`);
 });
 
