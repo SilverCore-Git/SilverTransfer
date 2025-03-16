@@ -10,11 +10,10 @@ import { salert } from "./salert.js";
 
 
 function updateProgressBar(value) {
-    const progressBar = progressbar
-    const progressText = valuetext
+    const progressBar = progressbar;
+    const progressText = valuetext;
 
-    value = Math.min(100, Math.max(1, value));
-
+    value = Math.min(100, Math.max(0, value)); 
     progressBar.value = value;
     progressText.innerText = value + "%";
 
@@ -24,6 +23,7 @@ function updateProgressBar(value) {
         progressBar.style.boxShadow = "0 0 15px rgba(0, 255, 255, 0.8)";
     }
 }
+
 
 
 export function send(FILE) {
@@ -58,7 +58,8 @@ export function send(FILE) {
         }
     };
 
-    xhr.onload = async () => {
+    xhr.onload = async () => { 
+        
         if (xhr.status === 200) {
             const data = JSON.parse(xhr.responseText);
             console.log("Upload réussi :", data);
@@ -81,7 +82,7 @@ export function send(FILE) {
             link.value = Link
             const qr = new QRious({
                 element: document.getElementById('codeQR'),
-                value: document.getElementById('linkInput').value,
+                value: Link,
                 size: 200
             });
 
@@ -92,11 +93,15 @@ export function send(FILE) {
 
         } else {
             console.error("Erreur :", xhr.statusText);
+            salert('Une erreur est survenue...', 'error')
         }
     };
 
-    xhr.onerror = () => {
-        console.error("Erreur de connexion");
+
+    xhr.onerror = function(event) {
+        console.error("Erreur de connexion : ", event);
+        console.error("Détails de la requête : ", event.target);    
+        salert('Erreur de connexion', 'error')
     };
 
     xhr.send(formData);

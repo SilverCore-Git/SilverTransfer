@@ -104,15 +104,18 @@ const options = {
 };
 
 const corsOptions = {
-    origin: [
-        "https://t.silverdium.fr",
-        "https://transfer.silverdium.fr"
-        ],
+    origin: ["https://transfer.silverdium.fr", "https://t.silverdium.fr"],
     allowedHeaders: ["Content-Type"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
 };
+
 
 const app = express();
 console.log("Démarrage de Express...");
+
+res.setHeader('Access-Control-Allow-Origin', 'https://transfer.silverdium.fr');
+res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 app.use(cors(corsOptions));
 app.use(express.json());
 app.set("view engine", "ejs");
@@ -184,6 +187,10 @@ app.get('/assets/img/background/background1', (req, res) => {
 app.post(config.pushfilepath, upload.single("file"), async (req, res) => {
     console.log("____Réception d'une requête : ", `' ${config.pushfilepath} '`);
 
+    if (req.fileValidationError) {
+        return res.status(400).json({ message: req.fileValidationError });
+    }
+
     if (!req.file) {
         return res.status(400).json({ message: "Aucun fichier reçu" });
     }
@@ -216,7 +223,7 @@ app.post(config.pushfilepath, upload.single("file"), async (req, res) => {
         await saveDatabase(fileDatabase);
 
         console.log('✅✅__Fichier enregistré ! ', `?id=${fileID}`);
-    } catch (err) {
+    } catch (err) { 
         console.error("Erreur lors du chiffrement :", err);
     }
 });
