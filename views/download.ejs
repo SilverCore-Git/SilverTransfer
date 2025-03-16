@@ -48,13 +48,13 @@
                         .then(res => res.json())
                         .then(res => {
                             if (res.data === 'end') {
-                                document.getElementById('ah').innerText = "Veuillez fermer l'onglais"
+                                document.getElementById('ah').innerText = "Veuillez fermer l'onglet"
                             }
                         })
                         .catch(error => {
                             console.error("Erreur lors de la récupération du statut :", error);
                         });
-                }, 1000);
+                }, 500);
 
                 document.querySelector('.card').style.display = 'none'
                 document.getElementById('success').style.display = 'flex'
@@ -109,7 +109,7 @@
         </div>
 
         <section id="success">
-            <h1 id="ah">Veuillez patenter, la fenettre va se fermer automatiquement...</h1>
+            <h1 id="ah">Veuillez fermer l'onglet !</h1>
         </section>
 
         <section style="margin-top: 60px">
