@@ -10,7 +10,7 @@ console.log('Démarrage du serveur...');
 const express = require("express");
 const multer = require("multer");
 const fs = require("fs");
-const http = require("http");
+const https = require("https");
 const cors = require("cors");
 const path = require("path");
 const crypto = require("crypto");
@@ -98,30 +98,45 @@ setInterval(() => {
 
 
 // SSL key & cert path
-// const options = {
-//     key: fs.readFileSync(config.SSLkeyPath, "utf8"),
-//     cert: fs.readFileSync(config.SSLcertPath, "utf8"),
-// };
+const options = {
+    key: fs.readFileSync(config.SSLkeyPath, "utf8"),
+    cert: fs.readFileSync(config.SSLcertPath, "utf8"),
+};
 
 const corsOptions = {
-    origin: [
-        "https://t.silverdium.fr",
-        "https://transfer.silverdium.fr"
-        ],
+    origin: ["https://transfer.silverdium.fr", "https://t.silverdium.fr"],
     allowedHeaders: ["Content-Type"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
 };
+
 
 const app = express();
 console.log("Démarrage de Express...");
+
+res.setHeader('Access-Control-Allow-Origin', 'https://transfer.silverdium.fr');
+res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 app.use(cors(corsOptions));
 app.use(express.json());
 app.set("view engine", "ejs");
 
-// if (!maintenance.maintenance) {
-    app.use(express.static("public"));
-// } else {
-//     app.use(express.static("https://api.silverdium.fr/maintenance"));
-// }
+app.use((req, res, next) => {
+    if (req.hostname !== "transfer.silverdium.fr" && req.path === "/") {
+        res.set("X-Robots-Tag", "noindex, nofollow");
+        return res.send(`
+            <h1>Tu utilises le mauvais nom de domaine, le bon est :</h1>
+            <br>
+            <a href="https://transfer.silverdium.fr">
+                <button><h2>https://transfer.silverdium.fr</h2></button>
+            </a>
+        `);
+    }
+    next();
+});
+
+
+app.use(express.static("public"));
+
 
 console.log("Express chargé");
 
@@ -153,13 +168,28 @@ const upload = multer({ storage });
 
 
 // route fontend
-
+app.get("/sitemap.xml", (req, res) => {
+    res.sendFile(path.join(__dirname, 'sitemap.xml'))
+})
+app.get("/robots.txt", (req, res) => {
+    res.sendFile(path.join(__dirname, 'robots.txt'))
+})
+app.get('/assets/img/background/background2', (req, res) => {
+    res.sendFile(path.join( __dirname, 'public/assets/img/background/background2.jpg' ))
+})
+app.get('/assets/img/background/background1', (req, res) => {
+    res.sendFile(path.join( __dirname, 'public/assets/img/background/background1.jpg' ))
+})
 
 
 
 // Route pour l'upload de fichier
 app.post(config.pushfilepath, upload.single("file"), async (req, res) => {
     console.log("____Réception d'une requête : ", `' ${config.pushfilepath} '`);
+
+    if (req.fileValidationError) {
+        return res.status(400).json({ message: req.fileValidationError });
+    }
 
     if (!req.file) {
         return res.status(400).json({ message: "Aucun fichier reçu" });
@@ -193,7 +223,7 @@ app.post(config.pushfilepath, upload.single("file"), async (req, res) => {
         await saveDatabase(fileDatabase);
 
         console.log('✅✅__Fichier enregistré ! ', `?id=${fileID}`);
-    } catch (err) {
+    } catch (err) { 
         console.error("Erreur lors du chiffrement :", err);
     }
 });
@@ -445,8 +475,16 @@ app.get("/key/:bytes", (req, res) => {
     res.json({ "status": statu, "message": message, "key": key, "bytes": bytes });
 });
 
+
+
+app.use((req, res) => {
+    res.status(404).redirect('https://api.silverdium.fr/www.errors/404.html');
+});
+
+
+
 const PORT = config.Port;
-http.createServer(app).listen(PORT, () => {
+https.createServer(options, app).listen(PORT, () => {
     console.log(`Serveur HTTPS en ligne sur https://transfer.silverdium.fr:${PORT}`);
 });
 

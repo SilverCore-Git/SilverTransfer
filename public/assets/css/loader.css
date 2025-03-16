@@ -96,11 +96,32 @@
   justify-content: center;
   justify-items: center;
   flex-direction: column;
-  width: 40%;
-  height: 40rem;
-  border-radius: 15px;
+  width: 35%;
+  height: 35rem;
+  border-radius: 25px;
   box-shadow: 0 0 10px #000000b4;
   background:rgba(141, 141, 141, 0.2)
+}
+
+@media (max-width: 1666px) {
+  .bar .div {
+    width: 50%;
+  }
+}
+@media (max-width: 1250px) {
+  .bar .div {
+    width: 60%;
+  }
+}
+@media (max-width: 900px) {
+  .bar .div {
+    width: 80%;
+  }
+}
+@media (max-width: 560px) {
+  .bar .div {
+    width: 90%;
+  }
 }
 
 

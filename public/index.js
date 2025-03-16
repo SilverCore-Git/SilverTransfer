@@ -95,32 +95,32 @@ async function loadApp() {
 
     const dropZone = document.getElementById('dropZone');
     const fileInfo = document.getElementById('p');
+        // non fonctionel
+    // dropZone.addEventListener('dragover', (event) => {
+    //     event.preventDefault();
+    //     dropZone.style.backgroundColor = '#f0f8ff';
+    // });
 
-    dropZone.addEventListener('dragover', (event) => {
-        event.preventDefault();
-        dropZone.style.backgroundColor = '#f0f8ff';
-    });
+    // dropZone.addEventListener('dragleave', () => {
+    //     dropZone.style.backgroundColor = '';
+    // }); 
 
-    dropZone.addEventListener('dragleave', () => {
-        dropZone.style.backgroundColor = '';
-    }); 
+    // dropZone.addEventListener('drop', (event) => {
+    //     event.preventDefault();
+    //     dropZone.style.backgroundColor = '';
 
-    dropZone.addEventListener('drop', (event) => {
-        event.preventDefault();
-        dropZone.style.backgroundColor = '';
+    //     const sendBtn = document.querySelector('.send-btn');
+    //     sendBtn.style.display = 'flex';
+    //     setTimeout(() => {
+    //         sendBtn.style.opacity = 1;
+    //     }, 10);
 
-        const sendBtn = document.querySelector('.send-btn');
-        sendBtn.style.display = 'flex';
-        setTimeout(() => {
-            sendBtn.style.opacity = 1;
-        }, 10);
-
-        const files = event.dataTransfer.files;
-        if (files.length > 0) {
-            selectedFile = files[0]; 
-            fileInfo.innerText = `Fichier sélectionné : ${selectedFile.name}`;
-        }
-    });
+    //     const files = event.dataTransfer.files;
+    //     if (files.length > 0) {
+    //         selectedFile = files[0]; 
+    //         fileInfo.innerText = `Fichier sélectionné : ${selectedFile.name}`;
+    //     }
+    // });
 
     sendbtn.addEventListener('click', async () => {
         if (!selectedFile && !file.files.length) {
