@@ -118,14 +118,19 @@ app.use(express.json());
 app.set("view engine", "ejs");
 
 app.use((req, res, next) => {
-    if (req.hostname !== "transfer.silverdium.fr") {
-
+    if (req.hostname !== "transfer.silverdium.fr" && req.path === "/") {
         res.set("X-Robots-Tag", "noindex, nofollow");
-
-        return res.send('<h1>Tu utilise le mauvais nom de domaine, le bon est :</h1><br><a href="https://transfer.silverdium.fr"><button><h2>https://transfer.silverdium.fr</h2></button></a>');
+        return res.send(`
+            <h1>Tu utilises le mauvais nom de domaine, le bon est :</h1>
+            <br>
+            <a href="https://transfer.silverdium.fr">
+                <button><h2>https://transfer.silverdium.fr</h2></button>
+            </a>
+        `);
     }
     next();
 });
+
 
 app.use(express.static("public"));
 
@@ -165,6 +170,12 @@ app.get("/sitemap.xml", (req, res) => {
 })
 app.get("/robots.txt", (req, res) => {
     res.sendFile(path.join(__dirname, 'robots.txt'))
+})
+app.get('/assets/img/background/background2', (req, res) => {
+    res.sendFile(path.join( __dirname, 'public/assets/img/background/background2.jpg' ))
+})
+app.get('/assets/img/background/background1', (req, res) => {
+    res.sendFile(path.join( __dirname, 'public/assets/img/background/background1.jpg' ))
 })
 
 
