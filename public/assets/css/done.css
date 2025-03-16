@@ -11,12 +11,14 @@
     align-items: center; 
     height: 100vh;
     font-family: 'Roboto', sans-serif;
+    color: white;
 }
 
 #done .card {
-    padding-right: 2.5rem;
-    padding-left: 2.5rem;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
     padding-top: 0.001rem;
+    padding-bottom: 2.2rem;
 }
 
 #done div {
@@ -30,11 +32,10 @@
     display: flex;
     align-items: center;
     padding: 5px;
-    border-radius: 50px;
     max-width: 500px;
     margin: auto;
     margin-bottom: 2.5rem;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
 
     background: rgba(255, 255, 255, 0.39);
     padding: 15px;
@@ -52,13 +53,13 @@ input {
     width: 18rem;
     border: none;
     padding: 12px 20px;
-    border-radius: 50px;
+    border-radius: 25px;
     margin-bottom: 1rem;
     font-size: 16px;
     outline: none;
     color: #fff;
     background: rgba(0, 0, 0, 0.2);
-    border: 1px solid #6a11cb;
+    border: 1px solid #6a11cb; 
     transition: 0.3s;
 }
 
@@ -73,11 +74,12 @@ input {
     cursor: pointer;
     transition: 0.3s;
     margin-left: 5px;
+    color: rgb(255, 255, 255);
     box-shadow: 0 3px 10px rgba(255, 255, 255, 0.3);
 }
 
 .copy-btn:hover {
-    background: #e0e0e0;
+    background: #6a11cb;
 }
 
 .copy-btn:active {
@@ -90,6 +92,7 @@ input {
 .qr-container label {
     margin-top: 0.4rem;
     font-size: 1.3rem;
+    color: black;
 }
 
 .download-btn {
