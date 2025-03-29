@@ -57,6 +57,7 @@ function openmain() {
     history.pushState(null, "", `?page=home`);
     main.style.display = 'flex'
 };
+
 function closemain() {
     main.style.display = 'none'
 };
@@ -122,19 +123,35 @@ function roots() {
         openLoader();
     }
 
-    else {
+    else if (page === 'upload') {
         openform(page);
         return
     }
 
+    else if (page === 'sends') {
+        openmain();
+        salert('Cette url n\'est pas valid !', 'error')
+        return
+    }
+
+    else if (page === 'success') {
+        openform(page);
+        return
+    }
+
+    else {
+        openmain();
+    }
+ 
 }
 
 
 let selectedFile = null; 
 
 async function loadApp() {
+
     btnsavoir.addEventListener('click', () => {
-        salert('Fonction en développement !', 'warning');
+        window.open('https://core.silverdium.fr/#services', '_blank')
     });
 
     gobtn.addEventListener('click', async () => {
@@ -190,12 +207,9 @@ async function loadApp() {
         
     });
 
-    setTimeout(() => {
-        openmain();
-        closeLoader();
-    }, 500);
 }
 
-openLoader();
+
 roots();
 loadApp();
+closeLoader();

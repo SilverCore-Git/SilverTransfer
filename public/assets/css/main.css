@@ -52,13 +52,14 @@ main h2 {
     text-align: left;
     border-radius: 15px;
 }
-.hero ul li:not(:last-child) {
+.hero ul  li:not(:last-child) {
     margin-bottom: 8px;
     padding-bottom: 8px;
     border-bottom: 1px solid black;
 }
 .hero ul li {
     margin-left: 5px;
+    cursor: pointer;
 }
 .hero ul i,
 .hero ul img {

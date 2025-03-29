@@ -55,6 +55,12 @@
 
         <!-- Style sheet -->
         <link rel="stylesheet" href="./assets/css/body.css"> <!-- Doit toujours être en premier -->
+        <style> 
+            a {
+                text-decoration: none;
+                color: white;
+            } 
+        </style>
         <link rel="stylesheet" href="./assets/css/loader.css">
         <link rel="stylesheet" href="./assets/css/main.css">
         <link rel="stylesheet" href="./assets/css/upload.css"> 
@@ -71,16 +77,16 @@
         
         <main class="main">
             <div class="hero">
-                <h1>SilverTransfer</h1>
+                <a style="color: white; text-decoration: none;" href="/"><h1>SilverTransfer</h1></a>
                 <h2>Outil de transfert de fichiers</h2>
                 
                 <ul><strong>
-                    <li><i>🇫🇷</i> Hébergé en France</li>
-                    <li><i class="bi bi-lock"></i> Chiffré de bout en bout</li>
-                    <li><i class="bi bi-github"></i> Open source</li>
-                    <li><i class="bi bi-heart"></i> Politique éthique</li>
-                    <li><i class="bi bi-trash"></i> Supprimé après téléchargement</li>
-                    <li><img style="width: 20px; height: 20px;" src="https://api.silverdium.fr/img/core/logo.png"> By SilverCore</li>
+                    <li onclick="window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank')" ><i>🇫🇷</i> Hébergé en France</li>
+                    <li onclick="window.open('https://tipeee.com/silverdium', '_blank')" ><i class="bi bi-lock"></i> Chiffré de bout en bout</li>
+                    <li onclick="window.open('https://github.com/SilverCore-Git/SilverTransfer', '_blank')" ><i class="bi bi-github"></i> Open source</li>
+                    <li onclick="window.open('https://core.silverdium.fr/#sommesNous', '_blank')" ><i class="bi bi-heart"></i> Politique éthique</li>
+                    <li onclick="window.open('https://tipeee.com/silverdium', '_blank')" ><i class="bi bi-trash"></i> Supprimé après téléchargement</li>
+                    <li onclick="window.open('https://core.silverdium.fr', '_blank')" ><img style="width: 20px; height: 20px;" src="https://api.silverdium.fr/img/core/logo.png"> By SilverCore</li>
                 </strong></ul>
 
                 <button class="btn-savoir">En savoir plus</button>
@@ -102,7 +108,7 @@
 
             <div class="card">
         
-                <h1>SilverTransfer</h1>
+                <a style="color: white; text-decoration: none;" href="/"><h1>SilverTransfer</h1></a>
         
                 <h2>Choisissez votre fichier</h2>
         
@@ -151,24 +157,38 @@
         
                 <script defer> 
                     document.addEventListener('DOMContentLoaded', () => {
+
                         const file = document.getElementById('file');
                         const p = document.getElementById('p');
                         const sendBtn = document.querySelector('.send-btn');
         
+
+                        sendBtn.addEventListener('click', () => {
+                            history.pushState(null, "", `?page=send&file=${file.files[0].name}&file_size=${file.files[0].size}&lastM=${file.files[0].lastModified}&length=${file.files.length}`);
+                        })
+
                         file.addEventListener('change', function() {
+
+                            history.pushState(null, "", `?page=upload&file=${file.files[0].name}&file_size=${file.files[0].size}`);
+
                             if (file.files.length > 0) {
+
                                 p.innerText = `Fichier sélectionné : ${file.files[0].name}`;
                                 sendBtn.style.display = 'flex';
                                 setTimeout(() => {
                                     sendBtn.style.opacity = 1;
                                 }, 10);
+
                             } else {
+
                                 p.innerText = 'Aucun fichier sélectionné';
                                 sendBtn.style.opacity = 0;
                                 setTimeout(() => {
                                     sendBtn.style.display = 'none';
                                 }, 3000);
+
                             }
+
                         });
                     });
                 </script>
@@ -257,7 +277,7 @@
                 <div class="div">
 
                     <h1 style="margin-bottom: 3rem;">
-                        SilverTransfer
+                        <a style="color: rgb(0, 0, 0); text-decoration: none;" href="/">SilverTransfer</a>
                         <br><div id="statusl">Téléversement en cours...</div>
                     </h1>
 
