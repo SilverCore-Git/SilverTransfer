@@ -28,7 +28,7 @@ const config = require('./config/config.json');
 const { encryptFile, decryptFile, encryptText, decryptText } = require("./src/crypt.js");
 const { loadDatabase, saveDatabase, deleteFiledb, resetDatabase, deleteDatabaseFile, createDatabaseFile } = require('./src/database.js');
 const { logToFile, originalConsoleError, originalConsoleLog, originalConsoleWarn } = require('./src/logger.js');
-const { getCurrentDate, getCurrentTime } = require('./src/datemanager.js');
+const { getCurrentDate, getCurrentTime } = require('./src/datemanager.js')
 const { removeExpirFile } = require("./src/removeData.js");
 
 

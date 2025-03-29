@@ -4,6 +4,24 @@
  * @author MisterPapaye
  */
 
+const { getCurrentDate, getCurrentTime } = require('./datemanager.js')
+const path = require('path')
+const fs = require('fs')
+
+
+const logToFile = (message) => {
+    const date = getCurrentDate();
+    const time = getCurrentTime();
+    const logDir = path.join(__dirname, "../log");
+    const logFilePath = path.join(logDir, `${date}.log`);
+
+    if (!fs.existsSync(logDir)) {
+        fs.mkdirSync(logDir);
+    }
+
+    const logMessage = `[${date} - ${time}] > ${message}\n`;
+    fs.appendFileSync(logFilePath, logMessage, "utf8");
+};
 
 
 // Redirection des logs
@@ -28,6 +46,7 @@ console.warn = (...args) => {
 
 
 module.exports = {
+    logToFile,
     originalConsoleError, 
     originalConsoleLog,
     originalConsoleWarn
