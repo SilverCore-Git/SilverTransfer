@@ -10,7 +10,7 @@
 
 
 
-    "allowedURL": "https://transfer.silverdium.fr",
+    "hostname": "transfer.silverdium.fr",
 
     "Port": 7894,
 

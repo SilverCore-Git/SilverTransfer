@@ -10,56 +10,16 @@ console.log('Démarrage du serveur...');
 const express = require("express");
 const multer = require("multer");
 const fs = require("fs");
-const https = require("https");
+// const https = require("https");
+const http = require("http");
 const cors = require("cors");
 const path = require("path");
+const ejs = require("ejs");
 const crypto = require("crypto");
 const formatFileSize = require('./src/filesize.js')
 
 
-// Fonction pour obtenir la date au format "YYYY-MM-DD"
-const getCurrentDate = () => {
-    const today = new Date();
-    return today.toISOString().split("T")[0];
-};
 
-// Fonction pour obtenir l'heure actuelle au format "HH:MM:SS"
-const getCurrentTime = () => {
-    return new Date().toLocaleTimeString("fr-FR", { hour12: false });
-};
-
-const logToFile = (message) => {
-    const date = getCurrentDate();
-    const time = getCurrentTime();
-    const logDir = path.join(__dirname, "log");
-    const logFilePath = path.join(logDir, `${date}.log`);
-
-    if (!fs.existsSync(logDir)) {
-        fs.mkdirSync(logDir);
-    }
-
-    const logMessage = `[${date} - ${time}] > ${message}\n`;
-    fs.appendFileSync(logFilePath, logMessage, "utf8");
-};
-
-// Redirection des logs
-const originalConsoleLog = console.log;
-console.log = (...args) => {
-    originalConsoleLog(...args);
-    logToFile(args.join(" "));
-};
-
-const originalConsoleError = console.error;
-console.error = (...args) => {
-    originalConsoleError(...args);
-    logToFile(args.join(" "));
-};
-
-const originalConsoleWarn = console.warn;
-console.warn = (...args) => {
-    originalConsoleWarn(...args);
-    logToFile(args.join(" "));
-};
 
 // const maintenance = require("../www.api/SilverConfig/maintenance.json");
 
@@ -67,8 +27,9 @@ const config = require('./config/config.json');
 
 const { encryptFile, decryptFile, encryptText, decryptText } = require("./src/crypt.js");
 const { loadDatabase, saveDatabase, deleteFiledb, resetDatabase, deleteDatabaseFile, createDatabaseFile } = require('./src/database.js');
+const { logToFile, originalConsoleError, originalConsoleLog, originalConsoleWarn } = require('./src/logger.js');
+const { getCurrentDate, getCurrentTime } = require('./src/datemanager.js');
 const { removeExpirFile } = require("./src/removeData.js");
-const { render } = require("ejs");
 
 
 async function resetDB() {
@@ -98,10 +59,10 @@ setInterval(() => {
 
 
 // SSL key & cert path
-const options = {
-    key: fs.readFileSync(config.SSLkeyPath, "utf8"),
-    cert: fs.readFileSync(config.SSLcertPath, "utf8"),
-};
+// const options = {
+//     key: fs.readFileSync(config.SSLkeyPath, "utf8"),
+//     cert: fs.readFileSync(config.SSLcertPath, "utf8"),
+// };
 
 const corsOptions = {
     origin: ["https://transfer.silverdium.fr", "https://t.silverdium.fr"],
@@ -113,15 +74,13 @@ const corsOptions = {
 const app = express();
 console.log("Démarrage de Express...");
 
-res.setHeader('Access-Control-Allow-Origin', 'https://transfer.silverdium.fr');
-res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 app.use(cors(corsOptions));
 app.use(express.json());
 app.set("view engine", "ejs");
 
 app.use((req, res, next) => {
-    if (req.hostname !== "transfer.silverdium.fr" && req.path === "/") {
+
+    if (req.hostname !== config.hostname && req.path === "/") {
         res.set("X-Robots-Tag", "noindex, nofollow");
         return res.send(`
             <h1>Tu utilises le mauvais nom de domaine, le bon est :</h1>
@@ -131,7 +90,9 @@ app.use((req, res, next) => {
             </a>
         `);
     }
-    next();
+
+    next(); 
+
 });
 
 
@@ -484,7 +445,7 @@ app.use((req, res) => {
 
 
 const PORT = config.Port;
-https.createServer(options, app).listen(PORT, () => {
+http.createServer(app).listen(PORT, () => {
     console.log(`Serveur HTTPS en ligne sur https://transfer.silverdium.fr:${PORT}`);
 });
 
