@@ -128,15 +128,38 @@ function roots() {
         return
     }
 
-    else if (page === 'sends') {
-        openmain();
-        salert('Cette url n\'est pas valid !', 'error')
+    else if (page === 'send') {
+        openform('upload');
         return
     }
 
     else if (page === 'success') {
-        openform(page);
-        return
+
+        const ifisfile = urlParams.get('file');
+
+        if (ifisfile == 1) {
+
+            openLoader();
+
+            const justlink = urlParams.get('link');
+            const anid = urlParams.get('id');
+
+            const Link = justlink + anid
+            link.value = Link
+            const qr = new QRious({
+                element: document.getElementById('codeQR'),
+                value: Link,
+                size: 200
+            });
+
+            openform(page)
+
+            history.pushState(null, "", `?page=success&link=${justlink}&id=${anid}&file=1`);
+
+        } else {
+            openmain();
+        }
+
     }
 
     else {

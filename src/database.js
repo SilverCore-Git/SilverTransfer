@@ -9,7 +9,7 @@ const crypto = require('crypto');
 
 const config = require('../config/config.json');
 
-const DB_FILE = config.DBFile;
+const DB_FILE = `../${config.DBFile}`;
 
 
 // Fonction pour obtenir la date au format "YYYY-MM-DD"

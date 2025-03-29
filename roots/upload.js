@@ -9,7 +9,11 @@
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
+const path = require('path');
 
+const config = require('../config/config.json');
+const uploadDir = require('../server.js');
+const { encryptFile, decryptFile, encryptText, decryptText } = require("../src/crypt.js");
 
 // Configuration de Multer pour stocker les fichiers sur disque
 const storage = multer.diskStorage({
@@ -45,7 +49,7 @@ router.post('/yourmother', upload.single("file"), async (req, res) => {
     const fileID = randomNumber;
     const tempFilePath = req.file.path;  // Chemin du fichier temporaire sauvegardé par Multer
     const encryptedFileName = `${fileID}.${req.file.filename}.enc`;
-    const encryptedFilePath = path.join(__dirname, config.DATAdir, encryptedFileName);
+    const encryptedFilePath = path.join(__dirname, `../${config.DATAdir}`, encryptedFileName);
 
     res.json({
         status: "processing",

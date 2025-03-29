@@ -24,7 +24,7 @@ const formatFileSize = require('./src/filesize.js')
 
 const config = require('./config/config.json');
 
-const { encryptFile, decryptFile, encryptText, decryptText } = require("./src/crypt.js");
+const { decryptFile, decryptText } = require("./src/crypt.js");
 const { loadDatabase, saveDatabase, deleteFiledb, resetDatabase, deleteDatabaseFile, createDatabaseFile } = require('./src/database.js');
 const { logToFile, originalConsoleError, originalConsoleLog, originalConsoleWarn } = require('./src/logger.js');
 const { getCurrentDate, getCurrentTime } = require('./src/datemanager.js')
@@ -102,6 +102,7 @@ console.log("Express chargé");
 
 
 const uploadDir = path.join(__dirname, config.TEMPdir);
+module.exports = uploadDir;
 if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir);
     console.log('Répertoire "',config.TEMPdir,'" créé');

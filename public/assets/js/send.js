@@ -78,7 +78,10 @@ export function send(FILE) {
             }, delay);
 
 
-            const Link = `https://t.silverdium.fr/t/${data.id}`
+            const justLink = `https://t.silverdium.fr/t/`;
+            const id = data.id;
+            const Link = justLink + id;
+
             link.value = Link
             const qr = new QRious({
                 element: document.getElementById('codeQR'),
@@ -90,6 +93,8 @@ export function send(FILE) {
 
             sendFile('close')
             openform('success')
+
+            return history.pushState(null, "", `?page=success&link=${justLink}&id=${data.id}&file=1`);
 
         } else {
             console.error("Erreur :", xhr.statusText);

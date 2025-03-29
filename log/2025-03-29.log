@@ -31,3 +31,84 @@
 [2025-03-29 - 17:43:52] > Démarrage de Express...
 [2025-03-29 - 17:43:52] > Express chargé
 [2025-03-29 - 17:43:53] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:7894
+[2025-03-29 - 17:46:20] > Démarrage de Express...
+[2025-03-29 - 17:46:20] > Express chargé
+[2025-03-29 - 17:46:20] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:7894
+[2025-03-29 - 17:47:22] > Démarrage de Express...
+[2025-03-29 - 17:47:22] > Express chargé
+[2025-03-29 - 17:47:22] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:7894
+[2025-03-29 - 17:48:15] > Démarrage de Express...
+[2025-03-29 - 17:48:15] > Express chargé
+[2025-03-29 - 17:48:15] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:7894
+[2025-03-29 - 17:48:38] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-29 - 17:49:00] > Démarrage de Express...
+[2025-03-29 - 17:49:00] > Express chargé
+[2025-03-29 - 17:49:16] > Démarrage de Express...
+[2025-03-29 - 17:49:16] > Express chargé
+[2025-03-29 - 17:49:16] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:7894
+[2025-03-29 - 17:49:25] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-29 - 17:49:25] > Fichier reçu, chiffrement en cours...
+[2025-03-29 - 17:49:25] > ✅ Partie 0 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\roots\data\19877292.454608ca0682481ec59bba97d2d59949.png.enc/part0.enc
+[2025-03-29 - 17:49:25] > ✅ Le fichier d'entrée "C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\454608ca0682481ec59bba97d2d59949.png" a été supprimé après chiffrement.
+[2025-03-29 - 17:49:25] > ✅ Chiffrement terminé avec succès !
+[2025-03-29 - 17:49:25] > Erreur lors du chiffrement : ReferenceError: fileDatabase is not defined
+[2025-03-29 - 17:51:20] > Démarrage de Express...
+[2025-03-29 - 17:51:20] > Express chargé
+[2025-03-29 - 17:51:20] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:7894
+[2025-03-29 - 17:51:48] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-29 - 17:51:48] > Fichier reçu, chiffrement en cours...
+[2025-03-29 - 17:51:48] > ✅ Partie 0 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\25840961.454608ca0682481ec59bba97d2d59949.png.enc/part0.enc
+[2025-03-29 - 17:51:48] > ✅ Le fichier d'entrée "C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\454608ca0682481ec59bba97d2d59949.png" a été supprimé après chiffrement.
+[2025-03-29 - 17:51:48] > ✅ Chiffrement terminé avec succès !
+[2025-03-29 - 17:51:48] > Erreur lors du chiffrement : ReferenceError: fileDatabase is not defined
+[2025-03-29 - 17:53:45] > Démarrage de Express...
+[2025-03-29 - 17:53:45] > Express chargé
+[2025-03-29 - 17:53:45] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:7894
+[2025-03-29 - 17:53:55] > Démarrage de Express...
+[2025-03-29 - 17:53:55] > Express chargé
+[2025-03-29 - 17:53:55] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:7894
+[2025-03-29 - 18:00:38] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-29 - 18:00:38] > Fichier reçu, chiffrement en cours...
+[2025-03-29 - 18:00:38] > ✅ Partie 0 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\03417440.454608ca0682481ec59bba97d2d59949.png.enc/part0.enc
+[2025-03-29 - 18:00:38] > ✅ Le fichier d'entrée "C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\454608ca0682481ec59bba97d2d59949.png" a été supprimé après chiffrement.
+[2025-03-29 - 18:00:38] > ✅ Chiffrement terminé avec succès !
+[2025-03-29 - 18:00:38] > Erreur lors du chiffrement : ReferenceError: fileDatabase is not defined
+[2025-03-29 - 18:01:28] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-29 - 18:01:28] > Fichier reçu, chiffrement en cours...
+[2025-03-29 - 18:01:28] > ✅ Partie 0 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\37282372.cf0b64658556c843a274e510b519bfcf.png.enc/part0.enc
+[2025-03-29 - 18:01:28] > ✅ Le fichier d'entrée "C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\cf0b64658556c843a274e510b519bfcf.png" a été supprimé après chiffrement.
+[2025-03-29 - 18:01:28] > ✅ Chiffrement terminé avec succès !
+[2025-03-29 - 18:01:28] > Erreur lors du chiffrement : ReferenceError: fileDatabase is not defined
+[2025-03-29 - 18:02:56] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-29 - 18:02:56] > Fichier reçu, chiffrement en cours...
+[2025-03-29 - 18:02:56] > ✅ Partie 0 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\68409132.454608ca0682481ec59bba97d2d59949.png.enc/part0.enc
+[2025-03-29 - 18:02:56] > ✅ Le fichier d'entrée "C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\454608ca0682481ec59bba97d2d59949.png" a été supprimé après chiffrement.
+[2025-03-29 - 18:02:56] > ✅ Chiffrement terminé avec succès !
+[2025-03-29 - 18:02:56] > Erreur lors du chiffrement : ReferenceError: fileDatabase is not defined
+[2025-03-29 - 18:05:46] > Démarrage de Express...
+[2025-03-29 - 18:05:46] > Express chargé
+[2025-03-29 - 18:05:46] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:7894
+[2025-03-29 - 18:05:54] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-29 - 18:05:54] > Fichier reçu, chiffrement en cours...
+[2025-03-29 - 18:05:54] > ✅ Partie 0 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\73679357.454608ca0682481ec59bba97d2d59949.png.enc/part0.enc
+[2025-03-29 - 18:05:54] > ✅ Le fichier d'entrée "C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\454608ca0682481ec59bba97d2d59949.png" a été supprimé après chiffrement.
+[2025-03-29 - 18:05:54] > ✅ Chiffrement terminé avec succès !
+[2025-03-29 - 18:05:54] > Erreur lors du chiffrement : ReferenceError: fileDatabase is not defined
+[2025-03-29 - 18:09:45] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-29 - 18:09:45] > Fichier reçu, chiffrement en cours...
+[2025-03-29 - 18:09:45] > ✅ Partie 0 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\53635008.cf0b64658556c843a274e510b519bfcf.png.enc/part0.enc
+[2025-03-29 - 18:09:45] > ✅ Le fichier d'entrée "C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\cf0b64658556c843a274e510b519bfcf.png" a été supprimé après chiffrement.
+[2025-03-29 - 18:09:45] > ✅ Chiffrement terminé avec succès !
+[2025-03-29 - 18:09:45] > Erreur lors du chiffrement : ReferenceError: fileDatabase is not defined
+[2025-03-29 - 18:17:49] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-29 - 18:17:49] > Fichier reçu, chiffrement en cours...
+[2025-03-29 - 18:17:49] > ✅ Partie 0 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\33996884.cf0b64658556c843a274e510b519bfcf.png.enc/part0.enc
+[2025-03-29 - 18:17:49] > ✅ Le fichier d'entrée "C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\cf0b64658556c843a274e510b519bfcf.png" a été supprimé après chiffrement.
+[2025-03-29 - 18:17:49] > ✅ Chiffrement terminé avec succès !
+[2025-03-29 - 18:17:49] > Erreur lors du chiffrement : ReferenceError: fileDatabase is not defined
+[2025-03-29 - 18:19:07] > ____Réception d'une requête :  ' /upload/yourmother '
+[2025-03-29 - 18:19:07] > Fichier reçu, chiffrement en cours...
+[2025-03-29 - 18:19:07] > ✅ Partie 0 chiffrée avec succès : C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\data\76997007.454608ca0682481ec59bba97d2d59949.png.enc/part0.enc
+[2025-03-29 - 18:19:07] > ✅ Le fichier d'entrée "C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\454608ca0682481ec59bba97d2d59949.png" a été supprimé après chiffrement.
+[2025-03-29 - 18:19:07] > ✅ Chiffrement terminé avec succès !
+[2025-03-29 - 18:19:07] > Erreur lors du chiffrement : ReferenceError: fileDatabase is not defined
