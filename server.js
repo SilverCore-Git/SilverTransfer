@@ -79,7 +79,7 @@ app.use(express.json());
 app.set("view engine", "ejs");
 
 app.use((req, res, next) => {
-
+ 
     if (req.hostname !== config.hostname && req.path === "/") {
         res.set("X-Robots-Tag", "noindex, nofollow");
         return res.send(`
