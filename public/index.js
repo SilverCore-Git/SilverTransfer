@@ -4,19 +4,48 @@
  * @author MisterPapaye
  */
 
-import { loader, file, sendbtn, btnsavoir, gobtn, main, upload, progressbar, progress, flach, done } from './assets/js/idclassloader.js';
+import { loader, file, sendbtn, btnsavoir, gobtn, main, upload, progressbar, link, progress, flach, done } from './assets/js/idclassloader.js';
 import { salert } from './assets/js/salert.js';
 import { send } from './assets/js/send.js';
 import popups from './popups.js';
 
+const urlParams = new URLSearchParams(window.location.search);
+const ifdev = urlParams.get('dev');
+const page = urlParams.get('page');
 
+
+if (ifdev == 1) {
+
+    history.pushState(null, "", `?dev=1`);
+
+    main.style.display = 'flex';
+    upload.style.display = 'flex';
+    progress.style.display = 'flex';
+    done.style.display = 'flex';
  
-main.style.display = 'none';
-upload.style.display = 'none';
-progress.style.display = 'none';
-done.style.display = 'none'; 
+    const Link = `lien de téléchargement`
+    link.value = Link
+    const qr = new QRious({
+        element: document.getElementById('codeQR'),
+        value: Link,
+        size: 200
+    });
+
+} 
+
+else {
+
+    history.pushState(null, "", `?page=home`);
+
+    main.style.display = 'none';
+    upload.style.display = 'none';
+    progress.style.display = 'none';
+    done.style.display = 'none'; 
+
+}
 
 function openLoader() {
+    history.pushState(null, "", `?page=loader`);
     loader.style.display = 'flex'
 };
 
@@ -25,6 +54,7 @@ function closeLoader() {
 };
 
 function openmain() {
+    history.pushState(null, "", `?page=home`);
     main.style.display = 'flex'
 };
 function closemain() {
@@ -35,10 +65,12 @@ export function openform(page) {
 
     if (page === 'upload') {
 
+        history.pushState(null, "", `?page=upload`);
         upload.style.display = 'flex'
     
     }
     else if (page === 'success') {
+        history.pushState(null, "", `?page=success`);
         done.style.display = 'flex'
     }
 
@@ -77,6 +109,25 @@ export function sendFile(arg) {
         
     }
 };
+
+
+function roots() {
+
+    if (page === 'home') {
+        openmain();
+        return
+    }
+
+    else if (page === 'loader') {
+        openLoader();
+    }
+
+    else {
+        openform(page);
+        return
+    }
+
+}
 
 
 let selectedFile = null; 
@@ -146,4 +197,5 @@ async function loadApp() {
 }
 
 openLoader();
+roots();
 loadApp();

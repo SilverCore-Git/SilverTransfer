@@ -10,7 +10,7 @@
 
 
 
-    "hostname": "transfer.silverdium.fr",
+    "hostname": "localhost",
 
     "Port": 7894,
 

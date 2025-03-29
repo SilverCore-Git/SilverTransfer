@@ -8,7 +8,6 @@ console.log('Démarrage du serveur...');
 
 // Importation des bibliothèques
 const express = require("express");
-const multer = require("multer");
 const fs = require("fs");
 // const https = require("https");
 const http = require("http");
@@ -112,20 +111,6 @@ if (!fs.existsSync(path.join(__dirname, config.DATAdir))) {
     console.log('Répertoire "',config.DATAdir,'" créé');
 }
 
-// Configuration de Multer pour stocker les fichiers sur disque
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, uploadDir);
-    },
-    filename: (req, file, cb) => {
-        const encryptedText = encryptText(file.originalname);
-        const fileExt = path.extname(file.originalname);
-        const newFileName = `${encryptedText}${fileExt}`;
-        cb(null, newFileName);
-    },
-});
-
-const upload = multer({ storage });
 
 
 // route fontend
@@ -143,51 +128,13 @@ app.get('/assets/img/background/background1', (req, res) => {
 })
 
 
+// root déportés
+const root_upload = require('./roots/upload.js');
+const root_download = require('./roots/download.js');
 
-// Route pour l'upload de fichier
-app.post(config.pushfilepath, upload.single("file"), async (req, res) => {
-    console.log("____Réception d'une requête : ", `' ${config.pushfilepath} '`);
+app.use('/upload', root_upload);
 
-    if (req.fileValidationError) {
-        return res.status(400).json({ message: req.fileValidationError });
-    }
 
-    if (!req.file) {
-        return res.status(400).json({ message: "Aucun fichier reçu" });
-    }
-
-    let randomNumber = Math.floor(Math.random() * 100000000);
-    randomNumber = randomNumber.toString().padStart(8, '0');
-
-    const fileID = randomNumber;
-    const tempFilePath = req.file.path;  // Chemin du fichier temporaire sauvegardé par Multer
-    const encryptedFileName = `${fileID}.${req.file.filename}.enc`;
-    const encryptedFilePath = path.join(__dirname, config.DATAdir, encryptedFileName);
-
-    res.json({
-        status: "processing",
-        message: "Fichier reçu, chiffrement en cours...",
-        id: fileID
-    });
-
-    console.log('Fichier reçu, chiffrement en cours...');
-
-    try {
-
-        await encryptFile(tempFilePath, encryptedFilePath);
-
-        fileDatabase[fileID] = {
-            fileName: encryptedFileName,
-            size: req.file.size,
-            date: `${getCurrentDate()} - ${getCurrentTime()}` 
-        };
-        await saveDatabase(fileDatabase);
-
-        console.log('✅✅__Fichier enregistré ! ', `?id=${fileID}`);
-    } catch (err) { 
-        console.error("Erreur lors du chiffrement :", err);
-    }
-});
 
 
 
