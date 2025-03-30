@@ -51,7 +51,6 @@ fileDatabase = loadDatabase();
 
 setInterval(() => {
     fileDatabase = loadDatabase();
-    module.exports = fileDatabase;
 }, 5000)
 
 
@@ -120,6 +119,9 @@ if (!fs.existsSync(path.join(__dirname, config.DATAdir))) {
 app.get("/sitemap.xml", (req, res) => {
     res.sendFile(path.join(__dirname, 'sitemap.xml'))
 })
+app.get("/favicon.ico", (req, res) => {
+    res.redirect('https://api.silverdium.fr/img/transfer/favicon.ico')
+})
 app.get("/robots.txt", (req, res) => {
     res.sendFile(path.join(__dirname, 'robots.txt'))
 })
@@ -134,6 +136,7 @@ app.get('/assets/img/background/background1', (req, res) => {
 // root déportés
 const root_upload = require('./roots/upload.js');
 const root_download = require('./roots/download.js');
+const { error } = require("console");
 
 app.use('/upload', root_upload);
 
@@ -202,91 +205,24 @@ app.get("/t/:id", async (req, res) => {
 });
 
 
-app.get('/data/view', (req, res) => {
-    res.render("data", { id: req.query.id })
-})
+
 app.get('/data/end', (req, res) => {
     res.render("end", {})
 })
-app.get('/data/status', (req, res) => {
-    const id = req.query.id
-    if (id) {
-        
-        const fileEntry = fileDatabase[id];
-        if (!fileEntry) {
-            res.json({
-                data: 'end'
-            })
-        } else {
-            res.json({
-                data: 'processing'
-            })
-        }
-    }
-})
 
-app.get('/data/close', (req, res) => {
-    res.write(`
-        <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fermeture de l'onglet</title>
-    <script>
-        function closeTab() {
-            window.close();  // Tente de fermer l'onglet
-        }
 
-        window.onload = function() {
-            setTimeout(() => {
-                closeTab();
-            }, 1000); // Essaye de fermer l'onglet après 1 seconde
-
-            setTimeout(() => {
-                document.getElementById("manual-close").style.display = "block"; // Affiche un bouton si la fermeture automatique échoue
-            }, 1500);
-        };
-    </script>
-    <style>
-        body {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            margin-top: 50px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: red;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            display: none;
-        }
-    </style>
-</head>
-<body>
-
-    <h1>👋 Fermeture de l'onglet...</h1>
-    <p>Si l'onglet ne se ferme pas automatiquement, cliquez sur le bouton ci-dessous.</p>
-
-    <button id="manual-close" onclick="closeTab()">Fermer l'onglet</button>
-
-</body>
-</html>
-`)
-})
 
 // ➤ **Route principale** : Déchiffrement et téléchargement du fichier
 app.get("/data/:filename", async (req, res) => {
+
     console.log("📥 Requête reçue : /data/", req.params.filename);
     const fileID = req.params.filename;
+    const action = req.query.action;
 
     // Gestion accès développeur
     const dev = req.query.dev;
     const err = req.query.err;
-    if (dev === "true") {
+    if (dev == 1) {
         console.warn("⚠️ Accès développeur ! ID =", fileID);
 
         if (err === "404") {
@@ -297,59 +233,79 @@ app.get("/data/:filename", async (req, res) => {
 
         return res.status(200).render("data", { status: "Statut inconnu" });
     }
-    
+        
     const fileDB = fileDatabase[fileID];
+
     if (!fileDB) {
-        return res.status(404).json({ error: "Fichier non trouvé" });
+        return res.status(404).json({ error: true, message: { silver: "Fichier non trouvé" } });
     }
 
     const fileName = fileDB.fileName.split(".")[1];
     const decryptedFileName = decryptText(fileName);
+
     const encryptedFilePath = path.join(__dirname, "data", fileDB.fileName);
     const decryptedFilePath = path.join(__dirname, "temp", decryptedFileName);
 
     if (!fs.existsSync(encryptedFilePath)) {
-        return res.status(404).json({ error: "Fichier chiffré non trouvé" });
+        return res.status(404).json({ error: true, message: { silver: "Fichier chiffré non trouvé" } });
     }
 
-    console.log("🔓 Déchiffrement...");
+    if (action === "decrypt") {
+
+        try {
+
+            console.log("🔓 Déchiffrement...");
+
+            await decryptFile(encryptedFilePath, decryptedFilePath)
+            .then(end => {
+                return res.status(200).json({ success: true, message: { silver: 'Déchiffrement terminer !' } });
+            })
+            .catch(err => {
+                return res.status(500).json({ error: true, message: { silver: 'Une erreur est survenue lors du déchiffrement.', server: err || err.message } });
+            })
 
 
+        }
+        catch (err) {
+            return res.status(500).json({ error: true, message: { silver: 'Une erreur est survenue.', server: err || err.message } });
+        };
+            
 
-    await decryptFile(encryptedFilePath, decryptedFilePath);
+    }
 
+    else if (action === "download") {
 
-    
-    res.setHeader("Content-Disposition", `attachment; filename=${decryptedFileName}`);
+        try {
+            await new Promise((resolve, reject) => {
 
-    try {
-        await new Promise((resolve, reject) => {
+                res.sendFile(decryptedFilePath, (err) => {
+                    if (err) {
+                        console.error("❌ Erreur d'envoi :", err);
+                        reject({ status: 500, error: "Erreur d'envoi", detail: err });
+                    } else {
+                        console.log("✅ Fichier envoyé !");
+                        resolve();
+                    }
+                });
 
-            res.sendFile(decryptedFilePath, (err) => {
-                if (err) {
-                    console.error("❌ Erreur d'envoi :", err);
-                    reject({ status: 500, error: "Erreur d'envoi", detail: err });
-                } else {
-                    console.log("✅ Fichier envoyé !");
-                    resolve();
-                }
             });
 
-        });
-
-        // Supprime le fichier temporaire après l'envoi
-        await fs.promises.unlink(decryptedFilePath);
-        console.log("🗑️ Fichier temporaire supprimé !");
-        await fs.promises.rm(encryptedFilePath, { recursive: true, force: true });
-        console.log("🗑️ Fichier local supprimé !");
-        await deleteFiledb(fileID);
+            // Supprime le fichier temporaire après l'envoi
+            await fs.promises.unlink(decryptedFilePath);
+            console.log("🗑️ Fichier temporaire supprimé !");
+            await fs.promises.rm(encryptedFilePath, { recursive: true, force: true });
+            console.log("🗑️ Fichier local supprimé !");
+            await deleteFiledb(fileID);
 
 
 
-    } catch (error) {
-        console.error(error);
-        res.status(error.status || 500).json({ error: error.error, detail: error.detail });
+        } catch (err) {
+            console.error(err);
+            return res.status(500).json({ error: true, message: { silver: 'Une erreur est survenue.', server: err || err.message } });
+        }
+
     }
+
 });
 
 

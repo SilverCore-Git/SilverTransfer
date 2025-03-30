@@ -18,54 +18,72 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="author" content="SilverCore, SilverTransfer | MisterPapaye">
 
-        <link rel="icon" href="https://t.silverdium.fr/logoST.png" type="image/png">
-
         <meta property="og:title" content="SilverTransfert | <%= fileName %>">
         <meta property="og:description" content="Transfert de fichier GRATUIT, hébergé en France !! by SilverCore">
         <meta property="og:site_name" content="SilverTransfer - Outils de Transfert">
-        <meta property="og:image" content="https://t.silverdium.fr/logoST.png">
+        <meta property="og:image" content="https://api.silverdium.fr/img/transfer/logo.png">
         <meta property="og:locale" content="fr_FR">
 
         <title>SilverTransfer | Télécharger : <%= fileName %></title>
 
         <link rel="stylesheet" href="assets?file=download&ext=css">
+        <link rel="stylesheet" href="/t/assets?file=data&ext=css">
 
-        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.16.1/sweetalert2.min.js"></script>
 
 
     </head>
 
     <body>
 
-        <script defer>
-            function btnclick() {
-                window.open(`/data/view?id=<%= fileID %>`, '_blank');
-                window.location.href = (`/data/<%= fileID %>`);
+        
+        <script type="module">
 
-                setInterval(() => {
-                    fetch('/data/status?id=<%= fileID %>')
-                        .then(res => res.json())
-                        .then(res => {
-                            if (res.data === 'end') {
-                                document.getElementById('ah').innerText = "Veuillez fermer l'onglet"
-                            }
-                        })
-                        .catch(error => {
-                            console.error("Erreur lors de la récupération du statut :", error);
-                        });
-                }, 500);
+            document.getElementById('ssuccess').style.display = 'none'
+
+            import { salert } from '../public/assets/js/salert.js';
+
+
+            const bntntt = document.getElementById('downloadbtn');
+
+            async function ah32() {
 
                 document.querySelector('.card').style.display = 'none'
-                document.getElementById('success').style.display = 'flex'
+                document.getElementById('ssuccess').style.display = 'flex'
+
+
+                await fetch(`/data/<%= fileID %>?action=decrypt`)
+                .then(response => response.json())
+                .then(res => {
+
+                    if (res.error) {
+                        return salert(res.message.silver, 'error');
+                    };
+                    
+                    if (res.success) {
+                        window.open('/data/<%= fileID %>?action=download', '_blank');
+                        window.location.href = '/data/end';
+                        return
+                    };
+
+                })
+
+                .catch(err => {
+
+                    console.error('Une errreur est survenue : ', err || err.message);
+                    return salert('Une errreur est survenue !', 'error');
+
+                });
 
             }
-        </script>
 
+
+        </script>
 
         <!-- From Uiverse.io by Quer3000 --> 
         <div class="card">
             <div class="image_container">
-                <img class="image" src="/assets/img/logo.png">
+                <img class="image" src="https://api.silverdium.fr/img/transfer/logo.png">
             </div>
             <div class="title1">
             <span>SilverTransfer</span>
@@ -73,7 +91,7 @@
             <div class="size">
             <span>Informations</span>
             <ul class="list-size">
-                <li class="item-list item-list-button">
+                <li class="item-list item-list-btton">
                     <strong>Taille</strong>
                     <br><%= fileSize %>
                 </li>
@@ -84,7 +102,7 @@
             </ul>
             </div>
             <div class="action">
-            <button class="download-button" onclick="btnclick()">
+            <button class="download-button" onclick="ah32()">
                 <span class="button-text" style="text-transform: uppercase;">Télécharger</span>
                 <span class="button-icon">
                 <svg
@@ -107,14 +125,31 @@
             </div>
         </div>
 
-        <section id="success">
-            <h1 id="ah">Veuillez fermer l'onglet !</h1>
+
+        <section id="ssuccess">
+            <section id="download">
+
+                <h1 id="status">Chargement en cours...</h1>
+        
+                <div class="loader">
+                    <!-- From Uiverse.io by Pradeepsaranbishnoi --> 
+                    <div class="🤚">
+                        <div class="👉"></div>
+                        <div class="👉"></div>
+                        <div class="👉"></div>
+                        <div class="👉"></div>
+                        <div class="🌴"></div>		
+                        <div class="👍"></div>
+                    </div>
+                </div>
+        
+            </section>
         </section>
 
         <section style="margin-top: 60px">
 
-            <h2>👑 Merci de soutenir les projets <a href="https://core.silverdium.fr">SilverCore</a> ! ❤️<br></h2>
-            <h2 class="btn_tipeee" onclick="tipeee()">
+            <h2>👑 Merci de soutenir les projets <a href="https://core.silverdium.fr" target="_blank">SilverCore</a> ! ❤️<br></h2>
+            <h2 class="btn_tipeee" onclick="window.open('https://tipeee.com/silverdium', '_blank')">
                 <span class="text"><strong>😎 VOUS POUVEZ NOUS AIDER ! 💸</strong></span>
             </h2>
 
@@ -123,6 +158,7 @@
         <footer id="footer">
             <strong><p>&copy; 2025 SilverTransfert | <a href="https://core.silverdium.fr">SilverCore</a>. Tous droits réservés.</p></strong>
         </footer>
+
 
     </body>
 

@@ -12,9 +12,15 @@ const multer = require("multer");
 const path = require('path');
 
 const config = require('../config/config.json');
-const { uploadDir, fileDatabase } = require('../server.js');
+const { loadDatabase, saveDatabase } = require('../src/database.js');
+const { getCurrentDate, getCurrentTime } = require('../src/datemanager.js')
 const { encryptFile, decryptFile, encryptText, decryptText } = require("../src/crypt.js");
-console.log(uploadDir)
+
+let fileDatabase = {};
+fileDatabase = loadDatabase();
+
+const uploadDir = path.join(__dirname, '../', config.TEMPdir);
+
 // Configuration de Multer pour stocker les fichiers sur disque
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -34,6 +40,8 @@ const upload = multer({ storage });
 
 router.post('/yourmother', upload.single("file"), async (req, res) => {
     console.log("____Réception d'une requête : ", `' /upload/yourmother '`);
+
+    fileDatabase = loadDatabase();
 
     if (req.fileValidationError) {
         return res.status(400).json({ message: req.fileValidationError });

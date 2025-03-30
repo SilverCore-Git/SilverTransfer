@@ -2,6 +2,15 @@
 @import url("https://transfer.silverdium.fr/footer.css");
 body { background: #0d0d0d; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; font-family: Arial, sans-serif; }
 
+
+
+
+#ssuccess {
+    display: none;
+}
+
+
+
 /* From Uiverse.io by Quer3000 */ 
 .card {
 --bg-card: #27272a;
@@ -10,7 +19,7 @@ body { background: #0d0d0d; display: flex; flex-direction: column; align-items: 
 --primary-shadow: #2e1065;
 --light: #d9d9d9;
 --zinc-800: #18181b;
---bg-linear: linear-gradient(0deg, var(--primary) 50%, var(--light) 125%);
+--bg-linear: linear-gradient(0deg, var(--primary));
 
 position: relative;
 display: flex;
