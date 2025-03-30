@@ -214,7 +214,6 @@ app.get('/data/end', (req, res) => {
 
 // ➤ **Route principale** : Déchiffrement et téléchargement du fichier
 app.get("/data/:filename", async (req, res) => {
-
     console.log("📥 Requête reçue : /data/", req.params.filename);
     const fileID = req.params.filename;
     const action = req.query.action;
@@ -233,7 +232,7 @@ app.get("/data/:filename", async (req, res) => {
 
         return res.status(200).render("data", { status: "Statut inconnu" });
     }
-        
+
     const fileDB = fileDatabase[fileID];
 
     if (!fileDB) {
@@ -251,61 +250,53 @@ app.get("/data/:filename", async (req, res) => {
     }
 
     if (action === "decrypt") {
-
         try {
-
             console.log("🔓 Déchiffrement...");
-
-            await decryptFile(encryptedFilePath, decryptedFilePath)
-            .then(end => {
-                return res.status(200).json({ success: true, message: { silver: 'Déchiffrement terminer !' } });
-            })
-            .catch(err => {
-                return res.status(500).json({ error: true, message: { silver: 'Une erreur est survenue lors du déchiffrement.', server: err || err.message } });
-            })
-
-
+            await decryptFile(encryptedFilePath, decryptedFilePath);
+            return res.status(200).json({ success: true, message: { silver: 'Déchiffrement terminé !' } });
+        } catch (err) {
+            return res.status(500).json({ error: true, message: { silver: 'Une erreur est survenue lors du déchiffrement.', server: err.message } });
         }
-        catch (err) {
-            return res.status(500).json({ error: true, message: { silver: 'Une erreur est survenue.', server: err || err.message } });
-        };
-            
-
-    }
+    } 
 
     else if (action === "download") {
-
         try {
-            await new Promise((resolve, reject) => {
+            console.log("📤 Envoi du fichier...");
 
-                res.sendFile(decryptedFilePath, (err) => {
-                    if (err) {
-                        console.error("❌ Erreur d'envoi :", err);
-                        reject({ status: 500, error: "Erreur d'envoi", detail: err });
-                    } else {
-                        console.log("✅ Fichier envoyé !");
-                        resolve();
-                    }
-                });
-
+            // Assurer que la réponse n'est pas annulée avant l'envoi
+            req.on("close", () => {
+                console.warn("⚠️ Requête annulée par le client !");
             });
 
-            // Supprime le fichier temporaire après l'envoi
-            await fs.promises.unlink(decryptedFilePath);
-            console.log("🗑️ Fichier temporaire supprimé !");
-            await fs.promises.rm(encryptedFilePath, { recursive: true, force: true });
-            console.log("🗑️ Fichier local supprimé !");
-            await deleteFiledb(fileID);
-
-
+            res.sendFile(decryptedFilePath, async (err) => {
+                if (err) {
+                    console.error("❌ Erreur d'envoi :", err);
+                    if (!res.headersSent) {
+                        return res.status(500).json({ error: true, message: { silver: "Erreur d'envoi", server: err.message } });
+                    }
+                } else {
+                    console.log("✅ Fichier envoyé !");
+                    
+                    // Supprimer les fichiers après la fin de l'envoi
+                    try {
+                        await fs.promises.unlink(decryptedFilePath);
+                        console.log("🗑️ Fichier temporaire supprimé !");
+                        await fs.promises.rm(encryptedFilePath, { recursive: true, force: true });
+                        console.log("🗑️ Fichier local supprimé !");
+                        await deleteFiledb(fileID);
+                    } catch (cleanupErr) {
+                        console.error("❌ Erreur lors du nettoyage des fichiers :", cleanupErr);
+                    }
+                }
+            });
 
         } catch (err) {
-            console.error(err);
-            return res.status(500).json({ error: true, message: { silver: 'Une erreur est survenue.', server: err || err.message } });
+            console.error("Une erreur est survenue : ", err);
+            if (!res.headersSent) {
+                return res.status(500).json({ error: true, message: { silver: 'Une erreur est survenue.', server: err.message } });
+            }
         }
-
     }
-
 });
 
 
