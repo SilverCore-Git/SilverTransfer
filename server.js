@@ -260,35 +260,33 @@ app.get("/data/:filename", async (req, res) => {
     } 
 
     else if (action === "download") {
+
         try {
+
             console.log("📤 Envoi du fichier...");
-
-            // Assurer que la réponse n'est pas annulée avant l'envoi
-            req.on("close", () => {
-                console.warn("⚠️ Requête annulée par le client !");
+            await new Promise((resolve, reject) => {
+                // Force le téléchargement du fichier
+                res.setHeader('Content-Disposition', 'attachment; filename="' + path.basename(decryptedFilePath) + '"');
+                res.setHeader('Content-Type', 'application/octet-stream');  // MIME type générique pour le téléchargement
+    
+                // Envoi du fichier
+                res.sendFile(decryptedFilePath, (err) => {
+                    if (err) {
+                        console.error("❌ Erreur d'envoi :", err);
+                        reject({ status: 500, error: "Erreur d'envoi", detail: err });
+                    } else {
+                        console.log("✅ Fichier envoyé !");
+                        resolve();
+                    }
+                });
             });
 
-            res.sendFile(decryptedFilePath, async (err) => {
-                if (err) {
-                    console.error("❌ Erreur d'envoi :", err);
-                    if (!res.headersSent) {
-                        return res.status(500).json({ error: true, message: { silver: "Erreur d'envoi", server: err.message } });
-                    }
-                } else {
-                    console.log("✅ Fichier envoyé !");
-                    
-                    // Supprimer les fichiers après la fin de l'envoi
-                    try {
-                        await fs.promises.unlink(decryptedFilePath);
-                        console.log("🗑️ Fichier temporaire supprimé !");
-                        await fs.promises.rm(encryptedFilePath, { recursive: true, force: true });
-                        console.log("🗑️ Fichier local supprimé !");
-                        await deleteFiledb(fileID);
-                    } catch (cleanupErr) {
-                        console.error("❌ Erreur lors du nettoyage des fichiers :", cleanupErr);
-                    }
-                }
-            });
+            // Supprime le fichier temporaire après l'envoi
+            await fs.promises.unlink(decryptedFilePath);
+            console.log("🗑️ Fichier temporaire supprimé !");
+            await fs.promises.rm(encryptedFilePath, { recursive: true, force: true });
+            console.log("🗑️ Fichier local supprimé !");
+            await deleteFiledb(fileID);
 
         } catch (err) {
             console.error("Une erreur est survenue : ", err);
