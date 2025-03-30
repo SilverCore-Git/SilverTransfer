@@ -51,7 +51,9 @@ fileDatabase = loadDatabase();
 
 setInterval(() => {
     fileDatabase = loadDatabase();
+    module.exports = fileDatabase;
 }, 5000)
+
 
 // initialisation de la suprésion des fichier expirer
 // setInterval(() => { removeExpirFile() }, 3600000); // marche pas, fait crach remplacer dans la fin de la root /data
@@ -102,7 +104,7 @@ console.log("Express chargé");
 
 
 const uploadDir = path.join(__dirname, config.TEMPdir);
-module.exports = uploadDir;
+
 if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir);
     console.log('Répertoire "',config.TEMPdir,'" créé');

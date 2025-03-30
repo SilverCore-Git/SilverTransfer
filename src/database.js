@@ -5,11 +5,10 @@
  */
 
 const fs = require("fs");
-const crypto = require('crypto');
 
 const config = require('../config/config.json');
 
-const DB_FILE = `../${config.DBFile}`;
+const DB_FILE = config.DBFile;
 
 
 // Fonction pour obtenir la date au format "YYYY-MM-DD"
@@ -27,13 +26,19 @@ const getCurrentTime = () => {
 
 // Charger la base de données
 const loadDatabase = () => {
+
     try {
+
         if (!fs.existsSync(DB_FILE)) return {}; // Si le fichier n'existe pas, retourner un objet vide
-        return JSON.parse(fs.readFileSync(DB_FILE, "utf8"));
+        return JSON.parse(fs.readFileSync(DB_FILE, "utf8")); 
+
     } catch (error) {
+
         console.error("❌ Erreur lors du chargement de la base de données :", error);
         return {};
+
     }
+
 };
 
 // Sauvegarder la base de données

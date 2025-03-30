@@ -12,6 +12,7 @@ import popups from './popups.js';
 const urlParams = new URLSearchParams(window.location.search);
 const ifdev = urlParams.get('dev');
 const page = urlParams.get('page');
+const salerttest = urlParams.get('salerttest');
 
 
 if (ifdev == 1) {
@@ -31,16 +32,20 @@ if (ifdev == 1) {
         size: 200
     });
 
-} 
+}
 
 else {
-
-    history.pushState(null, "", `?page=home`);
 
     main.style.display = 'none';
     upload.style.display = 'none';
     progress.style.display = 'none';
-    done.style.display = 'none'; 
+    done.style.display = 'none';
+
+    if (salerttest == 1) {
+        salert('Une alert test', 'success')
+    } 
+
+    history.pushState(null, "", `?page=home`);
 
 }
 
@@ -223,10 +228,19 @@ async function loadApp() {
         await closeform('upload');
         await sendFile('open');
         if (selectedFile) {
-            await send([selectedFile]); 
+            await send([selectedFile]);
         } else {
             await send(file);
         }
+        setTimeout(() => {
+            
+            if (progressbar.value < 2) {
+
+                salert('Une erreur est survenue !', 'error')
+
+            }
+
+        }, 1000);
         
     });
 

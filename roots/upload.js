@@ -12,9 +12,9 @@ const multer = require("multer");
 const path = require('path');
 
 const config = require('../config/config.json');
-const uploadDir = require('../server.js');
+const { uploadDir, fileDatabase } = require('../server.js');
 const { encryptFile, decryptFile, encryptText, decryptText } = require("../src/crypt.js");
-
+console.log(uploadDir)
 // Configuration de Multer pour stocker les fichiers sur disque
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {

@@ -112,3 +112,6 @@
 [2025-03-29 - 18:19:07] > ✅ Le fichier d'entrée "C:\Users\felix\OneDrive\Documents\SilverCore\app\SilverTransfert\app\temp\454608ca0682481ec59bba97d2d59949.png" a été supprimé après chiffrement.
 [2025-03-29 - 18:19:07] > ✅ Chiffrement terminé avec succès !
 [2025-03-29 - 18:19:07] > Erreur lors du chiffrement : ReferenceError: fileDatabase is not defined
+[2025-03-29 - 18:59:21] > Démarrage de Express...
+[2025-03-29 - 18:59:21] > Express chargé
+[2025-03-29 - 18:59:21] > Serveur HTTPS en ligne sur https://transfer.silverdium.fr:7894
