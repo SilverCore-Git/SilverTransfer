@@ -11,6 +11,7 @@
 
 
     "hostname": "localhost",
+    "hostname2": "localhost",
 
     "Port": 7894,
 

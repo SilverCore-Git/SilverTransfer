@@ -39,49 +39,55 @@ const upload = multer({ storage });
 
 
 router.post('/yourmother', upload.single("file"), async (req, res) => {
-    console.log("____Réception d'une requête : ", `' /upload/yourmother '`);
 
-    fileDatabase = loadDatabase();
+    if (req.hostname === config.hostname) {
 
-    if (req.fileValidationError) {
-        return res.status(400).json({ message: req.fileValidationError });
+        console.log("____Réception d'une requête : ", `' /upload/yourmother '`);
+
+        fileDatabase = loadDatabase();
+
+        if (req.fileValidationError) {
+            return res.status(400).json({ message: req.fileValidationError });
+        }
+
+        if (!req.file) {
+            return res.status(400).json({ message: "Aucun fichier reçu" });
+        }
+
+        let randomNumber = Math.floor(Math.random() * 100000000);
+        randomNumber = randomNumber.toString().padStart(8, '0');
+
+        const fileID = randomNumber;
+        const tempFilePath = req.file.path;  // Chemin du fichier temporaire sauvegardé par Multer
+        const encryptedFileName = `${fileID}.${req.file.filename}.enc`;
+        const encryptedFilePath = path.join(__dirname, `../${config.DATAdir}`, encryptedFileName);
+
+        res.json({
+            status: "processing",
+            message: "Fichier reçu, chiffrement en cours...",
+            id: fileID
+        });
+
+        console.log('Fichier reçu, chiffrement en cours...');
+
+        try {
+
+            await encryptFile(tempFilePath, encryptedFilePath);
+
+            fileDatabase[fileID] = {
+                fileName: encryptedFileName,
+                size: req.file.size,
+                date: `${getCurrentDate()} - ${getCurrentTime()}` 
+            };
+            await saveDatabase(fileDatabase);
+
+            console.log('✅✅__Fichier enregistré ! ', `?id=${fileID}`);
+        } catch (err) { 
+            console.error("Erreur lors du chiffrement :", err);
+        }
+
     }
 
-    if (!req.file) {
-        return res.status(400).json({ message: "Aucun fichier reçu" });
-    }
-
-    let randomNumber = Math.floor(Math.random() * 100000000);
-    randomNumber = randomNumber.toString().padStart(8, '0');
-
-    const fileID = randomNumber;
-    const tempFilePath = req.file.path;  // Chemin du fichier temporaire sauvegardé par Multer
-    const encryptedFileName = `${fileID}.${req.file.filename}.enc`;
-    const encryptedFilePath = path.join(__dirname, `../${config.DATAdir}`, encryptedFileName);
-
-    res.json({
-        status: "processing",
-        message: "Fichier reçu, chiffrement en cours...",
-        id: fileID
-    });
-
-    console.log('Fichier reçu, chiffrement en cours...');
-
-    try {
-
-        await encryptFile(tempFilePath, encryptedFilePath);
-
-        fileDatabase[fileID] = {
-            fileName: encryptedFileName,
-            size: req.file.size,
-            date: `${getCurrentDate()} - ${getCurrentTime()}` 
-        };
-        await saveDatabase(fileDatabase);
-
-        console.log('✅✅__Fichier enregistré ! ', `?id=${fileID}`);
-    } catch (err) { 
-        console.error("Erreur lors du chiffrement :", err);
-    }
 });
 
 

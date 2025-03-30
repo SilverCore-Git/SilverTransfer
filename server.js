@@ -89,7 +89,11 @@ app.use((req, res, next) => {
                 <button><h2>https://transfer.silverdium.fr</h2></button>
             </a>
         `);
-    }
+    };
+
+    if (req.hostname !== config.hostname && req.hostname !== config.hostname2) {
+        return
+    };
 
     next(); 
 
@@ -148,152 +152,165 @@ app.use('/upload', root_upload);
 
 // Route pour afficher le bouton de téléchargement
 app.get("/t/:id", async (req, res) => {
-    console.log("____Réception d'une requête : ", `'/t/${req.params.id}'`);
-    const fileID = req.params.id;
 
-        //assets
-        if (fileID == 'assets') {
-            const fileName = req.query.file
-            const ext = req.query.ext
-            res.sendFile(path.join(__dirname, 'views', 'assets', ext, `${fileName}.${ext}`))
-            return
-        }
+    if (req.hostname === config.hostname2) {
 
-        // dev access
-        const dev = req.query.dev
+        console.log("____Réception d'une requête : ", `'/t/${req.params.id}'`);
+        const fileID = req.params.id;
 
-        if (dev === 'true') {
-
-            console.warn('⚠️ </> Acces développeur ! id?=',fileID)
-
-            const type = req.query.type
-            const err = req.query.err
-
-            if (type === 'err') {
-
-                if (err === '500') {
-
-                }
-                else if (err === '404') {
-                    await res.status(404).render("fatherfile", { error: "ID non trouver !", describ: "ID de fichier non trouver..." });
-                    return
-                }
-
-            } else {
-
-                await res.render("download", { fileName: 'fileName', fileID: 'fileID', fileSize: 'fSize' });
+            //assets
+            if (fileID == 'assets') {
+                const fileName = req.query.file
+                const ext = req.query.ext
+                res.sendFile(path.join(__dirname, 'views', 'assets', ext, `${fileName}.${ext}`))
                 return
+            }
+
+            // dev access
+            const dev = req.query.dev
+
+            if (dev === 'true') {
+
+                console.warn('⚠️ </> Acces développeur ! id?=',fileID)
+
+                const type = req.query.type
+                const err = req.query.err
+
+                if (type === 'err') {
+
+                    if (err === '500') {
+
+                    }
+                    else if (err === '404') {
+                        await res.status(404).render("fatherfile", { error: "ID non trouver !", describ: "ID de fichier non trouver..." });
+                        return
+                    }
+
+                } else {
+
+                    await res.render("download", { fileName: 'fileName', fileID: 'fileID', fileSize: 'fSize' });
+                    return
+
+                }
 
             }
 
+        
+        const fileEntry = fileDatabase[fileID];
+
+        if (!fileEntry) {
+            return res.status(404).render("errfile", { status: "ID de fichier non trouver..." });
         }
 
-    
-    const fileEntry = fileDatabase[fileID];
+        const fSize = await formatFileSize(fileEntry.size);
+        
+        const fileName = fileEntry.fileName.split('.')[1];
+        const decryptedFileName = decryptText(fileName);
 
-    if (!fileEntry) {
-        return res.status(404).render("errfile", { status: "ID de fichier non trouver..." });
+
+        res.render("download", { fileName: decryptedFileName, fileID: fileID, fileSize: fSize });
+
     }
 
-    const fSize = await formatFileSize(fileEntry.size);
-    
-    const fileName = fileEntry.fileName.split('.')[1];
-    const decryptedFileName = decryptText(fileName);
-
-
-    res.render("download", { fileName: decryptedFileName, fileID: fileID, fileSize: fSize });
 });
 
 
 
 app.get('/data/end', (req, res) => {
-    res.render("end", {})
+    if (req.hostname === config.hostname) {
+        res.render("end", {})
+    }
 })
 
 
 
-// ➤ **Route principale** : Déchiffrement et téléchargement du fichier
+// roote => Déchiffrement et téléchargement du fichier
 app.get("/data/:filename", async (req, res) => {
-    console.log("📥 Requête reçue : /data/", req.params.filename);
-    const fileID = req.params.filename;
-    const action = req.query.action;
 
-    // Gestion accès développeur
-    const dev = req.query.dev;
-    const err = req.query.err;
-    if (dev == 1) {
-        console.warn("⚠️ Accès développeur ! ID =", fileID);
+    if (req.hostname === config.hostname2) {     
 
-        if (err === "404") {
-            return res.status(404).render("errfile", { status: "Erreur 404" });
-        } else if (err === "end") {
-            return res.status(200).render("end");
+        console.log("📥 Requête reçue : /data/", req.params.filename);
+        const fileID = req.params.filename;
+        const action = req.query.action;
+
+        // Gestion accès développeur
+        const dev = req.query.dev;
+        const err = req.query.err;
+        if (dev == 1) {
+            console.warn("⚠️ Accès développeur ! ID =", fileID);
+
+            if (err === "404") {
+                return res.status(404).render("errfile", { status: "Erreur 404" });
+            } else if (err === "end") {
+                return res.status(200).render("end");
+            }
+
+            return res.status(200).render("data", { status: "Statut inconnu" });
         }
 
-        return res.status(200).render("data", { status: "Statut inconnu" });
-    }
+        const fileDB = fileDatabase[fileID];
 
-    const fileDB = fileDatabase[fileID];
-
-    if (!fileDB) {
-        return res.status(404).json({ error: true, message: { silver: "Fichier non trouvé" } });
-    }
-
-    const fileName = fileDB.fileName.split(".")[1];
-    const decryptedFileName = decryptText(fileName);
-
-    const encryptedFilePath = path.join(__dirname, "data", fileDB.fileName);
-    const decryptedFilePath = path.join(__dirname, "temp", decryptedFileName);
-
-    if (!fs.existsSync(encryptedFilePath)) {
-        return res.status(404).json({ error: true, message: { silver: "Fichier chiffré non trouvé" } });
-    }
-
-    if (action === "decrypt") {
-        try {
-            console.log("🔓 Déchiffrement...");
-            await decryptFile(encryptedFilePath, decryptedFilePath);
-            return res.status(200).json({ success: true, message: { silver: 'Déchiffrement terminé !' } });
-        } catch (err) {
-            return res.status(500).json({ error: true, message: { silver: 'Une erreur est survenue lors du déchiffrement.', server: err.message } });
+        if (!fileDB) {
+            return res.status(404).json({ error: true, message: { silver: "Fichier non trouvé" } });
         }
-    } 
 
-    else if (action === "download") {
+        const fileName = fileDB.fileName.split(".")[1];
+        const decryptedFileName = decryptText(fileName);
 
-        try {
+        const encryptedFilePath = path.join(__dirname, "data", fileDB.fileName);
+        const decryptedFilePath = path.join(__dirname, "temp", decryptedFileName);
 
-            console.log("📤 Envoi du fichier...");
-            await new Promise((resolve, reject) => {
-                // Force le téléchargement du fichier
-                res.setHeader('Content-Disposition', 'attachment; filename="' + path.basename(decryptedFilePath) + '"');
-                res.setHeader('Content-Type', 'application/octet-stream');  // MIME type générique pour le téléchargement
-    
-                // Envoi du fichier
-                res.sendFile(decryptedFilePath, (err) => {
-                    if (err) {
-                        console.error("❌ Erreur d'envoi :", err);
-                        reject({ status: 500, error: "Erreur d'envoi", detail: err });
-                    } else {
-                        console.log("✅ Fichier envoyé !");
-                        resolve();
-                    }
+        if (!fs.existsSync(encryptedFilePath)) {
+            return res.status(404).json({ error: true, message: { silver: "Fichier chiffré non trouvé" } });
+        }
+
+        if (action === "decrypt") {
+            try {
+                console.log("🔓 Déchiffrement...");
+                await decryptFile(encryptedFilePath, decryptedFilePath);
+                return res.status(200).json({ success: true, message: { silver: 'Déchiffrement terminé !' } });
+            } catch (err) {
+                return res.status(500).json({ error: true, message: { silver: 'Une erreur est survenue lors du déchiffrement.', server: err.message } });
+            }
+        } 
+
+        else if (action === "download") {
+
+            try {
+
+                console.log("📤 Envoi du fichier...");
+                await new Promise((resolve, reject) => {
+                    // Force le téléchargement du fichier
+                    res.setHeader('Content-Disposition', 'attachment; filename="' + path.basename(decryptedFilePath) + '"');
+                    res.setHeader('Content-Type', 'application/octet-stream');  // MIME type générique pour le téléchargement
+        
+                    // Envoi du fichier
+                    res.sendFile(decryptedFilePath, (err) => {
+                        if (err) {
+                            console.error("❌ Erreur d'envoi :", err);
+                            reject({ status: 500, error: "Erreur d'envoi", detail: err });
+                        } else {
+                            console.log("✅ Fichier envoyé !");
+                            resolve();
+                        }
+                    });
                 });
-            });
 
-            // Supprime le fichier temporaire après l'envoi
-            await fs.promises.unlink(decryptedFilePath);
-            console.log("🗑️ Fichier temporaire supprimé !");
-            await fs.promises.rm(encryptedFilePath, { recursive: true, force: true });
-            console.log("🗑️ Fichier local supprimé !");
-            await deleteFiledb(fileID);
+                // Supprime le fichier temporaire après l'envoi
+                await fs.promises.unlink(decryptedFilePath);
+                console.log("🗑️ Fichier temporaire supprimé !");
+                await fs.promises.rm(encryptedFilePath, { recursive: true, force: true });
+                console.log("🗑️ Fichier local supprimé !");
+                await deleteFiledb(fileID);
 
-        } catch (err) {
-            console.error("Une erreur est survenue : ", err);
-            if (!res.headersSent) {
-                return res.status(500).json({ error: true, message: { silver: 'Une erreur est survenue.', server: err.message } });
+            } catch (err) {
+                console.error("Une erreur est survenue : ", err);
+                if (!res.headersSent) {
+                    return res.status(500).json({ error: true, message: { silver: 'Une erreur est survenue.', server: err.message } });
+                }
             }
         }
+
     }
 });
 
