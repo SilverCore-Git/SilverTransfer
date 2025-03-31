@@ -14,9 +14,10 @@ const fs = require('fs');
 const config = require('../config/config.json');
 const { loadDatabase, saveDatabase } = require('../src/database.js');
 const { getCurrentDate, getCurrentTime } = require('../src/datemanager.js')
-const { encryptFile, decryptFile, encryptText, decryptText } = require("../src/crypt.js");
+const { decryptFile, decryptText } = require("../src/crypt.js");
 
-
+let fileDatabase = {};
+fileDatabase = loadDatabase();
 
 
 router.get('/end', (req, res) => {
