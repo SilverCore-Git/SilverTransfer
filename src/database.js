@@ -5,6 +5,7 @@
  */
 
 const fs = require("fs");
+const path = require("path");
 
 const config = require('../config/config.json');
 
@@ -74,6 +75,10 @@ async function resetDatabase() {
     const date = `${d} - ${h}`
 
     try {
+
+        if (!fs.existsSync(DB_FILE))  {
+            await fs.promises.writeFile(DB_FILE, '');
+        } 
 
         await fs.promises.unlink(DB_FILE);
 

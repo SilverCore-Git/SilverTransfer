@@ -115,16 +115,11 @@ if (!fs.existsSync(uploadDir)) {
 }
 if (!fs.existsSync(path.join(__dirname, config.DATAdir))) {
     fs.mkdirSync(path.join(__dirname, config.DATAdir));
-    console.log('✅ Répertoire "',config.DATAdir,'" créé');
+    console.log('✅ Répertoire "',config.DATAdir,'" créé'); 
 }
-
-async function ddd453() {
-    await fs.writeFile(path.join(__dirname, config.DBFile));
-    await resetDatabase();
-}
-if (!fs.existsSync(path.join(__dirname, config.DBFile))) {
-    ddd453();
-}
+if (!fs.existsSync(path.join(__dirname, config.DBFile)))  {
+    resetDatabase();
+} 
 
 
 
