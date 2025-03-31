@@ -42,7 +42,7 @@ router.post('/yourmother', upload.single("file"), async (req, res) => {
 
     if (req.hostname === config.hostname) {
 
-        console.log("____Réception d'une requête : ", `' /upload/yourmother '`);
+        console.log("📥 Réception d'une requête : ", `' /upload/yourmother '`);
 
         fileDatabase = loadDatabase();
 

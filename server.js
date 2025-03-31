@@ -4,7 +4,7 @@
  * @author MisterPapaye
  */
 
-console.log('Démarrage du serveur...');
+console.log('🔄 Démarrage du serveur...');
 
 // Importation des bibliothèques
 const express = require("express");
@@ -25,11 +25,10 @@ const formatFileSize = require('./src/filesize.js')
 const config = require('./config/config.json');
 
 const { decryptFile, decryptText } = require("./src/crypt.js");
-const { loadDatabase, saveDatabase, deleteFiledb, resetDatabase, deleteDatabaseFile, createDatabaseFile } = require('./src/database.js');
+const { loadDatabase, saveDatabase, deleteFiledb, resetDatabase, deleteDatabaseFile, createDatabaseFile } = require('./src/database.js'); 
 const { logToFile, originalConsoleError, originalConsoleLog, originalConsoleWarn } = require('./src/logger.js');
-const { getCurrentDate, getCurrentTime } = require('./src/datemanager.js')
-const { removeExpirFile } = require("./src/removeData.js");
-
+const { getCurrentDate, getCurrentTime } = require('./src/datemanager.js');
+const { verifyIfExpire } = require('./src/verifyIfExpire.js');
 
 async function resetDB() {
 
@@ -51,11 +50,13 @@ fileDatabase = loadDatabase();
 
 setInterval(() => {
     fileDatabase = loadDatabase();
-}, 5000)
+}, 5000);
+
+setInterval(() => {
+    verifyIfExpire();
+}, 1 * 3600 * 1000); // check for expire file
 
 
-// initialisation de la suprésion des fichier expirer
-// setInterval(() => { removeExpirFile() }, 3600000); // marche pas, fait crach remplacer dans la fin de la root /data
 
 
 // SSL key & cert path
@@ -72,7 +73,7 @@ const corsOptions = {
 
 
 const app = express();
-console.log("Démarrage de Express...");
+console.log("🔄 Démarrage de Express...");
 
 app.use(cors(corsOptions));
 app.use(express.json());
@@ -92,7 +93,7 @@ app.use((req, res, next) => {
     };
 
     if (req.hostname !== config.hostname && req.hostname !== config.hostname2) {
-        return
+        res.end();
     };
 
     next(); 
@@ -103,19 +104,28 @@ app.use((req, res, next) => {
 app.use(express.static("public"));
 
 
-console.log("Express chargé");
+console.log("✅ Express chargé");
 
 
 const uploadDir = path.join(__dirname, config.TEMPdir);
 
 if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir);
-    console.log('Répertoire "',config.TEMPdir,'" créé');
+    console.log('✅ Répertoire "',config.TEMPdir,'" créé');
 }
 if (!fs.existsSync(path.join(__dirname, config.DATAdir))) {
     fs.mkdirSync(path.join(__dirname, config.DATAdir));
-    console.log('Répertoire "',config.DATAdir,'" créé');
+    console.log('✅ Répertoire "',config.DATAdir,'" créé');
 }
+
+async function ddd453() {
+    await fs.writeFile(path.join(__dirname, config.DBFile));
+    await resetDatabase();
+}
+if (!fs.existsSync(path.join(__dirname, config.DBFile))) {
+    ddd453();
+}
+
 
 
 
@@ -153,9 +163,11 @@ app.use('/data', root_download);
 // Route pour afficher le bouton de téléchargement
 app.get("/t/:id", async (req, res) => {
 
+    verifyIfExpire();
+
     if (req.hostname === config.hostname2) {
 
-        console.log("____Réception d'une requête : ", `'/t/${req.params.id}'`);
+        console.log("📥 Réception d'une requête : ", `'/t/${req.params.id}'`);
         const fileID = req.params.id;
 
             //assets
@@ -213,7 +225,7 @@ app.get("/t/:id", async (req, res) => {
 
 // Générer une clé
 app.get("/key/:bytes", (req, res) => {
-    console.log("____Réception d'une requête : ", `'/key/${req.params.bytes}'`)
+    console.log("📥 Réception d'une requête : ", `'/key/${req.params.bytes}'`)
     const bytes = parseInt(req.params.bytes, 10);
 
     let statu;
@@ -248,11 +260,11 @@ app.use((req, res) => {
     res.status(404).redirect('https://api.silverdium.fr/www.errors/404.html');
 });
 
-
+verifyIfExpire();
 
 const PORT = config.Port;
 http.createServer(app).listen(PORT, () => {
-    console.log(`Serveur HTTPS en ligne sur ${config.hostname}:${PORT}`);
+    console.log(`✅ Serveur HTTPS en ligne sur ${config.hostname}:${PORT}`);
 });
 
 

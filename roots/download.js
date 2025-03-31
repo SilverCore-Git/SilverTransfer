@@ -12,7 +12,7 @@ const path = require('path');
 const fs = require('fs');
 
 const config = require('../config/config.json');
-const { loadDatabase, saveDatabase } = require('../src/database.js');
+const { loadDatabase } = require('../src/database.js');
 const { getCurrentDate, getCurrentTime } = require('../src/datemanager.js')
 const { decryptFile, decryptText } = require("../src/crypt.js");
 
@@ -104,9 +104,6 @@ router.get("/:filename", async (req, res) => {
                 // Supprime le fichier temporaire après l'envoi
                 await fs.promises.unlink(decryptedFilePath);
                 console.log("🗑️ Fichier temporaire supprimé !");
-                await fs.promises.rm(encryptedFilePath, { recursive: true, force: true });
-                console.log("🗑️ Fichier local supprimé !");
-                await deleteFiledb(fileID);
 
             } catch (err) {
                 console.error("Une erreur est survenue : ", err);
