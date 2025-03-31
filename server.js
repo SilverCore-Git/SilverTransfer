@@ -42,8 +42,8 @@ async function resetDB() {
 
     };
 
-}
-resetDB()
+};
+resetDB();
 
  
 let fileDatabase = {};
@@ -140,7 +140,6 @@ app.get('/assets/img/background/background1', (req, res) => {
 // root déportés
 const root_upload = require('./roots/upload.js');
 const root_download = require('./roots/download.js');
-const { error } = require("console");
 
 app.use('/upload', root_upload);
 
@@ -171,7 +170,7 @@ app.get("/t/:id", async (req, res) => {
 
             if (dev === 'true') {
 
-                console.warn('⚠️ </> Acces développeur ! id?=',fileID)
+                console.warn('⚠️ </> Acces développeur ! ?id=',fileID)
 
                 const type = req.query.type
                 const err = req.query.err
@@ -182,15 +181,11 @@ app.get("/t/:id", async (req, res) => {
 
                     }
                     else if (err === '404') {
-                        await res.status(404).render("fatherfile", { error: "ID non trouver !", describ: "ID de fichier non trouver..." });
-                        return
+                        return await res.status(404).render("fatherfile", { error: "ID non trouver !", describ: "ID de fichier non trouver..." });
                     }
 
                 } else {
-
-                    await res.render("download", { fileName: 'fileName', fileID: 'fileID', fileSize: 'fSize' });
-                    return
-
+                    return await res.render("download", { fileName: 'fileName', fileID: 'fileID', fileSize: 'fSize' });
                 }
 
             }
@@ -237,7 +232,7 @@ app.get("/data/:filename", async (req, res) => {
         const dev = req.query.dev;
         const err = req.query.err;
         if (dev == 1) {
-            console.warn("⚠️ Accès développeur ! ID =", fileID);
+            console.warn("⚠️ Accès développeur ! ?ID=", fileID);
 
             if (err === "404") {
                 return res.status(404).render("errfile", { status: "Erreur 404" });
@@ -279,6 +274,7 @@ app.get("/data/:filename", async (req, res) => {
             try {
 
                 console.log("📤 Envoi du fichier...");
+
                 await new Promise((resolve, reject) => {
                     // Force le téléchargement du fichier
                     res.setHeader('Content-Disposition', 'attachment; filename="' + path.basename(decryptedFilePath) + '"');
@@ -329,8 +325,7 @@ app.get("/key/:bytes", (req, res) => {
         statu = "ERROR";
         message = "Erreur lors de la création de la clé : bytes is not a number !";
         console.log(`Annulation d'une requête : ${statu} => ${message}`);
-        res.json({ "status": statu, "message": message, "key": key, "bytes": bytes });
-        return;
+        return res.json({ "status": statu, "message": message, "key": key, "bytes": bytes });
      }
 
     if (bytes >= config.maxbyteforkey) {
@@ -345,7 +340,7 @@ app.get("/key/:bytes", (req, res) => {
         console.log(`Envoi de la clé type res.json : "{ "status": ${statu}, "message": ${message}, "key": ForSecureDontShow, "bytes": ${bytes} }"`);
     }
     
-    res.json({ "status": statu, "message": message, "key": key, "bytes": bytes });
+    return res.json({ "status": statu, "message": message, "key": key, "bytes": bytes });
 });
 
 
@@ -358,7 +353,7 @@ app.use((req, res) => {
 
 const PORT = config.Port;
 http.createServer(app).listen(PORT, () => {
-    console.log(`Serveur HTTPS en ligne sur https://transfer.silverdium.fr:${PORT}`);
+    console.log(`Serveur HTTPS en ligne sur ${config.hostname}:${PORT}`);
 });
 
 
