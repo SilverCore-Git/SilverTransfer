@@ -40,6 +40,8 @@
     <body>
 
 
+        <span style="margin-bottom: 1rem; color: rgb(80, 0, 126); font-size: 1.2rem;"><strong> Le fichier sera supprimé 15 jours apres téléversement </strong></span>
+
         <!-- From Uiverse.io by Quer3000 --> 
         <div class="card">
             <div class="image_container">
@@ -92,8 +94,9 @@
             <a target="_blank" href="https://discord.gg/ftFhQTJsQ5"> <li data-tooltip="Discord SilverCore" class="social-icon"> <i class="bi bi-discord"> </i> </li> </a>
             <a target="_blank" href="https://discord.gg/mKs3uMTJWM"> <li data-tooltip="Discord support" class="social-icon"> <i class="bi bi-life-preserver"> </i> </li> </a>
             <a target="_blank" href="https://tipeee.com/silverdium"> <li data-tooltip="Nous aider avec tipeee" class="social-icon"> <i class="bi bi-heart"> </i> </li> </a>
+            <a target="_blank" href="https://github.com/SilverCore-Git/SilverTransfer"> <li data-tooltip="Open source sur GitHub" class="social-icon"> <i class="bi bi-github"> </i> </li> </a>
 
-        </ul>
+        </ul> 
         <style>
             .social-contaner {
 display: flex;
@@ -184,8 +187,10 @@ transition: opacity 0.2s ease-in-out;
 
         <script type="module" defer>
 
-            const size = document.getElementById('size');
-            const name = document.getElementById('fname');
+
+            const size = "<%= fileSize %>";
+            const name = "<%= fileName %>";
+
 
             history.pushState(null, "", `?page=download&fname=${name}&fsize=${size}&file=1`);
             
@@ -228,6 +233,28 @@ transition: opacity 0.2s ease-in-out;
                 bntntt.addEventListener('click', async () => {
 
                     history.pushState(null, "", `?page=loader&fname=${name}&fsize=${size}&file=1`);
+
+                    const statustext = document.getElementById('status');
+
+                    const frames = [
+                        "Déchiffrement en cours",
+                        "Déchiffrement en cours.",
+                        "Déchiffrement en cours..",
+                        "Déchiffrement en cours...",
+                        "Déchiffrement en cours...."
+                    ];
+
+                    let tailledetesmorts = 0;
+
+                    setInterval(() => {
+                        
+                        statustext.innerText = frames[tailledetesmorts]
+                        tailledetesmorts++
+
+                        if (tailledetesmorts === 5) { tailledetesmorts = 0 }
+
+                    }, 500);
+
 
                     document.querySelector('.card').style.display = 'none'
                     document.getElementById('ssuccess').style.display = 'flex'

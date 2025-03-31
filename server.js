@@ -158,8 +158,6 @@ app.use('/data', root_download);
 // Route pour afficher le bouton de téléchargement
 app.get("/t/:id", async (req, res) => {
 
-    verifyIfExpire();
-
     if (req.hostname === config.hostname2) {
 
         console.log("📥 Réception d'une requête : ", `'/t/${req.params.id}'`);

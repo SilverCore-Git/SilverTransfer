@@ -16,9 +16,6 @@ const { loadDatabase } = require('../src/database.js');
 const { getCurrentDate, getCurrentTime } = require('../src/datemanager.js')
 const { decryptFile, decryptText } = require("../src/crypt.js");
 
-let fileDatabase = {};
-fileDatabase = loadDatabase();
-
 
 router.get('/end', (req, res) => {
     if (req.hostname === config.hostname) {
@@ -31,9 +28,12 @@ router.get('/end', (req, res) => {
 // roote => Déchiffrement et téléchargement du fichier
 router.get("/:filename", async (req, res) => {
 
+    let fileDatabase = {};
+    fileDatabase = loadDatabase();
+
     if (req.hostname === config.hostname2) {     
 
-        console.log("📥 Requête reçue : /data/", req.params.filename);
+        console.log("📥 Requête reçue : /data/",req.params.filename);
         const fileID = req.params.filename;
         const action = req.query.action;
 
@@ -41,7 +41,7 @@ router.get("/:filename", async (req, res) => {
         const dev = req.query.dev;
         const err = req.query.err;
         if (dev == 1) {
-            console.warn("⚠️ Accès développeur ! ?ID=", fileID);
+            console.warn("⚠️ Accès développeur ! ?ID=",fileID);
 
             if (err === "404") {
                 return res.status(404).render("errfile", { status: "Erreur 404" });
@@ -55,14 +55,16 @@ router.get("/:filename", async (req, res) => {
         const fileDB = fileDatabase[fileID];
 
         if (!fileDB) {
-            return res.status(404).json({ error: true, message: { silver: "Fichier non trouvé" } });
+            return res.status(404).json({ error: true, step: 'verify if existing in db file', message: { silver: "Fichier non trouvé" } });
         }
 
         const fileName = fileDB.fileName.split(".")[1];
         const decryptedFileName = decryptText(fileName);
 
-        const encryptedFilePath = path.join(__dirname, "data", fileDB.fileName);
-        const decryptedFilePath = path.join(__dirname, "temp", decryptedFileName);
+        const encryptedFilePath = path.join(__dirname, "../data", fileDB.fileName);
+        const decryptedFilePath = path.join(__dirname, "../temp", decryptedFileName);
+
+        console.log(encryptedFilePath)
 
         if (!fs.existsSync(encryptedFilePath)) {
             return res.status(404).json({ error: true, message: { silver: "Fichier chiffré non trouvé" } });
