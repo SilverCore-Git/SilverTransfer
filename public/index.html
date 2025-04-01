@@ -352,7 +352,7 @@
 
         </div>
 
-        <a href="https://github.com/SilverCore-Git/SilverTransfer" class="vtext"> SilverTransfer version 2.0.1 </a>
+        <a href="/patchnotes" target="_blank" class="vtext"> SilverTransfer version 2.0.1 </a>
         <style>
             .vtext {
                 position: fixed;
@@ -360,8 +360,36 @@
                 left: 1.5rem;
                 font-weight: bold;
             }
+            .vtext:hover {
+                text-decoration: underline;
+            }
             @media (max-width: 700px) {
                 .vtext {
+                    display: none;
+                }
+            }
+        </style>
+
+        <div class="vtext2">
+            <a href="/patchnotes" target="_blank"> <strong> Patchnotes </strong> </a>
+            <a style="margin-right: 1rem; margin-left: 1rem;">  |  </a>
+            <a href="https://tipeee.com/silverdium" target="_blank"> <strong> Vous pouvez nous aidez </strong> </a>
+        </div>
+
+        <style>
+            .vtext2 {
+                position: fixed;
+                bottom: 6rem;
+                right: 2rem;
+                font-weight: bold;
+                display: flex;
+                flex-direction: row;
+            }
+            .vtext2 a:hover {
+                text-decoration: underline;
+            }
+            @media (max-width: 700px) {
+                .vtext2 {
                     display: none;
                 }
             }

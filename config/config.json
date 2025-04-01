@@ -10,10 +10,10 @@
 
 
 
-    "hostname": "localhost",
-    "hostname2": "localhost",
+    "hostname": "transfer.silverdium.fr",
+    "hostname2": "t.silverdium.fr",
 
-    "Port": 7894,
+    "Port": 84,
 
 
 

@@ -9,6 +9,8 @@ import { salert } from './assets/js/salert.js';
 import { send } from './assets/js/send.js';
 import popups from './popups.js';
 
+salert('Une nouvelle version de SilverTransfer vien d\'arriver !!<br><a href="/patchnotes" style="color: black; text-decoration: underline" target="_blank">En savoir plus !</a>', 'info')
+
 const urlParams = new URLSearchParams(window.location.search);
 const ifdev = urlParams.get('dev');
 const page = urlParams.get('page');
@@ -232,15 +234,7 @@ async function loadApp() {
         } else {
             await send(file);
         }
-        setTimeout(() => {
-            
-            if (progressbar.value < 2) {
 
-                salert('Une erreur est survenue !', 'error')
-
-            }
-
-        }, 1000);
         
     });
 

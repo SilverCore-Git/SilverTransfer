@@ -53,6 +53,11 @@ export function send(FILE) {
             const progressValue = Math.round((event.loaded / event.total) * 100);
             console.log(`Progression : ${progressValue}%`);
             updateProgressBar(progressValue);
+            if (progressValue === 100) {
+                document.getElementById('statusl').innerText = 'Envoie du fichier...';
+                progressbar.style.display = 'none';
+                progressText.style.display = 'none';
+            }
         }
     };
 
@@ -62,8 +67,8 @@ export function send(FILE) {
             const data = JSON.parse(xhr.responseText);
             console.log("Upload réussi :", data);
 
+            document.getElementById('statusl').innerText = 'Vérification...';
             setTimeout(() => {
-                document.getElementById('statusl').innerText = 'Vérification...';
             }, 1000);
 
 

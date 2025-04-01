@@ -9,8 +9,7 @@ console.log('🔄 Démarrage du serveur...');
 // Importation des bibliothèques
 const express = require("express");
 const fs = require("fs");
-// const https = require("https");
-const http = require("http");
+const https = require("https");
 const cors = require("cors");
 const path = require("path");
 const ejs = require("ejs");
@@ -19,8 +18,6 @@ const formatFileSize = require('./src/filesize.js')
 
 
 
-
-// const maintenance = require("../www.api/SilverConfig/maintenance.json");
 
 const config = require('./config/config.json');
 
@@ -54,16 +51,16 @@ setInterval(() => {
 
 setInterval(() => {
     verifyIfExpire();
-}, 1 * 3600 * 1000); // check for expire file
+}, 24 * 3600 * 1000); // check for expire file
 
 
 
 
 // SSL key & cert path
-// const options = {
-//     key: fs.readFileSync(config.SSLkeyPath, "utf8"),
-//     cert: fs.readFileSync(config.SSLcertPath, "utf8"),
-// };
+const options = {
+    key: fs.readFileSync(config.SSLkeyPath, "utf8"),
+    cert: fs.readFileSync(config.SSLcertPath, "utf8"),
+};
 
 const corsOptions = {
     origin: ["https://transfer.silverdium.fr", "https://t.silverdium.fr"],
@@ -256,7 +253,7 @@ app.use((req, res) => {
 verifyIfExpire();
 
 const PORT = config.Port;
-http.createServer(app).listen(PORT, () => {
+https.createServer(options, app).listen(PORT, () => {
     console.log(`✅ Serveur HTTPS en ligne sur ${config.hostname}:${PORT}`);
 });
 
