@@ -9,12 +9,12 @@ main {
     justify-content: center; 
     flex-direction: column;
     align-items: center; 
-    height: 100vh;
+    height: 100lvh;
     color: white;
     font-family: 'Roboto', sans-serif;
 }
 main h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
 }
 main h2 {
     margin-top: -1rem;
@@ -219,7 +219,7 @@ main h2 {
   flex-direction: row;
   gap: 2rem;
   list-style: none;
-  transform: translateX(-10px);
+  transform: translateX(-20px);
 }
 
 
