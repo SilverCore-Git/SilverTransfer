@@ -1,139 +1,207 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Patchnote de la mise à jour 2.0.1 de SilverTransfer">
-    <title>Patchnote - Mise à jour 2.0.1 | SilverTransfer</title>
+    <meta name="copyright" content="2024 - 2025 SilverTransfer | SilverCore">
+    <meta name="theme-color" content="#AF40FF">
+
+    <link id="favicon" rel="icon" href="https://api.silverdium.fr/img/transfer/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://api.silverdium.fr/img/transfer/favicon.ico" type="image/x-icon">
+
+    <meta property="og:title" content="SilverTransfer - patch-notes">
+    <meta property="og:description" content="SilverTransfer est une solution de transfert de fichiers gratuite, éthique, sécurisée, et open source pour envoyer des fichiers de grande taille tout en protégeant votre vie privée.">
+    <meta property="og:image" content="https://api.silverdium.fr/img/transfer/logo.png">
+    <meta property="og:site_name" content="SilverTransfer">
+    <meta property="og:locale" content="fr_FR">
+
+    <title>SilverTransfer - Patch Notes</title>
+
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        * {
             margin: 0;
             padding: 0;
-            line-height: 1.6;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1E1E2E;
+            color: #FFF;
+            text-align: center;
         }
 
         header {
-            background-color: #6200ea;
-            color: white;
-            text-align: center;
-            padding: 30px 0;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin: 0;
-        }
-
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            padding: 30px 0;
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: #6200ea;
-            text-transform: uppercase;
-        }
-
-        .update, .bug-fix {
-            background-color: #fff;
+            background: linear-gradient(45deg, #6D28D9, #3B82F6);
             padding: 20px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .contaner {
+            width: 80%;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #28293D;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.1);
+        }
+
+        h2 {
+            color: #E0E0E0;
+            font-size: 1.8rem;
+        }
+
+        .date {
+            font-size: 0.9rem;
+            color: #BBBBBB;
             margin-bottom: 20px;
+        }
+
+        .update {
+            background-color: #383A59;
+            padding: 20px;
+            margin: 20px 0;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
         }
 
-        .update h3, .bug-fix h3 {
-            font-size: 1.25rem;
-            margin-top: 0;
-            color: #333;
+        h3 {
+            color: #8AB4F8;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
         }
 
-        .update p, .bug-fix p {
-            font-size: 1rem;
-            color: #555;
+        ul {
+            list-style: none;
+            padding: 0;
         }
 
-        .update p::before, .bug-fix p::before {
-            content: ">";
-            margin-right: 10px;
-            color: #6200ea;
-            font-weight: bold;
+        ul li {
+            padding: 10px;
+            font-size: 1.1rem;
+            text-align: left;
         }
 
-        .badge {
-            background-color: #6200ea;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        .link {
-            color: white;
-            text-decoration: none;
-        }
-
-        .link:hover {
-            text-decoration: underline;
+        ul li p {
+            font-size: 0.9rem;
+            color: #CCCCCC;
+            margin-top: 5px;
         }
 
         footer {
-            text-align: center;
+            margin-top: 40px;
             padding: 20px;
-            background-color: #6200ea;
-            color: white;
-            margin-top: 30px;
+            background: #222;
+            color: #999;
         }
+
     </style>
+
 </head>
+
 <body>
+
     <header>
-        <h1>Patchnote - Mise à jour 2.0.1 de <a href="https://transfer.silverdium.fr" class="link">SilverTransfer</a></h1>
+
+        <h1>📜 Patch Notes - SilverTransfer</h1>
+
     </header>
 
-    <div class="container">
-        <div class="update">
-            <div class="section-title"><span class="badge">:new: Modifications</span></div>
-            <div class="modification">
-                <h3>Simplification de la page de téléchargement</h3>
-                <p>Passage d'une requête unique pour le décryptage et le téléchargement du fichier vers une répartition des tâches : une requête pour lancer le décryptage et une autre pour le téléchargement. Suppression d'un onglet (passage de deux à un).</p>
-            </div>
-            <div class="modification">
-                <h3>Révision de la navigation</h3>
-                <p>Sur le frontend, ajout des arguments `page` et autres pour repérage d'action ou d'étape afin d'améliorer la navigation.</p>
-            </div>
-            <div class="modification">
-                <h3>Ajout d'un bouton de contact</h3>
-            </div>
-            <div class="modification">
-                <h3>Révision de la sécurité</h3>
-                <p>Blocage des requêtes root pour les domaines externes.</p>
-            </div>
-            <div class="modification">
-                <h3>Amélioration de l'organisation et optimisation du code backend</h3>
-            </div>
-        </div>
 
-        <div class="bug-fix">
-            <div class="section-title"><span class="badge">:bug: Corrections de bugs</span></div>
-            <div class="bug">
-                <h3>Support des fichiers compressés</h3>
-            </div>
-            <div class="bug">
-                <h3>Support des fichiers jusqu'à 10 Go</h3>
-            </div>
-        </div>
-    </div>
+        <section class="patch-note contaner">
 
+            <h2>📢 Mise à jour 2.0.2</h2>
+
+            <p class="date">Publié le <span>03 avril 2025</span></p>
+
+            <div class="update">
+
+                <h3>🆕 Modifications</h3>
+
+                <ul>
+
+                    <li>
+                        <strong>Mise a jours de la page patchnotes</strong>
+                        <p>Une page encore plus style avec ajout simplifier des patchnote</p>
+                    </li>
+
+                    <li>
+                        <strong>Correction du background sur le site</strong>
+                    </li>
+
+                    <li><strong>Revision des icons du site</strong></li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <section class="patch-note contaner">
+
+            <h2>📢 Mise à jour 2.0.1</h2>
+
+            <p class="date">Publié le <span>01 avril 2025</span></p>
+
+            <div class="update">
+
+                <h3>🆕 Modifications</h3>
+
+                <ul>
+
+                    <li><strong>Simplification de la page de téléchargement</strong>  
+                        <p>Répartition des requêtes entre décryptage et téléchargement. Suppression d'un onglet.</p>
+                    </li>
+
+                    <li><strong>Révision de la navigation</strong>  
+                        <p>Ajout d'arguments `page` pour améliorer la navigation.</p>
+                    </li>
+
+                    <li><strong>Ajout d'un bouton de contact</strong></li>
+
+                    <li><strong>Révision de la sécurité</strong>  
+                        <p>Blocage des requêtes root pour les domaines externes.</p>
+                    </li>
+
+                    <li><strong>Optimisation du code backend</strong></li>
+
+                </ul>
+
+            </div>
+            
+            <div class="update">
+
+                <h3>🐛 Corrections de bugs</h3>
+
+                <ul>
+                    <li>Support des fichiers compressés.</li>
+                    <li>Support des fichiers jusqu'à 10 Go.</li>
+                </ul>
+
+            </div>
+
+        </section>
+
+
+    
     <footer>
-        <p>Mis à jour le 2024 - <a href="https://transfer.silverdium.fr" class="link">SilverTransfer</a></p>
+        <p>© 2025 SilverTransfer - Tous droits réservés</p>
     </footer>
+
+
 </body>
+
 </html>
+
+
+
