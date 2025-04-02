@@ -5,7 +5,7 @@
  */
 
 const fs = require("fs");
-const crypto = require('crypto');
+const path = require("path");
 
 const config = require('../config/config.json');
 
@@ -27,13 +27,19 @@ const getCurrentTime = () => {
 
 // Charger la base de données
 const loadDatabase = () => {
+
     try {
+
         if (!fs.existsSync(DB_FILE)) return {}; // Si le fichier n'existe pas, retourner un objet vide
-        return JSON.parse(fs.readFileSync(DB_FILE, "utf8"));
+        return JSON.parse(fs.readFileSync(DB_FILE, "utf8")); 
+
     } catch (error) {
+
         console.error("❌ Erreur lors du chargement de la base de données :", error);
         return {};
+
     }
+
 };
 
 // Sauvegarder la base de données
@@ -69,6 +75,10 @@ async function resetDatabase() {
     const date = `${d} - ${h}`
 
     try {
+
+        if (!fs.existsSync(DB_FILE))  {
+            await fs.promises.writeFile(DB_FILE, '');
+        } 
 
         await fs.promises.unlink(DB_FILE);
 

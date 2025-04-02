@@ -7,13 +7,14 @@
 main {
     display: flex;
     justify-content: center; 
+    flex-direction: column;
     align-items: center; 
-    height: 100vh;
+    height: 100lvh;
     color: white;
     font-family: 'Roboto', sans-serif;
 }
 main h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
 }
 main h2 {
     margin-top: -1rem;
@@ -27,14 +28,14 @@ main h2 {
     flex-direction: column;
 
     background: linear-gradient(144deg,#AF40FF, #5B42F3,#00DDEB);
-    padding: 1rem 1.5rem 2rem 1.5rem;
+    padding: 0rem 1.2rem 2rem 1.2rem;
     border-radius: 25px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 
 }
 
 
-
+ 
 .hero ul { 
     list-style: none;
 
@@ -52,13 +53,14 @@ main h2 {
     text-align: left;
     border-radius: 15px;
 }
-.hero ul li:not(:last-child) {
+.hero ul  li:not(:last-child) {
     margin-bottom: 8px;
     padding-bottom: 8px;
     border-bottom: 1px solid black;
 }
 .hero ul li {
     margin-left: 5px;
+    cursor: pointer;
 }
 .hero ul i,
 .hero ul img {
@@ -206,3 +208,70 @@ main h2 {
         transform: translateX(200em);
     }
   }
+
+
+
+
+.social-contaner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 2rem;
+  list-style: none;
+  transform: translateX(-20px);
+}
+
+
+.social-icon {
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.social-icon img {
+  width: 30px;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+
+.social-icon:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: black;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.social-icon:hover::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: black;
+  margin-bottom: -12px;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.social-icon::after,
+.social-icon::before {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out;
+}

@@ -1,13 +1,8 @@
 User-agent: *
-Disallow: /data/
-Disallow: /dev/
-Disallow: /node_modules/
-Disallow: /database.json
-Disallow: /server.js
-Disallow: /package.json
-Disallow: /package-lock.json
+Disallow: /t
+Disallow: /data
 
-Allow: /*
+Allow: /
 Allow: /sitemap.xml
 
 # Sitemaps

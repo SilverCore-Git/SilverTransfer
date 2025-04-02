@@ -1,8 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="hostname" content="t.silverdium.fr">
+    <meta name="copyright" content="2024 - 2025 SilverTransfer | SilverCore">
+    <meta name="author" content="SilverCore | SilverTransfer | MisterPapaye">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#AF40FF">
+    <meta name="robots" content="noindex, nofollow">
+
 
     <link rel="stylesheet" href="/t/assets?file=end&ext=css">
 
@@ -16,12 +23,88 @@
 
         <h1 style="font-size: 2rem; margin-bottom: 1rem;">Une erreur c'est produite :</h1>
 
-        <h2 style="margin-bottom: 3rem;"><%= status %></h2>
+        <h2><%= status %></h2>
+        <h3 style="margin-bottom: 3rem;">Si le fichier vient d'être téléverser,<br>il peut être encore en chiffrement...</h3>
         
         <button style="margin-bottom: -2rem;" onclick="window.location.href = '/'">Accueil</button>
 
     </section>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+        <ul class="social-contaner">
+
+            <a target="_blank" href="https://core.silverdium.fr"> <li data-tooltip="Site de silvercore" class="social-icon"> <img src="https://api.silverdium.fr/img/core/logo.png" alt="logo silvercore" style="border-radius: 50rem;"> </li> </a>
+            <a target="_blank" href="https://discord.gg/ftFhQTJsQ5"> <li data-tooltip="Discord SilverCore" class="social-icon"> <i class="bi bi-discord"> </i> </li> </a>
+            <a target="_blank" href="https://discord.gg/mKs3uMTJWM"> <li data-tooltip="Discord support" class="social-icon"> <i class="bi bi-life-preserver"> </i> </li> </a>
+            <a target="_blank" href="https://tipeee.com/silverdium"> <li data-tooltip="Nous aider avec tipeee" class="social-icon"> <i class="bi bi-heart"> </i> </li> </a>
+
+        </ul>
+        <style>
+            .social-contaner {
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: row;
+gap: 2rem;
+list-style: none;
+transform: translateX(-10px);
+}
+
+
+.social-icon {
+font-size: 2rem;
+cursor: pointer;
+transition: all 0.3s;
+color: white;
+}
+
+.social-icon img {
+width: 30px;
+}
+
+.social-icon:hover {
+transform: scale(1.1);
+}
+
+
+.social-icon:hover::after {
+content: attr(data-tooltip);
+position: absolute;
+bottom: 100%;
+left: 50%;
+transform: translateX(-50%);
+background-color: black;
+color: white;
+padding: 5px 10px;
+border-radius: 5px;
+font-size: 14px;
+white-space: nowrap;
+opacity: 1;
+visibility: visible;
+transition: opacity 0.2s ease-in-out;
+}
+
+.social-icon:hover::before {
+content: "";
+position: absolute;
+bottom: 100%;
+left: 50%;
+transform: translateX(-50%);
+border: 6px solid transparent;
+border-top-color: black;
+margin-bottom: -12px;
+opacity: 1;
+visibility: visible;
+transition: opacity 0.2s ease-in-out;
+}
+
+.social-icon::after,
+.social-icon::before {
+opacity: 0;
+visibility: hidden;
+transition: opacity 0.2s ease-in-out;
+}
+        </style>
 
     <section style="margin-top: 60px">
 
@@ -29,13 +112,27 @@
         <h2 class="btn_tipeee" onclick="tipeee()">
             <span class="text"><strong>😎 VOUS POUVEZ NOUS AIDER ! 💸</strong></span>
         </h2>
-
+ 
     </section>
 
+    <a href="https://github.com/SilverCore-Git/SilverTransfer" class="vtext"> SilverTransfer version 2.0.1 </a>
+    <style>
+        .vtext {
+            position: fixed;
+            bottom: 6rem;
+            left: 1.5rem;
+            font-weight: bold;
+        }
+        @media (max-width: 700px) {
+            .vtext {
+                display: none;
+            }
+        }
+    </style>
 
     <footer id="footer">
         <strong><p>&copy; 2025 SilverTransfert | <a href="https://core.silverdium.fr">SilverCore</a>. Tous droits réservés.</p></strong>
     </footer>
 
 </body>
-</html>
+</html> 

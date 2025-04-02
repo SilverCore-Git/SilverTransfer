@@ -32,14 +32,12 @@ export function send(FILE) {
     const file = fileInput.files[0];
 
     if (!file) {
-        salert("Veuillez sélectionner un fichier avant d'envoyer !", 'error');
-        return;
+        return salert("Veuillez sélectionner un fichier avant d'envoyer !", 'error');
     }
 
-    const maxSize = 10024 * 1024 * 1024; // 1024Mo
+    const maxSize = 10024 * 1024 * 1024; // 10Go
     if (file.size >= maxSize) { 
-        salert('Fichier trop volumineux !', 'error'); 
-        return; 
+        return salert('Fichier trop volumineux !', 'error'); 
     }
 
     const formData = new FormData();
@@ -55,6 +53,11 @@ export function send(FILE) {
             const progressValue = Math.round((event.loaded / event.total) * 100);
             console.log(`Progression : ${progressValue}%`);
             updateProgressBar(progressValue);
+            if (progressValue === 100) {
+                document.getElementById('statusl').innerText = 'Envoie du fichier...';
+                progressbar.style.display = 'none';
+                progressText.style.display = 'none';
+            }
         }
     };
 
@@ -64,21 +67,15 @@ export function send(FILE) {
             const data = JSON.parse(xhr.responseText);
             console.log("Upload réussi :", data);
 
-            let delay;
-            if (file.size < 1024 * 1024 * 1024) {
-                delay = 1000;
-            } else if (file.size > 1024 * 1024 * 1024) {
-                delay = 3000;
-            } else if (file.size > 5024 * 1024 * 1024) {
-                delay = 6000;
-            }
-
+            document.getElementById('statusl').innerText = 'Vérification...';
             setTimeout(() => {
-                document.getElementById('statusl').innerText = 'Vérification...';
-            }, delay);
+            }, 1000);
 
 
-            const Link = `https://t.silverdium.fr/t/${data.id}`
+            const justLink = `https://t.silverdium.fr/t/`;
+            const id = data.id;
+            const Link = justLink + id;
+
             link.value = Link
             const qr = new QRious({
                 element: document.getElementById('codeQR'),
@@ -91,17 +88,19 @@ export function send(FILE) {
             sendFile('close')
             openform('success')
 
+            return history.pushState(null, "", `?page=success&link=${justLink}&id=${data.id}&file=1`);
+
         } else {
-            console.error("Erreur :", xhr.statusText);
             salert('Une erreur est survenue...', 'error')
+            console.error("Erreur :", xhr.statusText);
         }
     };
 
 
     xhr.onerror = function(event) {
+        salert('Erreur de connexion', 'error')
         console.error("Erreur de connexion : ", event);
         console.error("Détails de la requête : ", event.target);    
-        salert('Erreur de connexion', 'error')
     };
 
     xhr.send(formData);

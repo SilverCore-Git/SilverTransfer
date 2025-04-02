@@ -4,19 +4,55 @@
  * @author MisterPapaye
  */
 
-import { loader, file, sendbtn, btnsavoir, gobtn, main, upload, progressbar, progress, flach, done } from './assets/js/idclassloader.js';
+import { loader, file, sendbtn, btnsavoir, gobtn, main, upload, progressbar, link, progress, flach, done } from './assets/js/idclassloader.js';
 import { salert } from './assets/js/salert.js';
 import { send } from './assets/js/send.js';
 import popups from './popups.js';
 
+salert('Une nouvelle version de SilverTransfer vien d\'arriver !!<br><a href="/patchnotes" style="color: black; text-decoration: underline" target="_blank">En savoir plus !</a>', 'info')
 
+const urlParams = new URLSearchParams(window.location.search);
+const ifdev = urlParams.get('dev');
+const page = urlParams.get('page');
+const salerttest = urlParams.get('salerttest');
+
+
+if (ifdev == 1) {
+
+    history.pushState(null, "", `?dev=1`);
+
+    main.style.display = 'flex';
+    upload.style.display = 'flex';
+    progress.style.display = 'flex';
+    done.style.display = 'flex';
  
-main.style.display = 'none';
-upload.style.display = 'none';
-progress.style.display = 'none';
-done.style.display = 'none'; 
+    const Link = `lien de téléchargement`
+    link.value = Link
+    const qr = new QRious({
+        element: document.getElementById('codeQR'),
+        value: Link,
+        size: 200
+    });
+
+}
+
+else {
+
+    main.style.display = 'none';
+    upload.style.display = 'none';
+    progress.style.display = 'none';
+    done.style.display = 'none';
+
+    if (salerttest == 1) {
+        salert('Une alert test', 'success')
+    } 
+
+    history.pushState(null, "", `?page=home`);
+
+}
 
 function openLoader() {
+    history.pushState(null, "", `?page=loader`);
     loader.style.display = 'flex'
 };
 
@@ -25,8 +61,10 @@ function closeLoader() {
 };
 
 function openmain() {
+    history.pushState(null, "", `?page=home`);
     main.style.display = 'flex'
 };
+
 function closemain() {
     main.style.display = 'none'
 };
@@ -35,10 +73,12 @@ export function openform(page) {
 
     if (page === 'upload') {
 
+        history.pushState(null, "", `?page=upload`);
         upload.style.display = 'flex'
     
     }
     else if (page === 'success') {
+        history.pushState(null, "", `?page=success`);
         done.style.display = 'flex'
     }
 
@@ -79,11 +119,69 @@ export function sendFile(arg) {
 };
 
 
+function roots() {
+
+    if (page === 'home') {
+        openmain();
+        return
+    }
+
+    else if (page === 'loader') {
+        openLoader();
+    }
+
+    else if (page === 'upload') {
+        openform(page);
+        return
+    }
+
+    else if (page === 'send') {
+        openform('upload');
+        return
+    }
+
+    else if (page === 'success') {
+
+        const ifisfile = urlParams.get('file');
+
+        if (ifisfile == 1) {
+
+            openLoader();
+
+            const justlink = urlParams.get('link');
+            const anid = urlParams.get('id');
+
+            const Link = justlink + anid
+            link.value = Link
+            const qr = new QRious({
+                element: document.getElementById('codeQR'),
+                value: Link,
+                size: 200
+            });
+
+            openform(page)
+
+            history.pushState(null, "", `?page=success&link=${justlink}&id=${anid}&file=1`);
+
+        } else {
+            openmain();
+        }
+
+    }
+
+    else {
+        openmain();
+    }
+ 
+}
+
+
 let selectedFile = null; 
 
 async function loadApp() {
+
     btnsavoir.addEventListener('click', () => {
-        salert('Fonction en développement !', 'warning');
+        window.open('https://core.silverdium.fr/#services', '_blank')
     });
 
     gobtn.addEventListener('click', async () => {
@@ -132,18 +230,17 @@ async function loadApp() {
         await closeform('upload');
         await sendFile('open');
         if (selectedFile) {
-            await send([selectedFile]); 
+            await send([selectedFile]);
         } else {
             await send(file);
         }
+
         
     });
 
-    setTimeout(() => {
-        openmain();
-        closeLoader();
-    }, 500);
 }
 
-openLoader();
+
+roots();
 loadApp();
+closeLoader();

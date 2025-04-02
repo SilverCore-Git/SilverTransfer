@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Patchnote de la mise à jour 2.0.1 de SilverTransfer">
+    <title>Patchnote - Mise à jour 2.0.1 | SilverTransfer</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #6200ea;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 30px 0;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #6200ea;
+            text-transform: uppercase;
+        }
+
+        .update, .bug-fix {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .update h3, .bug-fix h3 {
+            font-size: 1.25rem;
+            margin-top: 0;
+            color: #333;
+        }
+
+        .update p, .bug-fix p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .update p::before, .bug-fix p::before {
+            content: ">";
+            margin-right: 10px;
+            color: #6200ea;
+            font-weight: bold;
+        }
+
+        .badge {
+            background-color: #6200ea;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .link {
+            color: white;
+            text-decoration: none;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #6200ea;
+            color: white;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Patchnote - Mise à jour 2.0.1 de <a href="https://transfer.silverdium.fr" class="link">SilverTransfer</a></h1>
+    </header>
+
+    <div class="container">
+        <div class="update">
+            <div class="section-title"><span class="badge">:new: Modifications</span></div>
+            <div class="modification">
+                <h3>Simplification de la page de téléchargement</h3>
+                <p>Passage d'une requête unique pour le décryptage et le téléchargement du fichier vers une répartition des tâches : une requête pour lancer le décryptage et une autre pour le téléchargement. Suppression d'un onglet (passage de deux à un).</p>
+            </div>
+            <div class="modification">
+                <h3>Révision de la navigation</h3>
+                <p>Sur le frontend, ajout des arguments `page` et autres pour repérage d'action ou d'étape afin d'améliorer la navigation.</p>
+            </div>
+            <div class="modification">
+                <h3>Ajout d'un bouton de contact</h3>
+            </div>
+            <div class="modification">
+                <h3>Révision de la sécurité</h3>
+                <p>Blocage des requêtes root pour les domaines externes.</p>
+            </div>
+            <div class="modification">
+                <h3>Amélioration de l'organisation et optimisation du code backend</h3>
+            </div>
+        </div>
+
+        <div class="bug-fix">
+            <div class="section-title"><span class="badge">:bug: Corrections de bugs</span></div>
+            <div class="bug">
+                <h3>Support des fichiers compressés</h3>
+            </div>
+            <div class="bug">
+                <h3>Support des fichiers jusqu'à 10 Go</h3>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Mis à jour le 2024 - <a href="https://transfer.silverdium.fr" class="link">SilverTransfer</a></p>
+    </footer>
+</body>
+</html>

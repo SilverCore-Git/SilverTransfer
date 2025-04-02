@@ -2,6 +2,15 @@
 @import url("https://transfer.silverdium.fr/footer.css");
 body { background: #0d0d0d; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; font-family: Arial, sans-serif; }
 
+
+
+
+#ssuccess {
+    display: none;
+}
+
+
+
 /* From Uiverse.io by Quer3000 */ 
 .card {
 --bg-card: #27272a;
@@ -10,7 +19,7 @@ body { background: #0d0d0d; display: flex; flex-direction: column; align-items: 
 --primary-shadow: #2e1065;
 --light: #d9d9d9;
 --zinc-800: #18181b;
---bg-linear: linear-gradient(0deg, var(--primary) 50%, var(--light) 125%);
+--bg-linear: linear-gradient(0deg, var(--primary));
 
 position: relative;
 display: flex;
@@ -67,6 +76,7 @@ align-items: center;
 display: flex;
 align-items: center;
 align-content: center;
+flex-direction: column;
 gap: 0.50rem;
 margin-top: 0.25rem;
 }
@@ -76,26 +86,14 @@ list-style: none;
 transform: translateX(-1.5rem);
 }
 
-.list-size .item-list-button {
-cursor: pointer;
-padding: 0.5rem;
-background-color: var(--zinc-800);
-font-size: 1rem;
-color: var(--light);
-border: 2px solid var(--zinc-800);
-border-radius: 0.25rem;
-transition: all 0.3s ease-in-out;
+.item-list strong {
+    font-size: 1rem;
 }
 
-.item-list-button:hover {
-border: 2px solid var(--light);
+.item-list span {
+    font-size: 1rem;
 }
 
-.item-list-button:focus {
-background-color: var(--primary);
-border: 2px solid var(--primary-shadow);
-box-shadow: inset 0px 1px 4px var(--primary-shadow);
-}
 
 .action {
 display: flex;
