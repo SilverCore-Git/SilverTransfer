@@ -20,6 +20,7 @@ const formatFileSize = require('./src/filesize.js')
 
 
 const config = require('./config/config.json');
+const pkg = require('./package.json');
 
 const { decryptFile, decryptText } = require("./src/crypt.js");
 const { loadDatabase, saveDatabase, deleteFiledb, resetDatabase, deleteDatabaseFile, createDatabaseFile } = require('./src/database.js'); 
@@ -64,7 +65,6 @@ const options = {
 
 const corsOptions = {
     origin: ["https://transfer.silverdium.fr", "https://t.silverdium.fr"],
-    allowedHeaders: ["Content-Type"],
     methods: ["GET", "POST", "PUT", "DELETE"],
 };
 
@@ -125,6 +125,9 @@ if (!fs.existsSync(path.join(__dirname, config.DBFile)))  {
 app.get("/sitemap.xml", (req, res) => {
     res.sendFile(path.join(__dirname, 'sitemap.xml'))
 })
+app.get("/patchnotes", (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/patchnotes.html'))
+})
 app.get("/favicon.ico", (req, res) => {
     res.redirect('https://api.silverdium.fr/img/transfer/favicon.ico')
 })
@@ -137,11 +140,15 @@ app.get('/assets/img/background/background2', (req, res) => {
 app.get('/assets/img/background/background1', (req, res) => {
     res.sendFile(path.join( __dirname, 'public/assets/img/background/background1.jpg' ))
 })
+app.get('/version', (req, res) => {
+    res.json(pkg.version);
+});
 
 
 // root déportés
 const root_upload = require('./roots/upload.js');
 const root_download = require('./roots/download.js');
+const { version } = require("os");
 
 app.use('/upload', root_upload);
 app.use('/data', root_download);
@@ -183,12 +190,9 @@ app.get("/t/:id", async (req, res) => {
                     if (err === '500') {
 
                     }
-                    else if (err === '404') {
-                        return await res.status(404).render("fatherfile", { error: "ID non trouver !", describ: "ID de fichier non trouver..." });
-                    }
 
                 } else {
-                    return await res.render("download", { fileName: 'fileName', fileID: 'fileID', fileSize: 'fSize' });
+                    return await res.render("download", { fileName: 'fileName', fileID: 'fileID', fileSize: 'fSize', version: 'version', v: pkg.version });
                 }
 
             }
@@ -197,7 +201,7 @@ app.get("/t/:id", async (req, res) => {
         const fileEntry = fileDatabase[fileID];
 
         if (!fileEntry) {
-            return res.status(404).render("errfile", { status: "ID de fichier non trouver..." });
+            return res.status(404).render("errfile", { status: "ID de fichier non trouver...", v: pkg.version });
         }
 
         const fSize = await formatFileSize(fileEntry.size);
@@ -206,7 +210,7 @@ app.get("/t/:id", async (req, res) => {
         const decryptedFileName = decryptText(fileName);
 
 
-        res.render("download", { fileName: decryptedFileName, fileID: fileID, fileSize: fSize });
+        res.status(200).render("download", { fileName: decryptedFileName, fileID: fileID, fileSize: fSize, v: pkg.version });
 
     }
 

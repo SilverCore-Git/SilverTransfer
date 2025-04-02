@@ -1,7 +1,20 @@
 {
+
   "name": "silvertransfer",
-  "version": "2.0.1",
+
+  "version": "2.0.2",
+
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --max-old-space-size=2024 server.js"
+  },
+  
+  "author": "SilverCore, SilverTransfer, MisterPapaye",
+  "license": "CC0-1.0",
+  "description": "",
+
   "main": "server.js",
+
   "dependencies": {
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
@@ -13,12 +26,6 @@
     "https": "^1.0.0",
     "multer": "^1.4.5-lts.1",
     "path": "^0.12.7"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --max-old-space-size=2024 server.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  }
+
 }
