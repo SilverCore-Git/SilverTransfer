@@ -206,35 +206,39 @@ async function loadApp() {
 
     const dropZone = document.getElementById('dropZone');
     const fileInfo = document.getElementById('p');
-        // non fonctionel
-    // dropZone.addEventListener('dragover', (event) => {
-    //     event.preventDefault();
-    //     dropZone.style.backgroundColor = '#f0f8ff';
-    // });
+    const sendBtn = document.querySelector('.send-btn');
+    const fileInput = file;
 
-    // dropZone.addEventListener('dragleave', () => {
-    //     dropZone.style.backgroundColor = '';
-    // }); 
+    let selectedFile = null;
 
-    // dropZone.addEventListener('drop', (event) => {
-    //     event.preventDefault();
-    //     dropZone.style.backgroundColor = '';
+    dropZone.addEventListener('dragover', (event) => {
+        event.preventDefault();
+        dropZone.style.backgroundColor = '#f0f8ff';
+    });
 
-    //     const sendBtn = document.querySelector('.send-btn');
-    //     sendBtn.style.display = 'flex';
-    //     setTimeout(() => {
-    //         sendBtn.style.opacity = 1;
-    //     }, 10);
+    dropZone.addEventListener('dragleave', () => {
+        dropZone.style.backgroundColor = '';
+    });
 
-    //     const files = event.dataTransfer.files;
-    //     if (files.length > 0) {
-    //         selectedFile = files[0]; 
-    //         fileInfo.innerText = `Fichier sélectionné : ${selectedFile.name}`;
-    //     }
-    // });
+    dropZone.addEventListener('drop', (event) => {
+        event.preventDefault();
+        dropZone.style.backgroundColor = '';
 
-    sendbtn.addEventListener('click', async () => {
-        if (!selectedFile && !file.files.length) {
+        sendBtn.style.display = 'flex';
+        setTimeout(() => {
+            sendBtn.style.opacity = 1;
+        }, 10);
+
+        const files = event.dataTransfer.files;
+        if (files.length > 0) {
+            selectedFile = files[0];
+            fileInfo.innerText = `Fichier sélectionné : ${selectedFile.name}`;
+        }
+    });
+
+    sendBtn.addEventListener('click', async () => {
+
+        if (!selectedFile && (!fileInput?.files || fileInput?.files?.length === 0)) {
             salert('Aucun fichier sélectionné !', 'error');
             return;
         }
@@ -242,14 +246,14 @@ async function loadApp() {
         await closemain();
         await closeform('upload');
         await sendFile('open');
-        if (selectedFile) {
+        if (selectedFile) { 
             await send([selectedFile]);
         } else {
-            await send(file);
+            await send(fileInput.files[0]);
         }
 
-        
     });
+
 
 }
 

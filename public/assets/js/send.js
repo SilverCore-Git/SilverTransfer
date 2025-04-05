@@ -29,7 +29,7 @@ function updateProgressBar(value) {
 export function send(FILE) {
 
     const fileInput = FILE
-    const file = fileInput.files[0];
+    const file = fileInput;
 
     if (!file) {
         return salert("Veuillez sélectionner un fichier avant d'envoyer !", 'error');
@@ -56,7 +56,7 @@ export function send(FILE) {
             if (progressValue === 100) {
                 document.getElementById('statusl').innerText = 'Envoie du fichier...';
                 progressbar.style.display = 'none';
-                progressText.style.display = 'none';
+                valuetext.style.display = 'none';
             }
         }
     };
