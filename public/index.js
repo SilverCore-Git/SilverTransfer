@@ -211,30 +211,30 @@ async function loadApp() {
 
     let selectedFile = null;
 
-    dropZone.addEventListener('dragover', (event) => {
-        event.preventDefault();
-        dropZone.style.backgroundColor = '#f0f8ff';
-    });
+    // dropZone.addEventListener('dragover', (event) => {
+    //     event.preventDefault();
+    //     dropZone.style.backgroundColor = '#f0f8ff';
+    // });
 
-    dropZone.addEventListener('dragleave', () => {
-        dropZone.style.backgroundColor = '';
-    });
+    // dropZone.addEventListener('dragleave', () => {
+    //     dropZone.style.backgroundColor = '';
+    // });
 
-    dropZone.addEventListener('drop', (event) => {
-        event.preventDefault();
-        dropZone.style.backgroundColor = '';
+    // dropZone.addEventListener('drop', (event) => {
+    //     event.preventDefault();
+    //     dropZone.style.backgroundColor = '';
 
-        sendBtn.style.display = 'flex';
-        setTimeout(() => {
-            sendBtn.style.opacity = 1;
-        }, 10);
+    //     sendBtn.style.display = 'flex';
+    //     setTimeout(() => {
+    //         sendBtn.style.opacity = 1;
+    //     }, 10);
 
-        const files = event.dataTransfer.files;
-        if (files.length > 0) {
-            selectedFile = files[0];
-            fileInfo.innerText = `Fichier sélectionné : ${selectedFile.name}`;
-        }
-    });
+    //     const files = event.dataTransfer.files;
+    //     if (files.length > 0) {
+    //         selectedFile = files[0];
+    //         fileInfo.innerText = `Fichier sélectionné : ${selectedFile.name}`;
+    //     }
+    // });
 
     sendBtn.addEventListener('click', async () => {
 
