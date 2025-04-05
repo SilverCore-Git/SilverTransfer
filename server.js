@@ -9,18 +9,21 @@ console.log('🔄 Démarrage du serveur...');
 // Importation des bibliothèques
 const express = require("express");
 const fs = require("fs");
-const http = require("http");
+const https = require("https");
 const cors = require("cors");
 const path = require("path");
 const ejs = require("ejs");
 const crypto = require("crypto");
+
 const formatFileSize = require('./src/filesize.js')
 
-
-
-
 const config = require('./config/config.json');
-const pkg = require('./package.json');
+let pkg = require('./package.json');
+
+setInterval(() => {
+    pkg = require('./package.json');
+}, 1 * 3600 * 1000);
+
 
 const { decryptFile, decryptText } = require("./src/crypt.js");
 const { loadDatabase, saveDatabase, deleteFiledb, resetDatabase, deleteDatabaseFile, createDatabaseFile } = require('./src/database.js'); 
@@ -58,10 +61,10 @@ setInterval(() => {
 
 
 // SSL key & cert path
-// const options = {
-//     key: fs.readFileSync(config.SSLkeyPath, "utf8"),
-//     cert: fs.readFileSync(config.SSLcertPath, "utf8"),
-// };
+const options = {
+    key: fs.readFileSync(config.SSLkeyPath, "utf8"),
+    cert: fs.readFileSync(config.SSLcertPath, "utf8"),
+};
 
 const corsOptions = {
     origin: ["https://transfer.silverdium.fr", "https://t.silverdium.fr"],
@@ -76,26 +79,26 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.set("view engine", "ejs");
 
-// app.use((req, res, next) => {
+app.use((req, res, next) => {
  
-//     if (req.hostname !== config.hostname && req.path === "/") {
-//         res.set("X-Robots-Tag", "noindex, nofollow");
-//         return res.send(`
-//             <h1>Tu utilises le mauvais nom de domaine, le bon est :</h1>
-//             <br>
-//             <a href="https://transfer.silverdium.fr">
-//                 <button><h2>https://transfer.silverdium.fr</h2></button>
-//             </a>
-//         `);
-//     };
+    if (req.hostname !== config.hostname && req.path === "/") {
+        res.set("X-Robots-Tag", "noindex, nofollow");
+        return res.send(`
+            <h1>Tu utilises le mauvais nom de domaine, le bon est :</h1>
+            <br>
+            <a href="https://transfer.silverdium.fr">
+                <button><h2>https://transfer.silverdium.fr</h2></button>
+            </a>
+        `);
+    };
 
-//     if (req.hostname !== config.hostname && req.hostname !== config.hostname2) {
-//         res.end();
-//     };
+    if (req.hostname !== config.hostname && req.hostname !== config.hostname2) {
+        res.end();
+    };
 
-//     next(); 
+    next(); 
 
-// });
+});
 
 
 app.use(express.static("public"));
@@ -257,7 +260,7 @@ app.use((req, res) => {
 verifyIfExpire();
 
 const PORT = config.Port;
-http.createServer(app).listen(PORT, () => {
+https.createServer(options, app).listen(PORT, () => {
     console.log(`✅ Serveur HTTPS en ligne sur ${config.hostname}:${PORT}`);
 });
 
