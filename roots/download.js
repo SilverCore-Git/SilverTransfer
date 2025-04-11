@@ -16,13 +16,24 @@ const { loadDatabase } = require('../src/database.js');
 const { getCurrentDate, getCurrentTime } = require('../src/datemanager.js')
 const { decryptFile, decryptText } = require("../src/crypt.js");
 
+var download_status = [];
 
 router.get('/end', (req, res) => {
-    if (req.hostname === config.hostname) {
-        res.render("end", {})
+    if (req.hostname === config.hostname2) {
+        res.status(200).render("end", {})
     }
 })
 
+
+router.get('/status', (req, res) => {
+
+    const fileID = req.query.id;
+
+    let foundItem = download_status.find(item => item.id === fileID);
+
+    res.status(200).json(foundItem);
+
+})
 
 
 // roote => Déchiffrement et téléchargement du fichier
@@ -73,10 +84,19 @@ router.get("/:filename", async (req, res) => {
         if (action === "decrypt") {
             try {
                 console.log("🔓 Déchiffrement...");
-                await decryptFile(encryptedFilePath, decryptedFilePath);
-                return res.status(200).json({ success: true, message: { silver: 'Déchiffrement terminé !' } });
+
+                download_status.push( { id: fileID, status: "decrypt", end: false } );
+                res.status(200).json({ message: { silver: "Déchiffrement en cours.." } })
+
+                await decryptFile(encryptedFilePath, decryptedFilePath).then( () => {
+
+                    download_status = download_status.filter(item => item.id !== fileID);
+                    download_status.push( { id: fileID, status: "end", end: true } );
+
+                })
+
             } catch (err) {
-                return res.status(500).json({ error: true, message: { silver: 'Une erreur est survenue lors du déchiffrement.', server: err.message } });
+                return console.error('Une erreur est survenue lors du déchiffrement.', err.message );
             }
         } 
 
@@ -98,6 +118,9 @@ router.get("/:filename", async (req, res) => {
                             reject({ status: 500, error: "Erreur d'envoi", detail: err });
                         } else {
                             console.log("✅ Fichier envoyé !");
+
+                            download_status = download_status.filter(item => item.id !== fileID);
+
                             resolve();
                         }
                     });

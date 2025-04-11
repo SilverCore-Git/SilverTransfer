@@ -262,38 +262,48 @@ transition: opacity 0.2s ease-in-out;
                     history.pushState(null, "", `?page=loader&fname=${name}&fsize=${size}&file=1&statu=fetching`);
 
                     await fetch(`/data/<%= fileID %>?action=decrypt`)
-                    .then(response => response.json())
-                    .then(res => {
+                        .then(response => response.json())
+                        .then(res => {
 
-                        history.pushState(null, "", `?page=loader&fname=${name}&fsize=${size}&file=1&statu=res`);
+                            history.pushState(null, "", `?page=loader&fname=${name}&fsize=${size}&file=1&statu=res`);
 
-                        if (res.error) {
-                            salert(res.message.silver, 'error');
+                            if (res.error) {
+                                salert(res.message.silver, 'error');
+                                document.querySelector('.card').style.display = 'flex'
+                                document.getElementById('ssuccess').style.display = 'none'
+                                return history.pushState(null, "", `?page=download&fname=${name}&fsize=${size}&file=1&statu=error`);
+                            };
+
+                        })
+                        .catch(err => {
+                            console.error('Une errreur est survenue : ', err || err.message);
+                            salert('Une errreur est survenue !', 'error');
                             document.querySelector('.card').style.display = 'flex'
                             document.getElementById('ssuccess').style.display = 'none'
-                            return history.pushState(null, "", `?page=download&fname=${name}&fsize=${size}&file=1&statu=error`);
-                        };
+                            return history.pushState(null, "", `?page=download&fname=${name}&fsize=${size}&file=1&statu=error&msg=${err}`);
+                        });
 
-                        if (res.success) {
+                    async function ending() {
+                        history.pushState(null, "", `?page=loader&fname=${name}&fsize=${size}&file=1&statu=success`);
+                        window.open('/data/<%= fileID %>?action=download', '_blank');
+                        setTimeout(() => {
+                            window.location.href = '/data/end?end=true&fname=${name}&id=<%= fileID %>';
+                        }, 500);
+                    };
 
-                            history.pushState(null, "", `?page=loader&fname=${name}&fsize=${size}&file=1&statu=success`);
-                            window.open('/data/<%= fileID %>?action=download', '_blank');
-                            setTimeout(() => {
-                                window.location.href = '/data/end?end=true&fname=${name}';
-                            }, 500);
+                    setInterval(async () => {
 
-                            return
+                        await fetch('/data/status?id=<%= fileID %>')
+                                .then(response => response.json())
+                                .then(res => {
 
-                        };
+                                    if (res.end) {
+                                        return ending();
+                                    };
 
-                    })
-                    .catch(err => {
-                        console.error('Une errreur est survenue : ', err || err.message);
-                        salert('Une errreur est survenue !', 'error');
-                        document.querySelector('.card').style.display = 'flex'
-                        document.getElementById('ssuccess').style.display = 'none'
-                        return history.pushState(null, "", `?page=download&fname=${name}&fsize=${size}&file=1&statu=error&msg=${err}`);
-                    });
+                                });
+
+                    }, 1000);
 
                 });
 

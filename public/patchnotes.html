@@ -116,27 +116,69 @@
 
     </header>
 
+    
     <section class="patch-note contaner">
 
-        <h2>📢 Mise à jour 2.0.3</h2>
-
-        <p class="date">Publié le <span>05 avril 2025</span></p>
-
+        <h2>📢 Mise à jour 2.0.4</h2>
+    
+        <p class="date">Publié le <span>11 avril 2025</span></p>
+    
         <div class="update">
-
+    
             <h3>🆕 Modifications</h3>
-
+    
             <ul>
-
                 <li>
-                    <strong>Ajout de la possibilité de drag & drop sur le panel upload</strong>
+                    <strong>Mise à jour de la gestion des téléchargements</strong>
+                    <p>Optimisation des requêtes backend pour le décryptage et le téléchargement des fichiers.
+                        <br>Voici le nouveau plan de traitement :
+                        <ol>
+                            <li>Envoi d'une requête pour initier le décryptage du fichier</li>
+                            <li>Vérification toutes les secondes auprès du backend pour savoir si le décryptage est terminé</li>
+                            <li>Téléchargement du fichier une fois le décryptage terminé</li>
+                        </ol>
+                    </p>
                 </li>
-
+                <li><strong>Vidange des logs</strong></li>
             </ul>
-
+    
         </div>
-
+    
+        <div class="update">
+    
+            <h3>🐛 Corrections de bugs</h3>
+    
+            <ul>
+                <li>Correction de l'erreur : <pre>TypeError: NetworkError when attempting to fetch resource.</pre></li>
+                <li>Annulation de tous les timeouts des requêtes.</li>
+            </ul>
+    
+        </div>
+    
     </section>
+    
+
+        <section class="patch-note contaner">
+
+            <h2>📢 Mise à jour 2.0.3 - <strong style="color: red;">annulé</strong></h2>
+
+            <p class="date">Publié le <span>05 avril 2025</span></p>
+
+            <div class="update">
+
+                <h3>🆕 Modifications</h3>
+
+                <ul>
+
+                    <li>
+                        <strong>Ajout de la possibilité de drag & drop sur le panel upload</strong>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
 
         <section class="patch-note contaner">
 
