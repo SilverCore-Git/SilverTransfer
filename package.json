@@ -1,15 +1,15 @@
 {
 
-  "name": "silvertransfer",
+  "name": "silvertransfert",
 
-  "version": "2.0.4",
+  "version": "2.0.5",
 
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node --max-old-space-size=2024 server.js"
   },
   
-  "author": "SilverCore, SilverTransfer, MisterPapaye",
+  "author": "SilverCore, SilverTransfert, MisterPapaye",
   "license": "CC0-1.0",
   "description": "",
 

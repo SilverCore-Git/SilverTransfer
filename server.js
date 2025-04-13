@@ -14,6 +14,8 @@ const cors = require("cors");
 const path = require("path");
 const ejs = require("ejs");
 const crypto = require("crypto");
+const helmet = require('helmet');
+
 
 const formatFileSize = require('./src/filesize.js')
 
@@ -73,19 +75,14 @@ console.log("🔄 Démarrage de Express...");
 
 app.use(cors(corsOptions));
 app.use(express.json());
+app.use(helmet());
 app.set("view engine", "ejs");
 
 app.use((req, res, next) => {
  
-    if (req.hostname !== config.hostname && req.hostname !== config.hostname3 && req.path === "/") {
+    if (req.hostname !== config.hostname3 && req.path === "/") {
         res.set("X-Robots-Tag", "noindex, nofollow");
-        return res.send(`
-            <h1>Tu utilises le mauvais nom de domaine, le bon est :</h1>
-            <br>
-            <a href="https://${config.hostname3}">
-                <button><h2>${config.hostname3}</h2></button>
-            </a>
-        `);
+        return res.redirect('https://www.silvertransfert.fr');
     };
 
     if (req.hostname !== config.hostname && req.hostname !== config.hostname2 && req.hostname !== config.hostname3) {
@@ -164,7 +161,7 @@ app.use('/data', root_download);
 // Route pour afficher le bouton de téléchargement
 app.get("/t/:id", async (req, res) => {
 
-    if (req.hostname === config.hostname2) {
+    // if (req.hostname === config.hostname2) {
 
         console.log("📥 Réception d'une requête : ", `'/t/${req.params.id}'`);
         const fileID = req.params.id;
@@ -214,7 +211,7 @@ app.get("/t/:id", async (req, res) => {
 
         res.status(200).render("download", { fileName: decryptedFileName, fileID: fileID, fileSize: fSize, v: pkg.version });
 
-    }
+    //}
 
 });
 
