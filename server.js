@@ -20,10 +20,6 @@ const formatFileSize = require('./src/filesize.js')
 const config = require('./config/config.json');
 let pkg = require('./package.json');
 
-setInterval(() => {
-    pkg = require('./package.json');
-}, 1 * 3600 * 1000);
-
 
 const { decryptFile, decryptText } = require("./src/crypt.js");
 const { loadDatabase, saveDatabase, deleteFiledb, resetDatabase, deleteDatabaseFile, createDatabaseFile } = require('./src/database.js'); 
@@ -67,7 +63,7 @@ const options = {
 };
 
 const corsOptions = {
-    origin: ["https://transfer.silverdium.fr", "https://t.silverdium.fr"],
+    origin: ["https://transfer.silverdium.fr", "https://t.silverdium.fr", "https://www.silvertransfert.fr", "https://silvertransfert.fr"],
     methods: ["GET", "POST", "PUT", "DELETE"],
 };
 
@@ -81,18 +77,18 @@ app.set("view engine", "ejs");
 
 app.use((req, res, next) => {
  
-    if (req.hostname !== config.hostname && req.path === "/") {
+    if (req.hostname !== config.hostname && req.hostname !== config.hostname3 && req.path === "/") {
         res.set("X-Robots-Tag", "noindex, nofollow");
         return res.send(`
             <h1>Tu utilises le mauvais nom de domaine, le bon est :</h1>
             <br>
-            <a href="https://transfer.silverdium.fr">
-                <button><h2>https://transfer.silverdium.fr</h2></button>
+            <a href="https://${config.hostname3}">
+                <button><h2>${config.hostname3}</h2></button>
             </a>
         `);
     };
 
-    if (req.hostname !== config.hostname && req.hostname !== config.hostname2) {
+    if (req.hostname !== config.hostname && req.hostname !== config.hostname2 && req.hostname !== config.hostname3) {
         res.end();
     };
 
@@ -102,6 +98,7 @@ app.use((req, res, next) => {
 
 
 app.use(express.static("public"));
+app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
 
 
 console.log("✅ Express chargé");
@@ -132,7 +129,7 @@ app.get("/patchnotes", (req, res) => {
     res.sendFile(path.join(__dirname, 'public/patchnotes.html'))
 })
 app.get("/favicon.ico", (req, res) => {
-    res.redirect('https://api.silverdium.fr/img/transfer/favicon.ico')
+    res.sendFile(path.join(__dirname, 'favicon.ico'))
 })
 app.get("/robots.txt", (req, res) => {
     res.sendFile(path.join(__dirname, 'robots.txt'))
@@ -146,12 +143,14 @@ app.get('/assets/img/background/background1', (req, res) => {
 app.get('/version', (req, res) => {
     res.json(pkg.version);
 });
+app.get("/index.js", (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/index.js'))
+})
 
 
 // root déportés
 const root_upload = require('./roots/upload.js');
 const root_download = require('./roots/download.js');
-const { version } = require("os");
 
 app.use('/upload', root_upload);
 app.use('/data', root_download);
