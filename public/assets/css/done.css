@@ -15,9 +15,9 @@
 }
 
 #done .card {
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
-    padding-top: 0.001rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-top: 0rem;
     padding-bottom: 2.2rem;
 }
 
@@ -32,10 +32,9 @@
     display: flex;
     align-items: center;
     padding: 5px;
-    max-width: 500px;
+    max-width: 300px;
     margin: auto;
-    margin-bottom: 2.5rem;
-    margin-top: 1rem;
+    margin-bottom: 1rem;
 
     background: rgba(255, 255, 255, 0.39);
     padding: 15px;
@@ -45,12 +44,12 @@
 
 .input-container label {
     margin-bottom: 0.4rem;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
 }
 
 input {
     flex: 1;
-    width: 18rem;
+    width: 15rem;
     border: none;
     padding: 12px 20px;
     border-radius: 25px;
@@ -69,7 +68,7 @@ input {
     border: none;
     padding: 10px 20px;
     border-radius: 50px;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
@@ -91,7 +90,7 @@ input {
 
 .qr-container label {
     margin-top: 0.4rem;
-    font-size: 1.3rem;
+    font-size: 1rem;
     color: black;
 }
 
@@ -100,7 +99,7 @@ input {
     border: none;
     padding: 15px 25px;
     color: white;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: bold;
     border-radius: 10px;
     cursor: pointer;
@@ -113,30 +112,12 @@ input {
 }
 
 .download-btn:active {
-    transform: scale(0.92);
+    transform: scale(0.90);
     box-shadow: 0 3px 10px rgba(42, 82, 190, 0.8);
 }
 
-.download-btn::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300%;
-    height: 300%;
-    background: rgba(255, 255, 255, 0.2);
-    transition: all 0.5s ease;
-    border-radius: 50%;
-    transform: translate(-50%, -50%) scale(0);
-}
-
-.download-btn:hover::before {
-    transform: translate(-50%, -50%) scale(1);
-}
-
 .download-btn:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 20px rgba(42, 82, 190, 0.8), 0 0 40px rgba(42, 82, 190, 0.6);
+    transform: scale(1.02);
 }
 
 .qr-container {
@@ -150,4 +131,8 @@ input {
 canvas {
     width: 200px;
     height: 200px;
+}
+
+.labelLL:hover {
+    text-decoration: underline;
 }

@@ -22,28 +22,31 @@
     justify-content: center;
     flex-direction: column;
 
+    max-width: 450px;
+
     background: linear-gradient(144deg,#AF40FF, #5B42F3,#00DDEB);
-    padding: 1rem 1.5rem 2rem 1.5rem;
+    padding: 0 1rem 1.5rem 1rem;
     border-radius: 25px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 
 }
 
 .card h1 {
-    font-size: 3rem;
+    font-size: 2rem;
 }
 .card h2 {
-    margin-top: -1rem;
+    margin-top: -1.5rem;
+    font-size: 1.5rem;
 }
 
 
 
 /* From Uiverse.io by Yaya12085 */ 
 .container {
-    margin-top: 3rem;
-    margin-bottom: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     height: 300px;
-    width: 300px;
+    width: 290px;
     border-radius: 10px;
     box-shadow: 4px 4px 30px rgba(0, 0, 0, .2);
     display: flex;
@@ -115,12 +118,13 @@
 
   /* From Uiverse.io by eirikvold */ 
 .send-btn {
+    display: flex;
     font-family: inherit;
     font-size: 22px;
     background: linear-gradient(to bottom, rgb(255, 20, 165) 0%,#e413ff 100%);
     color: white;
     padding: 0.8em 1.2em;
-    display: flex;
+    margin-bottom: 1rem;
     align-items: center;
     justify-content: center;
     border: none;

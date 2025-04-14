@@ -9,6 +9,7 @@
 body {
     font-family: 'Roboto', sans-serif;
     
+    background-color: black;
     background-image: url('/assets/img/background/background2');
     background-repeat: no-repeat;
 
