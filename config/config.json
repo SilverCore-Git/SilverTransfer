@@ -10,8 +10,7 @@
 
 
 
-    "hostname": "transfer.silverdium.fr",
-    "hostname2": "t.silverdium.fr",
+    "hostname": "www.silvertransfert.fr",
 
     "Port": 84,
 
@@ -21,15 +20,10 @@
 
     "DATAdir": "data",
     "TEMPdir": "temp",
+    "LOGDir": "log",
 
 
-    "devAccess": {
-        "id": 12345678
-    },
-
-
-
-    "SSLkeyPath": "/etc/letsencrypt/live/transfer.silverdium.fr/privkey.pem",
-    "SSLcertPath": "/etc/letsencrypt/live/transfer.silverdium.fr/fullchain.pem"
+    "SSLkeyPath": "/etc/letsencrypt/live/www.silvertransfert.fr/privkey.pem",
+    "SSLcertPath": "/etc/letsencrypt/live/www.silvertransfert.fr/fullchain.pem"
 
 }

@@ -19,7 +19,7 @@ const { decryptFile, decryptText } = require("../src/crypt.js");
 var download_status = [];
 
 router.get('/end', (req, res) => {
-    if (req.hostname === config.hostname2) {
+    if (req.hostname === config.hostname) {
         res.status(200).render("end", {})
     }
 })
@@ -42,7 +42,7 @@ router.get("/:filename", async (req, res) => {
     let fileDatabase = {};
     fileDatabase = loadDatabase();
 
-    if (req.hostname === config.hostname2) {     
+    if (req.hostname === config.hostname) {     
 
         console.log("📥 Requête reçue : /data/",req.params.filename);
         const fileID = req.params.filename;

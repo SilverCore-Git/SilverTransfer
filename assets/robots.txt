@@ -6,4 +6,4 @@ Allow: /
 Allow: /sitemap.xml
 
 # Sitemaps
-Sitemap: https://transfer.silverdium.fr/sitemap.xml
+Sitemap: https://www.silvertransfert/sitemap.xml

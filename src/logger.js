@@ -8,16 +8,13 @@ const { getCurrentDate, getCurrentTime } = require('./datemanager.js')
 const path = require('path')
 const fs = require('fs')
 
+const config = require('../config/config.json');
 
 const logToFile = (message) => {
     const date = getCurrentDate();
     const time = getCurrentTime();
-    const logDir = path.join(__dirname, "../log");
+    const logDir = path.join(__dirname, `../${config.LOGDir}`);
     const logFilePath = path.join(logDir, `${date}.log`);
-
-    if (!fs.existsSync(logDir)) {
-        fs.mkdirSync(logDir);
-    }
 
     const logMessage = `[${date} - ${time}] > ${message}\n`;
     fs.appendFileSync(logFilePath, logMessage, "utf8");

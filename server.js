@@ -14,7 +14,7 @@ const cors = require("cors");
 const path = require("path");
 const ejs = require("ejs");
 const crypto = require("crypto");
-const helmet = require('helmet');
+//const helmet = require('helmet');
 
 
 const formatFileSize = require('./src/filesize.js')
@@ -65,7 +65,7 @@ const options = {
 };
 
 const corsOptions = {
-    origin: ["https://transfer.silverdium.fr", "https://t.silverdium.fr", "https://www.silvertransfert.fr", "https://silvertransfert.fr"],
+    origin: `https://${config.hostname}`,
     methods: ["GET", "POST", "PUT", "DELETE"],
 };
 
@@ -75,18 +75,13 @@ console.log("🔄 Démarrage de Express...");
 
 app.use(cors(corsOptions));
 app.use(express.json());
-app.use(helmet());
+//app.use(helmet());
 app.set("view engine", "ejs");
 
 app.use((req, res, next) => {
  
-    if (req.hostname !== config.hostname3 && req.path === "/") {
-        res.set("X-Robots-Tag", "noindex, nofollow");
-        return res.redirect('https://www.silvertransfert.fr');
-    };
-
-    if (req.hostname !== config.hostname && req.hostname !== config.hostname2 && req.hostname !== config.hostname3) {
-        res.end();
+    if (req.hostname !== config.hostname) {
+        return res.redirect(`https://${config.hostname}${req.path}`);
     };
 
     next(); 
@@ -106,42 +101,49 @@ const uploadDir = path.join(__dirname, config.TEMPdir);
 if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir);
     console.log('✅ Répertoire "',config.TEMPdir,'" créé');
-}
+};
+
 if (!fs.existsSync(path.join(__dirname, config.DATAdir))) {
     fs.mkdirSync(path.join(__dirname, config.DATAdir));
     console.log('✅ Répertoire "',config.DATAdir,'" créé'); 
+};
+
+if (!fs.existsSync(path.join(__dirname, config.LOGDir))) {
+    fs.mkdirSync(path.join(__dirname, config.LOGDir));
+    console.log('✅ Répertoire "',config.LOGDir,'" créé'); 
 }
+
 if (!fs.existsSync(path.join(__dirname, config.DBFile)))  {
     resetDatabase();
-} 
+};
 
 
 
 
 // route fontend
 app.get("/sitemap.xml", (req, res) => {
-    res.sendFile(path.join(__dirname, 'sitemap.xml'))
-})
+    res.status(200).sendFile(path.join(__dirname, 'assets/sitemap.xml'))
+});
 app.get("/patchnotes", (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/patchnotes.html'))
-})
+    res.status(200).sendFile(path.join(__dirname, 'public/patchnotes.html'))
+});
 app.get("/favicon.ico", (req, res) => {
-    res.sendFile(path.join(__dirname, 'favicon.ico'))
-})
+    res.status(200).sendFile(path.join(__dirname, 'assets/favicon.ico'))
+});
 app.get("/robots.txt", (req, res) => {
-    res.sendFile(path.join(__dirname, 'robots.txt'))
-})
+    res.status(200).sendFile(path.join(__dirname, 'assets/robots.txt'))
+});
 app.get('/assets/img/background/background2', (req, res) => {
-    res.sendFile(path.join( __dirname, 'public/assets/img/background/background2.jpg' ))
+    res.status(200).sendFile(path.join( __dirname, 'public/assets/img/background/background2.jpg' ))
 })
 app.get('/assets/img/background/background1', (req, res) => {
-    res.sendFile(path.join( __dirname, 'public/assets/img/background/background1.jpg' ))
+    res.status(200).sendFile(path.join( __dirname, 'public/assets/img/background/background1.jpg' ))
 })
 app.get('/version', (req, res) => {
-    res.json(pkg.version);
+    res.status(200).json(pkg.version);
 });
 app.get("/index.js", (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/index.js'))
+    res.status(200).sendFile(path.join(__dirname, 'public/index.js'))
 })
 
 
@@ -161,7 +163,7 @@ app.use('/data', root_download);
 // Route pour afficher le bouton de téléchargement
 app.get("/t/:id", async (req, res) => {
 
-    // if (req.hostname === config.hostname2) {
+    if (req.hostname === config.hostname) {
 
         console.log("📥 Réception d'une requête : ", `'/t/${req.params.id}'`);
         const fileID = req.params.id;
@@ -211,7 +213,7 @@ app.get("/t/:id", async (req, res) => {
 
         res.status(200).render("download", { fileName: decryptedFileName, fileID: fileID, fileSize: fSize, v: pkg.version });
 
-    //}
+    }
 
 });
 
@@ -250,10 +252,12 @@ app.get("/key/:bytes", (req, res) => {
 
 
 app.use((req, res) => {
-    res.status(404).redirect('https://api.silverdium.fr/www.errors/404.html');
+    res.status(404).send(`<h1>Erreur 404 page non trouvée</h1>`);
 });
 
+
 verifyIfExpire();
+
 
 const PORT = config.Port;
 https.createServer(options, app).listen(PORT, () => {
