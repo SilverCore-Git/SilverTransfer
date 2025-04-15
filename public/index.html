@@ -46,8 +46,6 @@
               }
             }
         </script>
-            
-
 
         <!-- libs  -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
@@ -80,7 +78,7 @@
         
         <main class="main">
             <div class="hero">
-                <a style="color: white; text-decoration: none;" href="/"><h1>SilverTransfer</h1></a>
+                <a style="color: white; text-decoration: none;" href="/"><h1>SilverTransfert</h1></a>
                 <h2>Outil de transfert de fichiers</h2>
                 
                 <ul><strong>
@@ -104,7 +102,7 @@
                     </div>
                     <span><strong>Faire un transfert !</strong></span>
                 </button>
-                <div style="display: flex; flex-direction: row; gap: 1rem; color: #4f008b; font-weight: bold; font-size: 1.2rem;">
+                <div style="display: flex; flex-direction: row; gap: 1rem; color: #4f008b; font-weight: bold; font-size: 1rem;">
                     <span>Nous contacter ?</span> <a style="text-decoration: underline; color: #4c0086;" href="https://discord.gg/ftFhQTJsQ5" target="_blank">Discord SilverCore</a>
                 </div>
             </div>
@@ -197,6 +195,7 @@
 
                                 p.innerText = `Fichier sélectionné : ${file?.files[0]?.name}`;
                                 sendBtn.style.display = 'flex';
+
                                 setTimeout(() => {
                                     sendBtn.style.opacity = 1;
                                 }, 10);
@@ -205,9 +204,6 @@
 
                                 p.innerText = 'Aucun fichier sélectionné';
                                 sendBtn.style.opacity = 0;
-                                setTimeout(() => {
-                                    sendBtn.style.display = 'none';
-                                }, 3000);
 
                             }
 
@@ -281,7 +277,7 @@
                     }
                 </script>
 
-                <label style="margin-top: 20px; margin-bottom: -20px;"><a style="font-size: 1.5rem; color: #AF40FF;" href="/"><strong>Refaire un transfert ?</strong></a></label>
+                <label class="labelLL" style="margin-top: 20px; margin-bottom: -20px;"><a style="font-size: 1.5rem; color: #AF40FF;" href="/"><strong>Refaire un transfert ?</strong></a></label>
 
             </div>
 
@@ -319,7 +315,7 @@
                 <div class="div">
 
                     <h1 style="margin-bottom: 3rem;">
-                        <a style="color: rgb(0, 0, 0); text-decoration: none;" href="/">SilverTransfer</a>
+                        <span>SilverTransfert</span>
                         <br><div id="statusl">Téléversement en cours...</div>
                     </h1>
 
@@ -328,7 +324,7 @@
                     <progress id="progressbar" value="1" max="100"></progress>
 
                     <!-- From Uiverse.io by adamgiebl --> 
-                    <section class="dots-container">
+                    <section class="dots-container" style="margin-bottom: -5rem; margin-top: -5rem;">
                         <div class="dot"></div>
                         <div class="dot"></div>
                         <div class="dot"></div>
@@ -336,10 +332,12 @@
                         <div class="dot"></div>
                     </section>  
 
-                    <h2 style="margin-top: 3rem; color: white;" id="flach">Le savait tu : je suis une web app !</h2>
+                    <div style="margin-top: -2rem; margin-bottom: 1rem;" id="flach">
+                        <span style="color: white; font-size: 1.3rem;">Le savait tu : je suis une web app !</span>
+                    </div>
 
-                    <div style="display: flex; flex-direction: row; gap: 1rem; color: #ffffff; font-weight: bold; font-size: 1.2rem; margin-bottom: 1rem;">
-                        <span>Un problème ? </span> <a style="text-decoration: underline; color: #ffffff;" href="https://discord.gg/mKs3uMTJWM" target="_blank">Discord SilverCore - support</a>
+                    <div style="display: flex; flex-direction: row; gap: 1rem; color: #ffffff; font-weight: bold; font-size: 1.1rem; margin-bottom: 1rem;">
+                        <span>Un problème ? </span> <a style="text-decoration: underline; color: #ffffff;" href="https://discord.gg/mKs3uMTJWM" target="_blank">Discord - support</a>
                     </div>
 
                 </div>
@@ -349,6 +347,7 @@
         </div>
 
         <a href="/patchnotes" target="_blank" class="vtext"> SilverTransfer version <span id="vversion">0.0.0</span> </a>
+
         <style>
             .vtext {
                 position: fixed;

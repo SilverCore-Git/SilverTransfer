@@ -9,15 +9,16 @@ main {
     justify-content: center; 
     flex-direction: column;
     align-items: center; 
-    height: 100lvh;
+    height: 100vh;
     color: white;
     font-family: 'Roboto', sans-serif;
 }
 main h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 main h2 {
     margin-top: -1rem;
+    font-size: 1.5rem;
 }
 
 .hero {
@@ -28,7 +29,7 @@ main h2 {
     flex-direction: column;
 
     background: linear-gradient(144deg,#AF40FF, #5B42F3,#00DDEB);
-    padding: 0rem 1.2rem 2rem 1.2rem;
+    padding: 0rem 1rem 1.3rem 1rem;
     border-radius: 25px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 
@@ -42,13 +43,13 @@ main h2 {
     font-size: 1.1rem;
 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
 
-    margin-bottom: 1.5rem;
-    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
 
     text-align: left;
     border-radius: 15px;
@@ -140,11 +141,11 @@ main h2 {
 .btn-go {
     font-family: inherit;
   
-    width: 350px;
-    height: 80px;
-    font-size: 30px;
+    width: 90%;
+    height: 70px;
+    font-size: 23px;
   
-    margin-bottom: 8%;
+    margin-bottom: 5%;
   
     background: linear-gradient(to bottom, rgb(255, 20, 165) 0%,#e413ff 100%);
     color: white;

@@ -111,7 +111,7 @@ function closeform(page) {
 
 function setFlach() {
     const randomAlert = popups[Math.floor(Math.random() * popups.length)];
-    flach.innerHTML = randomAlert;
+    flach.innerHTML = `<span style="color: white; font-size: 1.2rem;">${randomAlert}</span`;
 }
 export function sendFile(arg) {
     if (arg === 'close') {
