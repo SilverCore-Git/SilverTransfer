@@ -14,12 +14,14 @@ const cors = require("cors");
 const path = require("path");
 const ejs = require("ejs");
 const crypto = require("crypto");
+const helmet = require('helmet');
+
+
 const formatFileSize = require('./src/filesize.js')
 
-
-
-
 const config = require('./config/config.json');
+let pkg = require('./package.json');
+
 
 const { decryptFile, decryptText } = require("./src/crypt.js");
 const { loadDatabase, saveDatabase, deleteFiledb, resetDatabase, deleteDatabaseFile, createDatabaseFile } = require('./src/database.js'); 
@@ -63,8 +65,7 @@ const options = {
 };
 
 const corsOptions = {
-    origin: ["https://transfer.silverdium.fr", "https://t.silverdium.fr"],
-    allowedHeaders: ["Content-Type"],
+    origin: ["https://transfer.silverdium.fr", "https://t.silverdium.fr", "https://www.silvertransfert.fr", "https://silvertransfert.fr"],
     methods: ["GET", "POST", "PUT", "DELETE"],
 };
 
@@ -74,22 +75,17 @@ console.log("🔄 Démarrage de Express...");
 
 app.use(cors(corsOptions));
 app.use(express.json());
+app.use(helmet());
 app.set("view engine", "ejs");
 
 app.use((req, res, next) => {
  
-    if (req.hostname !== config.hostname && req.path === "/") {
+    if (req.hostname !== config.hostname3 && req.path === "/") {
         res.set("X-Robots-Tag", "noindex, nofollow");
-        return res.send(`
-            <h1>Tu utilises le mauvais nom de domaine, le bon est :</h1>
-            <br>
-            <a href="https://transfer.silverdium.fr">
-                <button><h2>https://transfer.silverdium.fr</h2></button>
-            </a>
-        `);
+        return res.redirect('https://www.silvertransfert.fr');
     };
 
-    if (req.hostname !== config.hostname && req.hostname !== config.hostname2) {
+    if (req.hostname !== config.hostname && req.hostname !== config.hostname2 && req.hostname !== config.hostname3) {
         res.end();
     };
 
@@ -99,6 +95,7 @@ app.use((req, res, next) => {
 
 
 app.use(express.static("public"));
+app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
 
 
 console.log("✅ Express chargé");
@@ -125,8 +122,11 @@ if (!fs.existsSync(path.join(__dirname, config.DBFile)))  {
 app.get("/sitemap.xml", (req, res) => {
     res.sendFile(path.join(__dirname, 'sitemap.xml'))
 })
+app.get("/patchnotes", (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/patchnotes.html'))
+})
 app.get("/favicon.ico", (req, res) => {
-    res.redirect('https://api.silverdium.fr/img/transfer/favicon.ico')
+    res.sendFile(path.join(__dirname, 'favicon.ico'))
 })
 app.get("/robots.txt", (req, res) => {
     res.sendFile(path.join(__dirname, 'robots.txt'))
@@ -136,6 +136,12 @@ app.get('/assets/img/background/background2', (req, res) => {
 })
 app.get('/assets/img/background/background1', (req, res) => {
     res.sendFile(path.join( __dirname, 'public/assets/img/background/background1.jpg' ))
+})
+app.get('/version', (req, res) => {
+    res.json(pkg.version);
+});
+app.get("/index.js", (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/index.js'))
 })
 
 
@@ -155,7 +161,7 @@ app.use('/data', root_download);
 // Route pour afficher le bouton de téléchargement
 app.get("/t/:id", async (req, res) => {
 
-    if (req.hostname === config.hostname2) {
+    // if (req.hostname === config.hostname2) {
 
         console.log("📥 Réception d'une requête : ", `'/t/${req.params.id}'`);
         const fileID = req.params.id;
@@ -183,12 +189,9 @@ app.get("/t/:id", async (req, res) => {
                     if (err === '500') {
 
                     }
-                    else if (err === '404') {
-                        return await res.status(404).render("fatherfile", { error: "ID non trouver !", describ: "ID de fichier non trouver..." });
-                    }
 
                 } else {
-                    return await res.render("download", { fileName: 'fileName', fileID: 'fileID', fileSize: 'fSize' });
+                    return await res.render("download", { fileName: 'fileName', fileID: 'fileID', fileSize: 'fSize', version: 'version', v: pkg.version });
                 }
 
             }
@@ -197,7 +200,7 @@ app.get("/t/:id", async (req, res) => {
         const fileEntry = fileDatabase[fileID];
 
         if (!fileEntry) {
-            return res.status(404).render("errfile", { status: "ID de fichier non trouver..." });
+            return res.status(404).render("errfile", { status: "ID de fichier non trouver...", v: pkg.version });
         }
 
         const fSize = await formatFileSize(fileEntry.size);
@@ -206,9 +209,9 @@ app.get("/t/:id", async (req, res) => {
         const decryptedFileName = decryptText(fileName);
 
 
-        res.render("download", { fileName: decryptedFileName, fileID: fileID, fileSize: fSize });
+        res.status(200).render("download", { fileName: decryptedFileName, fileID: fileID, fileSize: fSize, v: pkg.version });
 
-    }
+    //}
 
 });
 

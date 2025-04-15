@@ -17,91 +17,118 @@
     <meta property="og:site_name" content="SilverTransfer">
     <meta property="og:locale" content="fr_FR">
 
-    <title>SilverTransfer - Patch Notes</title>
+    <title>SilverTransfert - Patch Notes</title>
 
     <style>
-
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #1E1E2E;
-            color: #FFF;
-            text-align: center;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9fb;
+            color: #333;
+            line-height: 1.6;
         }
 
         header {
-            background: linear-gradient(45deg, #6D28D9, #3B82F6);
-            padding: 20px;
+            background: linear-gradient(135deg, #AF40FF, #5B42F3, #00DDEB);
+            padding: 2rem;
+            color: white;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         h1 {
-            font-size: 2rem;
-            font-weight: 600;
+            margin: 0;
+            font-size: 2.2rem;
         }
 
-        .contaner {
-            width: 80%;
-            margin: 40px auto;
-            padding: 20px;
-            background-color: #28293D;
-            border-radius: 10px;
-            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.1);
+        .patch-note {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
-        h2 {
-            color: #E0E0E0;
-            font-size: 1.8rem;
+        .patch-note h2 {
+            color: #AF40FF;
+            margin-bottom: 0.5rem;
         }
 
-        .date {
+        .patch-note .date {
             font-size: 0.9rem;
-            color: #BBBBBB;
-            margin-bottom: 20px;
+            color: #777;
+            margin-bottom: 1rem;
         }
+
+        .canceled {
+            filter: grayscale(100%);
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
 
         .update {
-            background-color: #383A59;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            margin-top: 1.5rem;
         }
 
-        h3 {
-            color: #8AB4F8;
-            font-size: 1.4rem;
-            margin-bottom: 10px;
+        .update h3 {
+            margin-bottom: 0.5rem;
+            color: #444;
         }
 
         ul {
-            list-style: none;
-            padding: 0;
+            padding-left: 1.2rem;
         }
 
-        ul li {
-            padding: 10px;
-            font-size: 1.1rem;
-            text-align: left;
+        li {
+            margin-bottom: 1rem;
         }
 
-        ul li p {
-            font-size: 0.9rem;
-            color: #CCCCCC;
-            margin-top: 5px;
+        li strong {
+            color: #111;
+        }
+
+        li p {
+            margin: 0.3rem 0 0 0.8rem;
+            color: #555;
+        }
+
+        ol {
+            margin-top: 0.5rem;
+            margin-left: 1.5rem;
+        }
+
+        pre {
+            background-color: #eee;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 0.85rem;
+            color: #c7254e;
         }
 
         footer {
-            margin-top: 40px;
-            padding: 20px;
-            background: #222;
-            color: #999;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        @media (max-width: 600px) {
+            .patch-note {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .patch-note h2 {
+                font-size: 1.3rem;
+            }
+
         }
 
     </style>
@@ -111,93 +138,137 @@
 <body>
 
     <header>
-
-        <h1>📜 Patch Notes - SilverTransfer</h1>
-
+        <h1>📜 Patch Notes - <a style="color: white;" href="https://www.silvertransfert.fr">SilverTransfert</a></h1>
     </header>
 
+    <section class="patch-note">
+        <h2>📢 Mise à jour 2.0.5</h2>
+        <p class="date">Publié le <span>13 avril 2025</span></p>
+        <div class="update">
+            <h3>🆕 Modifications</h3>
+            <ul>
+                <li>
+                    <strong>Ajout de Helmet pour sécuriser les requêtes entre le front-end et le back-end.</strong>
+                    <p>
+                        Helmet est un middleware de sécurité pour les applications web Express.js.
+                        <br>Il aide à protéger un site contre les attaques courantes en configurant automatiquement des en-têtes HTTP de sécurité.
+                    </p>
+                </li>
+                <li>
+                    <strong>Refonte graphique de la page /patchnotes.</strong>
+                    <p>
+                        Passage d’un thème sombre coloré à un thème clair minimaliste.
+                    </p>
+                </li>
+                <li>
+                    <strong>Suppression de Google reCAPTCHA.</strong>
+                    <p>
+                        L’utilité de cette fonctionnalité a été remise en question.
+                    </p>
+                </li>
+                <li>
+                    <strong>Passage au nouveau nom de domaine.</strong>
+                    <p>
+                        Migration d’un sous-domaine <code>transfer.silverdium.fr</code> vers un domaine dédié <code>www.silverdium.fr</code>.
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </section>
+    
 
-        <section class="patch-note contaner">
+    <section class="patch-note">
+        <h2>📢 Mise à jour 2.0.4</h2>
+        <p class="date">Publié le <span>11 avril 2025</span></p>
+        <div class="update">
+            <h3>🆕 Modifications</h3>
+            <ul>
+                <li>
+                    <strong>Mise à jour de la gestion des téléchargements</strong>
+                    <p>Optimisation des requêtes backend pour le décryptage et le téléchargement des fichiers.</p>
+                    <ol>
+                        <li>Envoi d'une requête pour initier le décryptage du fichier</li>
+                        <li>Vérification toutes les secondes auprès du backend pour savoir si le décryptage est terminé</li>
+                        <li>Téléchargement du fichier une fois le décryptage terminé</li>
+                    </ol>
+                </li>
+                <li><strong>Vidange des logs</strong></li>
+            </ul>
+        </div>
 
-            <h2>📢 Mise à jour 2.0.2</h2>
+        <div class="update">
+            <h3>🐛 Corrections de bugs</h3>
+            <ul>
+                <li>Correction de l'erreur : <pre>TypeError: NetworkError when attempting to fetch resource.</pre></li>
+                <li>Annulation de tous les timeouts des requêtes.</li>
+            </ul>
+        </div>
+    </section>
 
-            <p class="date">Publié le <span>03 avril 2025</span></p>
+    <section class="patch-note canceled">
+    
+        <h2>📢 Mise à jour 2.0.3 - <strong>annulé</strong></h2>
+        <p class="date">Publié le <span>05 avril 2025</span></p>
+        <div class="update">
+            <h3>🆕 Modifications</h3>
+            <ul>
+                <li><strong>Ajout de la possibilité de drag & drop sur le panel upload</strong></li>
+            </ul>
+        </div>
+    
+    </section>
+    
 
-            <div class="update">
+    <section class="patch-note">
+        <h2>📢 Mise à jour 2.0.2</h2>
+        <p class="date">Publié le <span>03 avril 2025</span></p>
+        <div class="update">
+            <h3>🆕 Modifications</h3>
+            <ul>
+                <li><strong>Mise à jour de la page patchnotes</strong>
+                    <p>Une page encore plus stylée avec ajout simplifié des patchnotes</p>
+                </li>
+                <li><strong>Correction du background sur le site</strong></li>
+                <li><strong>Amélioration du versionnage</strong></li>
+                <li><strong>Révision des icônes du site</strong></li>
+            </ul>
+        </div>
+    </section>
 
-                <h3>🆕 Modifications</h3>
+    <section class="patch-note">
+        <h2>📢 Mise à jour 2.0.1</h2>
+        <p class="date">Publié le <span>01 avril 2025</span></p>
+        <div class="update">
+            <h3>🆕 Modifications</h3>
+            <ul>
+                <li><strong>Simplification de la page de téléchargement</strong>
+                    <p>Répartition des requêtes entre décryptage et téléchargement. Suppression d'un onglet.</p>
+                </li>
+                <li><strong>Révision de la navigation</strong>
+                    <p>Ajout d'arguments `page` pour améliorer la navigation.</p>
+                </li>
+                <li><strong>Ajout d'un bouton de contact</strong></li>
+                <li><strong>Révision de la sécurité</strong>
+                    <p>Blocage des requêtes root pour les domaines externes.</p>
+                </li>
+                <li><strong>Optimisation du code backend</strong></li>
+            </ul>
+        </div>
 
-                <ul>
-
-                    <li>
-                        <strong>Mise a jours de la page patchnotes</strong>
-                        <p>Une page encore plus style avec ajout simplifier des patchnote</p>
-                    </li>
-
-                    <li>
-                        <strong>Correction du background sur le site</strong>
-                    </li>
-
-                    <li><strong>Revision des icons du site</strong></li>
-
-                </ul>
-
-            </div>
-
-        </section>
-
-
-        <section class="patch-note contaner">
-
-            <h2>📢 Mise à jour 2.0.1</h2>
-
-            <p class="date">Publié le <span>01 avril 2025</span></p>
-
-            <div class="update">
-
-                <h3>🆕 Modifications</h3>
-
-                <ul>
-
-                    <li><strong>Simplification de la page de téléchargement</strong>  
-                        <p>Répartition des requêtes entre décryptage et téléchargement. Suppression d'un onglet.</p>
-                    </li>
-
-                    <li><strong>Révision de la navigation</strong>  
-                        <p>Ajout d'arguments `page` pour améliorer la navigation.</p>
-                    </li>
-
-                    <li><strong>Ajout d'un bouton de contact</strong></li>
-
-                    <li><strong>Révision de la sécurité</strong>  
-                        <p>Blocage des requêtes root pour les domaines externes.</p>
-                    </li>
-
-                    <li><strong>Optimisation du code backend</strong></li>
-
-                </ul>
-
-            </div>
-            
-            <div class="update">
-
-                <h3>🐛 Corrections de bugs</h3>
-
-                <ul>
-                    <li>Support des fichiers compressés.</li>
-                    <li>Support des fichiers jusqu'à 10 Go.</li>
-                </ul>
-
-            </div>
-
-        </section>
+        <div class="update">
+            <h3>🐛 Corrections de bugs</h3>
+            <ul>
+                <li>Support des fichiers compressés.</li>
+                <li>Support des fichiers jusqu'à 10 Go.</li>
+            </ul>
+        </div>
+    </section>
 
 
     
     <footer>
-        <p>© 2025 SilverTransfer - Tous droits réservés</p>
+        <p>&copy; 2025 SilverTransfer - Tous droits réservés</p>
     </footer>
-
 
 </body>
 

@@ -5,21 +5,34 @@
  */
 
 import { loader, file, sendbtn, btnsavoir, gobtn, main, upload, progressbar, link, progress, flach, done } from './assets/js/idclassloader.js';
+
+loader.style.display = 'flex';
+main.style.display = 'none';
+upload.style.display = 'none';
+progress.style.display = 'none';
+done.style.display = 'none';
+
 import { salert } from './assets/js/salert.js';
 import { send } from './assets/js/send.js';
 import popups from './popups.js';
 
-salert('Une nouvelle version de SilverTransfer vien d\'arriver !!<br><a href="/patchnotes" style="color: black; text-decoration: underline" target="_blank">En savoir plus !</a>', 'info')
+//salert('Une nouvelle version de SilverTransfer vien d\'arriver !!<br><a href="/patchnotes" style="color: black; text-decoration: underline" target="_blank">En savoir plus !</a>', 'info')
+
 
 const urlParams = new URLSearchParams(window.location.search);
 const ifdev = urlParams.get('dev');
 const page = urlParams.get('page');
 const salerttest = urlParams.get('salerttest');
 
+const Vv = await fetch('/version');
+const Vvdata = await Vv.json();
+const Version = Vvdata;
+
+document.getElementById('vversion').innerText = Version;
 
 if (ifdev == 1) {
 
-    history.pushState(null, "", `?dev=1`);
+    history.pushState(null, "", `?dev=1&v=${Version}`);
 
     main.style.display = 'flex';
     upload.style.display = 'flex';
@@ -47,12 +60,12 @@ else {
         salert('Une alert test', 'success')
     } 
 
-    history.pushState(null, "", `?page=home`);
+    history.pushState(null, "", `?page=home&v=${Version}`);
 
 }
 
 function openLoader() {
-    history.pushState(null, "", `?page=loader`);
+    history.pushState(null, "", `?page=loader&v=${Version}`);
     loader.style.display = 'flex'
 };
 
@@ -61,7 +74,7 @@ function closeLoader() {
 };
 
 function openmain() {
-    history.pushState(null, "", `?page=home`);
+    history.pushState(null, "", `?page=home&v=${Version}`);
     main.style.display = 'flex'
 };
 
@@ -73,12 +86,12 @@ export function openform(page) {
 
     if (page === 'upload') {
 
-        history.pushState(null, "", `?page=upload`);
+        history.pushState(null, "", `?page=upload&v=${Version}`);
         upload.style.display = 'flex'
     
     }
     else if (page === 'success') {
-        history.pushState(null, "", `?page=success`);
+        history.pushState(null, "", `?page=success&v=${Version}`);
         done.style.display = 'flex'
     }
 
@@ -161,7 +174,7 @@ function roots() {
 
             openform(page)
 
-            history.pushState(null, "", `?page=success&link=${justlink}&id=${anid}&file=1`);
+            history.pushState(null, "", `?page=success&v=${Version}&link=${justlink}&id=${anid}&file=1`);
 
         } else {
             openmain();
@@ -193,7 +206,11 @@ async function loadApp() {
 
     const dropZone = document.getElementById('dropZone');
     const fileInfo = document.getElementById('p');
-        // non fonctionel
+    const sendBtn = document.querySelector('.send-btn');
+    const fileInput = file;
+
+    let selectedFile = null;
+
     // dropZone.addEventListener('dragover', (event) => {
     //     event.preventDefault();
     //     dropZone.style.backgroundColor = '#f0f8ff';
@@ -201,13 +218,12 @@ async function loadApp() {
 
     // dropZone.addEventListener('dragleave', () => {
     //     dropZone.style.backgroundColor = '';
-    // }); 
+    // });
 
     // dropZone.addEventListener('drop', (event) => {
     //     event.preventDefault();
     //     dropZone.style.backgroundColor = '';
 
-    //     const sendBtn = document.querySelector('.send-btn');
     //     sendBtn.style.display = 'flex';
     //     setTimeout(() => {
     //         sendBtn.style.opacity = 1;
@@ -215,13 +231,14 @@ async function loadApp() {
 
     //     const files = event.dataTransfer.files;
     //     if (files.length > 0) {
-    //         selectedFile = files[0]; 
+    //         selectedFile = files[0];
     //         fileInfo.innerText = `Fichier sélectionné : ${selectedFile.name}`;
     //     }
     // });
 
-    sendbtn.addEventListener('click', async () => {
-        if (!selectedFile && !file.files.length) {
+    sendBtn.addEventListener('click', async () => {
+
+        if (!selectedFile && (!fileInput?.files || fileInput?.files?.length === 0)) {
             salert('Aucun fichier sélectionné !', 'error');
             return;
         }
@@ -229,18 +246,18 @@ async function loadApp() {
         await closemain();
         await closeform('upload');
         await sendFile('open');
-        if (selectedFile) {
+        if (selectedFile) { 
             await send([selectedFile]);
         } else {
-            await send(file);
+            await send(fileInput.files[0]);
         }
 
-        
     });
+
 
 }
 
 
-roots();
-loadApp();
+await roots();
+await loadApp();
 closeLoader();
