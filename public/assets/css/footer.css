@@ -23,7 +23,7 @@ footer {
     right: 0; 
 }
 
-@media (max-height: 700px) {
+@media (max-height: 800px) {
     footer {
         display: none;
     }

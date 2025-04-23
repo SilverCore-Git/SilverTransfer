@@ -14,7 +14,7 @@ const cors = require("cors");
 const path = require("path");
 const ejs = require("ejs");
 const crypto = require("crypto");
-//const helmet = require('helmet');
+// const helmet = require('helmet');
 
 
 const formatFileSize = require('./src/filesize.js')
@@ -75,7 +75,7 @@ console.log("🔄 Démarrage de Express...");
 
 app.use(cors(corsOptions));
 app.use(express.json());
-//app.use(helmet());
+// app.use(helmet());
 app.set("view engine", "ejs");
 
 app.use((req, res, next) => {

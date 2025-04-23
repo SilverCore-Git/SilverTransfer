@@ -72,7 +72,7 @@ export function send(FILE) {
             }, 1000);
 
 
-            const justLink = `https://t.silverdium.fr/t/`;
+            const justLink = `https://www.silvertransfert.fr/t/`;
             const id = data.id;
             const Link = justLink + id;
 
