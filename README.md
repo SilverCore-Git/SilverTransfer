@@ -17,5 +17,5 @@ https://transfer.silverdium.fr
 
 by [SilverCore](https://github.com/SilverCore-Git) 👑 [Vous pouvez nous aider](https://tipeee.com/silverdium) 😎💸<br>
 Merci de soutenir les projets SilverCore ❤️ !<br>
-🔐 **L'utilisation de ce code n'est absolument pas autoriser !!** 🛡️<br>
+🔐 **L'utilisation de ce code est autoriser seulement a but non lucratif et privé !!** 🛡️<br>
 ⭐  SilverCore ©️ Tous droits reservés  ⭐
