@@ -1,300 +1,436 @@
 @import url("https://www.silvertransfert.fr/body.css");
 @import url("https://www.silvertransfert.fr/footer.css");
-body { background: #0d0d0d; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; font-family: Arial, sans-serif; }
 
 
-
-
-#ssuccess {
-    display: none;
+body { 
+    font-family: 'Roboto', sans-serif;
+    background: #0d0d0d;
+    color: white;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    height: 100vh; 
+    font-family: Arial, sans-serif; 
 }
 
 
+#statu_text {
+    font-size: 1.2rem;
+}
 
-/* From Uiverse.io by Quer3000 */ 
 .card {
---bg-card: #27272a;
---primary: #d928bb;
---primary-800: #1d7995;
---primary-shadow: #2e1065;
---light: #d9d9d9;
---zinc-800: #18181b;
---bg-linear: linear-gradient(0deg, var(--primary));
+    position: relative;
 
-position: relative;
-display: flex;
-flex-direction: column;
-gap: 0.75rem;
-padding: 1rem;
-width: 16rem;
-background-color: var(--bg-card);
-border-radius: 1rem;
+    background: linear-gradient(144deg,#AF40FF, #5B42F3,#00DDEB);
+   
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-bottom: 20px;
+    border-radius: 25px;
+
+    margin-bottom: 1rem;
+
+    width: 15rem;
+    height: 20rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-.image_container {
-overflow: hidden;
-cursor: pointer;
-position: relative;
-z-index: 5;
-width: 100%;
-height: 10rem;
-background-color: var(--primary-800);
-border-radius: 0.5rem;
+.card h1 {
+    font-size: 2rem;
 }
 
-.image_container .image {
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-width: 7rem;
-border-radius: 10px;
-fill: var(--light);
+.card .rappel {
+    margin-top: -1.5rem;
+    margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: 600;
 }
 
-.title1 {
-overflow: clip;
-width: 100%;
-font-size: 2rem;
-font-weight: 800;
-color: var(--light);
-text-transform: capitalize;
-text-wrap: nowrap;
-text-overflow: ellipsis;
-text-align: center;
+.card ul {
+    transform: translatex(-15px);
+    text-align: left;
+    list-style: none;
 }
 
-.size {
-font-size: 1.5rem;
-color: var(--light);
-display: flex;
-flex-direction: column;
-align-items: center;
+.card ul li span {
+    font-size: 20px;
 }
 
-.list-size {
-display: flex;
-align-items: center;
-align-content: center;
-flex-direction: column;
-gap: 0.50rem;
-margin-top: 0.25rem;
+.card .support {
+    margin-bottom: 10px;
 }
 
-.list-size .item-list {
-list-style: none;
-transform: translateX(-1.5rem);
+.card .support span {
+    font-size: 12px;
+    font-weight: bold;
 }
 
-.item-list strong {
+.card .support a {
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+
+
+
+/* From Uiverse.io by Li-Deheng */ 
+.btn-conteiner {
+    margin-top: 10px;
+    margin-bottom: 1.1rem;
+
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    --color-text: #ffffff;
+    --color-background: #ff135a;
+    --color-outline: #ff145b80;
+    --color-shadow: #00000080;
+  }
+  
+  .btn-content {
+    display: flex;
+    align-items: center;
+    padding: 3px 20px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--color-text);
+    background: var(--color-background);
+    transition: 1s;
+    border-radius: 100px;
+    box-shadow: 0 0 0.2em 0 var(--color-background);
+  }
+  
+  .btn-content:hover, .btn-content:focus {
+    transition: 0.5s;
+    -webkit-animation: btn-content 1s;
+    animation: btn-content 1s;
+    outline: 0.1em solid transparent;
+    outline-offset: 0.2em;
+    box-shadow: 0 0 0.4em 0 var(--color-background);
+  }
+  
+  .btn-content .icon-arrow {
+    transition: 0.5s;
+    margin-right: 0px;
+    transform: scale(0.6);
+  }
+  
+  .btn-content:hover .icon-arrow {
+    transition: 0.5s;
+    margin-right: 25px;
+  }
+  
+  .icon-arrow {
+    width: 20px;
+    margin-left: 15px;
+    position: relative;
+    top: 6%;
+  }
+    
+  /* SVG */
+  #arrow-icon-one {
+    transition: 0.4s;
+    transform: translateX(-60%);
+  }
+  
+  #arrow-icon-two {
+    transition: 0.5s;
+    transform: translateX(-30%);
+  }
+  
+  .btn-content:hover #arrow-icon-three {
+    animation: color_anim 1s infinite 0.2s;
+  }
+  
+  .btn-content:hover #arrow-icon-one {
+    transform: translateX(0%);
+    animation: color_anim 1s infinite 0.6s;
+  }
+  
+  .btn-content:hover #arrow-icon-two {
+    transform: translateX(0%);
+    animation: color_anim 1s infinite 0.4s;
+  }
+  
+  /* SVG animations */
+  @keyframes color_anim {
+    0% {
+      fill: white;
+    }
+  
+    50% {
+      fill: var(--color-background);
+    }
+  
+    100% {
+      fill: white;
+    }
+  }
+  
+  /* Button animations */
+  @-webkit-keyframes btn-content {
+    0% {
+      outline: 0.2em solid var(--color-background);
+      outline-offset: 0;
+    }
+  }
+  
+  @keyframes btn-content {
+    0% {
+      outline: 0.2em solid var(--color-background);
+      outline-offset: 0;
+    }
+  }
+
+
+
+
+.social-contaner {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+    transform: translateX(-10px);
+}
+
+.social-icon {
+    position: relative;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: white;
+}
+
+.social-icon img {
+    width: 30px;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+}
+
+.social-icon:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.social-icon:hover::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: black;
+    margin-bottom: -12px;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.social-icon::after,
+.social-icon::before {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out;
+}
+
+
+
+
+
+.loader-1, .loader-2 {
+    transform: translateY(10px);
+}
+
+
+/* From Uiverse.io by PhilibertGentien */ 
+.pl,
+.pl__worm {
+ animation-duration: 4s;
+ animation-iteration-count: infinite;
+}
+
+.pl {
+ animation-name: bump5;
+ animation-timing-function: linear;
+ width: 5em;
+ height: 5em;
+}
+
+.pl__ring {
+ stroke: hsla(var(--hue),10%,10%,0.1);
+ transition: stroke 0.3s;
+}
+
+.pl__worm {
+ animation-name: worm5;
+ animation-timing-function: cubic-bezier(0.42,0.17,0.75,0.83);
+}
+
+/* Animations */
+@keyframes bump5 {
+ from,
+  42%,
+  46%,
+  51%,
+  55%,
+  59%,
+  63%,
+  67%,
+  71%,
+  74%,
+  78%,
+  81%,
+  85%,
+  88%,
+  92%,
+  to {
+  transform: translate(0,0);
+ }
+
+ 44% {
+  transform: translate(1.33%,6.75%);
+ }
+
+ 53% {
+  transform: translate(-16.67%,-0.54%);
+ }
+
+ 61% {
+  transform: translate(3.66%,-2.46%);
+ }
+
+ 69% {
+  transform: translate(-0.59%,15.27%);
+ }
+
+ 76% {
+  transform: translate(-1.92%,-4.68%);
+ }
+
+ 83% {
+  transform: translate(9.38%,0.96%);
+ }
+
+ 90% {
+  transform: translate(-4.55%,1.98%);
+ }
+}
+
+@keyframes worm5 {
+ from {
+  stroke-dashoffset: 10;
+ }
+
+ 25% {
+  stroke-dashoffset: 295;
+ }
+
+ to {
+  stroke-dashoffset: 1165;
+ }
+}
+d {
+color: hsl(290, 90%, 55%);
+color: hsl(271, 90%, 55%);
+
+}
+
+
+/* From Uiverse.io by NourSafta */ 
+.loader-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+  }
+  
+  .loader-2::after {
+    content: "";
+    width: 75px;
+    height: 75px;
+    border: 15px solid #dddddd;
+    border-top-color: #46C380;
+    border-radius: 50%;
+    animation: loading 0.75s ease-out infinite;
+  }
+  
+  @keyframes loading {
+    from {
+      transform: rotate(0turn);
+    }
+  
+    to {
+      transform: rotate(1turn);
+    }
+  }
+
+
+/* From Uiverse.io by Creatlydev */ 
+.download-final-button {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    line-height: 1;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.35em;
+    padding: 0.75em 1em;
+    padding-right: 1.25em;
+    color: #fff;
+    border: 1px solid transparent;
+    font-weight: 700;
+    border-radius: 2em;
     font-size: 1rem;
-}
-
-.item-list span {
-    font-size: 1rem;
-}
-
-
-.action {
-display: flex;
-align-items: center;
-justify-content: center;
-width: 100%;
-}
-
-/* New Download Button Styles */
-.download-button {
-position: relative;
-width: 100%;
-height: 2.5rem;
-cursor: pointer;
-display: flex;
-align-items: center;
-justify-content: center;
-background-image: var(--bg-linear);
-border: 2px solid hsla(262, 18%, 57%, 0.5);
-border-radius: 0.5rem;
-overflow: hidden;
-transition: all 0.3s ease;
-}
-
-.button-text {
-color: var(--light);
-font-weight: 750;
-font-size: 1rem;
-transition: all 0.3s ease;
-}
-
-.button-icon {
-position: absolute;
-height: 100%;
-width: 2.5rem;
-display: flex;
-align-items: center;
-justify-content: center;
-background-color: var(--primary-800);
-right: -2.5rem;
-transition: all 0.3s ease;
-}
-
-.download-svg {
-width: 1.25rem;
-fill: var(--light);
-}
-
-.download-button:hover {
-background: var(--primary-800);
-}
-
-.download-button:hover .button-text {
-transform: translateX(-1.25rem);
-opacity: 0;
-}
-
-.download-button:hover .button-icon {
-right: 0;
-width: 100%;
-}
-
-.download-button:active {
-transform: scale(0.95);
-}
-
-.download-button:active .button-icon {
-background-color: var(--primary-shadow);
-}
-#success {
-display: none;
-}
-/* From Uiverse.io by Yaya12085 */ 
-.card2 {
-overflow: hidden;
-position: relative;
-text-align: left;
-border-radius: 0.5rem;
-max-width: 290px;
-box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-background-color: #fff;
-}
-
-.dismiss {
-position: absolute;
-right: 10px;
-top: 10px;
-display: flex;
-align-items: center;
-justify-content: center;
-padding: 0.5rem 1rem;
-background-color: #fff;
-color: black;
-border: 2px solid #D1D5DB;
-font-size: 1rem;
-font-weight: 300;
-width: 30px;
-height: 30px;
-border-radius: 7px;
-transition: .3s ease;
-}
-
-.dismiss:hover {
-background-color: #ee0d0d;
-border: 2px solid #ee0d0d;
-color: #fff;
-}
-
-.header {
-padding: 1.25rem 1rem 1rem 1rem;
-}
-
-.image2 {
-display: flex;
-margin-left: auto;
-margin-right: auto;
-background-color: #e2feee;
-flex-shrink: 0;
-justify-content: center;
-align-items: center;
-width: 3rem;
-height: 3rem;
-border-radius: 9999px;
-animation: animate .6s linear alternate-reverse infinite;
-transition: .6s ease;
-}
-
-.image2 svg {
-color: #0afa2a;
-width: 2rem;
-height: 2rem;
-}
-
-.content {
-margin-top: 0.75rem;
-text-align: center;
-}
-
-.title {
-color: #066e29;
-font-size: 1.2rem;
-font-weight: 600;
-line-height: 1.5rem;
-}
-
-.message {
-margin-top: 0.5rem;
-color: #595b5f;
-font-size: 1rem;
-line-height: 1.25rem;
-}
-
-.actions {
-margin: 0.75rem 1rem;
-}
-
-.history {
-display: inline-flex;
-padding: 0.5rem 1rem;
-background-color: #1aa06d;
-color: #ffffff;
-font-size: 1rem;
-line-height: 1.5rem;
-font-weight: 500;
-justify-content: center;
-width: 100%;
-border-radius: 0.375rem;
-border: none;
-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-transition: all 0.3s;
-}
-.history:hover {
-font-size: 1.1rem;
-background-color: #067e50;
-}
-.history:active {
-transform: scale(0.95);
-}
-
-.track {
-display: inline-flex;
-margin-top: 0.75rem;
-padding: 0.5rem 1rem;
-color: #242525;
-font-size: 1rem;
-line-height: 1.5rem;
-font-weight: 500;
-justify-content: center;
-width: 100%;
-border-radius: 0.375rem;
-border: 1px solid #D1D5DB;
-background-color: #fff;
-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-}
-
-@keyframes animate {
-from {
-transform: scale(1);
-}
-
-to {
-transform: scale(1.09);
-}
-}
+    box-shadow: 0 0.7em 1.5em -0.5em hsla(249, 62%, 51%, 0.745);
+    transition: transform 0.3s;
+  
+    background: linear-gradient(
+      90deg,
+      rgba(77, 54, 208, 1) 0%,
+      rgba(132, 116, 254, 1) 100%
+    );
+  }
+  
+  .button__icon {
+    width: 1.5em;
+    height: 1.5em;
+  }
+  
+  .download-final-button:hover {
+    border-color: #f4f5f2;
+  }
+  
+  .download-final-button:active {
+    transform: scale(0.98);
+    box-shadow: 0 0.5em 1.5em -0.5em hsla(249, 62%, 51%, 0.745);
+  }
+  

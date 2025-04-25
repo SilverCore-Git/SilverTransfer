@@ -9,7 +9,7 @@ console.log('🔄 Démarrage du serveur...');
 // Importation des bibliothèques
 const express = require("express");
 const fs = require("fs");
-const http = require("http");
+const https = require("https");
 const cors = require("cors");
 const path = require("path");
 const ejs = require("ejs");
@@ -59,10 +59,10 @@ setInterval(() => {
 
 
 // SSL key & cert path
-// const options = {
-//     key: fs.readFileSync(config.SSLkeyPath, "utf8"),
-//     cert: fs.readFileSync(config.SSLcertPath, "utf8"),
-// };
+const options = {
+    key: fs.readFileSync(config.SSLkeyPath, "utf8"),
+    cert: fs.readFileSync(config.SSLcertPath, "utf8"),
+};
 
 const corsOptions = {
     origin: `https://${config.hostname}`,
@@ -130,6 +130,9 @@ app.get("/patchnotes", (req, res) => {
 app.get("/favicon.ico", (req, res) => {
     res.status(200).sendFile(path.join(__dirname, 'assets/favicon.ico'))
 });
+app.get("/favicon.png", (req, res) => {
+    res.status(200).sendFile(path.join(__dirname, 'public/assets/img/logo.png'))
+});
 app.get("/robots.txt", (req, res) => {
     res.status(200).sendFile(path.join(__dirname, 'assets/robots.txt'))
 });
@@ -193,7 +196,7 @@ app.get("/t/:id", async (req, res) => {
                     }
 
                 } else {
-                    return await res.render("download", { fileName: 'fileName', fileID: 'fileID', fileSize: 'fSize', version: 'version', v: pkg.version });
+                    return await res.render("download", { fileName: 'fileName', fileID: 'fileID', fileSize: 'fSize', fileExpir: '30', version: 'version', v: pkg.version });
                 }
 
             }
@@ -211,7 +214,7 @@ app.get("/t/:id", async (req, res) => {
         const decryptedFileName = decryptText(fileName);
 
 
-        res.status(200).render("download", { fileName: decryptedFileName, fileID: fileID, fileSize: fSize, v: pkg.version });
+        res.status(200).render("download", { fileName: decryptedFileName,  fileExpir: '30', fileID: fileID, fileSize: fSize, v: pkg.version });
 
     }
 
@@ -260,7 +263,7 @@ verifyIfExpire();
 
 
 const PORT = config.Port;
-http.createServer(app).listen(PORT, () => {
+https.createServer(options, app).listen(PORT, () => {
     console.log(`✅ Serveur HTTPS en ligne sur ${config.hostname}:${PORT}`);
 });
 

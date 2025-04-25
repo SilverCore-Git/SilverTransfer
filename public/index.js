@@ -4,7 +4,7 @@
  * @author MisterPapaye
  */
 
-import { loader, file, sendbtn, btnsavoir, gobtn, main, upload, progressbar, link, progress, flach, done } from './assets/js/idclassloader.js';
+import { loader, file, btnsavoir, gobtn, main, upload, link, progress, flach, done } from './assets/js/idclassloader.js';
 
 loader.style.display = 'flex';
 main.style.display = 'none';
@@ -194,7 +194,7 @@ let selectedFile = null;
 async function loadApp() {
 
     btnsavoir.addEventListener('click', () => {
-        window.open('https://core.silverdium.fr/#services', '_blank')
+        window.open('https://www.silvercore.fr/#services', '_blank')
     });
 
     gobtn.addEventListener('click', async () => {

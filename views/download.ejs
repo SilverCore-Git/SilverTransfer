@@ -18,19 +18,18 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="theme-color" content="#AF40FF">
         <meta name="robots" content="noindex, nofollow">
-        
 
-        <meta property="og:title" content="SilverTransfert | <%= fileName %>">
+        <meta property="og:title" content="SilverTransfert | Télécharger : <%= fileName %>">
         <meta property="og:description" content="Transfert de fichier GRATUIT, hébergé en France !! by SilverCore">
         <meta property="og:site_name" content="SilverTransfer - Outils de Transfert">
-        <meta property="og:image" content="https://api.silvercore.fr/img/favicon/transfert?res=ico">
+        <meta property="og:image" content="https://www.silverdium.fr/favicon.png">
         <meta property="og:locale" content="fr_FR">
 
         <title>SilverTransfer | Télécharger : <%= fileName %></title>
 
         <link rel="stylesheet" href="assets?file=download&ext=css">
-        <link rel="stylesheet" href="/t/assets?file=data&ext=css">
 
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.16.1/sweetalert2.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.16.1/sweetalert2.min.css">
 
@@ -40,197 +39,142 @@
     <body>
 
 
-        <span style="margin-bottom: 1rem; color: rgb(80, 0, 126); font-size: 1.2rem;"><strong> Le fichier sera supprimé 15 jours apres téléversement </strong></span>
+        <section id="main">
 
-        <!-- From Uiverse.io by Quer3000 --> 
-        <div class="card">
-            <div class="image_container">
-                <a href="https://www.silvertransfert.fr"><img class="image" src="https://api.silvercore.fr/img/favicon/transfert?res=ico"></a>
-            </div>
-            <div class="title1">
-            <span>SilverTransfer</span>
-            </div>
-            <div class="size">
-            <ul class="list-size">
-                <li class="item-list item-list-btton">
-                    <strong>Taille du fichier</strong>
-                    <br><span id="size"><%= fileSize %></span>
-                </li>
-                <li class="item-list item-list-button">
-                    <strong>Nom du fichier</strong>
-                    <br><span id="fname"><%= fileName %></span>
-                </li>
-            </ul>
-            </div>
-            <div class="action"> 
-            <button class="download-button" id="downloadbtn">
-                <span class="button-text" style="text-transform: uppercase;">Télécharger</span>
-                <span class="button-icon">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 35 35"
-                    class="download-svg"
-                >
-                    <path
-                    d="M17.5,22.131a1.249,1.249,0,0,1-1.25-1.25V2.187a1.25,1.25,0,0,1,2.5,0V20.881A1.25,1.25,0,0,1,17.5,22.131Z"
-                    ></path>
-                    <path
-                    d="M17.5,22.693a3.189,3.189,0,0,1-2.262-.936L8.487,15.006a1.249,1.249,0,0,1,1.767-1.767l6.751,6.751a.7.7,0,0,0,.99,0l6.751-6.751a1.25,1.25,0,0,1,1.768,1.767l-6.752,6.751A3.191,3.191,0,0,1,17.5,22.693Z"
-                    ></path>
-                    <path
-                    d="M31.436,34.063H3.564A3.318,3.318,0,0,1,.25,30.749V22.011a1.25,1.25,0,0,1,2.5,0v8.738a.815.815,0,0,0,.814.814H31.436a.815.815,0,0,0,.814-.814V22.011a1.25,1.25,0,1,1,2.5,0v8.738A3.318,3.318,0,0,1,31.436,34.063Z"
-                    ></path>
-                </svg>
-                </span>
-            </button>
-            </div>
+            <!-- premier affichage, présentation du téléchargement -->
 
-        </div>
+            <div class="card">
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
-        <ul class="social-contaner">
+                <a href="/" target="_blank" style="text-decoration: none; color: white;"><h1>SilverTransfert</h1></a>
 
-            <a target="_blank" href="https://silvercore.fr"> <li data-tooltip="Site de silvercore" class="social-icon"> <img src="https://api.silvercore.fr/img/favicon/core?res=ico" alt="logo silvercore" style="border-radius: 50rem;"> </li> </a>
-            <a target="_blank" href="https://discord.gg/ftFhQTJsQ5"> <li data-tooltip="Discord SilverCore" class="social-icon"> <i class="bi bi-discord"> </i> </li> </a>
-            <a target="_blank" href="https://discord.gg/mKs3uMTJWM"> <li data-tooltip="Discord support" class="social-icon"> <i class="bi bi-life-preserver"> </i> </li> </a>
-            <a target="_blank" href="https://tipeee.com/silverdium"> <li data-tooltip="Nous aider avec tipeee" class="social-icon"> <i class="bi bi-heart"> </i> </li> </a>
-            <a target="_blank" href="https://github.com/SilverCore-Git/SilverTransfer"> <li data-tooltip="Open source sur GitHub" class="social-icon"> <i class="bi bi-github"> </i> </li> </a>
+                <span class="rappel">Ce fichier sera supprimé dans <%= fileExpir %> jours</span>
+                
+                <ul>
+                    <li style="margin-bottom: 8px;">
+                        <span>Télécharger le fichier :</span><br>
+                        <strong><%= fileName %></strong>
+                    </li>
+                    <li>
+                        <span>Poids du fichier :</span>
+                        <strong><%= fileSize %></strong>
+                    </li>
+                </ul>                
 
-        </ul> 
-        <style>
-            .social-contaner {
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: row;
-gap: 2rem;
-list-style: none;
-transform: translateX(-10px);
-}
-
-
-.social-icon {
-font-size: 2rem;
-cursor: pointer;
-transition: all 0.3s;
-color: white;
-}
-
-.social-icon img {
-width: 30px;
-}
-
-.social-icon:hover {
-transform: scale(1.1);
-}
-
-
-.social-icon:hover::after {
-content: attr(data-tooltip);
-position: absolute;
-bottom: 100%;
-left: 50%;
-transform: translateX(-50%);
-background-color: black;
-color: white;
-padding: 5px 10px;
-border-radius: 5px;
-font-size: 14px;
-white-space: nowrap;
-opacity: 1;
-visibility: visible;
-transition: opacity 0.2s ease-in-out;
-}
-
-.social-icon:hover::before {
-content: "";
-position: absolute;
-bottom: 100%;
-left: 50%;
-transform: translateX(-50%);
-border: 6px solid transparent;
-border-top-color: black;
-margin-bottom: -12px;
-opacity: 1;
-visibility: visible;
-transition: opacity 0.2s ease-in-out;
-}
-
-.social-icon::after,
-.social-icon::before {
-opacity: 0;
-visibility: hidden;
-transition: opacity 0.2s ease-in-out;
-}
-/* From Uiverse.io by Creatlydev */ 
-.button {
-  line-height: 1;
-  background-color: transparent;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.35em;
-  padding: 0.75em 1em;
-  padding-right: 1.25em;
-  color: #fff;
-  border: 1px solid transparent;
-  font-weight: 700;
-  border-radius: 2em;
-  font-size: 1rem;
-  box-shadow: 0 0.7em 1.5em -0.5em hsla(249, 62%, 51%, 0.745);
-  transition: transform 0.3s;
-
-  background: linear-gradient(
-    90deg,
-    rgba(77, 54, 208, 1) 0%,
-    rgba(132, 116, 254, 1) 100%
-  );
-}
-
-.button__icon {
-  width: 1.5em;
-  height: 1.5em;
-}
-
-.button:hover {
-  border-color: #f4f5f2;
-}
-
-.button:active {
-  transform: scale(0.98);
-  box-shadow: 0 0.5em 1.5em -0.5em hsla(249, 62%, 51%, 0.745);
-}
-
-        </style>
-
-
-        <section id="ssuccess">
-            <section id="download">
-
-                <h1 id="status">Déchiffrement en cours...</h1>
-        
-                <div class="loader">
-                    <!-- From Uiverse.io by Pradeepsaranbishnoi --> 
-                    <div class="🤚">
-                        <div class="👉"></div>
-                        <div class="👉"></div>
-                        <div class="👉"></div>
-                        <div class="👉"></div>
-                        <div class="🌴"></div>		
-                        <div class="👍"></div>
-                    </div>
+                <!-- From Uiverse.io by Li-Deheng --> 
+                <div id="btn_launch_decrypt" class="btn-conteiner">
+                    <a class="btn-content">
+                    <span class="btn-title">Continuer</span>
+                    <span class="icon-arrow">
+                        <svg width="66px" height="43px" viewBox="0 0 66 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g id="arrow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <path id="arrow-icon-one" d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z" fill="#FFFFFF"></path>
+                            <path id="arrow-icon-two" d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z" fill="#FFFFFF"></path>
+                            <path id="arrow-icon-three" d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z" fill="#FFFFFF"></path>
+                        </g>
+                        </svg>
+                    </span> 
+                    </a>
                 </div>
-        
-            </section>
+
+                <div class="support">
+                    <span>Un problème ? contactez nous :</span><br>
+                    <a target="_blank" href="https://discord.gg/mKs3uMTJWM">Discord support</a>
+                </div>
+
+            </div>
+
         </section>
+            
+        <section id="loader">
 
-        <section id="end">
-            <section id="download">
+            <!-- section loader -->
 
-                <h1 id="status">Déchiffrement terminé !</h1>
-        
+            <div class="card">
+                
+                <a href="/" target="_blank" style="text-decoration: none; color: white;"><h1 style="margin-top: -2.5rem;">SilverTransfert</h1></a>
+
+                <span class="rappel">Ce fichier sera supprimé dans <%= fileExpir %> jours</span>
+                
+                <h2 id="statu_text">Déchiffrement en cours...</h2>
+
+                <div class="loader">
+
+                    <!-- From Uiverse.io by PhilibertGentien --> 
+                    <svg class="loader-1" xmlns="http://www.w3.org/2000/svg" height="128px" width="128px" viewBox="0 0 128 128" class="pl">
+                        <defs>
+                        <linearGradient y2="1" x2="0" y1="0" x1="0" id="pl-grad">
+                            <stop stop-color="hsl(290, 90%, 55%)" offset="0%"></stop>
+                            <stop stop-color="hsl(271, 90%, 55%)" offset="100%"></stop>
+                        </linearGradient>
+                        </defs>
+                        <circle stroke-linecap="round" stroke-width="16" stroke="hsla(0,10%,10%,0.1)" fill="none" cy="64" cx="64" r="56" class="pl__ring"></circle>
+                        <path stroke-dashoffset="10" stroke-dasharray="44 1111" stroke-linejoin="round" stroke-linecap="round" stroke-width="16" stroke="url(#pl-grad)" fill="none" d="M92,15.492S78.194,4.967,66.743,16.887c-17.231,17.938-28.26,96.974-28.26,96.974L119.85,59.892l-99-31.588,57.528,89.832L97.8,19.349,13.636,88.51l89.012,16.015S81.908,38.332,66.1,22.337C50.114,6.156,36,15.492,36,15.492a56,56,0,1,0,56,0Z" class="pl__worm"></path>
+                    </svg>
+
+                    <div class="loader-2"></div>
+
+                </div>
+                                
+                <div style="position: absolute; bottom: 0.5rem;" class="support">
+                    <span>Un problème ? contactez nous :</span><br>
+                    <a target="_blank" href="https://discord.gg/mKs3uMTJWM">Discord support</a>
+                </div>
+
+                <script defer>
+
+                    const loader1 = document.querySelector('.loader-1');
+                    const loader2 = document.querySelector('.loader-2');
+
+                    loader1.style.display = 'none';
+                    loader2.style.display = 'flex';
+
+                    setInterval(() => {
+                        const isLoader1Visible = loader1.style.display === 'none';
+
+                        loader1.style.display = isLoader1Visible ? 'flex' : 'none';
+                        loader2.style.display = isLoader1Visible ? 'none' : 'flex';
+                    }, 10000);
+
+                    const statustext = document.getElementById('statu_text');
+
+                    const frames = [
+                        "Déchiffrement en cours",
+                        "Déchiffrement en cours.",
+                        "Déchiffrement en cours..",
+                        "Déchiffrement en cours..."
+                    ];
+
+                    let tailledetesmorts = 0;
+
+                    setInterval(() => {
+                        
+                        statustext.innerText = frames[tailledetesmorts]
+                        tailledetesmorts++
+
+                        if (tailledetesmorts === 4) { tailledetesmorts = 0 }
+
+                    }, 500);
+
+                </script>
+            
+            </div>
+
+        </section>
+            
+        <section id="download">
+
+            <!-- page de avec btn télécharger -->
+
+            <div class="card">
+
+                <a href="/" target="_blank" style="text-decoration: none; color: white;"><h1>SilverTransfert</h1></a>
+
+                <span class="rappel">Ce fichier sera supprimé dans <%= fileExpir %> jours</span>
+                
+                <h2 id="statu_text">Déchiffrement terminer !</h2>
+
                 <!-- From Uiverse.io by Creatlydev --> 
-                <button id="download_btn" class="button">
+                <button id="download_btn" class="download-final-button">
                     <svg
                     stroke-linejoin="round"
                     stroke-linecap="round"
@@ -250,10 +194,28 @@ transition: opacity 0.2s ease-in-out;
                     </svg>
                     <span class="button__text">Télécharger</span>
                 </button>
+  
                 
-        
-            </section>
+                <div class="support">
+                    <span>Un problème ? contactez nous :</span><br>
+                    <a target="_blank" href="https://discord.gg/mKs3uMTJWM">Discord support</a>
+                </div>
+
+            </div>
+
         </section>
+            
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+        <ul class="social-contaner">
+            
+            <a target="_blank" href="https://www.silvercore.fr"> <li data-tooltip="Site de silvercore" class="social-icon"> <img src="https://api.silvercore.fr/img/favicon/core?res=ico" alt="logo silvercore" style="border-radius: 50rem;"> </li> </a>
+            <a target="_blank" href="https://discord.gg/ftFhQTJsQ5"> <li data-tooltip="Discord SilverCore" class="social-icon"> <i class="bi bi-discord"> </i> </li> </a>
+            <a target="_blank" href="https://discord.gg/mKs3uMTJWM"> <li data-tooltip="Discord support" class="social-icon"> <i class="bi bi-life-preserver"> </i> </li> </a>
+            <a target="_blank" href="https://tipeee.com/silverdium"> <li data-tooltip="Nous aider avec tipeee" class="social-icon"> <i class="bi bi-heart"> </i> </li> </a>
+            <a target="_blank" href="https://github.com/SilverCore-Git/SilverTransfer"> <li data-tooltip="Open source sur GitHub" class="social-icon"> <i class="bi bi-github"> </i> </li> </a>
+            
+        </ul>
+
 
         <script type="module" defer>
 
@@ -262,11 +224,11 @@ transition: opacity 0.2s ease-in-out;
             const name = "<%= fileName %>";
 
 
-            history.pushState(null, "", `?page=download&fname=${name}&fsize=${size}&file=1`);
+            history.pushState(null, "", `?page=main&fname=${name}&fsize=${size}&file=1`);
             
 
             function salert(text, type) {
-                history.pushState(null, "", `?page=download&fname=${name}&fsize=${size}&file=1&salert=1&text=${text}&type=${type}`);
+                history.pushState(null, "", `?page=main&fname=${name}&fsize=${size}&file=1&salert=1&text=${text}&type=${type}`);
                 Swal.fire({
                     title: 'SilverTransfer',
                     html: text,
@@ -292,43 +254,22 @@ transition: opacity 0.2s ease-in-out;
             }
 
 
-            document.getElementById('ssuccess').style.display = 'none';
-            document.getElementById('end').style.display = 'none';
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('download').style.display = 'none';
 
 
             document.addEventListener("DOMContentLoaded", () => {
-                
 
-                const bntntt = document.getElementById('downloadbtn');
+                const continu_btn = document.getElementById('btn_launch_decrypt');
 
-                bntntt.addEventListener('click', async () => {
+                continu_btn.addEventListener('click', async () => {
 
                     history.pushState(null, "", `?page=loader&fname=${name}&fsize=${size}&file=1`);
 
-                    const statustext = document.getElementById('status');
-
-                    const frames = [
-                        "Déchiffrement en cours",
-                        "Déchiffrement en cours.",
-                        "Déchiffrement en cours..",
-                        "Déchiffrement en cours...",
-                        "Déchiffrement en cours...."
-                    ];
-
-                    let tailledetesmorts = 0;
-
-                    setInterval(() => {
-                        
-                        statustext.innerText = frames[tailledetesmorts]
-                        tailledetesmorts++
-
-                        if (tailledetesmorts === 5) { tailledetesmorts = 0 }
-
-                    }, 500);
-
-
-                    document.querySelector('.card').style.display = 'none'
-                    document.getElementById('ssuccess').style.display = 'flex'
+                    setTimeout(() => {
+                        document.getElementById('main').style.display = 'none';
+                        document.getElementById('loader').style.display = 'flex';
+                    }, 300);
 
                     history.pushState(null, "", `?page=loader&fname=${name}&fsize=${size}&file=1&statu=fetching`);
 
@@ -340,45 +281,45 @@ transition: opacity 0.2s ease-in-out;
 
                             if (res.error) {
                                 salert(res.message.silver, 'error');
-                                document.querySelector('.card').style.display = 'flex'
-                                document.getElementById('ssuccess').style.display = 'none'
-                                return history.pushState(null, "", `?page=download&fname=${name}&fsize=${size}&file=1&statu=error`);
+                                document.getElementById('main').style.display = 'flex'
+                                document.getElementById('loader').style.display = 'none'
+                                return history.pushState(null, "", `?page=main&fname=${name}&fsize=${size}&file=1&statu=error`);
                             };
 
                         })
                         .catch(err => {
                             console.error('Une errreur est survenue : ', err || err.message);
                             salert('Une errreur est survenue !', 'error');
-                            document.querySelector('.card').style.display = 'flex'
-                            document.getElementById('ssuccess').style.display = 'none'
-                            return history.pushState(null, "", `?page=download&fname=${name}&fsize=${size}&file=1&statu=error&msg=${err}`);
+                            document.getElementById('main').style.display = 'flex'
+                            document.getElementById('loader').style.display = 'none'
+                            return history.pushState(null, "", `?page=main&fname=${name}&fsize=${size}&file=1&statu=error&msg=${err}`);
                         });
 
                     async function ending() {
-                        history.pushState(null, "", `?page=loader&fname=${name}&fsize=${size}&file=1&statu=success`);
-                        document.getElementById('ssuccess').style.display = 'none'
-                        document.getElementById('end').style.display = 'flex';
+                        history.pushState(null, "", `?page=download&fname=${name}&fsize=${size}&file=1&statu=success`);
+                        document.getElementById('loader').style.display = 'none'
+                        document.getElementById('download').style.display = 'flex';
                     };
+
                     document.getElementById('download_btn').addEventListener('click', () => {
                         window.open('/data/<%= fileID %>?action=download', '_blank');
-                        setTimeout(() => {
-                            window.location.href = `/data/end?end=true&fname=${name}&id=<%= fileID %>`;
-                        }, 1000);
                     })
 
-                    setInterval(async () => {
+                    const intervalID = setInterval(async () => {
 
                         await fetch('/data/status?id=<%= fileID %>')
-                                .then(response => response.json())
-                                .then(res => {
+                            .then(response => response.json())
+                            .then(res => {
 
-                                    if (res.end) {
-                                        return ending();
-                                    };
+                                if (res.end) {
+                                    clearInterval(intervalID);
+                                    return ending();
+                                }
 
-                                });
+                            });
 
                     }, 1000);
+
 
                 });
 
@@ -386,22 +327,19 @@ transition: opacity 0.2s ease-in-out;
 
         </script>
 
-        <section style="margin-top: 60px">
 
-            <h2>👑 Merci de soutenir les projets <a href="https://silvercore.fr" target="_blank">SilverCore</a> ! ❤️<br></h2>
-            <h2 class="btn_tipeee" onclick="window.open('https://tipeee.com/silverdium', '_blank')">
-                <span class="text"><strong>😎 VOUS POUVEZ NOUS AIDER ! 💸</strong></span>
-            </h2>
-
-        </section>
-
-        <a href="https://github.com/SilverCore-Git/SilverTransfer" class="vtext"> SilverTransfer version <%= v %> </a>
+        <a href="/patchnotes" target="_blank" class="vtext"> SilverTransfer version <%= v %> </a>
         <style>
             .vtext {
                 position: fixed;
                 bottom: 6rem;
                 left: 1.5rem;
                 font-weight: bold;
+                color: white;
+                text-decoration: none;
+            }
+            .vtext:hover {
+                text-decoration: underline;
             }
             @media (max-width: 700px) {
                 .vtext {
@@ -411,7 +349,7 @@ transition: opacity 0.2s ease-in-out;
         </style>
 
         <footer id="footer">
-            <strong><p>&copy; 2025 SilverTransfert | <a href="https://silvercore.fr">SilverCore</a>. Tous droits réservés.</p></strong>
+            <strong><p>&copy; 2025 SilverTransfert | <a href="https://www.silvercore.fr">SilverCore</a>. Tous droits réservés.</p></strong>
         </footer>
 
     </body>
