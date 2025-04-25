@@ -9,7 +9,7 @@ console.log('🔄 Démarrage du serveur...');
 // Importation des bibliothèques
 const express = require("express");
 const fs = require("fs");
-const https = require("https");
+const http = require("http");
 const cors = require("cors");
 const path = require("path");
 const ejs = require("ejs");
@@ -59,10 +59,10 @@ setInterval(() => {
 
 
 // SSL key & cert path
-const options = {
-    key: fs.readFileSync(config.SSLkeyPath, "utf8"),
-    cert: fs.readFileSync(config.SSLcertPath, "utf8"),
-};
+// const options = {
+//     key: fs.readFileSync(config.SSLkeyPath, "utf8"),
+//     cert: fs.readFileSync(config.SSLcertPath, "utf8"),
+// };
 
 const corsOptions = {
     origin: `https://${config.hostname}`,
@@ -260,7 +260,7 @@ verifyIfExpire();
 
 
 const PORT = config.Port;
-https.createServer(options, app).listen(PORT, () => {
+http.createServer(app).listen(PORT, () => {
     console.log(`✅ Serveur HTTPS en ligne sur ${config.hostname}:${PORT}`);
 });
 

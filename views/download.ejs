@@ -162,6 +162,45 @@ opacity: 0;
 visibility: hidden;
 transition: opacity 0.2s ease-in-out;
 }
+/* From Uiverse.io by Creatlydev */ 
+.button {
+  line-height: 1;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  padding: 0.75em 1em;
+  padding-right: 1.25em;
+  color: #fff;
+  border: 1px solid transparent;
+  font-weight: 700;
+  border-radius: 2em;
+  font-size: 1rem;
+  box-shadow: 0 0.7em 1.5em -0.5em hsla(249, 62%, 51%, 0.745);
+  transition: transform 0.3s;
+
+  background: linear-gradient(
+    90deg,
+    rgba(77, 54, 208, 1) 0%,
+    rgba(132, 116, 254, 1) 100%
+  );
+}
+
+.button__icon {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.button:hover {
+  border-color: #f4f5f2;
+}
+
+.button:active {
+  transform: scale(0.98);
+  box-shadow: 0 0.5em 1.5em -0.5em hsla(249, 62%, 51%, 0.745);
+}
+
         </style>
 
 
@@ -181,6 +220,37 @@ transition: opacity 0.2s ease-in-out;
                         <div class="👍"></div>
                     </div>
                 </div>
+        
+            </section>
+        </section>
+
+        <section id="end">
+            <section id="download">
+
+                <h1 id="status">Déchiffrement terminé !</h1>
+        
+                <!-- From Uiverse.io by Creatlydev --> 
+                <button id="download_btn" class="button">
+                    <svg
+                    stroke-linejoin="round"
+                    stroke-linecap="round"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    viewBox="0 0 24 24"
+                    height="40"
+                    width="40"
+                    class="button__icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    >
+                    <path fill="none" d="M0 0h24v24H0z" stroke="none"></path>
+                    <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path>
+                    <path d="M7 11l5 5l5 -5"></path>
+                    <path d="M12 4l0 12"></path>
+                    </svg>
+                    <span class="button__text">Télécharger</span>
+                </button>
+                
         
             </section>
         </section>
@@ -222,7 +292,8 @@ transition: opacity 0.2s ease-in-out;
             }
 
 
-            document.getElementById('ssuccess').style.display = 'none'
+            document.getElementById('ssuccess').style.display = 'none';
+            document.getElementById('end').style.display = 'none';
 
 
             document.addEventListener("DOMContentLoaded", () => {
@@ -285,11 +356,15 @@ transition: opacity 0.2s ease-in-out;
 
                     async function ending() {
                         history.pushState(null, "", `?page=loader&fname=${name}&fsize=${size}&file=1&statu=success`);
+                        document.getElementById('ssuccess').style.display = 'none'
+                        document.getElementById('end').style.display = 'flex';
+                    };
+                    document.getElementById('download_btn').addEventListener('click', () => {
                         window.open('/data/<%= fileID %>?action=download', '_blank');
                         setTimeout(() => {
-                            window.location.href = '/data/end?end=true&fname=${name}&id=<%= fileID %>';
-                        }, 500);
-                    };
+                            window.location.href = `/data/end?end=true&fname=${name}&id=<%= fileID %>`;
+                        }, 1000);
+                    })
 
                     setInterval(async () => {
 

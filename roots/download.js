@@ -83,6 +83,15 @@ router.get("/:filename", async (req, res) => {
 
         if (action === "decrypt") {
             try {
+
+                if (fs.existsSync(decryptedFilePath)) {
+                    let { size } = fs.statSync(decryptedFilePath);
+                    if (size == fileDB.size) {
+                        download_status.push( { id: fileID, status: "decrypted", end: true } )
+                        return res.status(200).json({ message: { silver: "Déchiffrement terminé" } })
+                    }
+                }
+
                 console.log("🔓 Déchiffrement...");
 
                 download_status.push( { id: fileID, status: "decrypt", end: false } );
@@ -102,14 +111,26 @@ router.get("/:filename", async (req, res) => {
 
         else if (action === "download") {
 
+            console.log("📤 Envoi du fichier...");
+
+            try {
+                await fs.promises.access(decryptedFilePath);   // vérifie qu’il existe
+            } catch (e) {
+                return res.status(404).json({ error: true, message: 'Fichier introuvable' });
+            }
+
+            const filename11 = path.basename(decryptedFilePath);
+            // Désactive le timeout (facultatif si ton proxy gère déjà)
+            res.setTimeout(0);
+            // Fixe un type correct (mime-types ou res.type)
+            res.type(path.extname(filename11));
+            // Force le téléchargement du fichier
+            res.setHeader('Content-Disposition', `attachment; filename="${filename11}"`);
+
             try {
 
-                console.log("📤 Envoi du fichier...");
-
                 await new Promise((resolve, reject) => {
-                    // Force le téléchargement du fichier
-                    res.setHeader('Content-Disposition', 'attachment; filename="' + path.basename(decryptedFilePath) + '"');
-                    res.setHeader('Content-Type', 'application/octet-stream');  // MIME type générique pour le téléchargement
+
         
                     // Envoi du fichier
                     res.sendFile(decryptedFilePath, (err) => {
