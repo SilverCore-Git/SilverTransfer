@@ -10,7 +10,9 @@
 
     "start": "node --max-old-space-size=2024 server.js",
 
-    "datasize": "node src/get_data_size.js"
+    "datasize": "node scripts/get_data_size.js",
+
+    "clear": "node scripts/cleardir.js"
 
   },
 
