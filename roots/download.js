@@ -14,7 +14,8 @@ const fs = require('fs');
 const config = require('../config/config.json');
 const { loadDatabase } = require('../src/database.js');
 const { getCurrentDate, getCurrentTime } = require('../src/datemanager.js')
-const { decryptFile, decryptText } = require("../src/crypt.js");
+const { decryptFile, decryptText, verifyPassword } = require("../src/crypt.js");
+const key = require('../src/key_manager.js');
 
 var download_status = [];
 
@@ -37,15 +38,17 @@ router.get('/status', (req, res) => {
 
 
 // roote => Déchiffrement et téléchargement du fichier
-router.get("/:filename", async (req, res) => {
+router.get("/:id", async (req, res) => {
 
     let fileDatabase = {};
     fileDatabase = loadDatabase();
 
     if (req.hostname === config.hostname) {     
 
-        console.log("📥 Requête reçue : /data/",req.params.filename);
-        const fileID = req.params.filename;
+        console.log("📥 Requête reçue : /data/",req.params.id);
+
+        const passwd = req.query.passwd;
+        const fileID = req.params.id;
         const action = req.query.action;
 
         // Gestion accès développeur
@@ -75,8 +78,6 @@ router.get("/:filename", async (req, res) => {
         const encryptedFilePath = path.join(__dirname, "../data", fileDB.fileName);
         const decryptedFilePath = path.join(__dirname, "../temp", decryptedFileName);
 
-        console.log(encryptedFilePath)
-
         if (!fs.existsSync(encryptedFilePath)) {
             return res.status(404).json({ error: true, message: { silver: "Fichier chiffré non trouvé" } });
         }
@@ -92,12 +93,21 @@ router.get("/:filename", async (req, res) => {
                     }
                 }
 
+                console.log('Vérification...');
+
+                const private_key = await key.read(fileID, 'private');
+
+                if (!await verifyPassword(`${encryptedFilePath}/part0.enc`, private_key, passwd)) {
+                    download_status = download_status.filter(item => item.id !== fileID);
+                    return res.json( { id: fileID, error: true, message: { silver: 'url incorect' }, status: "error",  end: false } );
+                }
+
                 console.log("🔓 Déchiffrement...");
 
                 download_status.push( { id: fileID, status: "decrypt", end: false } );
                 res.status(200).json({ message: { silver: "Déchiffrement en cours.." } })
 
-                await decryptFile(encryptedFilePath, decryptedFilePath).then( () => {
+                await decryptFile(encryptedFilePath, decryptedFilePath, private_key, passwd).then(res => {
 
                     download_status = download_status.filter(item => item.id !== fileID);
                     download_status.push( { id: fileID, status: "end", end: true } );

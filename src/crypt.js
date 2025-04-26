@@ -1,6 +1,6 @@
 /**
  * @author SilverCore
- * @author SilverTransfer
+ * @author SilverTransfert
  * @author MisterPapaye
  */
 
@@ -10,124 +10,216 @@ require('dotenv').config();
 const fatherKey = Buffer.from(process.env.SECRET_KEY, 'hex');
 const babyKey = Buffer.from(process.env.TEXT_SECRET_KEY, 'hex'); // clée de 32bytes
 if (fatherKey.length !== 32) {
-    throw new Error("FATHER_KEY doit être de 32 octets en hexadécimal !");
-    console.error("FATHER_KEY doit être de 32 octets en hexadécimal !");
+    return console.error("FATHER_KEY doit être de 32 octets en hexadécimal !");
 }
-const MAX_CONCURRENT_FILES = 5;
 
+CHUNK_SIZE = 100 * 1024 * 1024;
 
-
-
-// 🔒 Chiffrement AES-256-CBC d'un fichier en plusieurs morceaux
-async function encryptFile(inputFile, outputFolder) {
+// 🔒 Chiffrement 
+async function encryptFile(inputFile, outputFolder = 'data/undefined', publicKey) {
     try {
-        const CHUNK_SIZE = 100 * 1024 * 1024; // 100 Mo par fichier
         const fileStats = await fs.promises.stat(inputFile);
         const totalSize = fileStats.size;
-
-        const inputStream = fs.createReadStream(inputFile);
-        let chunkIndex = 0;
 
         // Créer un dossier de sortie si nécessaire
         await fs.promises.mkdir(outputFolder, { recursive: true });
 
-        // Fonction pour traiter un morceau et créer le fichier de sortie
+        let chunkIndex = 0;
+
+        // 🔥 Générer une clé AES pour ce fichier
+        const aesKey = crypto.randomBytes(32); // 32 bytes = AES-256
+        const encryptedAesKey = crypto.publicEncrypt(
+            {
+                key: publicKey,
+                padding: crypto.constants.RSA_PKCS1_OAEP_PADDING,
+            },
+            aesKey
+        );
+
+        // Fonction pour traiter un morceau
         async function processChunk(startPosition) {
             const outputFile = `${outputFolder}/part${chunkIndex}.enc`;
-            const iv = crypto.randomBytes(16);  // Générer un IV unique pour chaque morceau
-            const cipher = crypto.createCipheriv('aes-256-cbc', fatherKey, iv);
             const output = fs.createWriteStream(outputFile);
-            
-            output.write(iv);  // Écrire l'IV au début du fichier
 
-            // Créer un stream de lecture à partir de la position actuelle du fichier
-            const buffer = Buffer.alloc(CHUNK_SIZE);
+            // Générer un IV unique pour ce morceau
+            const iv = crypto.randomBytes(16);
+            const cipher = crypto.createCipheriv('aes-256-cbc', aesKey, iv);
+
+            // ➡️ Si c'est le premier morceau, écrire d'abord la clé AES chiffrée + l'IV
+            if (chunkIndex === 0) {
+                const keyLengthBuffer = Buffer.alloc(4);
+                keyLengthBuffer.writeUInt32BE(encryptedAesKey.length);
+
+                output.write(keyLengthBuffer);     // 4 octets : taille de la clé AES chiffrée
+                output.write(encryptedAesKey);      // Clé AES chiffrée
+            }
+
+            output.write(iv); // IV pour ce morceau
+
+            // Lire le bon morceau du fichier
             const inputStream = fs.createReadStream(inputFile, { start: startPosition, end: startPosition + CHUNK_SIZE - 1 });
 
-            let chunkWritten = 0;
-
             return new Promise((resolve, reject) => {
-                // Lire les données du fichier à partir de la position
                 inputStream.on('data', (chunk) => {
                     const encryptedChunk = cipher.update(chunk);
                     output.write(encryptedChunk);
-                    chunkWritten += chunk.length;
                 });
 
                 inputStream.once('end', () => {
                     const finalEncrypted = cipher.final();
-                    output.write(finalEncrypted);  // Ajouter la fin du chiffrement
+                    output.write(finalEncrypted);
                     output.end();
                     console.log(`✅ Partie ${chunkIndex} chiffrée avec succès : ${outputFile}`);
-
-                    chunkIndex++;  // Passer au prochain fichier
+                    chunkIndex++;
                     resolve();
                 });
 
-                inputStream.once('error', (err) => {
-                    reject(err);
-                });
-
-                output.once('error', (err) => {
-                    reject(err);
-                });
+                inputStream.once('error', reject);
+                output.once('error', reject);
             });
         }
 
-        // Découper le fichier en morceaux et les traiter
+        // ➡️ Boucle de découpage
         while ((chunkIndex * CHUNK_SIZE) < totalSize) {
             await processChunk(chunkIndex * CHUNK_SIZE);
         }
 
-        // Suppression du fichier d'entrée après chiffrement
+        // Supprimer l'original
         await fs.promises.unlink(inputFile);
-        console.log(`✅ Le fichier d'entrée "${inputFile}" a été supprimé après chiffrement.`);
+        console.log(`✅ Fichier source "${inputFile}" supprimé après chiffrement.`);
 
         console.log('✅ Chiffrement terminé avec succès !');
 
     } catch (error) {
-        console.error('❌ Erreur lors du chiffrement du fichier :', error);
+        console.error('❌ Erreur lors du chiffrement :', error);
     }
 }
 
 
 
-
-
-
-
-// 🔓 Déchiffrement AES-256-CBC d'un fichier en plusieurs morceaux
-async function decryptFile(inputFolder, outputFile) {
+async function verifyPassword(inputFile, privateKey, passwd) {
     try {
-        const files = await fs.promises.readdir(inputFolder); // Lire les fichiers dans le dossier
-        const sortedFiles = files.filter(file => file.endsWith('.enc')).sort(); // Trier par ordre croissant
-        const outputStream = fs.createWriteStream(outputFile);
+        const buffer = await fs.promises.readFile(inputFile);
 
-        for (const file of sortedFiles) {
+        if (buffer.length < 4) {
+            throw new Error('Fichier trop petit pour contenir une clé AES.');
+        }
+
+        const keyLength = buffer.readUInt32BE(0);
+
+        if (buffer.length < 4 + keyLength) {
+            throw new Error('Fichier incomplet : clé AES manquante.');
+        }
+
+        const encryptedAesKey = buffer.slice(4, 4 + keyLength);
+
+        // 🔥 Essayer de décrypter la clé AES
+        crypto.privateDecrypt(
+            {
+                key: privateKey,
+                passphrase: passwd,
+            },
+            encryptedAesKey
+        );
+
+        // Si aucun erreur : mot de passe valide
+        return true;
+    } catch (err) {
+        // Si erreur → mot de passe invalide
+        return false;
+    }
+}
+
+
+
+// 🔓 Déchiffrement
+async function decryptFile(inputFolder, outputFile = 'temp/undefined', privateKey, passwd) {
+
+    const files = await fs.promises.readdir(inputFolder);
+    const sortedFiles = files.filter(file => file.endsWith('.enc')).sort(); // Trier dans l'ordre
+    const outputStream = fs.createWriteStream(outputFile);
+
+    let aesKey = null; // clé AES une fois récupérée
+
+    try {
+
+        for (let index = 0; index < sortedFiles.length; index++) {
+            const file = sortedFiles[index];
             const inputFile = `${inputFolder}/${file}`;
             const inputStream = fs.createReadStream(inputFile);
 
             await new Promise((resolve, reject) => {
-                let iv;
                 let decipher;
                 let isFirstChunk = true;
+                let bufferCache = Buffer.alloc(0);
 
                 inputStream.on('data', (chunk) => {
-                    if (isFirstChunk) {
-                        iv = chunk.slice(0, 16); // Extraire l'IV
-                        decipher = crypto.createDecipheriv('aes-256-cbc', fatherKey, iv);
-                        chunk = chunk.slice(16); // Supprimer l'IV du chunk
-                        isFirstChunk = false;
-                    }
+                    bufferCache = Buffer.concat([bufferCache, chunk]);
 
-                    const decryptedChunk = decipher.update(chunk);
-                    outputStream.write(decryptedChunk);
+                    if (isFirstChunk) {
+                        if (index === 0) {
+                            // Cas particulier du premier fichier (clé AES et IV stockés au début)
+                            if (bufferCache.length < 4) {
+                                // Pas encore assez de données pour lire la taille de la clé
+                                return;
+                            }
+                            const keyLength = bufferCache.readUInt32BE(0);
+
+                            if (bufferCache.length < 4 + keyLength + 16) {
+                                // Pas encore assez de données pour lire clé + IV
+                                return;
+                            }
+
+                            const encryptedAesKey = bufferCache.slice(4, 4 + keyLength);
+                            const iv = bufferCache.slice(4 + keyLength, 4 + keyLength + 16);
+
+                            // Déchiffrer la clé AES
+                            aesKey = crypto.privateDecrypt(
+                                {
+                                    key: privateKey,
+                                    passphrase: passwd,
+                                },
+                                encryptedAesKey
+                            );
+
+                            decipher = crypto.createDecipheriv('aes-256-cbc', aesKey, iv);
+
+                            // Récupérer le reste des données (après 4 + clé + 16 octets)
+                            const encryptedData = bufferCache.slice(4 + keyLength + 16);
+                            const decryptedChunk = decipher.update(encryptedData);
+                            outputStream.write(decryptedChunk);
+
+                            isFirstChunk = false;
+                            bufferCache = Buffer.alloc(0); // vider le buffer
+                        } else {
+                            // Pour les autres fichiers
+                            if (bufferCache.length < 16) {
+                                // Pas assez de données pour lire IV
+                                return;
+                            }
+                            const iv = bufferCache.slice(0, 16);
+                            decipher = crypto.createDecipheriv('aes-256-cbc', aesKey, iv);
+
+                            const encryptedData = bufferCache.slice(16);
+                            const decryptedChunk = decipher.update(encryptedData);
+                            outputStream.write(decryptedChunk);
+
+                            isFirstChunk = false;
+                            bufferCache = Buffer.alloc(0); // vider le buffer
+                        }
+                    } else {
+                        // Après avoir traité l'IV, tout est des données encryptées
+                        const decryptedChunk = decipher.update(chunk);
+                        outputStream.write(decryptedChunk);
+                    }
                 });
 
                 inputStream.on('end', () => {
                     try {
-                        const finalDecrypted = decipher.final();
-                        outputStream.write(finalDecrypted);
+                        if (decipher) {
+                            const finalDecrypted = decipher.final();
+                            outputStream.write(finalDecrypted);
+                        }
                         console.log(`✅ Partie déchiffrée : ${inputFile}`);
                         resolve();
                     } catch (error) {
@@ -151,12 +243,9 @@ async function decryptFile(inputFolder, outputFile) {
 
 
 
-
-
-
 const algorithm = 'AES-256-ECB';
 
-// for texte
+// for text
 // Fonction pour chiffrer un texte
 function encryptText(text) {
     const cipher = crypto.createCipheriv(algorithm, babyKey, null); 
@@ -177,5 +266,6 @@ module.exports = {
     encryptFile,
     decryptFile,
     encryptText,
-    decryptText
+    decryptText,
+    verifyPassword
 };

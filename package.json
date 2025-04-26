@@ -2,13 +2,13 @@
 
   "name": "silvertransfert",
 
-  "version": "2.0.6",
+  "version": "2.2.0",
 
   "scripts": {
 
-    "test": "echo \"Error: no test specified\" && exit 1",
-
     "start": "node --max-old-space-size=2024 server.js",
+
+    "dev": "node --max-old-space-size=2024 server.js dev",
 
     "datasize": "node scripts/get_data_size.js",
 

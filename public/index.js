@@ -7,6 +7,7 @@
 import { loader, file, btnsavoir, gobtn, main, upload, link, progress, flach, done } from './assets/js/idclassloader.js';
 
 loader.style.display = 'flex';
+file.style.display = 'flex'
 main.style.display = 'none';
 upload.style.display = 'none';
 progress.style.display = 'none';
@@ -163,8 +164,9 @@ function roots() {
 
             const justlink = urlParams.get('link');
             const anid = urlParams.get('id');
+            const anpass = urlParams.get('pass');
 
-            const Link = justlink + anid
+            const Link = justlink + '/' + anid + '/' + anpass;
             link.value = Link
             const qr = new QRious({
                 element: document.getElementById('codeQR'),
@@ -243,13 +245,15 @@ async function loadApp() {
             return;
         }
 
+        const passwd = await fetch('/passwd/10').then(res => res.json());
+
         await closemain();
         await closeform('upload');
         await sendFile('open');
         if (selectedFile) { 
-            await send([selectedFile]);
+            await send([selectedFile], passwd);
         } else {
-            await send(fileInput.files[0]);
+            await send(fileInput.files[0], passwd);
         }
 
     });

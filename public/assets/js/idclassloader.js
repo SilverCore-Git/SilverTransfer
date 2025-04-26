@@ -11,8 +11,8 @@ const loader = document.getElementById('loader');
 const progress = document.querySelector('.progress');
 const progressbar = document.getElementById('progressbar');
 const flach = document.getElementById('flach');
-const valuetext = document.getElementById('value')
-const link = document.getElementById('linkInput')
+const valuetext = document.getElementById('value');
+const link = document.getElementById('linkInput');
 
 // card :
 const main = document.querySelector('.main');

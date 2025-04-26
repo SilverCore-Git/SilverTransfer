@@ -26,7 +26,7 @@ function updateProgressBar(value) {
 
 
 
-export function send(FILE) {
+export function send(FILE, passwd) {
 
     const fileInput = FILE
     const file = fileInput;
@@ -46,7 +46,7 @@ export function send(FILE) {
     console.log("Envoi d'un fichier...");
 
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", `/upload/yourmother`, true);
+    xhr.open("POST", `/upload/file?passwd=${passwd}`, true);
 
     xhr.upload.onprogress = (event) => {
         if (event.lengthComputable) {
@@ -72,9 +72,9 @@ export function send(FILE) {
             }, 1000);
 
 
-            const justLink = `https://www.silvertransfert.fr/t/`;
+            const justLink = `https://www.silvertransfert.fr/t`;
             const id = data.id;
-            const Link = justLink + id;
+            const Link = justLink + '/' + id + '/' + passwd;
 
             link.value = Link
             const qr = new QRious({
@@ -88,7 +88,7 @@ export function send(FILE) {
             sendFile('close')
             openform('success')
 
-            return history.pushState(null, "", `?page=success&link=${justLink}&id=${data.id}&file=1`);
+            return history.pushState(null, "", `?page=success&link=${justLink}&id=${data.id}&pass=${passwd}&file=1`);
 
         } else {
             salert('Une erreur est survenue...', 'error')

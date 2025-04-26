@@ -15,6 +15,7 @@ const config = require('../config/config.json');
 const { loadDatabase, saveDatabase } = require('../src/database.js');
 const { getCurrentDate, getCurrentTime } = require('../src/datemanager.js')
 const { encryptFile, encryptText } = require("../src/crypt.js");
+const key = require('../src/key_manager.js');
 
 let fileDatabase = {};
 fileDatabase = loadDatabase();
@@ -38,11 +39,11 @@ const upload = multer({ storage });
 
 
 
-router.post('/yourmother', upload.single("file"), async (req, res) => {
+router.post('/file', upload.single("file"), async (req, res) => {
 
     if (req.hostname === config.hostname) {
 
-        console.log("📥 Réception d'une requête : ", `' /upload/yourmother '`);
+        console.log("📥 Réception d'une requête : ", `' /upload/file '`);
 
         fileDatabase = loadDatabase();
 
@@ -58,6 +59,8 @@ router.post('/yourmother', upload.single("file"), async (req, res) => {
         randomNumber = randomNumber.toString().padStart(8, '0');
 
         const fileID = randomNumber;
+        const passwd = req.query.passwd;
+        await key.generate(fileID, passwd);
         const tempFilePath = req.file.path;  // Chemin du fichier temporaire sauvegardé par Multer
         const encryptedFileName = `${fileID}.${req.file.filename}.enc`;
         const encryptedFilePath = path.join(__dirname, `../${config.DATAdir}`, encryptedFileName);
@@ -72,7 +75,8 @@ router.post('/yourmother', upload.single("file"), async (req, res) => {
 
         try {
 
-            await encryptFile(tempFilePath, encryptedFilePath);
+            const public_key = await key.read(fileID, 'public');
+            await encryptFile(tempFilePath, encryptedFilePath, public_key);
 
             fileDatabase[fileID] = {
                 fileName: encryptedFileName,

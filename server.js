@@ -10,6 +10,7 @@ console.log('🔄 Démarrage du serveur...');
 const express = require("express");
 const fs = require("fs");
 const https = require("https");
+const http = require("http");
 const cors = require("cors");
 const path = require("path");
 const ejs = require("ejs");
@@ -56,13 +57,17 @@ setInterval(() => {
 }, 24 * 3600 * 1000); // check for expire file
 
 
+let options;
 
-
-// SSL key & cert path
-const options = {
-    key: fs.readFileSync(config.SSLkeyPath, "utf8"),
-    cert: fs.readFileSync(config.SSLcertPath, "utf8"),
-};
+if (process.argv[2] == 'dev') {
+    options = null;
+} else {
+    // SSL key & cert path
+    options = {
+        key: fs.readFileSync(config.SSLkeyPath, "utf8"),
+        cert: fs.readFileSync(config.SSLcertPath, "utf8"),
+    };
+}
 
 const corsOptions = {
     origin: `https://${config.hostname}`,
@@ -164,15 +169,17 @@ app.use('/data', root_download);
 
 
 // Route pour afficher le bouton de téléchargement
-app.get("/t/:id", async (req, res) => {
+app.get("/t/:id/:passwd", async (req, res) => {
 
     if (req.hostname === config.hostname) {
 
         console.log("📥 Réception d'une requête : ", `'/t/${req.params.id}'`);
+
         const fileID = req.params.id;
+        const passwd = req.params.passwd;
 
             //assets
-            if (fileID == 'assets') {
+            if (passwd == 'assets') {
                 const fileName = req.query.file
                 const ext = req.query.ext
                 res.sendFile(path.join(__dirname, 'views', 'assets', ext, `${fileName}.${ext}`))
@@ -196,7 +203,7 @@ app.get("/t/:id", async (req, res) => {
                     }
 
                 } else {
-                    return await res.render("download", { fileName: 'fileName', fileID: 'fileID', fileSize: 'fSize', fileExpir: '30', version: 'version', v: pkg.version });
+                    return await res.render("download", { fileName: 'fileName', fileID: 'fileID', fileSize: 'fSize', passwd: 'e', fileExpir: '30', version: 'version', v: pkg.version });
                 }
 
             }
@@ -214,7 +221,7 @@ app.get("/t/:id", async (req, res) => {
         const decryptedFileName = decryptText(fileName);
 
 
-        res.status(200).render("download", { fileName: decryptedFileName,  fileExpir: '30', fileID: fileID, fileSize: fSize, v: pkg.version });
+        res.status(200).render("download", { fileName: decryptedFileName, passwd: passwd,  fileExpir: '30', fileID: fileID, fileSize: fSize, v: pkg.version });
 
     }
 
@@ -253,6 +260,27 @@ app.get("/key/:bytes", (req, res) => {
 });
 
 
+app.get('/passwd/:nb', async (req, res) => {
+
+    const nb = req.params.nb;
+
+    function genererMotDePasse(longueur = 10) {
+        const caracteres = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_';
+        let motDePasse = '';
+    
+        for (let i = 0; i < longueur; i++) {
+            const index = Math.floor(Math.random() * caracteres.length);
+            motDePasse += caracteres[index];
+        }
+    
+        return motDePasse;
+    }
+
+    res.json(await genererMotDePasse(nb));
+
+})
+
+
 
 app.use((req, res) => {
     res.status(404).send(`<h1>Erreur 404 page non trouvée</h1>`);
@@ -263,8 +291,16 @@ verifyIfExpire();
 
 
 const PORT = config.Port;
-https.createServer(options, app).listen(PORT, () => {
-    console.log(`✅ Serveur HTTPS en ligne sur ${config.hostname}:${PORT}`);
-});
+
+if (process.argv[2] == 'dev') {
+    http.createServer(app).listen(PORT, () => {
+        console.log(`✅ Serveur HTTP en ligne sur ${config.hostname}:${PORT}`);
+    });
+} else {
+    https.createServer(options, app).listen(PORT, () => {
+        console.log(`✅ Serveur HTTPS en ligne sur ${config.hostname}:${PORT}`);
+    });
+}
+
 
 

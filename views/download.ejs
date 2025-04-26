@@ -27,7 +27,7 @@
 
         <title>SilverTransfer | Télécharger : <%= fileName %></title>
 
-        <link rel="stylesheet" href="assets?file=download&ext=css">
+        <link rel="stylesheet" href="/t/000/assets?file=download&ext=css">
 
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.16.1/sweetalert2.min.js"></script>
@@ -58,7 +58,7 @@
                         <span>Poids du fichier :</span>
                         <strong><%= fileSize %></strong>
                     </li>
-                </ul>                
+                </ul>  
 
                 <!-- From Uiverse.io by Li-Deheng --> 
                 <div id="btn_launch_decrypt" class="btn-conteiner">
@@ -243,13 +243,7 @@
                     },
                     hideClass: {
                         popup: 'animate__animated animate__fadeOut'
-                    },
-                    backdrop: `
-                        rgba(0,0,123,0.4)
-                        url("https://media.tenor.com/xzjlrhYq_lQAAAAi/cat-nyan-cat.gif")
-                        left top
-                        no-repeat
-                `
+                    }
                 });
             }
 
@@ -273,7 +267,8 @@
 
                     history.pushState(null, "", `?page=loader&fname=${name}&fsize=${size}&file=1&statu=fetching`);
 
-                    await fetch(`/data/<%= fileID %>?action=decrypt`)
+                    const passwd = "<%= passwd %>";
+                    await fetch(`/data/<%= fileID %>?action=decrypt&passwd=${passwd}`)
                         .then(response => response.json())
                         .then(res => {
 
@@ -302,7 +297,7 @@
                     };
 
                     document.getElementById('download_btn').addEventListener('click', () => {
-                        window.open('/data/<%= fileID %>?action=download', '_blank');
+                        window.open(`/data/<%= fileID %>?action=download`, '_blank');
                     })
 
                     const intervalID = setInterval(async () => {
@@ -310,6 +305,12 @@
                         await fetch('/data/status?id=<%= fileID %>')
                             .then(response => response.json())
                             .then(res => {
+
+                                if (res.error) {
+                                    document.getElementById('loader').style.display = 'none'
+                                    document.getElementById('main').style.display = 'flex';
+                                    return salert(res.message.silver, 'error');
+                                }
 
                                 if (res.end) {
                                     clearInterval(intervalID);
