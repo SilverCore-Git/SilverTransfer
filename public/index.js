@@ -245,7 +245,8 @@ async function loadApp() {
             return;
         }
 
-        const passwd = await fetch('/passwd/10').then(res => res.json());
+        const stronger = document.getElementById('stronger').value;
+        const passwd = await fetch(`/passwd/${stronger}`).then(res => res.json());
 
         await closemain();
         await closeform('upload');

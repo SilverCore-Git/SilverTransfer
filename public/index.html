@@ -13,7 +13,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="theme-color" content="#AF40FF">
 
-        <link rel="icon" href="https://www.silvertransfert.fr/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
 
         <!-- meta SEO -->
@@ -152,6 +152,53 @@
                 <div style="margin-top: 2rem;">
                     <input type="file" id="file">
                 </div>
+
+                <div style="border-radius: 8px; margin-bottom: 10px; margin-top: 5px;">
+                    <span class="idk" style="display: flex; flex-direction: row; margin-bottom: 0.5rem;  font-family: Arial, sans-serif; cursor: pointer;">Paramètre avancé (Optionnel) <div class="idk-bi" style="margin-left: 5px;"><i class="bi bi-caret-left-fill"></i></div></span>
+                    
+                    <div style="flex-direction: column; justify-content: center; align-items: center;" class="idk-active">
+
+                        <label for="stronger" style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Complexité du chiffrement :</label>
+                        
+                        <input 
+                            id="stronger"
+                            name="stronger" 
+                            type="number" 
+                            value="10"
+                            min="10" 
+                            max="100" 
+                            style="width: 80px; padding: 0.3rem; border-radius: 4px; border: 1px solid #ccc; margin-bottom: 0.5rem;"
+                        >
+                        
+                        <small style="display: block; margin-top: 0.5rem;">
+                            Sécurité élevée = déchiffrement plus long
+                        </small>
+
+                    </div>
+                </div>
+                <style>
+                    .idk-bi {
+                        transition: all 0.3s;
+                    }
+                </style>
+
+                <script defer>
+
+                    const idk = document.querySelector('.idk');
+                    const idk_bi = document.querySelector('.idk-bi');
+                    const idk_active = document.querySelector('.idk-active');
+
+                    idk_active.style.display = 'none';
+
+                    idk.addEventListener('click', () => {
+
+                        idk_bi.style.transform = idk_bi.style.transform == 'rotate(-90deg)' ? 'rotate(0deg)' : 'rotate(-90deg)';
+                        idk_active.style.display = idk_active.style.display == 'none' ? 'flex' : 'none';
+
+                    })
+
+                </script>
+                
 
                 <!-- From Uiverse.io by eirikvold --> 
                 <button class="send-btn">

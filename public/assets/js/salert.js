@@ -20,12 +20,6 @@ export function salert(text, type) {
         },
         hideClass: {
             popup: 'animate__animated animate__fadeOut'
-        },
-        backdrop: `
-            rgba(0,0,123,0.4)
-            url("https://media.tenor.com/xzjlrhYq_lQAAAAi/cat-nyan-cat.gif")
-            left top
-            no-repeat
-      `
+        }
     });
 }
