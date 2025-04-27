@@ -17,6 +17,8 @@ const ejs = require("ejs");
 const crypto = require("crypto");
 // const helmet = require('helmet');
 
+const ifdev = false;
+
 
 const formatFileSize = require('./src/filesize.js')
 
@@ -59,7 +61,7 @@ setInterval(() => {
 
 let options;
 
-if (process.argv[2] == 'dev') {
+if (ifdev) {
     options = null;
 } else {
     // SSL key & cert path
@@ -292,7 +294,7 @@ verifyIfExpire();
 
 const PORT = config.Port;
 
-if (process.argv[2] == 'dev') {
+if (ifdev) {
     http.createServer(app).listen(PORT, () => {
         console.log(`✅ Serveur HTTP en ligne sur ${config.hostname}:${PORT}`);
     });

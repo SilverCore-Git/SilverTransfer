@@ -130,9 +130,7 @@ async function verifyPassword(inputFile, privateKey, passwd) {
     }
 }
 
-
-
-// 🔓 Déchiffrement
+// 🔓 Déchiffrement optimisé
 async function decryptFile(inputFolder, outputFile = 'temp/undefined', privateKey, passwd) {
 
     const files = await fs.promises.readdir(inputFolder);
@@ -144,11 +142,14 @@ async function decryptFile(inputFolder, outputFile = 'temp/undefined', privateKe
     try {
 
         for (let index = 0; index < sortedFiles.length; index++) {
+
             const file = sortedFiles[index];
             const inputFile = `${inputFolder}/${file}`;
             const inputStream = fs.createReadStream(inputFile);
 
+            // Fonction async pour gérer un fichier
             await new Promise((resolve, reject) => {
+                
                 let decipher;
                 let isFirstChunk = true;
                 let bufferCache = Buffer.alloc(0);
@@ -156,47 +157,35 @@ async function decryptFile(inputFolder, outputFile = 'temp/undefined', privateKe
                 inputStream.on('data', (chunk) => {
                     bufferCache = Buffer.concat([bufferCache, chunk]);
 
+                    // Traitement du premier chunk
                     if (isFirstChunk) {
                         if (index === 0) {
-                            // Cas particulier du premier fichier (clé AES et IV stockés au début)
-                            if (bufferCache.length < 4) {
-                                // Pas encore assez de données pour lire la taille de la clé
-                                return;
-                            }
+                            // Cas du premier fichier (clé AES et IV stockés au début)
+                            if (bufferCache.length < 4) return; // Attendre plus de données
+
                             const keyLength = bufferCache.readUInt32BE(0);
 
-                            if (bufferCache.length < 4 + keyLength + 16) {
-                                // Pas encore assez de données pour lire clé + IV
-                                return;
-                            }
+                            if (bufferCache.length < 4 + keyLength + 16) return; // Attendre plus de données
 
                             const encryptedAesKey = bufferCache.slice(4, 4 + keyLength);
                             const iv = bufferCache.slice(4 + keyLength, 4 + keyLength + 16);
 
                             // Déchiffrer la clé AES
                             aesKey = crypto.privateDecrypt(
-                                {
-                                    key: privateKey,
-                                    passphrase: passwd,
-                                },
+                                { key: privateKey, passphrase: passwd },
                                 encryptedAesKey
                             );
 
                             decipher = crypto.createDecipheriv('aes-256-cbc', aesKey, iv);
-
-                            // Récupérer le reste des données (après 4 + clé + 16 octets)
                             const encryptedData = bufferCache.slice(4 + keyLength + 16);
                             const decryptedChunk = decipher.update(encryptedData);
                             outputStream.write(decryptedChunk);
 
                             isFirstChunk = false;
-                            bufferCache = Buffer.alloc(0); // vider le buffer
+                            bufferCache = Buffer.alloc(0); // Réinitialiser le buffer
                         } else {
-                            // Pour les autres fichiers
-                            if (bufferCache.length < 16) {
-                                // Pas assez de données pour lire IV
-                                return;
-                            }
+                            // Traitement des autres fichiers
+                            if (bufferCache.length < 16) return; // Attendre plus de données
                             const iv = bufferCache.slice(0, 16);
                             decipher = crypto.createDecipheriv('aes-256-cbc', aesKey, iv);
 
@@ -204,11 +193,10 @@ async function decryptFile(inputFolder, outputFile = 'temp/undefined', privateKe
                             const decryptedChunk = decipher.update(encryptedData);
                             outputStream.write(decryptedChunk);
 
-                            isFirstChunk = false;
-                            bufferCache = Buffer.alloc(0); // vider le buffer
+                            bufferCache = Buffer.alloc(0); // Réinitialiser le buffer
                         }
                     } else {
-                        // Après avoir traité l'IV, tout est des données encryptées
+                        // Après le premier chunk, tout est des données chiffrées
                         const decryptedChunk = decipher.update(chunk);
                         outputStream.write(decryptedChunk);
                     }
@@ -238,6 +226,7 @@ async function decryptFile(inputFolder, outputFile = 'temp/undefined', privateKe
         console.error('❌ Erreur lors du déchiffrement du fichier :', error);
     }
 }
+
 
 
 

@@ -107,12 +107,10 @@ router.get("/:id", async (req, res) => {
                 download_status.push( { id: fileID, status: "decrypt", end: false } );
                 res.status(200).json({ message: { silver: "Déchiffrement en cours.." } })
 
-                await decryptFile(encryptedFilePath, decryptedFilePath, private_key, passwd).then(res => {
+                await decryptFile(encryptedFilePath, decryptedFilePath, private_key, passwd)
 
-                    download_status = download_status.filter(item => item.id !== fileID);
-                    download_status.push( { id: fileID, status: "end", end: true } );
-
-                })
+                download_status = download_status.filter(item => item.id !== fileID);
+                download_status.push( { id: fileID, status: "end", end: true } );
 
             } catch (err) {
                 return console.error('Une erreur est survenue lors du déchiffrement.', err.message );

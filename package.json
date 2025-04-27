@@ -6,9 +6,13 @@
 
   "scripts": {
 
-    "start": "node --max-old-space-size=2024 server.js",
+    "start": "pm2 start server.js --name silvertransfert_back --env production",
 
-    "dev": "node --max-old-space-size=2024 server.js dev",
+    "stop": "pm2 stop silvertransfert_back",
+
+    "status": "pm2 status",
+
+    "log": "pm2 logs silvertransfert_back",
 
     "datasize": "node scripts/get_data_size.js",
 
