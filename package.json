@@ -6,13 +6,13 @@
 
   "scripts": {
 
-    "start": "pm2 start server.js --name silvertransfert_back --env production",
+    "start": "pm2 start server.js --name silvertransfert --env production",
 
-    "stop": "pm2 stop silvertransfert_back",
+    "stop": "pm2 stop silvertransfert",
 
     "status": "pm2 status",
 
-    "log": "pm2 logs silvertransfert_back",
+    "log": "pm2 logs silvertransfert",
 
     "testcrypt": "node scripts/check_crypt.js",
 
@@ -24,7 +24,7 @@
 
   "author": "SilverCore, SilverTransfert, MisterPapaye",
 
-  "license": "CC0-1.0",
+  "license": "",
 
   "description": "",
 

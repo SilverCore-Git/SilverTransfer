@@ -17,7 +17,7 @@ const ejs = require("ejs");
 const crypto = require("crypto");
 // const helmet = require('helmet');
 
-const ifdev = true;
+const ifdev = false;
 
 
 const formatFileSize = require('./src/filesize.js')
