@@ -93,11 +93,11 @@ router.get("/:id", async (req, res) => {
                     }
                 }
 
-                console.log('Vérification...');
+                console.log('🔄 Vérification du passwd...');
 
                 const private_key = await key.read(fileID, 'private');
 
-                if (!await verifyPassword(`${encryptedFilePath}/part0.enc`, private_key, passwd)) {
+                if (!await verifyPassword(encryptedFilePath, private_key, passwd)) {
                     download_status = download_status.filter(item => item.id !== fileID);
                     return res.json( { id: fileID, error: true, message: { silver: 'url incorect' }, status: "error",  end: false } );
                 }

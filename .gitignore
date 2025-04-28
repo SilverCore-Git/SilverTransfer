@@ -5,3 +5,5 @@
 .env
 .env
 /key/live
+/temp
+scripts/crypt_test_origin.txt

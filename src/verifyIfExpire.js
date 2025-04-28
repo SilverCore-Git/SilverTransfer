@@ -46,6 +46,7 @@ async function verifyIfExpire() {
 
                 const filePath = path.join( __dirname, 'data', database[id].fileName );
                 await fs.promises.rm(filePath, { recursive: true, force: true });
+                await fs.promises.rm(`key/live/${id}`, { recursive: true, force: true });
 
                 console.log(`🗑️ Vérification => Fichier supprimé ! ID : ${id}`);
 

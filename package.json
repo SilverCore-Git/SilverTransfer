@@ -14,6 +14,8 @@
 
     "log": "pm2 logs silvertransfert_back",
 
+    "testcrypt": "node scripts/check_crypt.js",
+
     "datasize": "node scripts/get_data_size.js",
 
     "clear": "node scripts/cleardir.js"
