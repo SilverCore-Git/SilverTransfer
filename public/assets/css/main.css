@@ -19,6 +19,7 @@ main h1 {
 main h2 {
     margin-top: -1rem;
     font-size: 1.5rem;
+    margin-bottom: 10px;
 }
 
 .hero {
@@ -48,7 +49,7 @@ main h2 {
     padding-top: 1rem;
     padding-bottom: 1rem;
 
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     margin-top: 1rem;
 
     text-align: left;
@@ -76,65 +77,6 @@ main h2 {
 
 
 
-/* From Uiverse.io by cssbuttons-io */ 
-.btn-savoir {
-    --color: #560bad;
-    font-family: inherit;
-    display: inline-block;
-    width: 8em;
-    height: 2.6em;
-    line-height: 2.5em;
-    margin: 20px;
-    position: relative;
-    cursor: pointer;
-    overflow: hidden;
-    border: 2px solid var(--color);
-    transition: color 0.5s;
-    z-index: 1;
-    font-size: 17px;
-    border-radius: 6px;
-    font-weight: 500;
-    color: var(--color);
-  }
-  
-  .btn-savoir:before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    background: var(--color);
-    height: 150px;
-    width: 200px;
-    border-radius: 50%;
-  }
-  
-  .btn-savoir:hover {
-    color: #fff;
-  }
-  
-  .btn-savoir:before {
-    top: 100%;
-    left: 100%;
-    transition: all 0.7s;
-  }
-  
-  .btn-savoir:hover:before {
-    top: -30px;
-    left: -30px;
-  }
-  
-  .btn-savoir:active:before {
-    background: #3a0ca3;
-    transition: background 0s;
-  }
-  .btn-savoir:active {
-    transform: scale(0.95);
-  }
-  
-
-
-
-
-
 
 
 /* From Uiverse.io by adamgiebl */ 
@@ -145,7 +87,7 @@ main h2 {
     height: 70px;
     font-size: 23px;
   
-    margin-bottom: 5%;
+    margin-bottom: 20px;
   
     background: linear-gradient(to bottom, rgb(255, 20, 165) 0%,#e413ff 100%);
     color: white;
