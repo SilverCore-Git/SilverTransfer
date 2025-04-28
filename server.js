@@ -17,7 +17,7 @@ const ejs = require("ejs");
 const crypto = require("crypto");
 // const helmet = require('helmet');
 
-const ifdev = false;
+const ifdev = true;
 
 
 const formatFileSize = require('./src/filesize.js')
@@ -143,12 +143,16 @@ app.get("/favicon.png", (req, res) => {
 app.get("/robots.txt", (req, res) => {
     res.status(200).sendFile(path.join(__dirname, 'assets/robots.txt'))
 });
-app.get('/assets/img/background/background2', (req, res) => {
-    res.status(200).sendFile(path.join( __dirname, 'public/assets/img/background/background2.jpg' ))
-})
-app.get('/assets/img/background/background1', (req, res) => {
-    res.status(200).sendFile(path.join( __dirname, 'public/assets/img/background/background1.jpg' ))
-})
+
+app.get('/assets/img/background/:file', (req, res) => {
+    res.status(200).sendFile(path.join( __dirname, `public/assets/img/background/${req.params.file}.jpg` ));
+});
+
+app.get('/assets/img/:file', (req, res) => {
+    res.status(200).sendFile(path.join( __dirname, `public/assets/img/${req.params.file}.png` ));
+});
+
+
 app.get('/version', (req, res) => {
     res.status(200).json(pkg.version);
 });

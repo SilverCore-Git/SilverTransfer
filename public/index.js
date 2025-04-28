@@ -14,6 +14,7 @@ progress.style.display = 'none';
 done.style.display = 'none';
 
 import { salert } from './assets/js/salert.js';
+import { background } from './assets/js/background.js';
 import { send } from './assets/js/send.js';
 import popups from './popups.js';
 
@@ -191,9 +192,14 @@ function roots() {
 }
 
 
-let selectedFile = null; 
 
 async function loadApp() {
+
+    background();
+
+    setInterval(() => {
+        background();
+    }, 10 * 1000);
 
     btnsavoir.addEventListener('click', () => {
         window.open('https://www.silvercore.fr/#services', '_blank')
@@ -206,41 +212,12 @@ async function loadApp() {
         closeLoader();
     });
 
-    const dropZone = document.getElementById('dropZone');
-    const fileInfo = document.getElementById('p');
     const sendBtn = document.querySelector('.send-btn');
     const fileInput = file;
 
-    let selectedFile = null;
-
-    // dropZone.addEventListener('dragover', (event) => {
-    //     event.preventDefault();
-    //     dropZone.style.backgroundColor = '#f0f8ff';
-    // });
-
-    // dropZone.addEventListener('dragleave', () => {
-    //     dropZone.style.backgroundColor = '';
-    // });
-
-    // dropZone.addEventListener('drop', (event) => {
-    //     event.preventDefault();
-    //     dropZone.style.backgroundColor = '';
-
-    //     sendBtn.style.display = 'flex';
-    //     setTimeout(() => {
-    //         sendBtn.style.opacity = 1;
-    //     }, 10);
-
-    //     const files = event.dataTransfer.files;
-    //     if (files.length > 0) {
-    //         selectedFile = files[0];
-    //         fileInfo.innerText = `Fichier sélectionné : ${selectedFile.name}`;
-    //     }
-    // });
-
     sendBtn.addEventListener('click', async () => {
 
-        if (!selectedFile && (!fileInput?.files || fileInput?.files?.length === 0)) {
+        if ((!fileInput?.files || fileInput?.files?.length === 0)) {
             salert('Aucun fichier sélectionné !', 'error');
             return;
         }
@@ -251,17 +228,12 @@ async function loadApp() {
         await closemain();
         await closeform('upload');
         await sendFile('open');
-        if (selectedFile) { 
-            await send([selectedFile], passwd);
-        } else {
-            await send(fileInput.files[0], passwd);
-        }
+        await send(fileInput.files[0], passwd);
 
     });
 
 
 }
-
 
 await roots();
 await loadApp();

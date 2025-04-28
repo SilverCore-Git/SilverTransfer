@@ -4,7 +4,7 @@
  * @author MisterPapaye
  */
 
-import { link, progressbar, valuetext } from "./idclassloader.js";
+import { link, progressbar, valuetext, loader_end } from "./idclassloader.js";
 import { sendFile, openform } from "../../index.js";
 import { salert } from "./salert.js";
 
@@ -53,11 +53,19 @@ export function send(FILE, passwd) {
             const progressValue = Math.round((event.loaded / event.total) * 100);
             console.log(`Progression : ${progressValue}%`);
             updateProgressBar(progressValue);
+
             if (progressValue === 100) {
-                document.getElementById('statusl').innerText = 'Envoie du fichier...';
-                progressbar.style.display = 'none';
-                valuetext.style.display = 'none';
+                
+                setTimeout(() => {
+                    document.getElementById('statusl').innerText = 'Envoie du fichier...';
+                    progressbar.style.display = 'none';
+                    valuetext.style.display = 'none';
+                    loader_end.style.display = 'block';
+                    
+                }, 500);
+
             }
+
         }
     };
 

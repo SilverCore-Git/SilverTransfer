@@ -10,7 +10,6 @@ body {
     font-family: 'Roboto', sans-serif;
     
     background-color: black;
-    background-image: url('/assets/img/background/background2');
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -21,21 +20,33 @@ body {
     justify-content: center; 
     text-align: center;
     align-content: center;
+
+    position: relative;
+    overflow: hidden;
 }
 
-body::before {
-    content: '';
-    position: absolute;
+
+.background-layer {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100lvh;
-    background-image: url('/assets/img/background/background2');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     filter: brightness(1.2) contrast(1.3) saturate(1);
     z-index: -1;
+    transition: opacity 1s ease-in-out;
+    opacity: 1;
 }
 
+#background1 {
+    z-index: -2;
+}
+
+#background2 {
+    z-index: -1;
+    opacity: 0;
+}

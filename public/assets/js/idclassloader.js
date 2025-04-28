@@ -13,6 +13,7 @@ const progressbar = document.getElementById('progressbar');
 const flach = document.getElementById('flach');
 const valuetext = document.getElementById('value');
 const link = document.getElementById('linkInput');
+const loader_end = document.querySelector('.loader-end');
 
 // card :
 const main = document.querySelector('.main');
@@ -33,6 +34,7 @@ export {
     gobtn,
     btnsavoir,
     upload,
+    loader_end,
     file,
     valuetext,
     sendbtn,
