@@ -23,7 +23,7 @@ const upload = document.getElementById('upload')
 // btn :
 const gobtn = document.getElementById('go-btn');
 const sendbtn = document.querySelector('.send-btn');
-const btnsavoir = document.querySelector('.btn-savoir');
+const btnsavoir = null; // btn enlevé
 const file = document.getElementById('file')
 
 

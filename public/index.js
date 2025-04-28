@@ -201,10 +201,6 @@ async function loadApp() {
         background();
     }, 10 * 1000);
 
-    btnsavoir.addEventListener('click', () => {
-        window.open('https://www.silvercore.fr/#services', '_blank')
-    });
-
     gobtn.addEventListener('click', async () => {
         openLoader();
         await closemain();
@@ -222,7 +218,16 @@ async function loadApp() {
             return;
         }
 
-        const stronger = document.getElementById('stronger').value;
+        let stronger;
+        stronger = document.getElementById('stronger').value;
+
+        if (stronger <= 10) {
+            stronger = 10;
+        };
+        if (stronger >= 100) {
+            stronger = 100;
+        };
+
         const passwd = await fetch(`/passwd/${stronger}`).then(res => res.json());
 
         await closemain();
