@@ -12,106 +12,86 @@
 
 
     <link rel="stylesheet" href="/t/000/assets?file=download&ext=css">
+    <script src="/t/000/assets?file=download&ext=js" type="module" defer></script>
 
     <title>SilverTransfer</title>
 
 </head>
 <body>
     
+    <style>
+        /* From Uiverse.io by TCdesign-dev */ 
+#bottone5 {
+ align-items: center;
+ background-color: #FFFFFF;
+ border: 1px solid rgba(0, 0, 0, 0.1);
+ border-radius: 25px;
+ box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+ box-sizing: border-box;
+ color: rgba(0, 0, 0, 0.85);
+ cursor: pointer;
+ display: inline-flex;
+ font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+ font-size: 16px;
+ font-weight: 600;
+ justify-content: center;
+ line-height: 1.25;
+ min-height: 3rem;
+ padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+ text-decoration: none;
+ transition: all 250ms;
+ user-select: none;
+ -webkit-user-select: none;
+ touch-action: manipulation;
+ vertical-align: baseline;
+ width: 80%;
+}
 
-    <section id="end">
+#bottone5:hover,
+#bottone5:focus {
+ border-color: rgba(0, 0, 0, 0.15);
+ box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+ color: rgba(0, 0, 0, 0.65);
+}
 
-        <h1 style="font-size: 2rem; margin-bottom: 1rem;">Une erreur c'est produite :</h1>
+#bottone5:hover {
+ transform: translateY(-1px);
+}
 
-        <h2><%= status %></h2>
-        <h3 style="margin-bottom: 3rem;">Si le fichier vient d'être téléverser,<br>il peut être encore en chiffrement...</h3>
+#bottone5:active {
+ background-color: #F0F0F1;
+ border-color: rgba(0, 0, 0, 0.15);
+ box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+ color: rgba(0, 0, 0, 0.65);
+ transform: translateY(0);
+}
+    </style>
+
+    <section id="end" class="card" style="width: 300px; height: 270px;">
+
+        <h2 style="font-size: 1.5rem;">Une erreur c'est produite</h2>
+
+        <h3><%= status %></h3>
+
+        <p style="margin-bottom: 2rem;">Si le fichier vient d'être téléverser,<br>il peut être encore en chiffrement...</p>
         
-        <button style="margin-bottom: -2rem;" onclick="window.location.href = '/'">Accueil</button>
+        <button onclick="window.location.href = '/'" id="bottone5">Accueil</button>
 
     </section>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
         <ul class="social-contaner">
-
-            <a target="_blank" href="https://core.silverdium.fr"> <li data-tooltip="Site de silvercore" class="social-icon"> <img src="https://api.silverdium.fr/img/core/logo.png" alt="logo silvercore" style="border-radius: 50rem;"> </li> </a>
+            
+            <a target="_blank" href="https://www.silvercore.fr"> <li data-tooltip="Site de silvercore" class="social-icon"> <img src="/assets/img/logocore.png" alt="logo silvercore" style="border-radius: 50rem;"> </li> </a>
             <a target="_blank" href="https://discord.gg/ftFhQTJsQ5"> <li data-tooltip="Discord SilverCore" class="social-icon"> <i class="bi bi-discord"> </i> </li> </a>
             <a target="_blank" href="https://discord.gg/mKs3uMTJWM"> <li data-tooltip="Discord support" class="social-icon"> <i class="bi bi-life-preserver"> </i> </li> </a>
             <a target="_blank" href="https://tipeee.com/silverdium"> <li data-tooltip="Nous aider avec tipeee" class="social-icon"> <i class="bi bi-heart"> </i> </li> </a>
-
+            <a target="_blank" href="https://github.com/SilverCore-Git/SilverTransfer"> <li data-tooltip="Open source sur GitHub" class="social-icon"> <i class="bi bi-github"> </i> </li> </a>
+            
         </ul>
-        <style>
-            .social-contaner {
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: row;
-gap: 2rem;
-list-style: none;
-transform: translateX(-10px);
-}
-
-
-.social-icon {
-font-size: 2rem;
-cursor: pointer;
-transition: all 0.3s;
-color: white;
-}
-
-.social-icon img {
-width: 30px;
-}
-
-.social-icon:hover {
-transform: scale(1.1);
-}
-
-
-.social-icon:hover::after {
-content: attr(data-tooltip);
-position: absolute;
-bottom: 100%;
-left: 50%;
-transform: translateX(-50%);
-background-color: black;
-color: white;
-padding: 5px 10px;
-border-radius: 5px;
-font-size: 14px;
-white-space: nowrap;
-opacity: 1;
-visibility: visible;
-transition: opacity 0.2s ease-in-out;
-}
-
-.social-icon:hover::before {
-content: "";
-position: absolute;
-bottom: 100%;
-left: 50%;
-transform: translateX(-50%);
-border: 6px solid transparent;
-border-top-color: black;
-margin-bottom: -12px;
-opacity: 1;
-visibility: visible;
-transition: opacity 0.2s ease-in-out;
-}
-
-.social-icon::after,
-.social-icon::before {
-opacity: 0;
-visibility: hidden;
-transition: opacity 0.2s ease-in-out;
-}
-        </style>
 
     <section style="margin-top: 60px">
 
-        <h2>👑 Merci de soutenir les projets <a href="https://core.silverdium.fr">SilverCore</a> ! ❤️<br></h2>
-        <h2 class="btn_tipeee" onclick="tipeee()">
-            <span class="text"><strong>😎 VOUS POUVEZ NOUS AIDER ! 💸</strong></span>
-        </h2>
  
     </section>
 

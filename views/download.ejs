@@ -28,11 +28,11 @@
         <title>SilverTransfer | Télécharger : <%= fileName %></title>
 
         <link rel="stylesheet" href="/t/000/assets?file=download&ext=css">
+        <script src="/t/000/assets?file=download&ext=js" type="module" defer></script>
 
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.16.1/sweetalert2.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.16.1/sweetalert2.min.css">
-
 
     </head>
 
@@ -55,7 +55,7 @@
                         <strong><%= fileName %></strong>
                     </li>
                     <li>
-                        <span>Poids du fichier :</span>
+                        <span>Poids du fichier :</span><br>
                         <strong><%= fileSize %></strong>
                     </li>
                 </ul>  
@@ -208,7 +208,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
         <ul class="social-contaner">
             
-            <a target="_blank" href="https://www.silvercore.fr"> <li data-tooltip="Site de silvercore" class="social-icon"> <img src="https://api.silvercore.fr/img/favicon/core?res=ico" alt="logo silvercore" style="border-radius: 50rem;"> </li> </a>
+            <a target="_blank" href="https://www.silvercore.fr"> <li data-tooltip="Site de silvercore" class="social-icon"> <img src="/assets/img/logocore.png" alt="logo silvercore" style="border-radius: 50rem;"> </li> </a>
             <a target="_blank" href="https://discord.gg/ftFhQTJsQ5"> <li data-tooltip="Discord SilverCore" class="social-icon"> <i class="bi bi-discord"> </i> </li> </a>
             <a target="_blank" href="https://discord.gg/mKs3uMTJWM"> <li data-tooltip="Discord support" class="social-icon"> <i class="bi bi-life-preserver"> </i> </li> </a>
             <a target="_blank" href="https://tipeee.com/silverdium"> <li data-tooltip="Nous aider avec tipeee" class="social-icon"> <i class="bi bi-heart"> </i> </li> </a>

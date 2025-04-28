@@ -1,5 +1,5 @@
-@import url("https://www.silvertransfert.fr/body.css");
-@import url("https://www.silvertransfert.fr/footer.css");
+@import url("/assets/css/body.css");
+@import url("/assets/css/footer.css");
 
 
 body { 
@@ -210,6 +210,7 @@ body {
     cursor: pointer;
     transition: all 0.3s;
     color: white;
+    text-shadow: 0 0 20px #333333;
 }
 
 .social-icon img {
