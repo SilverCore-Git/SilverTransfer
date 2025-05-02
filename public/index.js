@@ -229,11 +229,13 @@ async function loadApp() {
         };
 
         const passwd = await fetch(`/passwd/${stronger}`).then(res => res.json());
+        let id = await fetch(`/upload/create/id`).then(res => res.json());
+        id = id.id;
 
         await closemain();
         await closeform('upload');
         await sendFile('open');
-        await send(fileInput.files[0], passwd);
+        await send(fileInput.files[0], passwd, id);
 
     });
 

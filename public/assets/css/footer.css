@@ -5,8 +5,11 @@
 **/
 
 footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    height: 5vh;
+    height: 3vh;
     margin: 0 auto;
     text-align: center;
     padding: 15px;
@@ -21,7 +24,11 @@ footer {
     right: 0; 
 }
 
-@media (max-height: 800px) {
+footer p {
+    font-size: 15px;
+}
+
+@media (max-height: 700px) {
     footer {
         display: none;
     }

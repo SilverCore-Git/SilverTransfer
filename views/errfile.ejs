@@ -95,13 +95,19 @@
  
     </section>
 
-    <a href="https://github.com/SilverCore-Git/SilverTransfer" class="vtext"> SilverTransfer version <%= v %> </a>
+    <a href="/patchnotes" target="_blank" class="vtext"> SilverTransfer version <span id="vversion">0.0.0</span> </a>
+
     <style>
         .vtext {
             position: fixed;
-            bottom: 6rem;
+            bottom: 8vh;
             left: 1.5rem;
             font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+        .vtext:hover {
+            text-decoration: underline;
         }
         @media (max-width: 700px) {
             .vtext {
@@ -109,10 +115,48 @@
             }
         }
     </style>
+    
+    <script type="module" defer>
+        const vversion = document.getElementById('vversion');
+        vversion.innerText = await fetch('/version').then(res => res.json());
+    </script>
+    
+    <div class="vtext2">
+        <a href="/patchnotes" target="_blank"> <strong> Patchnotes </strong> </a>
+        <a style="margin-right: 1rem; margin-left: 1rem;">  |  </a>
+        <a href="https://www.silvercore.fr/#savoir" target="_blank"> <strong> En savoir plus </strong> </a>
+    </div>
+    
+    <style>
+        .vtext2 {
+            position: fixed;
+            bottom: 8vh;
+            right: 2rem;
+            display: flex;
+            flex-direction: row;
+            text-decoration: none;
+        }
+        .vtext2 a {
+            color: white;
+            text-decoration: none;
+        }
+        .vtext2 a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 700px) {
+            .vtext2 {
+                display: none;
+            }
+        }
+    </style>
 
     <footer id="footer">
-        <strong><p>&copy; 2025 SilverTransfert | <a href="https://core.silverdium.fr">SilverCore</a>. Tous droits réservés.</p></strong>
+        <p>&copy; 2024 - <span id="year">0000</span> SilverTransfert | <a href="https://www.silvercore.fr">SilverCore</a>. Tous droits réservés.</p>
     </footer>
+    <script defer>
+        const annee = new Date().getFullYear();
+        document.getElementById('year').innerText = annee;
+    </script>
 
 </body>
 </html> 

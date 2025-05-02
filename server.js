@@ -120,6 +120,16 @@ if (!fs.existsSync(path.join(__dirname, config.LOGDir))) {
     console.log('✅ Répertoire "',config.LOGDir,'" créé'); 
 }
 
+if (!fs.existsSync(path.join(__dirname, 'key'))) {
+    fs.mkdirSync(path.join(__dirname, 'key'));
+    console.log('✅ Répertoire "key" créé'); 
+}
+
+if (!fs.existsSync(path.join(__dirname, 'key/live'))) {
+    fs.mkdirSync(path.join(__dirname, 'key/live'));
+    console.log('✅ Répertoire "key/live" créé'); 
+}
+
 if (!fs.existsSync(path.join(__dirname, config.DBFile)))  {
     resetDatabase();
 };

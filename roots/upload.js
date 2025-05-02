@@ -20,6 +20,11 @@ const key = require('../src/key_manager.js');
 let fileDatabase = {};
 fileDatabase = loadDatabase();
 
+let filesIDS = [];
+
+let randomNumber = Math.floor(Math.random() * 100000000);
+randomNumber = randomNumber.toString().padStart(8, '0');
+
 const uploadDir = path.join(__dirname, '../', config.TEMPdir);
 
 // Configuration de Multer pour stocker les fichiers sur disque
@@ -37,7 +42,28 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
+router.get('/create/id', async (req, res) => {
 
+    if (req.hostname === config.hostname) {
+
+        console.log("📥 Réception d'une requête : ", `' /upload/file/create/id '`);
+
+        const id = randomNumber;
+        // const socket_id = randomNumber;
+
+        // filesIDS.push({ id, socket_id });
+
+        res.json({
+            status: "success",
+            message: "Socket créé",
+            id
+        });
+
+    } else {
+        res.status(403).json({ message: "Accès interdit" });
+    }
+
+});
 
 router.post('/file', upload.single("file"), async (req, res) => {
 
@@ -55,10 +81,7 @@ router.post('/file', upload.single("file"), async (req, res) => {
             return res.status(400).json({ message: "Aucun fichier reçu" });
         }
 
-        let randomNumber = Math.floor(Math.random() * 100000000);
-        randomNumber = randomNumber.toString().padStart(8, '0');
-
-        const fileID = randomNumber;
+        const fileID = req.query.id;
         const passwd = req.query.passwd;
         await key.generate(fileID, passwd);
         const tempFilePath = req.file.path;  // Chemin du fichier temporaire sauvegardé par Multer

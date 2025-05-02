@@ -26,7 +26,7 @@ function updateProgressBar(value) {
 
 
 
-export function send(FILE, passwd) {
+export function send(FILE, passwd, id) {
 
     const fileInput = FILE
     const file = fileInput;
@@ -45,24 +45,64 @@ export function send(FILE, passwd) {
 
     console.log("Envoi d'un fichier...");
 
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", `/upload/file?passwd=${passwd}`, true);
+    let startTime = null; // Variable pour stocker le temps de début
+    const xhr = new XMLHttpRequest(); 
+    xhr.responseType = 'json';
+
+    xhr.open("POST", `/upload/file?passwd=${passwd}&id=${id}`, true);
 
     xhr.upload.onprogress = (event) => {
-        if (event.lengthComputable) {
-            const progressValue = Math.round((event.loaded / event.total) * 100);
-            console.log(`Progression : ${progressValue}%`);
-            updateProgressBar(progressValue);
 
-            if (progressValue === 100) {
+        if (event.lengthComputable) {
+            const percent = Math.round((event.loaded / event.total) * 100)
+
+            if (startTime) {
+                const currentTime = Date.now()
+                const elapsedTime = (currentTime - startTime) / 1000 // en secondes
+                const speed = event.loaded / elapsedTime // octets par seconde
+                const remainingBytes = event.total - event.loaded
+                const estimatedTime = remainingBytes / speed // secondes restantes
+                const minutes = Math.floor(estimatedTime / 60)
+                const seconds = Math.floor(estimatedTime % 60)
+                const timeString = `${minutes}m ${seconds}s`
+
+                document.getElementById('statusl').innerText = `Envoi du fichier...`;
+                document.getElementById('statusl2').innerText = `${timeString} restants`;
+            } else {
+                startTime = new Date();
+                document.getElementById('statusl').innerText = `Envoi du fichier...`;
+            }
+
+            updateProgressBar(percent)
+            console.log(`Progression : ${percent}%`);
+
+            if (percent == 100) {
                 
                 setTimeout(() => {
-                    document.getElementById('statusl').innerText = 'Envoie du fichier...';
+                    document.getElementById('statusl').innerText = `Finalisation...`;
                     progressbar.style.display = 'none';
                     valuetext.style.display = 'none';
                     loader_end.style.display = 'block';
-                    
-                }, 500);
+                }, 1000);
+
+                setTimeout(() => {
+                    const justLink = `https://www.silvertransfert.fr/t`;
+                    const Link = justLink + '/' + id + '/' + passwd;
+        
+                    link.value = Link
+                    const qr = new QRious({
+                        element: document.getElementById('codeQR'),
+                        value: Link,
+                        size: 200
+                    });
+        
+                    setTimeout(() => {
+                        sendFile('close')
+                        openform('success')
+                        history.pushState(null, "", `?page=success&link=${justLink}&id=${id}&pass=${passwd}&file=1`);
+                    }, 1000);
+        
+                }, 5000);
 
             }
 
@@ -72,31 +112,9 @@ export function send(FILE, passwd) {
     xhr.onload = async () => { 
         
         if (xhr.status === 200) {
-            const data = JSON.parse(xhr.responseText);
+
+            const data = xhr.response;
             console.log("Upload réussi :", data);
-
-            document.getElementById('statusl').innerText = 'Vérification...';
-            setTimeout(() => {
-            }, 1000);
-
-
-            const justLink = `https://www.silvertransfert.fr/t`;
-            const id = data.id;
-            const Link = justLink + '/' + id + '/' + passwd;
-
-            link.value = Link
-            const qr = new QRious({
-                element: document.getElementById('codeQR'),
-                value: Link,
-                size: 200
-            });
-
-            updateProgressBar(100);
-
-            sendFile('close')
-            openform('success')
-
-            return history.pushState(null, "", `?page=success&link=${justLink}&id=${data.id}&pass=${passwd}&file=1`);
 
         } else {
             salert('Une erreur est survenue...', 'error')
