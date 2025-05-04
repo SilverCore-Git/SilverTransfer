@@ -22,9 +22,6 @@ fileDatabase = loadDatabase();
 
 let filesIDS = [];
 
-let randomNumber = Math.floor(Math.random() * 100000000);
-randomNumber = randomNumber.toString().padStart(8, '0');
-
 const uploadDir = path.join(__dirname, '../', config.TEMPdir);
 
 // Configuration de Multer pour stocker les fichiers sur disque
@@ -37,18 +34,32 @@ const storage = multer.diskStorage({
         const fileExt = path.extname(file.originalname);
         const newFileName = `${encryptedText}${fileExt}`;
         cb(null, newFileName);
-    },
+    }
 });
 
-const upload = multer({ storage });
+const upload = multer({ 
+    storage,
+    limits: {
+        fileSize: 11 * 1024 * 1024 * 1024 // 11 Go
+    }
+ });
+
 
 router.get('/create/id', async (req, res) => {
 
     if (req.hostname === config.hostname) {
 
-        console.log("📥 Réception d'une requête : ", `' /upload/file/create/id '`);
+        console.log("📥 Réception d'une requête : ", `' /upload/create/id '`);
 
-        const id = randomNumber;
+        fileDatabase = loadDatabase();
+
+        let id;
+        do {
+            let randomNumber = Math.floor(Math.random() * 100000000);
+            randomNumber = randomNumber.toString().padStart(8, '0');
+            id = randomNumber;
+        } while (fileDatabase[id] !== undefined);         
+
         // const socket_id = randomNumber;
 
         // filesIDS.push({ id, socket_id });
@@ -65,17 +76,21 @@ router.get('/create/id', async (req, res) => {
 
 });
 
+router.get('/file', async (req, res) => {
+    res.send('ok')
+})
+
 router.post('/file', upload.single("file"), async (req, res) => {
 
-    if (req.hostname === config.hostname) {
+    // if (req.hostname === config.hostname) {
 
         console.log("📥 Réception d'une requête : ", `' /upload/file '`);
 
         fileDatabase = loadDatabase();
 
-        if (req.fileValidationError) {
-            return res.status(400).json({ message: req.fileValidationError });
-        }
+        // if (req.fileValidationError) {
+        //     return res.status(400).json({ message: req.fileValidationError });
+        // }
 
         if (!req.file) {
             return res.status(400).json({ message: "Aucun fichier reçu" });
@@ -113,10 +128,16 @@ router.post('/file', upload.single("file"), async (req, res) => {
             console.error("Erreur lors du chiffrement :", err);
         }
 
-    }
+    // }
 
 });
 
-
+router.use((err, req, res, next) => {
+    if (err instanceof multer.MulterError) {
+        return res.status(400).json({ message: `Erreur Multer : ${err.message}` });
+    }
+    console.error('Erreur inconnue:', err);
+    res.status(500).json({ message: 'Erreur serveur lors du transfert' });
+});
 
 module.exports = router;

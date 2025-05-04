@@ -118,54 +118,54 @@ router.get("/:id", async (req, res) => {
         } 
 
         else if (action === "download") {
-
             console.log("📤 Envoi du fichier...");
-
+        
             try {
                 await fs.promises.access(decryptedFilePath);   // vérifie qu’il existe
             } catch (e) {
                 return res.status(404).json({ error: true, message: 'Fichier introuvable' });
             }
-
-            const filename11 = path.basename(decryptedFilePath);
-            // Désactive le timeout (facultatif si ton proxy gère déjà)
-            res.setTimeout(0);
-            // Fixe un type correct (mime-types ou res.type)
-            res.type(path.extname(filename11));
-            // Force le téléchargement du fichier
-            res.setHeader('Content-Disposition', `attachment; filename="${filename11}"`);
-
-            try {
-
-                await new Promise((resolve, reject) => {
-
         
-                    // Envoi du fichier
-                    res.sendFile(decryptedFilePath, (err) => {
-                        if (err) {
-                            console.error("❌ Erreur d'envoi :", err);
-                            reject({ status: 500, error: "Erreur d'envoi", detail: err });
-                        } else {
-                            console.log("✅ Fichier envoyé !");
-
-                            download_status = download_status.filter(item => item.id !== fileID);
-
-                            resolve();
-                        }
-                    });
+            const filename11 = path.basename(decryptedFilePath);
+            res.type(path.extname(filename11));
+            res.setHeader('Content-Disposition', `attachment; filename="${filename11}"`);
+        
+            try {
+                const stream = fs.createReadStream(decryptedFilePath);
+        
+                stream.on('open', () => {
+                    stream.pipe(res);
                 });
-
-                // Supprime le fichier temporaire après l'envoi
-                await fs.promises.unlink(decryptedFilePath);
-                console.log("🗑️ Fichier temporaire supprimé !");
-
+        
+                stream.on('error', (err) => {
+                    console.error('❌ Erreur lors du streaming du fichier :', err);
+                    if (!res.headersSent) {
+                        res.status(500).json({ error: true, message: { silver: 'Erreur lors de l’envoi du fichier' } });
+                    }
+                });
+        
+                res.on('close', async () => {
+                    if (!res.writableEnded) {
+                        console.warn("⚠️ Téléchargement interrompu (client a fermé la connexion)");
+                        stream.destroy();
+                    }
+        
+                    // Supprimer le fichier temporaire
+                    try {
+                        await fs.promises.unlink(decryptedFilePath);
+                        console.log("🗑️ Fichier temporaire supprimé !");
+                    } catch (err) {
+                        console.warn("❌ Impossible de supprimer le fichier temporaire :", err.message);
+                    }
+                });
+        
             } catch (err) {
                 console.error("Une erreur est survenue : ", err);
                 if (!res.headersSent) {
                     return res.status(500).json({ error: true, message: { silver: 'Une erreur est survenue.', server: err.message } });
                 }
             }
-        }
+        }        
 
     }
 });

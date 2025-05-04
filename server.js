@@ -17,7 +17,7 @@ const ejs = require("ejs");
 const crypto = require("crypto");
 // const helmet = require('helmet');
 
-const ifdev = true;
+const ifdev = false;
 
 
 const formatFileSize = require('./src/filesize.js')
@@ -72,16 +72,19 @@ if (ifdev) {
 }
 
 const corsOptions = {
-    origin: `https://${config.hostname}`,
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: 'https://www.silvertransfert.fr',
+    methods: ['POST', 'GET'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 };
+
 
 
 const app = express();
 console.log("🔄 Démarrage de Express...");
 
 app.use(cors(corsOptions));
-app.use(express.json());
+app.use(express.json({ limit: '11gb' }))
+app.use(express.urlencoded({ limit: '11gb', extended: true }))
 // app.use(helmet());
 app.set("view engine", "ejs");
 
@@ -94,7 +97,6 @@ app.use((req, res, next) => {
     next(); 
 
 });
-
 
 app.use(express.static("public"));
 app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
@@ -118,16 +120,6 @@ if (!fs.existsSync(path.join(__dirname, config.DATAdir))) {
 if (!fs.existsSync(path.join(__dirname, config.LOGDir))) {
     fs.mkdirSync(path.join(__dirname, config.LOGDir));
     console.log('✅ Répertoire "',config.LOGDir,'" créé'); 
-}
-
-if (!fs.existsSync(path.join(__dirname, 'key'))) {
-    fs.mkdirSync(path.join(__dirname, 'key'));
-    console.log('✅ Répertoire "key" créé'); 
-}
-
-if (!fs.existsSync(path.join(__dirname, 'key/live'))) {
-    fs.mkdirSync(path.join(__dirname, 'key/live'));
-    console.log('✅ Répertoire "key/live" créé'); 
 }
 
 if (!fs.existsSync(path.join(__dirname, config.DBFile)))  {

@@ -40,9 +40,6 @@ export function send(FILE, passwd, id) {
         return salert('Fichier trop volumineux !', 'error'); 
     }
 
-    const formData = new FormData();
-    formData.append("file", file);
-
     console.log("Envoi d'un fichier...");
 
     let startTime = null; // Variable pour stocker le temps de début
@@ -124,11 +121,15 @@ export function send(FILE, passwd, id) {
 
 
     xhr.onerror = function(event) {
-        salert('Erreur de connexion', 'error')
+        salert('Erreur de connexion', 'error');
         console.error("Erreur de connexion : ", event);
-        console.error("Détails de la requête : ", event.target);    
+        console.error("Détails de la requête : ", event.target);
+        console.error("URL de la requête : ", xhr.responseURL);
+        console.error("Status de la requête : ", xhr.status);
     };
-
+    
+    const formData = new FormData();
+    formData.append("file", file);
     xhr.send(formData);
 
 }
