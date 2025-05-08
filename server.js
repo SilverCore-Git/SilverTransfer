@@ -15,6 +15,8 @@ const cors = require("cors");
 const path = require("path");
 const ejs = require("ejs");
 const crypto = require("crypto");
+const bodyParser = require('body-parser');
+require('dotenv').config();
 // const helmet = require('helmet');
 
 const ifdev = false;
@@ -26,11 +28,13 @@ const config = require('./config/config.json');
 let pkg = require('./package.json');
 
 
+
 const { decryptFile, decryptText } = require("./src/crypt.js");
 const { loadDatabase, saveDatabase, deleteFiledb, resetDatabase, deleteDatabaseFile, createDatabaseFile } = require('./src/database.js'); 
 const { logToFile, originalConsoleError, originalConsoleLog, originalConsoleWarn } = require('./src/logger.js');
 const { getCurrentDate, getCurrentTime } = require('./src/datemanager.js');
 const { verifyIfExpire } = require('./src/verifyIfExpire.js');
+
 
 async function resetDB() {
 
@@ -82,7 +86,9 @@ const corsOptions = {
 const app = express();
 console.log("🔄 Démarrage de Express...");
 
+app.set('trust proxy', true);
 app.use(cors(corsOptions));
+app.use(bodyParser.json());
 app.use(express.json({ limit: '11gb' }))
 app.use(express.urlencoded({ limit: '11gb', extended: true }))
 // app.use(helmet());
@@ -139,6 +145,12 @@ app.get("/patchnotes", (req, res) => {
 app.get("/favicon.ico", (req, res) => {
     res.status(200).sendFile(path.join(__dirname, 'assets/favicon.ico'))
 });
+app.get("/favicon", (req, res) => {
+    res.status(200).sendFile(path.join(__dirname, 'assets/favicon.ico'))
+});
+app.get("/ads.txt", (req, res) => {
+    res.status(200).sendFile(path.join(__dirname, 'assets/ads.txt'))
+});
 app.get("/favicon.png", (req, res) => {
     res.status(200).sendFile(path.join(__dirname, 'public/assets/img/logo.png'))
 });
@@ -162,13 +174,27 @@ app.get("/index.js", (req, res) => {
     res.status(200).sendFile(path.join(__dirname, 'public/index.js'))
 })
 
+app.get('/admin/stats', (req, res) => {
+    const ip =
+    req.headers['x-forwarded-for']?.split(',')[0] || // derrière proxy
+    req.socket?.remoteAddress || // standard
+    req.ip; // fallback
+
+    if (process.env.ip_autorise.includes(ip)) {
+        res.render('stats');
+    }
+
+})
+
 
 // root déportés
 const root_upload = require('./roots/upload.js');
 const root_download = require('./roots/download.js');
+const root_api = require('./roots/api.js');
 
 app.use('/upload', root_upload);
 app.use('/data', root_download);
+app.use('/api', root_api);
 
 
 
@@ -211,7 +237,7 @@ app.get("/t/:id/:passwd", async (req, res) => {
                     }
 
                 } else {
-                    return await res.render("download", { fileName: 'fileName', fileID: 'fileID', fileSize: 'fSize', passwd: 'e', fileExpir: '30', version: 'version', v: pkg.version });
+                    return await res.render("download", { fileName: 'fileName', fileID: 'fileID', fileSize: 'fSize', passwd: 'e', fileExpir: '15', version: 'version', v: pkg.version });
                 }
 
             }
@@ -228,8 +254,25 @@ app.get("/t/:id/:passwd", async (req, res) => {
         const fileName = fileEntry.fileName.split('.')[1];
         const decryptedFileName = decryptText(fileName);
 
+        const input = fileEntry.date;
+        const parsedDate = new Date(input.replace(" - ", "T"));
+        
+        const now = new Date();
+        const fifteenDaysLater = new Date(parsedDate.getTime() + 15 * 24 * 60 * 60 * 1000);
+        
+        const diffMs = fifteenDaysLater - now;
+        
+        if (diffMs <= 0) {
+          return res.status(410).render("errfile", { status: "Le fichier a expiré !", v: pkg.version });
+        } else {
+          const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+          const diffHours = Math.floor((diffMs / (1000 * 60 * 60)) % 24);
+          const diffMinutes = Math.floor((diffMs / (1000 * 60)) % 60);
+          const diffSeconds = Math.floor((diffMs / 1000) % 60);
+        
+          res.status(200).render("download", { fileName: decryptedFileName, passwd: passwd,  fileExpir: diffDays, fileID: fileID, fileSize: fSize, v: pkg.version });
 
-        res.status(200).render("download", { fileName: decryptedFileName, passwd: passwd,  fileExpir: '30', fileID: fileID, fileSize: fSize, v: pkg.version });
+        }
 
     }
 

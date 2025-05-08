@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📊 Statistiques du site</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background-color: #f0f2f5;
+      color: #1e1e2f;
+      padding: 2rem;
+    }
+
+    h1 {
+      color: #3344aa;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .stat {
+      background: #f9f9fb;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .stat .label {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .stat .value {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #222;
+    }
+
+    pre {
+      margin-top: 1rem;
+      background-color: #f4f4f4;
+      padding: 1rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      overflow-x: auto;
+    }
+
+    .charts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .chart-container {
+      width: 300px;
+      background: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>📊 Statistiques du site</h1>
+    <div id="stats-container">Chargement...</div>
+  </div>
+
+  <script>
+    fetch('/api/stats/view')
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById('stats-container');
+        container.innerHTML = "";
+
+        const general = data.visit?.général;
+        if (general) {
+          const generalCard = document.createElement("div");
+          generalCard.className = "card";
+          generalCard.innerHTML = `
+            <h2>📌 Statistiques générales</h2>
+            <div class="stats-grid">
+              <div class="stat">
+                <div class="label">Total visites</div>
+                <div class="value">${general.all}</div>
+              </div>
+              <div class="stat">
+                <div class="label">Visites uniques</div>
+                <div class="value">${general.unique}</div>
+              </div>
+            </div>
+            <div class="charts">
+              <div class="chart-container">
+                <canvas id="chartBrowser"></canvas>
+                <div class="label">Navigateur</div>
+              </div>
+              <div class="chart-container">
+                <canvas id="chartDevice"></canvas>
+                <div class="label">Appareil</div>
+              </div>
+              <div class="chart-container">
+                <canvas id="chartOS"></canvas>
+                <div class="label">Système d'exploitation</div>
+              </div>
+            </div>
+            <pre>${JSON.stringify(general, null, 2)}</pre>
+          `;
+          container.appendChild(generalCard);
+
+          // Données pour les graphiques
+          const browserLabels = Object.keys(general.browser);
+          const browserData = Object.values(general.browser);
+          const deviceLabels = Object.keys(general.device);
+          const deviceData = Object.values(general.device);
+          const osLabels = Object.keys(general.os);
+          const osData = Object.values(general.os);
+
+          // Graphique Navigateur
+          new Chart(document.getElementById('chartBrowser'), {
+            type: 'pie',
+            data: { labels: browserLabels, datasets: [{ data: browserData }] }
+          });
+
+          // Graphique Appareil
+          new Chart(document.getElementById('chartDevice'), {
+            type: 'pie',
+            data: { labels: deviceLabels, datasets: [{ data: deviceData }] }
+          });
+
+          // Graphique OS
+          new Chart(document.getElementById('chartOS'), {
+            type: 'pie',
+            data: { labels: osLabels, datasets: [{ data: osData }] }
+          });
+        }
+
+        Object.entries(data.visit || {})
+          .filter(([key]) => key !== 'général')
+          .forEach(([date, stats]) => {
+            const dayCard = document.createElement("div");
+            dayCard.className = "card";
+            dayCard.innerHTML = `
+              <h2>📅 ${date}</h2>
+              <div class="stats-grid">
+                <div class="stat">
+                  <div class="label">Visites</div>
+                  <div class="value">${stats.all}</div>
+                </div>
+                <div class="stat">
+                  <div class="label">Uniques</div>
+                  <div class="value">${stats.unique}</div>
+                </div>
+              </div>
+              <pre>${JSON.stringify(stats, null, 2)}</pre>
+            `;
+            container.appendChild(dayCard);
+          });
+      })
+      .catch(err => {
+        document.getElementById('stats-container').innerHTML = "Erreur de chargement des données.";
+        console.error(err);
+      });
+  </script>
+</body>
+</html>

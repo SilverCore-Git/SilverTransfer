@@ -8,3 +8,4 @@
 /temp
 scripts/crypt_test_origin.txt
 db/database.json
+.env

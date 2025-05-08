@@ -10,6 +10,8 @@
 
     "stop": "pm2 stop silvertransfert",
 
+    "restart": "pm2 stop silvertransfert && pm2 start server.js --name silvertransfert --env production",
+
     "status": "pm2 status",
 
     "log": "pm2 logs silvertransfert",
