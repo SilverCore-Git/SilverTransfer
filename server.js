@@ -19,7 +19,7 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 // const helmet = require('helmet');
 
-const ifdev = false;
+const ifdev = true;
 
 
 const formatFileSize = require('./src/filesize.js')
@@ -95,7 +95,11 @@ app.use(express.urlencoded({ limit: '11gb', extended: true }))
 app.set("view engine", "ejs");
 
 app.use((req, res, next) => {
- 
+
+    if (req.hostname == `premium.silvertransfert.fr`) {
+        return res.redirect(`https://premium.silvertransfert.fr${req.path}`);
+    }
+
     if (req.hostname !== config.hostname) {
         return res.redirect(`https://${config.hostname}${req.path}`);
     };
@@ -104,8 +108,19 @@ app.use((req, res, next) => {
 
 });
 
-app.use(express.static("public"));
+app.use((req, res, next) => {
+    const host = req.hostname;
+  
+    if (host === 'premium.silvertransfert.fr') {
+        express.static(path.join(__dirname, 'premium'))(req, res, next);
+    } else {
+        express.static(path.join(__dirname, 'premium'))(req, res, next);
+        //express.static(path.join(__dirname, 'public'))(req, res, next); 
+    }
+});
+
 app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
+
 
 
 console.log("✅ Express chargé");
@@ -182,7 +197,7 @@ app.get('/admin/stats', (req, res) => {
 
     if (process.env.ip_autorise.includes(ip)) {
         res.render('stats');
-    }
+    } else { res.json(ip) }
 
 })
 

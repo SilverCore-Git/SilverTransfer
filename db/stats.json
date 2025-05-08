@@ -1,0 +1,50 @@
+{
+  "stats_db": {
+    "date": "08/05/2025",
+    "id": "baymxkol"
+  },
+  "visit": {
+    "général": {
+      "ip": {},
+      "all": 48,
+      "unique": 48,
+      "country": {
+        "fr": 48
+      },
+      "device": {
+        "desktop": 48
+      },
+      "browser": {
+        "firefox": 48
+      },
+      "os": {
+        "windows": 48
+      },
+      "referrer": {
+        "direct": 44,
+        "localhost": 4
+      },
+      "pages": {
+        "/": 47,
+        "/premium/": 1
+      }
+    },
+    "2025-05-08": {
+      "all": 48,
+      "unique": 48,
+      "country": {
+        "fr": 48
+      },
+      "device": {
+        "desktop": 48
+      },
+      "pages": {
+        "/": 47,
+        "/premium/": 1
+      },
+      "ips": {
+        "::ffff:127.0.0.1": 48
+      }
+    }
+  }
+}

@@ -20,7 +20,6 @@ const key = require('../src/key_manager.js');
 let fileDatabase = {};
 fileDatabase = loadDatabase();
 
-let filesIDS = [];
 
 const uploadDir = path.join(__dirname, '../', config.TEMPdir);
 
@@ -53,22 +52,61 @@ router.get('/create/id', async (req, res) => {
 
         fileDatabase = loadDatabase();
 
-        let id;
-        do {
-            let randomNumber = Math.floor(Math.random() * 100000000);
-            randomNumber = randomNumber.toString().padStart(8, '0');
-            id = randomNumber;
-        } while (fileDatabase[id] !== undefined);         
+        if (req.query.premium == 1) {
 
-        // const socket_id = randomNumber;
+            let id = null;
+            let length = 2;
+            
+            while (length <= 6 && id === null) {
+              for (let i = 0; i < 1000; i++) {
+                let randomNumber = Math.floor(Math.random() * Math.pow(10, length));
+                let candidateId = randomNumber.toString().padStart(length, '0');
+            
+                if (fileDatabase[candidateId] === undefined) {
+                  id = candidateId;
+                  break;
+                }
+              }
+              length++;
+            }
+            
+            if (id === null) {
+              throw new Error("Aucune ID libre trouvée jusqu’à 6 chiffres !");
+            }     
+    
+            return res.json({
+                status: "success",
+                id
+            });
 
-        // filesIDS.push({ id, socket_id });
+        } else {
 
-        res.json({
-            status: "success",
-            message: "Socket créé",
-            id
-        });
+            let id = null;
+            let length = 8;
+            
+            while (length <= 20 && id === null) {
+              for (let i = 0; i < 10000; i++) {
+                let randomNumber = Math.floor(Math.random() * Math.pow(10, length));
+                let candidateId = randomNumber.toString().padStart(length, '0');
+            
+                if (fileDatabase[candidateId] === undefined) {
+                  id = candidateId;
+                  break;
+                }
+              }
+              length++;
+            }
+            
+            if (id === null) {
+              throw new Error("Aucune ID libre trouvée jusqu’à 20 chiffres !");
+            }  
+
+            return res.json({
+                status: "success",
+                id
+            });
+
+        }
 
     } else {
         res.status(403).json({ message: "Accès interdit" });
