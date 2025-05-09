@@ -134,6 +134,8 @@ router.post('/file', upload.single("file"), async (req, res) => {
             return res.status(400).json({ message: "Aucun fichier reçu" });
         }
 
+        let ifpremium = req.query.premium || null == 1 ? true : false;
+        const premium_expire_date = req.query.premium_expire_date || 15;
         const fileID = req.query.id;
         const passwd = req.query.passwd;
         await key.generate(fileID, passwd);
@@ -144,7 +146,8 @@ router.post('/file', upload.single("file"), async (req, res) => {
         res.json({
             status: "processing",
             message: "Fichier reçu, chiffrement en cours...",
-            id: fileID
+            id: fileID,
+            premium: ifpremium
         });
 
         console.log('Fichier reçu, chiffrement en cours...');
@@ -157,6 +160,10 @@ router.post('/file', upload.single("file"), async (req, res) => {
             fileDatabase[fileID] = {
                 fileName: encryptedFileName,
                 size: req.file.size,
+                premium: ifpremium,
+                premium_data: ifpremium ? {
+                    expire_day: premium_expire_date
+                } : null,
                 date: `${getCurrentDate()} - ${getCurrentTime()}` 
             };
             await saveDatabase(fileDatabase);

@@ -26,7 +26,7 @@ function updateProgressBar(value) {
 
 
 
-export function send(FILE, passwd, id) {
+export function send(FILE, passwd, id, ifpremium = false) {
 
     const fileInput = FILE
     const file = fileInput;
@@ -35,7 +35,10 @@ export function send(FILE, passwd, id) {
         return salert("Veuillez sélectionner un fichier avant d'envoyer !", 'error');
     }
 
-    const maxSize = 10024 * 1024 * 1024; // 10Go
+    let maxSize;
+    if (ifpremium) { maxSize = 16 * 1024 * 1024 * 1024; } // 16Go
+    else { maxSize = 11 * 1024 * 1024 * 1024; } // 11Go
+
     if (file.size >= maxSize) { 
         return salert('Fichier trop volumineux !', 'error'); 
     }
@@ -46,7 +49,16 @@ export function send(FILE, passwd, id) {
     const xhr = new XMLHttpRequest(); 
     xhr.responseType = 'json';
 
-    xhr.open("POST", `/upload/file?passwd=${passwd}&id=${id}`, true);
+    let ifprmium = 0;
+    if (ifpremium) { ifprmium = 1 } else { ifprmium = 0 }
+
+    if (ifpremium = 1) {
+        const expire_date = document.getElementById('expire_date_input').value;
+        xhr.open("POST", `/upload/file?passwd=${passwd}&id=${id}&premium=${ifprmium}&premium_expire_date=${expire_date}`, true);
+    } else {
+        xhr.open("POST", `/upload/file?passwd=${passwd}&id=${id}`, true);
+    }
+    
 
     xhr.upload.onprogress = (event) => {
 

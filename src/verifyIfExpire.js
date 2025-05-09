@@ -19,7 +19,6 @@ async function verifyIfExpire() {
     database = loadDatabase();
 
     const now = new Date();
-    const maxAge = config.expiretime * 24 * 60 * 60 * 1000; 
 
     let intdelFile = 0;
     let intError = 0;
@@ -28,6 +27,14 @@ async function verifyIfExpire() {
     for (const id in database) {
 
         if (database[id].date) {
+
+            let maxAge; 
+            if (database[id]?.premium || false) {
+                maxAge = Number(database[id].premium_data.expire_day) * 24 * 60 * 60 * 1000; 
+            } else {
+                maxAge = config.expiretime * 24 * 60 * 60 * 1000; 
+            }
+
 
             const dateStr = database[id].date.split(" - ")[0]; // Extraire la partie date
             const entryDate = new Date(dateStr);
@@ -39,7 +46,7 @@ async function verifyIfExpire() {
                 intError++
 
             }
-            
+
             if (now - entryDate > maxAge) {
 
                 console.warn(`✅ Vérification => L'ID ${id} a une date dépassant 15 jours : ${database[id].date}`);

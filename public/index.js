@@ -4,7 +4,7 @@
  * @author MisterPapaye
  */
 
-import { loader, file, btnsavoir, gobtn, main, upload, link, progress, flach, done } from './assets/js/idclassloader.js';
+import { loader, file, gobtn, main, upload, link, progress, flach, done } from './assets/js/idclassloader.js';
 
 loader.style.display = 'flex';
 file.style.display = 'flex'

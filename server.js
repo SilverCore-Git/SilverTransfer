@@ -89,8 +89,8 @@ console.log("🔄 Démarrage de Express...");
 app.set('trust proxy', true);
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
-app.use(express.json({ limit: '11gb' }))
-app.use(express.urlencoded({ limit: '11gb', extended: true }))
+app.use(express.json({ limit: '16gb' }))
+app.use(express.urlencoded({ limit: '16gb', extended: true }))
 // app.use(helmet());
 app.set("view engine", "ejs");
 
