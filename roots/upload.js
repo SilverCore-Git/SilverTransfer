@@ -122,13 +122,9 @@ router.post('/file', upload.single("file"), async (req, res) => {
 
     // if (req.hostname === config.hostname) {
 
-        console.log("📥 Réception d'une requête : ", `' /upload/file '`);
+        console.log("📥 Réception d'une requête : ", `/upload/file`);
 
         fileDatabase = loadDatabase();
-
-        // if (req.fileValidationError) {
-        //     return res.status(400).json({ message: req.fileValidationError });
-        // }
 
         if (!req.file) {
             return res.status(400).json({ message: "Aucun fichier reçu" });
@@ -138,6 +134,7 @@ router.post('/file', upload.single("file"), async (req, res) => {
         const premium_expire_date = req.query.premium_expire_date || 15;
         const fileID = req.query.id;
         const passwd = req.query.passwd;
+        let user = req.query.user; if (user == 'ip') { user =  req.headers['x-forwarded-for']?.split(',')[0] || req.socket?.remoteAddress || req.ip; };
         await key.generate(fileID, passwd);
         const tempFilePath = req.file.path;  // Chemin du fichier temporaire sauvegardé par Multer
         const encryptedFileName = `${fileID}.${req.file.filename}.enc`;
@@ -160,6 +157,7 @@ router.post('/file', upload.single("file"), async (req, res) => {
             fileDatabase[fileID] = {
                 fileName: encryptedFileName,
                 size: req.file.size,
+                user: user || null,
                 premium: ifpremium,
                 premium_data: ifpremium ? {
                     expire_day: premium_expire_date

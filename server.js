@@ -29,10 +29,9 @@ let pkg = require('./package.json');
 
 
 
-const { decryptFile, decryptText } = require("./src/crypt.js");
-const { loadDatabase, saveDatabase, deleteFiledb, resetDatabase, deleteDatabaseFile, createDatabaseFile } = require('./src/database.js'); 
+const { decryptText } = require("./src/crypt.js");
+const { loadDatabase, resetDatabase } = require('./src/database.js'); 
 const { logToFile, originalConsoleError, originalConsoleLog, originalConsoleWarn } = require('./src/logger.js');
-const { getCurrentDate, getCurrentTime } = require('./src/datemanager.js');
 const { verifyIfExpire } = require('./src/verifyIfExpire.js');
 
 
@@ -200,6 +199,47 @@ app.get('/admin/stats', (req, res) => {
     } else { res.json(ip) }
 
 })
+
+app.get('/premium/user/profil', (req, res) => {
+    if (req.query.req == 'view') {
+        res.status(200).render('premium/profil');
+    } else if (req.query.req == 'data') {
+
+        res.status(200).json({
+            lasts_transferts: [
+                {
+                    id: "5436543",
+                    date: "10 mai 2025",
+                    taille: "14Go",
+                    expiration: "25 mai 2025",
+                    link: "https://caca.com/t/fds/fds"
+                },
+                {
+                    id: "5467786",
+                    date: "10 mai 2025",
+                    taille: "12Go",
+                    expiration: "25 mai 2025",
+                    link: "https://caca.com/t/fds/fds"
+                },
+                {
+                    id: "03425",
+                    date: "10 mai 2025",
+                    taille: "11Go",
+                    expiration: "25 mai 2025",
+                    link: "https://caca.com/t/fds/fds"
+                }
+            ]
+            // lasts_transferts: null
+        })
+
+    } else {
+        res.redirect('/premium/user/profil?req=view')
+    }
+});
+
+app.get('/premium/user/profil/del_transfert', (req, res) => {
+
+});
 
 
 // root déportés

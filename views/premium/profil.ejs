@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="/t/000/assets?file=download&ext=js" type="module" defer></script>
+  <link rel="stylesheet" href="/assets/css/body.css">
+  <link rel="stylesheet" href="/assets/css/footer.css">
+  <link rel="stylesheet" href="https://api.silvercore.fr/css/tooltip">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+
+  <title>Mon profile silvertransfert</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f5f7fa;
+      padding: 20px;
+    }
+
+    .container2 {
+      max-width: 900px;
+      width: 50%;
+      margin: 0 auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    @media (max-width: 1444px) {
+        .container2 {
+            width: 70%;
+        }
+    }
+    @media (max-width: 1200px) {
+        .container2 {
+            width: 90%;
+        }
+    }
+
+    header {
+      background-color: #4F46E5;
+      color: white;
+      padding: 20px;
+    }
+
+    header h1 {
+      font-size: 24px;
+    }
+
+    .profile-info {
+      padding: 20px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: #d1d5db;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      color: #374151;
+    }
+
+    .user-details {
+      flex: 1;
+    }
+
+    .user-details h2 {
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+
+    .user-details p {
+      color: #6b7280;
+    }
+
+    .transfers {
+      padding: 20px;
+    }
+
+    .transfers h3 {
+      margin-bottom: 15px;
+      font-size: 18px;
+      color: #111827;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 12px 10px;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    th {
+      background-color: #f9fafb;
+      color: #374151;
+    }
+
+    .status {
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      display: inline-block;
+    }
+
+    .status.success {
+      background-color: #d1fae5;
+      color: #065f46;
+    }
+
+    .status.pending {
+      background-color: #fef9c3;
+      color: #92400e;
+    }
+
+    .status.failed {
+      background-color: #fee2e2;
+      color: #991b1b;
+    }
+
+    .td-btn {
+        background: none;
+        border: none;
+    }
+
+    .td-btn i {
+        font-size: 20px;
+        margin-right: 5px;
+    }
+
+    .td-btn:hover i {
+        color: #4f46e5;
+    }
+
+    @media (max-width: 600px) {
+
+
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      thead {
+        display: none;
+      }
+
+      td {
+        padding: 10px;
+        position: relative;
+      }
+
+      td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: block;
+        margin-bottom: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container2">
+    <header>
+      <h1>Mon Profil</h1>
+    </header>
+
+    <div class="profile-info">
+      <div class="avatar">JD</div>
+      <div class="user-details">
+        <h2>Jean Dupont</h2>
+        <p>jean.dupont@email.com</p>
+      </div>
+    </div>
+
+    <div class="transfers">
+      <h3>Historique des Transferts</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Date</th>
+            <th>Taille</th>
+            <th>Date d'éxpiration</th>
+            <th>link</th>
+            <th>actions</th>
+          </tr>
+        </thead>
+
+        <tbody id="tabler">
+            <!-- les tableau seront integrer ici -->
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+
+  <script type="module" defer>
+
+        async function init() {
+        let response = await fetch('/premium/user/profil?req=data');
+        let data = await response.json();
+    
+        let transferts = data.lasts_transferts;
+
+        const tbody = document.getElementById('tabler');
+    
+        if (!transferts) {
+            const row = document.createElement('tr');
+        
+            row.innerHTML = `
+                <td>Aucun transfert trouvée</td>
+            `;
+
+            tbody.appendChild(row);
+        } else {
+            transferts.forEach(transfer => {
+                const row = document.createElement('tr');
+        
+                row.innerHTML = `
+                <td data-label="id">${transfer.id}</td>
+                <td data-label="Date">${transfer.date}</td>
+                <td data-label="Taille">${transfer.taille}</td>
+                <td data-label="Date d'expiration">${transfer.expiration}</td>
+                <td data-label="link"><input type="url" value="${transfer.link}"></td>
+                <td data-label="actions">
+                    <button data-tooltip="Suprimer le transfert" class="tooltip td-btn delete-btn">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                    <button data-tooltip="Visitez le lien" class="tooltip td-btn go-btn">
+                        <i class="bi bi-box-arrow-up-right"></i>
+                    </button>
+                </td>
+                `;
+        
+                tbody.appendChild(row);
+            });
+        }
+    
+        tbody.addEventListener('click', (e) => {
+            if (e.target.closest('.delete-btn')) {
+                const row = e.target.closest('tr');
+                row.remove();
+                fetch('/premium/user/profil/del_transfert?id=' + id)
+            }
+        });
+    }
+  
+    init();
+
+  </script>
+  
+    <footer style="height: 6vh;" id="footer">
+        <p>&copy; 2024 - <span id="year">0000</span> SilverTransfert | <a href="https://www.silvercore.fr">SilverCore</a>. Tous droits réservés.</p>
+    </footer>
+    <script defer>
+        const annee = new Date().getFullYear();
+        document.getElementById('year').innerText = annee;
+    </script>
+
+</body>
+</html>

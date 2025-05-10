@@ -54,9 +54,9 @@ export function send(FILE, passwd, id, ifpremium = false) {
 
     if (ifpremium = 1) {
         const expire_date = document.getElementById('expire_date_input').value;
-        xhr.open("POST", `/upload/file?passwd=${passwd}&id=${id}&premium=${ifprmium}&premium_expire_date=${expire_date}`, true);
+        xhr.open("POST", `/upload/file?passwd=${passwd}&id=${id}&premium=${ifprmium}&premium_expire_date=${expire_date}&user=ip`, true);
     } else {
-        xhr.open("POST", `/upload/file?passwd=${passwd}&id=${id}`, true);
+        xhr.open("POST", `/upload/file?passwd=${passwd}&id=${id}&user=ip`, true);
     }
     
 
