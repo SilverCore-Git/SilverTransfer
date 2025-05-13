@@ -1,0 +1,22 @@
+{
+    "id": {
+        "user_info": {
+            "ips": [],
+            "agents": []
+        },
+        "user_stats": {},
+        "premium": false,
+        "premium_settings": {},
+        "sessions": {
+            "date": {
+                "session_id": {
+                    "ip": "",
+                    "user_agents": "",
+                    "status": null,
+                    "duration": ""
+                }
+            }
+        },
+        "transferts": []
+    }
+}

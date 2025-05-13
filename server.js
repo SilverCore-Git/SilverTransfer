@@ -189,14 +189,10 @@ app.get("/index.js", (req, res) => {
 })
 
 app.get('/admin/stats', (req, res) => {
-    const ip =
-    req.headers['x-forwarded-for']?.split(',')[0] || // derrière proxy
-    req.socket?.remoteAddress || // standard
-    req.ip; // fallback
 
-    if (process.env.ip_autorise.includes(ip)) {
+    if (req.query.mdp == process.env.stats_mdp) {
         res.render('stats');
-    } else { res.json(ip) }
+    } else { res.json(false) }
 
 })
 

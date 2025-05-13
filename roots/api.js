@@ -96,4 +96,41 @@ router.get('/stats/view', (req, res) => {
 
 
 
+const user_db = require('../db/users.json');
+const session = require('../src/sessions_manager.js');
+
+
+router.get('/session/create', (req, res) => {
+
+  const type = req.query.type;
+
+  const user_id = req.cookies.user_id;
+  const session_id = req.cookies.session_id;
+
+  if (type == "first") {
+
+
+  } else {
+
+    if (user_id.include(user_db) && user_db[user_id]) {
+    
+      
+  
+    }
+
+  }
+
+});
+
+router.get('/session/verify', (req, res) => {
+
+});
+
+
+
+
+
+
+
+
 module.exports = router;

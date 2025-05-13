@@ -6,26 +6,26 @@
   "visit": {
     "général": {
       "ip": {},
-      "all": 83,
-      "unique": 83,
+      "all": 85,
+      "unique": 85,
       "country": {
-        "fr": 83
+        "fr": 85
       },
       "device": {
-        "desktop": 83
+        "desktop": 85
       },
       "browser": {
-        "firefox": 83
+        "firefox": 85
       },
       "os": {
-        "windows": 83
+        "windows": 85
       },
       "referrer": {
-        "direct": 71,
-        "localhost": 12
+        "direct": 72,
+        "localhost": 13
       },
       "pages": {
-        "/": 81,
+        "/": 83,
         "/premium/": 1,
         "/t": 1
       }
@@ -65,19 +65,35 @@
       }
     },
     "2025-05-10": {
-      "all": 18,
-      "unique": 18,
+      "all": 19,
+      "unique": 19,
       "country": {
-        "fr": 18
+        "fr": 19
       },
       "device": {
-        "desktop": 18
+        "desktop": 19
       },
       "pages": {
-        "/": 18
+        "/": 19
       },
       "ips": {
-        "::ffff:127.0.0.1": 18
+        "::ffff:127.0.0.1": 19
+      }
+    },
+    "2025-05-11": {
+      "all": 1,
+      "unique": 1,
+      "country": {
+        "fr": 1
+      },
+      "device": {
+        "desktop": 1
+      },
+      "pages": {
+        "/": 1
+      },
+      "ips": {
+        "::ffff:127.0.0.1": 1
       }
     }
   }
