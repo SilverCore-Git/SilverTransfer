@@ -156,6 +156,12 @@ app.get("/sitemap.xml", (req, res) => {
 app.get("/patchnotes", (req, res) => {
     res.status(200).sendFile(path.join(__dirname, 'public/patchnotes.html'))
 });
+app.get("/politiques", (req, res) => {
+    res.status(200).sendFile(path.join(__dirname, 'public/politiques.html'))
+});
+app.get("/legale", (req, res) => {
+    res.status(200).sendFile(path.join(__dirname, 'public/politiques.html'))
+});
 app.get("/favicon.ico", (req, res) => {
     res.status(200).sendFile(path.join(__dirname, 'assets/favicon.ico'))
 });

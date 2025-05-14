@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Politique de confidentialité et de gestion des transferts - silvertransfert</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="max-w-4xl mx-auto px-4 py-10">
+        <h1 class="text-3xl font-bold mb-6 text-gray-900">Politique de gestion des transferts</h1>
+        <p class="text-sm text-gray-500 mb-8">Dernière mise à jour : 14 mai 2025</p>
+      
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-2">1. Téléversement du fichier</h2>
+          <ul class="list-disc list-inside">
+            <li>Envoi du fichier brut au serveur</li>
+            <li>Envoi du titre du fichier au serveur</li>
+            <li>Envoi de la taille du fichier au serveur</li>
+            <li>Envoi du mot de passe et de l’ID du fichier</li>
+          </ul>
+        </section>
+      
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-2">2. Réception du fichier</h2>
+          <ul class="list-disc list-inside">
+            <li>Chiffrement instantané du titre du fichier</li>
+            <li>Stockage temporaire du fichier brut</li>
+          </ul>
+        </section>
+      
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-2">3. Une fois le fichier réceptionné</h2>
+          <ul class="list-disc list-inside">
+            <li>Génération des clés de chiffrement "aes-256-cbc" publique et privée à partir du mot de passe</li>
+            <li>Création d’un dossier au format : id_du_transfert.nom_chiffré_du_fichier.ext_du_fichier.enc</li>
+            <li>Chiffrement du fichier en plusieurs parties de 100 Mo</li>
+            <li>Sauvegarde des données de chiffrement (schéma des morceaux, IV, hachage du fichier original et clé AES) dans un layout</li>
+            <li>Sauvegarde des données du transfert (ID, taille, nom du dossier, informations premium et date)</li>
+            <li>Suppression du fichier temporaire brut</li>
+          </ul>
+        </section>
+      
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-2">4. Déchiffrement</h2>
+          <ul class="list-disc list-inside">
+            <li>Récupération des données du transfert</li>
+            <li>Déchiffrement des morceaux</li>
+            <li>Reconstruction du fichier dans une zone temporaire à l’aide du layout</li>
+          </ul>
+        </section>
+      
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-2">5. Téléchargement</h2>
+          <ul class="list-disc list-inside">
+            <li>Création d’un flux de lecture du fichier</li>
+            <li>Envoi du fichier sous forme de flux</li>
+            <li>Suppression du fichier temporaire</li>
+          </ul>
+        </section>
+    </div>
+      
+
+    <div class="max-w-4xl mx-auto px-4 py-10">
+        <h1 class="text-3xl font-bold mb-6 text-gray-900">Politique de confidentialité</h1>
+        <p class="text-sm text-gray-500 mb-8">Dernière mise à jour : 14 mai 2025</p>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold mb-2">1. Responsable du traitement</h2>
+            <p>Le responsable du traitement est :<br />
+                <strong>Silvercore</strong><br />
+                Organisme sans actuel forme juridique<br />
+                <a href="https://www.silvercore.fr" class="text-blue-600 underline">En savoir plus</a>
+                <!-- <strong>[Nom de l’entreprise]</strong><br />
+                [Forme juridique] – [Adresse complète]<br />
+                RCS [Ville] – N° SIRET : [Numéro]<br />
+                Email : <a href="mailto:contact@example.com" class="text-blue-600 underline">contact@example.com</a> -->
+            </p>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold mb-2">2. Données collectées</h2>
+            <!-- <p class="mb-2 font-medium">Données fournies directement :</p>
+            <ul class="list-disc list-inside mb-4">
+                <li>Nom, prénom</li>
+                <li>Email</li>
+                <li>Mot de passe (chiffré)</li>
+                <li>Informations de paiement</li>
+            </ul> -->
+            <p class="mb-2 font-medium">Données collectées automatiquement :</p>
+            <ul class="list-disc list-inside">
+                <li>Adresse IP</li>
+                <li>Provenance des requête (moteur de recherche)</li>
+                <li>navigateur</li>
+                <li>Système d'exploitation</li>
+                <li>Durée de sessions</li>
+                <li>Nombre de transferts</li>
+                <li>Logs de connexion et de requête</li>
+            </ul>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold mb-2">3. Finalités du traitement</h2>
+            <ul class="list-disc list-inside">
+                <li>Fournir et gérer le service</li>
+                <li>Réaliser des statistiques de fréquentations</li>
+                <li>Répondre au support</li>
+                <li>SilverTransfert collecte un minimum de donnée possible et les utiliser dans un seul but privée notament de statistique et comercial</li>
+            </ul>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold mb-2">4. Base légale</h2>
+            <p>Intérêts légitimes.</p>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold mb-2">5. Destinataires des données</h2>
+            <p>Personnel habilité, administration seulement.</p>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold mb-2">6. Durée de conservation</h2>
+            <p>Indéterminer, Cookies : durée de la session.</p>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold mb-2">7. Vos droits</h2>
+            <ul class="list-disc list-inside">
+                <p>Demander la suppression de vos données</p>
+            </ul>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold mb-2">8. Cookies</h2>
+            <p>Utilisation de cookies pour le stockage d'idantifiant de session et de token de compte.</p>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold mb-2">9. Sécurité</h2>
+            <p>Hébergement sécurisé, HTTPS, HSTS, accès restreint.</p>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold mb-2">9. Sécurité</h2>
+            <p>Hébergement sécurisé, HTTPS, HSTS, accès restreint.</p>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold mb-2">10. Modifications</h2>
+            <p>Politique mise à jour si nécessaire.</p>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold mb-2">11. Contact</h2>
+            <p>Pour toute question : <a href="https://discord.gg/ftFhQTJsQ5" class="text-blue-600 underline">discord silvercore</a> ou <a href="https://discord.gg/mKs3uMTJWM" class="text-blue-600 underline">discord support</a></p>
+        </section>
+
+        <footer class="text-center text-sm text-gray-500 mt-12">
+            &copy; 2025 silvertransfert - silvercore. Tous droits réservés.
+        </footer>
+    </div>
+</body>
+</html>
