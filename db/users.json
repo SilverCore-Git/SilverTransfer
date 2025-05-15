@@ -1,67 +1,79 @@
 {
-  "id": {
+  "c3366bf9-db68-4616-b2f2-79c005aaa33a": {
     "user_info": {
-      "ips": [],
-      "agents": []
+      "ips": [
+        "::ffff:127.0.0.1"
+      ],
+      "agents": [
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:138.0) Gecko/20100101 Firefox/138.0"
+      ]
     },
     "user_stats": {},
     "premium": false,
     "premium_settings": {},
     "sessions": {
-      "date": {
-        "session_id": {
-          "ip": "",
-          "user_agents": "",
-          "status": null,
-          "duration": ""
+      "2025-5-15": {
+        "9a2b4d8f-da61-40e2-a571-8cd591fc1a72": {
+          "ip": "::ffff:127.0.0.1",
+          "user_agents": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:138.0) Gecko/20100101 Firefox/138.0",
+          "status": "close",
+          "duration": {
+            "h": 0,
+            "mn": 0,
+            "s": 18
+          },
+          "time": {
+            "h": 17,
+            "mn": 23,
+            "s": 0
+          }
+        },
+        "b6e67bc6-b073-49b2-a58d-286037a67406": {
+          "ip": "::ffff:127.0.0.1",
+          "user_agents": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:138.0) Gecko/20100101 Firefox/138.0",
+          "status": "open",
+          "duration": "",
+          "time": {
+            "h": 17,
+            "mn": 23,
+            "s": 28
+          }
+        },
+        "25e3b284-d8b6-418f-858a-294f2df39a76": {
+          "ip": "::ffff:127.0.0.1",
+          "user_agents": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:138.0) Gecko/20100101 Firefox/138.0",
+          "status": "open",
+          "duration": "",
+          "time": {
+            "h": 17,
+            "mn": 24,
+            "s": 18
+          }
+        },
+        "e5912614-6952-4edc-83df-29bd3e3e8f24": {
+          "ip": "::ffff:127.0.0.1",
+          "user_agents": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:138.0) Gecko/20100101 Firefox/138.0",
+          "status": "open",
+          "duration": "",
+          "time": {
+            "h": 17,
+            "mn": 24,
+            "s": 28
+          }
+        },
+        "c9659bad-d809-42b2-90e4-2b8f0b102f07": {
+          "ip": "::ffff:127.0.0.1",
+          "user_agents": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:138.0) Gecko/20100101 Firefox/138.0",
+          "status": "open",
+          "duration": "",
+          "time": {
+            "h": 17,
+            "mn": 24,
+            "s": 31
+          }
         }
       }
     },
-    "transferts": []
-  },
-  "fed66e57-12ba-4e33-96c9-24577cc9f422": {
-    "user_info": {
-      "ips": [
-        "::ffff:127.0.0.1"
-      ],
-      "agents": [
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:138.0) Gecko/20100101 Firefox/138.0"
-      ]
-    },
-    "user_stats": {},
-    "premium": true,
-    "premium_settings": {},
-    "sessions": {},
-    "transferts": []
-  },
-  "2a3c1bb4-489b-4a67-99b4-eb82015c22a0": {
-    "user_info": {
-      "ips": [
-        "::ffff:127.0.0.1"
-      ],
-      "agents": [
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:138.0) Gecko/20100101 Firefox/138.0"
-      ]
-    },
-    "user_stats": {},
-    "premium": true,
-    "premium_settings": {},
-    "sessions": {},
-    "transferts": []
-  },
-  "eabbb4a1-be85-4104-9730-b40432874adc": {
-    "user_info": {
-      "ips": [
-        "::ffff:127.0.0.1"
-      ],
-      "agents": [
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:138.0) Gecko/20100101 Firefox/138.0"
-      ]
-    },
-    "user_stats": {},
-    "premium": true,
-    "premium_settings": {},
-    "sessions": {},
     "transferts": []
   }
 }

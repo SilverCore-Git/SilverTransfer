@@ -6,26 +6,26 @@
   "visit": {
     "général": {
       "ip": {},
-      "all": 85,
-      "unique": 85,
+      "all": 91,
+      "unique": 91,
       "country": {
-        "fr": 85
+        "fr": 91
       },
       "device": {
-        "desktop": 85
+        "desktop": 91
       },
       "browser": {
-        "firefox": 85
+        "firefox": 91
       },
       "os": {
-        "windows": 85
+        "windows": 91
       },
       "referrer": {
-        "direct": 72,
-        "localhost": 13
+        "direct": 77,
+        "localhost": 14
       },
       "pages": {
-        "/": 83,
+        "/": 89,
         "/premium/": 1,
         "/t": 1
       }
@@ -94,6 +94,22 @@
       },
       "ips": {
         "::ffff:127.0.0.1": 1
+      }
+    },
+    "2025-05-15": {
+      "all": 6,
+      "unique": 6,
+      "country": {
+        "fr": 6
+      },
+      "device": {
+        "desktop": 6
+      },
+      "pages": {
+        "/": 6
+      },
+      "ips": {
+        "::ffff:127.0.0.1": 6
       }
     }
   }

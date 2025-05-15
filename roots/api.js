@@ -3,6 +3,8 @@ const express = require("express");
 const router = express.Router();
 const cookieParser = require('cookie-parser');
 
+router.use(cookieParser());
+
 const Stats = require('../src/stats_manager.js');
 
 // Route pour ajouter des stats
@@ -106,7 +108,6 @@ router.get('/session/create', async (req, res) => {
   const type = req.query?.type;
 
   const user_id = req.cookies?.user_id;
-  console.log(user_id)
   const session_id = req.cookies?.session_id;
   let premium = req.query?.premium;
 
@@ -114,6 +115,7 @@ router.get('/session/create', async (req, res) => {
 
   if (type == "first") {
 
+    if (user_id) return res.status(400).json({ error: true, message: "user déjà identifié" });
     if (!premium) return res.json("query incomplet");
     premium = premium == "1" ? true : false;
 
@@ -166,11 +168,10 @@ router.get('/session/create', async (req, res) => {
       }
 
       else {
-        // res.cookie('session_id', resp.id, {
-        //   httpOnly: true,    // ne peut pas être lu par le JS client
-        //   maxAge: 100 * 365 * 24 * 60 * 60 * 1000,   // expire dans 100 ans
-        //   signed: false
-        // });
+        res.cookie('session_id', Session.id, {
+          httpOnly: true,    // ne peut pas être lu par le JS client  
+          signed: false
+        });
         return res.status(200).json(Session);
       };
   
@@ -182,7 +183,7 @@ router.get('/session/create', async (req, res) => {
 
 });
 
-router.get('/session/verify', (req, res) => {
+router.get('/session/verify', async (req, res) => {
 
   const user_id = req.cookies?.user_id;
   const session_id = req.cookies?.session_id;
@@ -190,14 +191,49 @@ router.get('/session/verify', (req, res) => {
   if (!user_id) return res.json("query incomplet");
   if (!session_id) return res.json("query incomplet");
 
-  if (session.verify(user_id, session_id) == false) {
+  console.log(user_id, '\n', session_id )
+  console.log(await session.verify(user_id, session_id))
+
+  if (await session.verify(user_id, session_id) == false) {
 
     return res.status(400).json({ error: true, message: "session inexistante" });
 
   } else {
-    return res.status(200).json(session.verify(user_id, session_id));
+    return res.status(200).json(await session.verify(user_id, session_id));
   }
 
+});
+
+
+router.get('/session/close', async (req, res) => {
+
+  const user_id = req.cookies?.user_id;
+  const session_id = req.cookies?.session_id;
+  
+  if (!user_id) return res.json("query incomplet");
+  if (!session_id) return res.json("query incomplet");
+
+  if (await session.verify(user_id, session_id) == false) {
+
+    return res.status(400).json({ error: true, message: "session inexistante" });
+
+  } else {
+    session.close(user_id, session_id).then(r => {
+
+      if (r.error) {
+        return res.status(500).json(r);
+      }
+
+      if (r) {
+        res.clearCookie('session_id', {
+          httpOnly: true,    // ne peut pas être lu par le JS client  
+          signed: false
+        });
+        return res.status(200).json(true);
+      }
+
+    })
+  }
 
 });
 

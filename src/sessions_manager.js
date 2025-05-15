@@ -93,62 +93,65 @@ class session {
         }
     }
 
-    verify(user_id = null, session_id = null) {
+    async verify(user_id = null, session_id = null) {
 
-        fs.readFile(user_db_file, 'utf8', (err, data) => {
+      try {
 
-            if (err) throw err;
-          
-            const date = new Date();
-            const dateKey = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
-            
-            let jsonData = JSON.parse(data);
-            let user = jsonData[user_id];
-            
-            if (!user.sessions) return false;
-            
-            if (!user.sessions[dateKey]) return false;
-            
-            if (!user.sessions[dateKey][session_id]) return false;
-            
-            return user.session[dateKey][session_id];
-
-        });
+        const data = await fs.readFile(user_db_file, 'utf8');
+        const jsonData = JSON.parse(data);
+    
+        const date = new Date();
+        const dateKey = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+    
+        const user = jsonData[user_id];
+        if (!user?.sessions?.[dateKey]?.[session_id]) return false;
+    
+        return user.sessions[dateKey][session_id];
+    
+      } catch (err) {
+        return { error: true, message: err };
+      };
 
     };
-
-    close(user_id = null, session_id = null) {
-
-        fs.readFile(user_db_file, 'utf8', (err, data) => {
-
-            if (err) throw err;
-          
-            const date = new Date();
-            const dateKey = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
-
-            let jsonData = JSON.parse(data);
-            let user = jsonData[user_id];
-            
-            const startTimestamp = user.sessions[dateKey][session_id].time;
-            const endTimestamp = date.getTime();
-            const durationMs = endTimestamp - startTimestamp;
     
-            // Convertir la durée en heures, minutes, secondes
-            const durationSec = Math.floor(durationMs / 1000);
-            const h = Math.floor(durationSec / 3600);
-            const mn = Math.floor((durationSec % 3600) / 60);
-            const s = durationSec % 60;
+    async close(user_id = null, session_id = null) {
+
+      try {
+
+        const data = await fs.readFile(user_db_file, 'utf8');
+        const date = new Date();
+        const dateKey = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
     
-            user.sessions[dateKey][session_id].duration = { h, mn, s };
-            user.sessions[dateKey][session_id].status = "close";
-
-            jsonData[user_id] = user;
-
-            fs.writeFile(filePath, JSON.stringify(jsonData, null, 2), (err) => {
-                if (err) throw err;
-            });            
-
-        });
+        let jsonData = JSON.parse(data);
+        let user = jsonData[user_id];
+    
+        if (!user?.sessions?.[dateKey]?.[session_id]) {
+          return { error: true, message: 'Session non trouvée' };
+        }
+    
+        const startTime = user.sessions[dateKey][session_id].time;
+        const startTimestamp = new Date();
+        startTimestamp.setHours(startTime.h, startTime.mn, startTime.s, 0);
+        const endTimestamp = date.getTime();
+        const durationMs = endTimestamp - startTimestamp.getTime();
+    
+        const durationSec = Math.floor(durationMs / 1000);
+        const h = Math.floor(durationSec / 3600);
+        const mn = Math.floor((durationSec % 3600) / 60);
+        const s = durationSec % 60;
+    
+        user.sessions[dateKey][session_id].duration = { h, mn, s };
+        user.sessions[dateKey][session_id].status = "close";
+    
+        jsonData[user_id] = user;
+    
+        await fs.writeFile(user_db_file, JSON.stringify(jsonData, null, 2));
+    
+        return { success: true, duration: { h, mn, s } };
+    
+      } catch (err) {
+        return { error: true, message: err.message || err };
+      }
 
     }
 

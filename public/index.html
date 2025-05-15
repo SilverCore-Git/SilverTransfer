@@ -206,23 +206,12 @@
                     </div>
                     <span>Envoyer !</span>
                 </button>
-
-        
-                <style>
-                    .send-btn {
-                        opacity: 0;
-                        transition: opacity 1.5s ease-in-out;
-                    }
-                </style>
         
                 <script defer> 
                     document.addEventListener('DOMContentLoaded', () => {
 
                         const file = document.getElementById('file');
                         const sendBtn = document.querySelector('.send-btn');
-
-                        sendBtn.style.opacity = 0;
-    
 
                         sendBtn.addEventListener('click', () => {
                             history.pushState(null, "", `?page=send&file=${file?.files[0]?.name}&file_size=${file?.files[0]?.size}&lastM=${file?.files[0]?.lastModified}&length=${file.files.length}`);
@@ -231,21 +220,6 @@
                         file.addEventListener('change', function() {
 
                             history.pushState(null, "", `?page=upload&file=${file?.files[0]?.name}&file_size=${file?.files[0]?.size}`);
-
-                            if (file.files.length > 0) {
-
-                                sendBtn.style.display = 'flex';
-
-                                setTimeout(() => {
-                                    sendBtn.style.opacity = 1;
-                                }, 10);
-
-
-                            } else {
-
-                                sendBtn.style.opacity = 0;
-
-                            }
 
                         });
                         

@@ -16,6 +16,7 @@ done.style.display = 'none';
 import { salert } from './assets/js/salert.js';
 import { background } from './assets/js/background.js';
 import { send } from './assets/js/send.js';
+import session from './assets/js/session.js';
 import popups from './popups.js';
 
 //salert('Une nouvelle version de SilverTransfer vien d\'arriver !!<br><a href="/patchnotes" style="color: black; text-decoration: underline" target="_blank">En savoir plus !</a>', 'info')
@@ -196,6 +197,14 @@ function roots() {
 async function loadApp() {
 
     background();
+
+    session.open("first", 0).then(r => {
+        session.open("temp", 0)
+    });
+
+    window.addEventListener('beforeunload', () => {
+        session.close();
+    });
 
     setInterval(() => {
         background();
