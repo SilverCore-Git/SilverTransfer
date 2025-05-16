@@ -31,7 +31,8 @@ let pkg = require('./package.json');
 
 const { decryptText } = require("./src/crypt.js");
 const { loadDatabase, resetDatabase } = require('./src/database.js'); 
-const { logToFile, originalConsoleError, originalConsoleLog, originalConsoleWarn } = require('./src/logger.js');
+const { logToFile, originalConsoleError, originalConsoleLog, originalConsoleWarn } = require('./src/logger.js'); 
+const interval = require('./src/interval/archive.js'); interval.archive_stats();
 const { verifyIfExpire } = require('./src/verifyIfExpire.js');
 
 
