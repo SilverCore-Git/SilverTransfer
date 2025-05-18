@@ -6,35 +6,35 @@
   "visit": {
     "général": {
       "ip": {},
-      "all": 143,
-      "unique": 143,
+      "all": 155,
+      "unique": 155,
       "country": {
-        "fr": 119,
+        "fr": 131,
         "unknown": 11,
         "us": 5,
         "ca": 1,
         "es": 7
       },
       "device": {
-        "desktop": 92,
+        "desktop": 104,
         "mobile": 51
       },
       "browser": {
-        "firefox": 45,
+        "firefox": 57,
         "chrome": 68,
         "autre": 4,
         "safari": 24,
         "edge": 2
       },
       "os": {
-        "windows": 73,
+        "windows": 85,
         "linux": 37,
         "autre": 5,
         "mac": 26,
         "android": 2
       },
       "referrer": {
-        "direct": 104,
+        "direct": 109,
         "www.silvertransfert.fr": 8,
         "www.google.com": 16,
         "www.silvercore.fr": 7,
@@ -43,11 +43,11 @@
         "com.google.android.googlequicksearchbox": 1,
         "www.linkedin.com": 1,
         "www.ecoledirecte.com": 2,
-        "localhost": 2
+        "localhost": 9
       },
       "pages": {
         "/t": 52,
-        "/": 91
+        "/": 103
       }
     },
     "2025-05-07": {
@@ -267,19 +267,19 @@
       }
     },
     "2025-05-18": {
-      "all": 4,
-      "unique": 4,
+      "all": 16,
+      "unique": 16,
       "country": {
-        "fr": 4
+        "fr": 16
       },
       "device": {
-        "desktop": 4
+        "desktop": 16
       },
       "pages": {
-        "/": 4
+        "/": 16
       },
       "ips": {
-        "::ffff:127.0.0.1": 4
+        "::ffff:127.0.0.1": 16
       }
     }
   }

@@ -221,8 +221,8 @@ app.get('/premium/user/profil', async (req, res) => {
     }
 });
 
-app.get('/premium/user/profil/del_transfert', (req, res) => {
-
+app.post('/premium/user/profil/del_transfert', (req, res) => {
+    // suprimer le transfert avec req.query.id
 });
 
 
@@ -297,7 +297,7 @@ app.get("/t/:id/:passwd", async (req, res) => {
         const parsedDate = new Date(input.replace(" - ", "T"));
         
         const now = new Date();
-        const fifteenDaysLater = new Date(parsedDate.getTime() + 15 * 24 * 60 * 60 * 1000);
+        const fifteenDaysLater = new Date(parsedDate.getTime() + (Number(fileEntry.premium_data.expire_day) || 15) * 24 * 60 * 60 * 1000);
         
         const diffMs = fifteenDaysLater - now;
         
@@ -305,9 +305,6 @@ app.get("/t/:id/:passwd", async (req, res) => {
           return res.status(410).render("errfile", { status: "Le fichier a expiré !", v: pkg.version });
         } else {
           const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-          const diffHours = Math.floor((diffMs / (1000 * 60 * 60)) % 24);
-          const diffMinutes = Math.floor((diffMs / (1000 * 60)) % 60);
-          const diffSeconds = Math.floor((diffMs / 1000) % 60);
         
           res.status(200).render("download", { fileName: decryptedFileName, passwd: passwd,  fileExpir: diffDays, fileID: fileID, fileSize: fSize, v: pkg.version });
 

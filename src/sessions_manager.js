@@ -117,24 +117,27 @@ class session {
               premium_parms: session_parms.premium_parms,
               size: session_parms.size,
               time: {
-                d: date.getDay(),
+                d: date.getDate(),
                 m: date.getMonth(),
                 y: date.getFullYear()
               }
             };
+
+            if (transfert == null) return;
     
             const id = session_parms.id;
             const user = jsonData[user_id];
-    
+      
             if (!user) return { error: true, message: "Utilisateur non trouvé" };
-    
+      
             if (!user.transferts) user.transferts = {};
-            if (!user.transferts[id]) user.transferts[id] = {};
+            user.transferts[id] = {};
             user.transferts[id] = transfert;
-    
+      
             jsonData[user_id] = user;
             await fs.writeFile(user_db_file, JSON.stringify(jsonData, null, 2), );
             return { error: false, data: transfert, id: id };
+
 
           }
     

@@ -198,7 +198,7 @@
             <th>id</th>
             <th>Date</th>
             <th>Taille</th>
-            <th>Date d'éxpiration</th>
+            <th>Expiration dans</th>
             <th>actions</th>
           </tr>
         </thead>
@@ -213,58 +213,86 @@
 
   <script type="module" defer>
 
-  async function init() {
-      try {
-          const response = await fetch('/premium/user/profil?res=data');
-          const data = await response.json();
+async function init() {
+    const tbody = document.getElementById('tabler');
 
-          const transferts = data.lasts_transferts;
-          const tbody = document.getElementById('tabler');
-          tbody.innerHTML = ''; // Vide le tableau avant insertion
+    try {
+        const response = await fetch('/premium/user/profil?res=data');
+        const data = await response.json();
 
-          if (!transferts || Object.keys(transferts).length === 0) {
-              const row = document.createElement('tr');
-              row.innerHTML = `<td colspan="5">Aucun transfert trouvé</td>`;
-              tbody.appendChild(row);
-              return;
-          }
+        const transferts = data.lasts_transferts;
+        tbody.innerHTML = '';
 
-          Object.entries(transferts).forEach(([id, transfer]) => {
-              const row = document.createElement('tr');
+        if (!transferts || Object.keys(transferts).length === 0) {
+            const row = document.createElement('tr');
+            row.innerHTML = `<td colspan="5">Aucun transfert trouvé</td>`;
+            tbody.appendChild(row);
+            return;
+        }
 
-              const expiration = transfer.premium_parms?.premium_expire_date ?? 'N/A';
-              const time = transfer.time
-                  ? `${String(transfer.time.d)}/${String(transfer.time.m)}/${String(transfer.time.y)}`
-                  : 'N/A';
-              const size = `${(transfer.size / (1024 * 1024)).toFixed(2)} Mo`;
+        function parseDate(str) {
+          const [day, month, year] = str.split('-').map(Number);
+          return new Date(year, month - 1, day); // mois = 0-indexé
+        }
 
-              row.innerHTML = `
-                  <td data-label="ID">${id}</td>
-                  <td data-label="Durée">${time}</td>
-                  <td data-label="Taille">${size}</td>
-                  <td data-label="Expiration">${expiration} jours</td>
-                  <td data-label="Actions">
-                      <button data-tooltip="Supprimer le transfert" class="tooltip td-btn delete-btn" data-id="${id}">
-                          <i class="bi bi-trash"></i>
-                      </button>
-                  </td>
-              `;
+        Object.entries(transferts).forEach(([id, transfer]) => {
+            const row = document.createElement('tr');
 
-              tbody.appendChild(row);
-          });
-      } catch (error) {
-          console.error('Erreur lors du chargement des transferts :', error);
-      }
+            const expiration = transfer.premium_parms?.premium_expire_date ?? 'N/A';
+            const time = transfer.time
+                ? `${String(transfer.time.d).padStart(2, '0')}-${String(transfer.time.m).padStart(2, '0')}-${transfer.time.y}`
+                : 'N/A';
+            const size = `${(transfer.size / (1024 * 1024)).toFixed(2)} Mo`;
 
-    
-        tbody.addEventListener('click', (e) => {
-            if (e.target.closest('.delete-btn')) {
-                const row = e.target.closest('tr');
-                row.remove();
-                fetch('/premium/user/profil/del_transfert?id=' + id)
-            }   
+            const now = new Date();
+            const parsedDate = parseDate(time);
+            const fifteenDaysLater = new Date(parsedDate.getTime() + (Number(expiration) || 15) * 24 * 60 * 60 * 1000);
+            
+            const diffMs = fifteenDaysLater - now;
+            const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+              
+
+            row.innerHTML = `
+                <td data-label="ID">${id}</td>
+                <td data-label="Durée">${time}</td>
+                <td data-label="Taille">${size}</td>
+                <td data-label="Expiration">${diffDays} jours</td>
+                <td data-label="Actions">
+                    <button data-tooltip="Supprimer le transfert" class="tooltip td-btn delete-btn" data-id="${id}">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </td>
+            `;
+
+            tbody.appendChild(row);
         });
+
+    } catch (error) {
+        console.error('Erreur lors du chargement des transferts :', error);
     }
+
+    tbody.addEventListener('click', async (e) => {
+        const btn = e.target.closest('.delete-btn');
+        if (btn) {
+            const id = btn.getAttribute('data-id');
+            const row = btn.closest('tr');
+            row.remove();
+
+            try {
+                const delResponse = await fetch(`/premium/user/profil/del_transfert?id=${id}`, {
+                    method: 'POST',
+                });
+
+                if (!delResponse.ok) {
+                    console.warn(`Échec de la suppression du transfert ${id}`);
+                }
+            } catch (err) {
+                console.error(`Erreur lors de la suppression du transfert ${id} :`, err);
+            }
+        }
+    });
+}
+
   
     init();
 
