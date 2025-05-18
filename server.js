@@ -17,7 +17,8 @@ const ejs = require("ejs");
 const crypto = require("crypto");
 const bodyParser = require('body-parser');
 require('dotenv').config();
-// const helmet = require('helmet');
+const cookieParser = require('cookie-parser');
+
 
 const ifdev = true;
 
@@ -28,11 +29,11 @@ const config = require('./config/config.json');
 let pkg = require('./package.json');
 
 
-
+const session = require('./src/sessions_manager.js');
 const { decryptText } = require("./src/crypt.js");
 const { loadDatabase, resetDatabase } = require('./src/database.js'); 
 const { logToFile, originalConsoleError, originalConsoleLog, originalConsoleWarn } = require('./src/logger.js'); 
-const interval = require('./src/interval/archive.js'); interval.archive_stats();
+const { archive_stats } = require('./src/interval/archive.js'); archive_stats();
 const { verifyIfExpire } = require('./src/verifyIfExpire.js');
 
 
@@ -89,6 +90,7 @@ console.log("🔄 Démarrage de Express...");
 app.set('trust proxy', true);
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
+app.use(cookieParser());
 app.use(express.json({ limit: '16gb' }))
 app.use(express.urlencoded({ limit: '16gb', extended: true }))
 // app.use(helmet());
@@ -196,44 +198,23 @@ app.get("/index.js", (req, res) => {
 })
 
 app.get('/admin/stats', (req, res) => {
-
+ 
     if (req.query.mdp == process.env.stats_mdp) {
         res.render('stats');
     } else { res.json(false) }
 
 })
 
-app.get('/premium/user/profil', (req, res) => {
-    if (req.query.req == 'view') {
+app.get('/premium/user/profil', async (req, res) => {
+    if (req.query.res == 'view') {
         res.status(200).render('premium/profil');
-    } else if (req.query.req == 'data') {
+    } else if (req.query.res == 'data') {
 
-        res.status(200).json({
-            lasts_transferts: [
-                {
-                    id: "5436543",
-                    date: "10 mai 2025",
-                    taille: "14Go",
-                    expiration: "25 mai 2025",
-                    link: "https://caca.com/t/fds/fds"
-                },
-                {
-                    id: "5467786",
-                    date: "10 mai 2025",
-                    taille: "12Go",
-                    expiration: "25 mai 2025",
-                    link: "https://caca.com/t/fds/fds"
-                },
-                {
-                    id: "03425",
-                    date: "10 mai 2025",
-                    taille: "11Go",
-                    expiration: "25 mai 2025",
-                    link: "https://caca.com/t/fds/fds"
-                }
-            ]
-            // lasts_transferts: null
-        })
+        res.status(200).json(
+            { 
+                lasts_transferts: await session.verify(req.cookies.user_id, null, 'transferts')
+            }
+        );
 
     } else {
         res.redirect('/premium/user/profil?req=view')

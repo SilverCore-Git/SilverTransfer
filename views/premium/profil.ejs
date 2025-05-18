@@ -199,7 +199,6 @@
             <th>Date</th>
             <th>Taille</th>
             <th>Date d'éxpiration</th>
-            <th>link</th>
             <th>actions</th>
           </tr>
         </thead>
@@ -214,45 +213,49 @@
 
   <script type="module" defer>
 
-        async function init() {
-        let response = await fetch('/premium/user/profil?req=data');
-        let data = await response.json();
-    
-        let transferts = data.lasts_transferts;
+  async function init() {
+      try {
+          const response = await fetch('/premium/user/profil?res=data');
+          const data = await response.json();
 
-        const tbody = document.getElementById('tabler');
-    
-        if (!transferts) {
-            const row = document.createElement('tr');
-        
-            row.innerHTML = `
-                <td>Aucun transfert trouvée</td>
-            `;
+          const transferts = data.lasts_transferts;
+          const tbody = document.getElementById('tabler');
+          tbody.innerHTML = ''; // Vide le tableau avant insertion
 
-            tbody.appendChild(row);
-        } else {
-            transferts.forEach(transfer => {
-                const row = document.createElement('tr');
-        
-                row.innerHTML = `
-                <td data-label="id">${transfer.id}</td>
-                <td data-label="Date">${transfer.date}</td>
-                <td data-label="Taille">${transfer.taille}</td>
-                <td data-label="Date d'expiration">${transfer.expiration}</td>
-                <td data-label="link"><input type="url" value="${transfer.link}"></td>
-                <td data-label="actions">
-                    <button data-tooltip="Suprimer le transfert" class="tooltip td-btn delete-btn">
-                        <i class="bi bi-trash"></i>
-                    </button>
-                    <button data-tooltip="Visitez le lien" class="tooltip td-btn go-btn">
-                        <i class="bi bi-box-arrow-up-right"></i>
-                    </button>
-                </td>
-                `;
-        
-                tbody.appendChild(row);
-            });
-        }
+          if (!transferts || Object.keys(transferts).length === 0) {
+              const row = document.createElement('tr');
+              row.innerHTML = `<td colspan="5">Aucun transfert trouvé</td>`;
+              tbody.appendChild(row);
+              return;
+          }
+
+          Object.entries(transferts).forEach(([id, transfer]) => {
+              const row = document.createElement('tr');
+
+              const expiration = transfer.premium_parms?.premium_expire_date ?? 'N/A';
+              const time = transfer.time
+                  ? `${String(transfer.time.d)}/${String(transfer.time.m)}/${String(transfer.time.y)}`
+                  : 'N/A';
+              const size = `${(transfer.size / (1024 * 1024)).toFixed(2)} Mo`;
+
+              row.innerHTML = `
+                  <td data-label="ID">${id}</td>
+                  <td data-label="Durée">${time}</td>
+                  <td data-label="Taille">${size}</td>
+                  <td data-label="Expiration">${expiration} jours</td>
+                  <td data-label="Actions">
+                      <button data-tooltip="Supprimer le transfert" class="tooltip td-btn delete-btn" data-id="${id}">
+                          <i class="bi bi-trash"></i>
+                      </button>
+                  </td>
+              `;
+
+              tbody.appendChild(row);
+          });
+      } catch (error) {
+          console.error('Erreur lors du chargement des transferts :', error);
+      }
+
     
         tbody.addEventListener('click', (e) => {
             if (e.target.closest('.delete-btn')) {

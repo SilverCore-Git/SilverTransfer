@@ -72,8 +72,67 @@
             "s": 31
           }
         }
+      },
+      "2025-5-18": {
+        "fea36cf6-42c4-4e91-becb-f6aa2c61d17b": {
+          "ip": "::ffff:127.0.0.1",
+          "user_agents": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:138.0) Gecko/20100101 Firefox/138.0",
+          "status": "open",
+          "duration": "",
+          "time": {
+            "h": 11,
+            "mn": 14,
+            "s": 45
+          }
+        },
+        "f62b6499-5daa-4769-b40b-2c2a686b82ba": {
+          "ip": "::ffff:127.0.0.1",
+          "user_agents": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:138.0) Gecko/20100101 Firefox/138.0",
+          "status": "open",
+          "duration": "",
+          "time": {
+            "h": 11,
+            "mn": 40,
+            "s": 7
+          }
+        },
+        "c5ae0453-a806-47eb-b1db-dacdded745ea": {
+          "ip": "::ffff:127.0.0.1",
+          "user_agents": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:138.0) Gecko/20100101 Firefox/138.0",
+          "status": "open",
+          "duration": "",
+          "time": {
+            "h": 11,
+            "mn": 41,
+            "s": 2
+          }
+        },
+        "a40a19b8-dbea-4ed6-9146-173e9e66160a": {
+          "ip": "::ffff:127.0.0.1",
+          "user_agents": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:138.0) Gecko/20100101 Firefox/138.0",
+          "status": "open",
+          "duration": "",
+          "time": {
+            "h": 11,
+            "mn": 43,
+            "s": 48
+          }
+        }
       }
     },
-    "transferts": []
+    "transferts": {
+      "81": {
+        "premium": true,
+        "premium_parms": {
+          "premium_expire_date": "15"
+        },
+        "size": 2692608,
+        "time": {
+          "d": 5,
+          "m": 10,
+          "y": 2020
+        }
+      }
+    }
   }
 }

@@ -11,10 +11,12 @@ const router = express.Router();
 const multer = require("multer");
 const path = require('path');
 
+
 const config = require('../config/config.json');
 const { loadDatabase, saveDatabase } = require('../src/database.js');
 const { getCurrentDate, getCurrentTime } = require('../src/datemanager.js')
 const { encryptFile, encryptText } = require("../src/crypt.js");
+const session = require('../src/sessions_manager.js');
 const key = require('../src/key_manager.js');
 
 let fileDatabase = {};
@@ -120,6 +122,8 @@ router.get('/file', async (req, res) => {
 
 router.post('/file', upload.single("file"), async (req, res) => {
 
+    const user_id = req.cookies.user_id;
+
     // if (req.hostname === config.hostname) {
 
         console.log("📥 Réception d'une requête : ", `/upload/file`);
@@ -146,6 +150,15 @@ router.post('/file', upload.single("file"), async (req, res) => {
             id: fileID,
             premium: ifpremium
         });
+
+        session.create('transfert', {
+            premium: ifpremium,
+            premium_parms: ifpremium ? {
+                premium_expire_date
+            } : null,
+            id: fileID,
+            size: req.file.size
+        }, user_id);
 
         console.log('Fichier reçu, chiffrement en cours...');
 

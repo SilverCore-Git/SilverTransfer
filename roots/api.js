@@ -1,9 +1,6 @@
 // packages
 const express = require("express");
 const router = express.Router();
-const cookieParser = require('cookie-parser');
-
-router.use(cookieParser());
 
 const Stats = require('../src/stats_manager.js');
 

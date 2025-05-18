@@ -2,6 +2,7 @@
 const fs = require('fs').promises;
 const path = require('path');
 const { randomUUID  } = require('crypto');
+const { isTypedArray } = require('util/types');
 
 const user_db_file = path.join(__dirname, '../db/users.json');
 
@@ -24,19 +25,30 @@ class session {
 
     async create(
         type = "temp", 
+
         session_parms = {
+          // for temp session
           user_agent: "",
           user_ip: "",
+
           premium: false,
-          premium_parms: {}
+          premium_parms: {},
+
+          // for transfert
+          id: "",
+          size: ""
+
         },
         user_id = null
       ) {
+
         try {
+
           const rawData = await fs.readFile(user_db_file, 'utf8');
           const jsonData = JSON.parse(rawData);
     
           if (type === 'first') {
+
             const user_id = this.create_id('user');
             const user_data = {
               user_info: {
@@ -54,7 +66,10 @@ class session {
             await fs.writeFile(user_db_file, JSON.stringify(jsonData, null, 2));
             return { error: false, data: user_data, id: user_id };
     
-          } else if (type === 'temp') {
+          } 
+          
+          else if (type === 'temp') {
+
             if (!user_id) {
               return { error: true, message: "user_id requis pour une session temporaire", id: user_id };
             }
@@ -86,6 +101,41 @@ class session {
             jsonData[user_id] = user;
             await fs.writeFile(user_db_file, JSON.stringify(jsonData, null, 2), );
             return { error: false, data: session_data, id: session_id };
+
+          }
+
+          else if (type == 'transfert') {
+
+            if (!user_id) {
+              return { error: true, message: "user_id requis pour une session temporaire", id: user_id };
+            }
+    
+            const date = new Date();
+
+            const transfert = {
+              premium: session_parms.premium,
+              premium_parms: session_parms.premium_parms,
+              size: session_parms.size,
+              time: {
+                d: date.getDay(),
+                m: date.getMonth(),
+                y: date.getFullYear()
+              }
+            };
+    
+            const id = session_parms.id;
+            const user = jsonData[user_id];
+    
+            if (!user) return { error: true, message: "Utilisateur non trouvé" };
+    
+            if (!user.transferts) user.transferts = {};
+            if (!user.transferts[id]) user.transferts[id] = {};
+            user.transferts[id] = transfert;
+    
+            jsonData[user_id] = user;
+            await fs.writeFile(user_db_file, JSON.stringify(jsonData, null, 2), );
+            return { error: false, data: transfert, id: id };
+
           }
     
         } catch (err) {
@@ -93,20 +143,36 @@ class session {
         }
     }
 
-    async verify(user_id = null, session_id = null) {
+    async verify(user_id = null, session_id = null, type = 'session') {
 
       try {
 
-        const data = await fs.readFile(user_db_file, 'utf8');
-        const jsonData = JSON.parse(data);
-    
-        const date = new Date();
-        const dateKey = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
-    
-        const user = jsonData[user_id];
-        if (!user?.sessions?.[dateKey]?.[session_id]) return false;
-    
-        return user.sessions[dateKey][session_id];
+        if (type == 'session') {
+
+          const data = await fs.readFile(user_db_file, 'utf8');
+          const jsonData = JSON.parse(data);
+      
+          const date = new Date();
+          const dateKey = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+      
+          const user = jsonData[user_id];
+          if (!user?.sessions?.[dateKey]?.[session_id]) return false;
+      
+          return user.sessions[dateKey][session_id];
+
+        }
+
+        else if (type == 'transferts') {
+
+          const data = await fs.readFile(user_db_file, 'utf8');
+          const jsonData = JSON.parse(data);
+
+          const user = jsonData[user_id];
+          if (!user?.transferts) return false;
+      
+          return user.transferts;
+
+        }
     
       } catch (err) {
         return { error: true, message: err };
