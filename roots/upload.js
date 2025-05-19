@@ -158,14 +158,14 @@ router.post('/file', upload.single("file"), async (req, res) => {
             const public_key = await key.read(fileID, 'public');
             await encryptFile(tempFilePath, encryptedFilePath, public_key);
 
-            await session.create('transfert', {
-                premium: ifpremium,
-                premium_parms: ifpremium ? {
-                    premium_expire_date
-                } : null,
-                id: fileID,
-                size: req.file.size
-            }, user_id);    
+            // await session.create('transfert', {
+            //     premium: ifpremium,
+            //     premium_parms: ifpremium ? {
+            //         premium_expire_date
+            //     } : null,
+            //     id: fileID,
+            //     size: req.file.size
+            // }, user_id);    
 
             fileDatabase[fileID] = {
                 fileName: encryptedFileName,

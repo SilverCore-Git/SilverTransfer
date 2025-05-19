@@ -2,37 +2,78 @@
 const fs = require('fs');
 const path = require('path');
 
-const statsPath = path.join(__dirname, '../db/stats.json');
+let statsPath = path.join(__dirname, '../db/stats.json');
 const archive_dir = path.join(__dirname, '../db/archives');
 const stats_archive_dir = path.join(__dirname, '../db/archives/stats');
 
 class stats {
     
-    load() {
+    load(archive = false, date = null) {
 
-        if (!fs.existsSync(statsPath)) {
-            return {
-                stats_db: {
-                date: new Date().toLocaleDateString('fr-FR'),
-                id: Math.random().toString(36).substring(2, 10)
-                },
-                visit: {
-                général: {
-                    ip: {},
-                    all: 0,
-                    unique: 0,
-                    country: {},
-                    device: {},
-                    browser: {},
-                    os: {},
-                    referrer: {},
-                    pages: {}
+        try {
+
+            if (archive) {
+
+                const ddate = date.replace('-', '.');
+                statsPath = path.join(__dirname, `../db/archives/stats_silvertransfert_${ddate}.json`);
+
+                if (!fs.existsSync(statsPath)) {
+                    return {
+                        stats_db: {
+                        date: new Date().toLocaleDateString('fr-FR'),
+                        id: Math.random().toString(36).substring(2, 10)
+                        },
+                        visit: {
+                        général: {
+                            ip: {},
+                            all: 0,
+                            unique: 0,
+                            country: {},
+                            device: {},
+                            browser: {},
+                            os: {},
+                            referrer: {},
+                            pages: {}
+                        }
+                        }
+                    };
                 }
-                }
-            };
+
+                return JSON.parse(fs.readFileSync(statsPath));
+
+            }
+
+
+            if (!fs.existsSync(statsPath)) {
+                return {
+                    stats_db: {
+                    date: new Date().toLocaleDateString('fr-FR'),
+                    id: Math.random().toString(36).substring(2, 10)
+                    },
+                    visit: {
+                    général: {
+                        ip: {},
+                        all: 0,
+                        unique: 0,
+                        country: {},
+                        device: {},
+                        browser: {},
+                        os: {},
+                        referrer: {},
+                        pages: {}
+                    }
+                    }
+                };
+            }
+
+            return JSON.parse(fs.readFileSync(statsPath));
+
+        }
+        catch (err) {
+            console.error({ error: true, message: err });
+            return { error: true, message: err };
         }
 
-        return JSON.parse(fs.readFileSync(statsPath));
     }
 
     archive(data) {

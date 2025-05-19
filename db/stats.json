@@ -6,35 +6,35 @@
   "visit": {
     "général": {
       "ip": {},
-      "all": 155,
-      "unique": 155,
+      "all": 159,
+      "unique": 159,
       "country": {
-        "fr": 131,
+        "fr": 135,
         "unknown": 11,
         "us": 5,
         "ca": 1,
         "es": 7
       },
       "device": {
-        "desktop": 104,
+        "desktop": 108,
         "mobile": 51
       },
       "browser": {
-        "firefox": 57,
+        "firefox": 61,
         "chrome": 68,
         "autre": 4,
         "safari": 24,
         "edge": 2
       },
       "os": {
-        "windows": 85,
+        "windows": 89,
         "linux": 37,
         "autre": 5,
         "mac": 26,
         "android": 2
       },
       "referrer": {
-        "direct": 109,
+        "direct": 113,
         "www.silvertransfert.fr": 8,
         "www.google.com": 16,
         "www.silvercore.fr": 7,
@@ -46,8 +46,8 @@
         "localhost": 9
       },
       "pages": {
-        "/t": 52,
-        "/": 103
+        "/t": 53,
+        "/": 106
       }
     },
     "2025-05-07": {
@@ -280,6 +280,23 @@
       },
       "ips": {
         "::ffff:127.0.0.1": 16
+      }
+    },
+    "2025-05-19": {
+      "all": 4,
+      "unique": 4,
+      "country": {
+        "fr": 4
+      },
+      "device": {
+        "desktop": 4
+      },
+      "pages": {
+        "/": 3,
+        "/t": 1
+      },
+      "ips": {
+        "::ffff:127.0.0.1": 4
       }
     }
   }

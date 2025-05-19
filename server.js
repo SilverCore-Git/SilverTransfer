@@ -116,8 +116,8 @@ app.use((req, res, next) => {
     if (host === 'premium.silvertransfert.fr') {
         express.static(path.join(__dirname, 'premium'))(req, res, next);
     } else {
-        express.static(path.join(__dirname, 'premium'))(req, res, next);
-        //express.static(path.join(__dirname, 'public'))(req, res, next); 
+        //express.static(path.join(__dirname, 'premium'))(req, res, next);
+        express.static(path.join(__dirname, 'public'))(req, res, next); 
     }
 });
 

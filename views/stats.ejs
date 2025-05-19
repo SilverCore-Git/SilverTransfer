@@ -102,7 +102,7 @@
   </div>
 
   <script>
-    fetch('/api/stats/view')
+    fetch('/api/stats/view?archive=<%= ifarchive %>&date=<%= date %>&mdp=<%= mdp %>')
       .then(res => res.json())
       .then(data => {
         const container = document.getElementById('stats-container');

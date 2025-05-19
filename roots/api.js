@@ -85,13 +85,24 @@ router.post('/stats', (req, res) => {
 });
 
 router.get('/stats/view', (req, res) => {
+
+  const archive = req.query.archive == 1 ? true : false;
+  const date = req.query.date;
+
+  if (req.query.mdp == process.env.stats_mdp_api) {
+
     try {
-      const stats = Stats.load();
+
+      const stats = Stats.load(archive, date);
       res.setHeader('Content-Type', 'application/json');
       res.send(JSON.stringify(stats, null, 4));
+
     } catch (err) {
-      res.status(500).json({ error: 'Erreur lors du chargement des statistiques' });
+      res.status(500).json({ error: true, message: err });
+      console.error({ error: true, message: err });
     }
+
+  } else { res.json(false) }
 });
 
 
