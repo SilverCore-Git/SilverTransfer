@@ -185,6 +185,8 @@ const get_file = async (file: File) => {
 }
 
 const send_file = async () => {
+    
+    form('sending');
 
     const id: number = await fetch(`https://www.silvertransfert.fr/upload/create/id`).then(res => res.json()).then(res => res.id);
     const passwd: string = await fetch(`https://www.silvertransfert.fr/passwd/${crypt_strong.value}`).then(res => res.json());
@@ -207,17 +209,21 @@ const send_file = async () => {
     await send({
 
         file: selectedFile.value,
-        url: `https://www.silvertransfert.fr/upload/file?passwd=${passwd}&id=${id}&user=ip`,
+        url: `https://www.silvertransfert.fr/upload/file?passwd=${passwd}&id=${id}&user=ip&premium=0&premium_expire_date=15`,
 
         onProgress: (percent, eta) => {
             upload_progress.value = percent;
             console.log(`Progress: ${percent}%`, eta);
+
+            if (percent == 100) {
+                setTimeout(() => {
+                    form('done');
+                }, 2000)
+            }
         },
 
         onSuccess: (res) => {
-            salert('Téléversement terminer !', 'success');
-            console.log('Upload terminé !', res);
-            form('done');
+            console.log('Récéption terminé !', res);
         },
 
         onError: (msg) => {
