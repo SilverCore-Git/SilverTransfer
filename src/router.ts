@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import Home from './views/Home.vue'
-import Confidential from './views/Confidential.vue';
 
 const routes = [
   { 
@@ -9,14 +8,7 @@ const routes = [
     name: 'Home', 
     component: Home,
     props: {},
-    meta: { title: 'Silvercore' }
-  },
-  { 
-    path: '/confidential', 
-    name: 'confidential', 
-    component: Confidential,
-    props: {},
-    meta: { title: 'Silvercore - confidentialité' }
+    meta: { title: 'Silvertransfert - outil de transfert de fichier volumineux gratuit' }
   }
 ]
 

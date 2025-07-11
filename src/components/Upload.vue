@@ -5,7 +5,7 @@
     <div class="card">
 
         <router-link to="/" >
-            <h1 class="title">SilverTransfert</h1>
+            <h1 class="title notranslate">SilverTransfert</h1>
         </router-link>
 
         <h2 class="text-2xl font-medium mt-2">Choisissez votre fichier</h2>

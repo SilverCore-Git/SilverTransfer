@@ -5,7 +5,7 @@
         <div class="card bg-gray-800 rounded-xl p-6 w-full max-w-xl text-center">
 
             <a href="/">
-                <h1 class="title">SilverTransfert</h1>
+                <h1 class="title notranslate">SilverTransfert</h1>
             </a>
 
             <h2 class="text-2xl ">Téléversement terminé !</h2>

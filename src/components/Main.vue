@@ -4,7 +4,7 @@
 
         <div class="card">
 
-            <a class="title" href="/"><h1>SilverTransfert</h1></a>
+            <a class="title notranslate" href="/"><h1>SilverTransfert</h1></a>
             <h2>Outil de transfert de fichiers</h2>
                 
             <ul class="font-bold my-5">

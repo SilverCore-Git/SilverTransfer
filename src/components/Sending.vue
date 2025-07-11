@@ -8,7 +8,7 @@
 
                 <h1 class="flex flex-col gap-2">
 
-                    <span class="title">SilverTransfert</span>
+                    <span class="title notranslate">SilverTransfert</span>
                     <div class="text-2xl font-medium">{{ statusMessage }}</div>
                     <span class="text-lg font-normal">{{ timeLeft }}</span>
 
