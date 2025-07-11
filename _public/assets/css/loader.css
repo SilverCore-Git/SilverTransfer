@@ -1,0 +1,234 @@
+
+#loader {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+
+
+/* From Uiverse.io by adamgiebl */ 
+.dots-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .dot {
+    height: 25px;
+    width: 25px;
+    margin-right: 20px;
+    border-radius: 200px;
+    background-color: #b3d4fc;
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+  
+  .dot:last-child {
+    margin-right: 0;
+  }
+  
+  .dot:nth-child(1) {
+    animation-delay: -0.3s;
+  }
+  
+  .dot:nth-child(2) {
+    animation-delay: -0.1s;
+  }
+  
+  .dot:nth-child(3) {
+    animation-delay: 0.1s;
+  }
+
+  .dot:nth-child(4) {
+    animation-delay: 0.3s;
+  }
+
+  .dot:nth-child(5) {
+    animation-delay: 0.5s;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(0.8);
+      background-color: #b3d4fc;
+      box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
+    }
+  
+    50% {
+      transform: scale(1.2);
+      background-color: #6793fb;
+      box-shadow: 0 0 0 10px rgba(178, 212, 252, 0);
+    }
+  
+    100% {
+      transform: scale(0.8);
+      background-color: #b3d4fc;
+      box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
+    }
+  }
+
+
+
+
+
+/* progressbar */
+.progress {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  color: rgb(255, 255, 255);
+}
+
+
+.progress .bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  min-width: 300px;
+}
+
+@media (max-width: 1666px) {
+  .bar .div {
+    width: 50%;
+  }
+}
+@media (max-width: 1250px) {
+  .bar .div {
+    width: 60%;
+  }
+}
+@media (max-width: 900px) {
+  .bar .div {
+    width: 80%;
+  }
+}
+@media (max-width: 560px) {
+  .bar .div {
+    width: 90%;
+  }
+}
+
+
+.bar progress {
+  width: 90%;
+  height: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  appearance: none;
+  margin-bottom: 2.8rem;
+  background-color: rgba(0,0,0,0.2);
+  border: none;
+}
+
+/* Style pour WebKit (Chrome, Safari) */
+.bar progress::-webkit-progress-bar {
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.bar progress::-webkit-progress-value {
+  background: linear-gradient(90deg, #ff416c, #ff4b2b);
+  border-radius: 10px;
+  transition: width 0.5s ease-in-out;
+}
+
+/* Style pour Firefox */
+.bar progress::-moz-progress-bar {
+  background: linear-gradient(90deg, #ff416c, #ff4b2b);
+  border-radius: 10px;
+}
+
+/* Animation de glow */
+.bar progress::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.2);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.bar progress:hover::after {
+  opacity: 1;
+}
+
+
+
+/* From Uiverse.io by satyamchaudharydev */ 
+.loader-end {
+  display: none;
+  --height-of-loader: 10px;
+  --loader-color: linear-gradient(90deg, #ff416c, #ff4b2b);
+  width: 90%;
+  height: var(--height-of-loader);
+  border-radius: 30px;
+  background-color: rgba(0,0,0,0.2);
+  position: relative;
+  margin-bottom: 2.8rem;
+}
+
+.loader-end::before {
+  content: "";
+  position: absolute;
+  background: var(--loader-color);
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  border-radius: 30px;
+  animation: moving 1s ease-in-out infinite;
+  ;
+}
+
+@keyframes moving {
+  50% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0;
+    right: 0;
+    left: unset;
+  }
+}
+
+
+
+/* From Uiverse.io by satyamchaudharydev */ 
+.loader {
+  --size: 40px;
+  display: flex;
+  gap: 3rem;
+ }
+ 
+ .box {
+  width: var(--size);
+  height: var(--size);
+  background: linear-gradient(45deg, 
+  #00f4ff, #0048ff, #7a00ff, #ff00c8, #ff0073);
+  border-radius: 10rem;
+  animation: rotate 2s infinite;
+ }
+ 
+ .box:nth-child(2) {
+  animation-delay: 0.25s;
+ }
+ 
+ .box:nth-child(3) {
+  animation-delay: 0.5s;
+ }
+ 
+ @keyframes rotate {
+  50% {
+   transform: rotate(180deg)
+  }
+ }

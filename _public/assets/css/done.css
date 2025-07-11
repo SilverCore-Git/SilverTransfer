@@ -1,0 +1,140 @@
+/**
+ * @author SilverCore
+ * @author SilverTransfer
+ * @author MisterPapaye
+ */
+
+
+#done {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+#done .card {
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-top: 0rem;
+    padding-bottom: 2.2rem;
+}
+
+#done div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    max-width: 300px;
+    margin: auto;
+    margin-bottom: 1rem;
+
+    background: none;
+    border-radius: 10px;
+}
+
+.input-container label {
+    margin-bottom: 0.4rem;
+    font-size: 1.1rem;
+}
+
+input {
+    flex: 1;
+    width: 15rem;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    margin-bottom: 0.8rem;
+    font-size: 16px;
+    outline: none;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid #6a11cb; 
+    transition: 0.3s;
+}
+
+
+.copy-btn {
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-left: 5px;
+    color: rgb(255, 255, 255);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.3);
+}
+
+.copy-btn:hover {
+    background: #6a11cb;
+}
+
+.copy-btn:active {
+    transform: scale(0.95);
+}
+
+
+
+
+.qr-container label {
+    margin-top: 0.4rem;
+    font-size: 1rem;
+    color: black;
+}
+
+.download-btn {
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    border: none;
+    padding: 15px 25px;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(42, 82, 190, 0.5);
+    transition: all 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    margin-top: 20px;
+    letter-spacing: 1px;
+}
+
+.download-btn:active {
+    transform: scale(0.90);
+    box-shadow: 0 3px 10px rgba(42, 82, 190, 0.8);
+}
+
+.download-btn:hover {
+    transform: scale(1.02);
+}
+
+.qr-container {
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.qr-container label {
+    margin-bottom: 0.4rem;
+    font-size: 1.1rem;
+    color: white;
+}
+
+canvas {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 0.8rem;
+}
+
+.labelLL:hover {
+    text-decoration: underline;
+}
