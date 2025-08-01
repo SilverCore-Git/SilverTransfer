@@ -6,7 +6,7 @@ https://www.silvertransfert.fr
 
 repo avancé par rapport a la prod
 
-## FrameWork :
+## libs :
 - express
 - multer
 - fs
