@@ -17,7 +17,6 @@ repo avancé par rapport a la prod
 
 ---
 
-by [SilverCore](https://github.com/SilverCore-Git) 👑 [Vous pouvez nous aider](https://tipeee.com/silverdium) 😎💸<br>
 Merci de soutenir les projets SilverCore ❤️ !<br>
-🔐 **L'utilisation de ce code est autoriser seulement a but non lucratif et privé avec un fork public !!** 🛡️<br>
+🔐 **L'utilisation de ce code est strictement defendu !!** 🛡️<br>
 ⭐  SilverCore ©️ Tous droits reservés  ⭐
