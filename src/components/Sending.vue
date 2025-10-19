@@ -29,14 +29,26 @@
 
                 </div>
 
-                <div class="flex flex-row gap-3 font-bold text-lg">
+                <div class="flex flex-col gap-3 font-bold text-lg">
                     <span>Un problème ?</span>
-                    <a
-                        href="https://discord.gg/mKs3uMTJWM"
-                        target="_blank"
-                        class="underline"
-                        >Discord - support</a
-                    >
+
+                    <div class="flex flex-row gap-3">
+
+                        <a
+                            href="https://discord.gg/mKs3uMTJWM"
+                            target="_blank"
+                            class="underline"
+                            >Discord - support</a
+                        >
+
+                        <a
+                            href="https://support.silvercore.fr"
+                            target="_blank"
+                            class="underline"
+                            >support silvercore</a
+                        >
+
+                    </div>
                 </div>
 
             </div>

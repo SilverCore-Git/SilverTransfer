@@ -50,10 +50,8 @@
             <div class="flex flex-row gap-3 font-bold text-lg mt-5">
                 <span>Nous contacter ?</span>
                 <a
-                    href="https://discord.gg/ftFhQTJsQ5"
-                    target="_blank"
-                    class="underline"
-                    >Discord - SilverCore</a
+                    href="mailto:contact@silvercore.fr"
+                    >contact@silvercore.fr</a
                 >
             </div>
 
