@@ -64,20 +64,16 @@
 import { ref } from 'vue'
 
 const ending_bar = ref<boolean>(false);
-const statusMessage = ref('Téléversement en cours...')
-const timeLeft = ref('0mn 0s restants')
+const statusMessage = ref('Téléversement en cours...');
 
 const props = defineProps<{
     value: number;
+    timeLeft: string;
 }>()
 
 const interval = setInterval(() => {
 
     if (props.value < 100) {
-        const secondsLeft = (100 - props.value) * 0.5
-        const minutes = Math.floor(secondsLeft / 60)
-        const seconds = Math.floor(secondsLeft % 60)
-        timeLeft.value = `${minutes}mn ${seconds}s restants`
     } else {
         statusMessage.value = 'Téléversement terminé !'
         clearInterval(interval)

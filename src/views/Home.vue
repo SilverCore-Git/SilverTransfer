@@ -16,6 +16,7 @@
 
         <Sending
             :value="upload_progress"
+            :time-left="timeLeft"
             v-if="sending"
         />
 
@@ -44,7 +45,7 @@
 
 <script lang="ts" setup>
 
-import { onMounted, ref, watch, type Ref } from 'vue';
+import { onMounted, ref, type Ref, nextTick } from 'vue';
 import { useRoute, useRouter } from 'vue-router'
 
 import send from '../assets/send';
@@ -73,6 +74,7 @@ const main = ref(false);
 const upload = ref(false);
 const sending = ref(false);
 const done = ref(false);
+const timeLeft = ref<string>('');
 
 const loader = ref(true);
 
@@ -88,24 +90,22 @@ onMounted(async () => {
 
     version = await fetch('https://corsproxy.io?url=https://www.silvertransfert.fr/version').then(res => res.json());
 
+    await nextTick();
+
     background();
 
     setInterval(() => {
         background();
-    }, 10 * 1000)
+    }, 10 * 1000);
 
-    setTimeout(() => {
+    await nextTick();
 
-        loader.value = false
+    router.push('/');
+    form('main');
 
-        const initial = route.query.form
-        if (typeof initial === 'string' && validForms.includes(initial as FormKey)) {
-            form(initial as FormKey)
-        } else {
-            form('main')
-        }
+    await nextTick();
 
-    }, 1000)
+    loader.value = false
 
 })
 
@@ -152,15 +152,6 @@ const query = (name: string, value: string) => {
 
 }
 
-watch(() => route.query.form, (newForm) => {
-
-    if (typeof newForm === 'string' && validForms.includes(newForm as FormKey)) {
-      form(newForm as FormKey)
-    }
-
-  }
-)
-
 const get_file = async (file: File) => {
 
     query('f_name', file.name);
@@ -206,7 +197,7 @@ const send_file = async () => {
         passwd
     }
 
-    await send({
+    send({
 
         file: selectedFile.value,
         url: `https://www.silvertransfert.fr/upload/file?passwd=${passwd}&id=${id}&user=ip&premium=0&premium_expire_date=15`,
@@ -214,6 +205,7 @@ const send_file = async () => {
         onProgress: (percent, eta) => {
             upload_progress.value = percent;
             console.log(`Progress: ${percent}%`, eta);
+            timeLeft.value = eta || "0mn 0s";
 
             if (percent == 100) {
                 setTimeout(() => {
