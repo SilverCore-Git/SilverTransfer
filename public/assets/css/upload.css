@@ -1,0 +1,113 @@
+/**
+ * @author SilverCore
+ * @author SilverTransfer
+ * @author MisterPapaye
+ */
+
+
+#upload {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+
+.card {
+  position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    max-width: 450px;
+
+    background: linear-gradient(144deg,#AF40FF, #5B42F3,#00DDEB);
+    padding: 0 1rem 1.5rem 1rem;
+    border-radius: 25px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+
+}
+
+.card h1 {
+    font-size: 2rem;
+}
+.card h2 {
+    margin-top: -1.5rem;
+    font-size: 1.5rem;
+}
+
+
+
+
+
+
+
+  /* From Uiverse.io by eirikvold */ 
+.send-btn {
+    display: flex;
+    font-family: inherit;
+    font-size: 22px;
+    background: linear-gradient(to bottom, rgb(255, 20, 165) 0%,#e413ff 100%);
+    color: white;
+    padding: 0.8em 1.2em;
+    margin-bottom: 1rem;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s;
+  }
+  
+  .send-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .send-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .send-btn span {
+    display: block;
+    margin-left: 0.4em;
+    font-size: 1.5rem;
+    transition: all 0.3s;
+  } 
+  .send-btn:active .svg-wrapper {
+    transform: translateX(1rem); 
+  }
+
+  .send-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: white;
+    transition: all 0.3s;
+  }
+  
+  .send-btn .svg-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin-right: 0.5em;
+    transition: all 0.3s;
+  }
+  
+  .send-btn:hover .svg-wrapper {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  
+  .send-btn:hover svg {
+    transform: rotate(45deg);
+  }
+  
+  

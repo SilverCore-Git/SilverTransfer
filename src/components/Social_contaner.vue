@@ -2,7 +2,7 @@
 
     <ul class="social-contaner">
 
-        <a target="_blank" href="https://www.silvercore.fr"> <li data-tooltip="Site de silvercore" class="social-icon"> <img src="https://www.silvercore.fr/silvercore_logo.svg" alt="logo silvercore" style="border-radius: 50rem;"> </li> </a>
+        <a target="_blank" href="https://www.silvercore.fr"> <li data-tooltip="Site de silvercore" class="social-icon"> <img src="https://www.silvercore.fr/silvercore_logo.svg" style="border-radius: 50rem;"> </li> </a>
         <a target="_blank" href="https://discord.gg/ftFhQTJsQ5"> <li data-tooltip="Discord SilverCore" class="social-icon"> <i class="bi bi-discord"> </i> </li> </a>
         <a target="_blank" href="https://discord.gg/mKs3uMTJWM"> <li data-tooltip="Discord support" class="social-icon"> <i class="bi bi-life-preserver"> </i> </li> </a>
         <a target="_blank" href="https://github.com/SilverCore-Git/SilverTransfer"> <li data-tooltip="Open source sur GitHub" class="social-icon"> <i class="bi bi-github"> </i> </li> </a>

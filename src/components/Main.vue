@@ -11,9 +11,8 @@
 
                 <li><i>🇫🇷</i> Hébergé en France</li>
                 <li><i class="bi bi-lock"></i> Chiffré de bout en bout</li>
-                <li><i class="bi bi-github"></i> Open source</li>
                 <li><i class="bi bi-heart"></i> Politique éthique</li>
-                <li><i class="bi bi-trash"></i> Supprimé après 15 jours<div style="margin-right: 16rem;"></div></li>
+                <li><i class="bi bi-trash"></i> Supprimé après 30 jours<div style="margin-right: 16rem;"></div></li>
                 <li><i class="bi bi-cloud-arrow-down"></i> Jusqu'à 10Go</li>
                 <li 
                     class="flex flex-row justify-start items-center cursor-pointer"

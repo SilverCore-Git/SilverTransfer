@@ -1,0 +1,262 @@
+/**
+ * @author SilverCore
+ * @author SilverTransfer
+ * @author MisterPapaye
+ */
+
+main {
+    display: flex;
+    justify-content: center; 
+    flex-direction: column;
+    align-items: center; 
+    height: 100vh;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+main h1 {
+    font-size: 2rem;
+}
+main h2 {
+    margin-top: -1rem;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.hero {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    background: linear-gradient(144deg,#AF40FF, #5B42F3,#00DDEB);
+    padding: 0rem 1rem 1.3rem 1rem;
+    border-radius: 25px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+
+}
+
+
+ 
+.hero ul { 
+    list-style: none;
+
+    font-size: 1.1rem;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+
+    text-align: left;
+    border-radius: 15px;
+}
+.hero ul  li:not(:last-child) {
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid black;
+}
+.hero ul li {
+    margin-left: 5px;
+    cursor: pointer;
+}
+.hero ul i,
+.hero ul img {
+    margin-right: 15px;
+}
+.hero ul img {
+    transform: translateY(3px);
+    border-radius: 1rem;
+}
+
+
+
+
+
+
+
+/* From Uiverse.io by Li-Deheng */ 
+.btn-conteiner {
+  margin-top: 10px;
+  margin-bottom: 1.1rem;
+
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  --color-text: #ffffff;
+  --color-background: #ff135a;
+  --color-outline: #ff145b80;
+  --color-shadow: #00000080;
+}
+
+.btn-content {
+  display: flex;
+  align-items: center;
+  padding: 3px 20px;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--color-text);
+  background: var(--color-background);
+  transition: 1s;
+  border-radius: 100px;
+  box-shadow: 0 0 0.2em 0 var(--color-background);
+}
+
+.btn-content:hover, .btn-content:focus {
+  transition: 0.5s;
+  -webkit-animation: btn-content 1s;
+  animation: btn-content 1s;
+  outline: 0.1em solid transparent;
+  outline-offset: 0.2em;
+  box-shadow: 0 0 0.4em 0 var(--color-background);
+}
+
+.btn-content .icon-arrow {
+  transition: 0.5s;
+  margin-right: 0px;
+  transform: scale(0.6);
+}
+
+.btn-content:hover .icon-arrow {
+  transition: 0.5s;
+  margin-right: 25px;
+}
+
+.icon-arrow {
+  width: 20px;
+  margin-left: 15px;
+  position: relative;
+  top: 6%;
+}
+  
+/* SVG */
+#arrow-icon-one {
+  transition: 0.4s;
+  transform: translateX(-60%);
+}
+
+#arrow-icon-two {
+  transition: 0.5s;
+  transform: translateX(-30%);
+}
+
+.btn-content:hover #arrow-icon-three {
+  animation: color_anim 1s infinite 0.2s;
+}
+
+.btn-content:hover #arrow-icon-one {
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.6s;
+}
+
+.btn-content:hover #arrow-icon-two {
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.4s;
+}
+
+/* SVG animations */
+@keyframes color_anim {
+  0% {
+    fill: white;
+  }
+
+  50% {
+    fill: var(--color-background);
+  }
+
+  100% {
+    fill: white;
+  }
+}
+
+/* Button animations */
+@-webkit-keyframes btn-content {
+  0% {
+    outline: 0.2em solid var(--color-background);
+    outline-offset: 0;
+  }
+}
+
+@keyframes btn-content {
+  0% {
+    outline: 0.2em solid var(--color-background);
+    outline-offset: 0;
+  }
+}
+
+
+
+
+
+.social-contaner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 2rem;
+  list-style: none;
+  transform: translateX(-20px);
+}
+
+
+.social-icon {
+  font-size: 2rem;
+  cursor: pointer;
+  color: rgb(0, 0, 0);
+  transition: all 0.3s;
+}
+
+.social-icon img {
+  width: 30px;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+
+.social-icon:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: black;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.social-icon:hover::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: black;
+  margin-bottom: -12px;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.social-icon::after,
+.social-icon::before {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out;
+}
+
