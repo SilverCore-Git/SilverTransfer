@@ -2,11 +2,11 @@
 
     "resetDB": false,
 
-    "expiretime": 15,
+    "expiretime": 30,
 
     "maxbyteforkey": 256,
 
-    "pushfilepath": "/upload/yourmother",
+    "pushfilepath": "/upload/file",
 
 
 

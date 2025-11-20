@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 
-let statsPath = path.join(__dirname, '../db/stats.json');
+const statsPath = path.join(__dirname, '../db/stats.json');
 const archive_dir = path.join(__dirname, '../db/archives');
 const stats_archive_dir = path.join(__dirname, '../db/archives/stats');
 
@@ -12,12 +12,12 @@ class stats {
 
         try {
 
-            if (archive) {
+            if (archive == true) {
 
                 const ddate = date.replace('-', '.');
-                statsPath = path.join(__dirname, `../db/archives/stats_silvertransfert_${ddate}.json`);
+                const sStatsPath = path.join(__dirname, `../db/archives/stats_silvertransfert_${ddate}.json`);
 
-                if (!fs.existsSync(statsPath)) {
+                if (!fs.existsSync(sStatsPath)) {
                     return {
                         stats_db: {
                         date: new Date().toLocaleDateString('fr-FR'),
@@ -39,7 +39,7 @@ class stats {
                     };
                 }
 
-                return JSON.parse(fs.readFileSync(statsPath));
+                return JSON.parse(fs.readFileSync(sStatsPath));
 
             }
 

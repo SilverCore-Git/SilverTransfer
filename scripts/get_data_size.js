@@ -1,6 +1,15 @@
-
+const checkDiskSpace = require('check-disk-space');
 
 const db = require('../db/database.json');
+const diskInfo = async () => {
+  try {
+    const { size, free } = await checkDiskSpace('/mnt/data');
+    console.log(`Taille totale : ${size} bytes`);
+    console.log(`Espace libre : ${free} bytes`);
+  } catch (err) {
+    console.error('Erreur :', err);
+  }
+};
 
 console.log('Démarage du scirpt')
 
@@ -27,4 +36,4 @@ function formatBytes(bytes) {
     return value.toFixed(2) + ' ' + sizes[i];
 }
 
-console.log('size data = ', formatBytes(size));
+console.log('size data = ', formatBytes(size), ' / ', diskInfo.size);

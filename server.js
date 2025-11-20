@@ -20,7 +20,7 @@ require('dotenv').config();
 const cookieParser = require('cookie-parser');
 
 
-const ifdev = true;
+const ifdev = false;
 
 
 const formatFileSize = require('./src/filesize.js')
@@ -117,12 +117,14 @@ app.use((req, res, next) => {
         express.static(path.join(__dirname, 'premium'))(req, res, next);
     } else {
         //express.static(path.join(__dirname, 'premium'))(req, res, next);
-        express.static(path.join(__dirname, 'public'))(req, res, next); 
+        express.static(path.join(__dirname, 'public'))(req, res, next);
     }
 });
 
-app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
 
+app.get("/assets/:a", (req, res) => {
+    res.status(200).sendFile(path.join(__dirname, `public/assets/${req.params.a}`))
+});
 
 
 console.log("✅ Express chargé");
@@ -186,7 +188,7 @@ app.get('/assets/img/background/:file', (req, res) => {
 });
 
 app.get('/assets/img/:file', (req, res) => {
-    res.status(200).sendFile(path.join( __dirname, `public/assets/img/${req.params.file}.png` ));
+    res.status(200).sendFile(path.join( __dirname, `public/assets/img/${req.params.file.endsWith('gnp') ? req.params.file : req.params.file+'.png'}` ));
 });
 
 
@@ -200,7 +202,9 @@ app.get("/index.js", (req, res) => {
 app.get('/admin/stats', (req, res) => {
  
     if (req.query.mdp == process.env.stats_mdp) {
-        res.render('stats');
+
+        res.render('stats', { mdp: process.env.stats_mdp_api, ifarchive: req.query.archive || 0, date: req.query.date || null });
+
     } else { res.json(false) }
 
 })
@@ -276,7 +280,7 @@ app.get("/t/:id/:passwd", async (req, res) => {
                     }
 
                 } else {
-                    return await res.render("download", { fileName: 'fileName', fileID: 'fileID', fileSize: 'fSize', passwd: 'e', fileExpir: '15', version: 'version', v: pkg.version });
+                    return await res.render("download", { fileName: 'fileName', fileID: 'fileID', fileSize: 'fSize', passwd: 'e', fileExpir: config.expiretime || 30, version: 'version', v: pkg.version });
                 }
 
             }
@@ -297,7 +301,7 @@ app.get("/t/:id/:passwd", async (req, res) => {
         const parsedDate = new Date(input.replace(" - ", "T"));
         
         const now = new Date();
-        const fifteenDaysLater = new Date(parsedDate.getTime() + (Number(fileEntry.premium_data.expire_day) || 15) * 24 * 60 * 60 * 1000);
+        const fifteenDaysLater = new Date(parsedDate.getTime() + (Number(fileEntry.premium_data.expire_day) || config.expiretime || 30) * 24 * 60 * 60 * 1000);
         
         const diffMs = fifteenDaysLater - now;
         

@@ -4,7 +4,7 @@
  * @author MisterPapaye
  */
 
-import { loader, file, gobtn, main, upload, link, progress, flach, done } from './assets/js/idclassloader.js';
+import { loader, file, btnsavoir, gobtn, main, upload, link, progress, flach, done } from './assets/js/idclassloader.js';
 
 loader.style.display = 'flex';
 file.style.display = 'flex'
@@ -16,7 +16,6 @@ done.style.display = 'none';
 import { salert } from './assets/js/salert.js';
 import { background } from './assets/js/background.js';
 import { send } from './assets/js/send.js';
-import session from './assets/js/session.js';
 import popups from './popups.js';
 
 //salert('Une nouvelle version de SilverTransfer vien d\'arriver !!<br><a href="/patchnotes" style="color: black; text-decoration: underline" target="_blank">En savoir plus !</a>', 'info')
@@ -198,14 +197,6 @@ async function loadApp() {
 
     background();
 
-    session.open("first", 0).then(r => {
-        session.open("temp", 0)
-    });
-
-    window.addEventListener('beforeunload', () => {
-        session.close();
-    });
-
     setInterval(() => {
         background();
     }, 10 * 1000);
@@ -237,14 +228,14 @@ async function loadApp() {
             stronger = 100;
         };
 
-        const passwd = await fetch(`/passwd/${stronger}?premium=1`).then(res => res.json());
-        let id = await fetch(`/upload/create/id?premium=1`).then(res => res.json());
+        const passwd = await fetch(`/passwd/${stronger}`).then(res => res.json());
+        let id = await fetch(`/upload/create/id`).then(res => res.json());
         id = id.id;
 
         await closemain();
         await closeform('upload');
         await sendFile('open');
-        await send(fileInput.files[0], passwd, id, true);
+        await send(fileInput.files[0], passwd, id);
 
     });
 

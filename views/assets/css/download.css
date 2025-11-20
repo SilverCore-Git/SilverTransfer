@@ -22,7 +22,7 @@ body {
 .card {
     position: relative;
 
-    background: linear-gradient(144deg,#AF40FF, #5B42F3,#00DDEB);
+    background: #1e2939;
    
     padding-right: 15px;
     padding-left: 15px;

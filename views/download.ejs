@@ -1,6 +1,6 @@
 <!-- 
  * @author SilverCore
- * @author SilverTransfer
+ * @author Silvertransfert
  * @author MisterPapaye
 -->
 
@@ -13,19 +13,19 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="hostname" content="www.silvertransfert.fr">
-        <meta name="copyright" content="2024 - 2025 SilverTransfer | SilverCore">
-        <meta name="author" content="SilverCore | SilverTransfer | MisterPapaye">
+        <meta name="copyright" content="2024 - 2025 Silvertransfert | SilverCore">
+        <meta name="author" content="SilverCore | Silvertransfert | MisterPapaye">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="theme-color" content="#AF40FF">
         <meta name="robots" content="noindex, nofollow">
 
-        <meta property="og:title" content="SilverTransfert | Télécharger : <%= fileName %>">
+        <meta property="og:title" content="Silvertransfert | Télécharger : <%= fileName %>">
         <meta property="og:description" content="Transfert de fichier GRATUIT, hébergé en France !! by SilverCore">
-        <meta property="og:site_name" content="SilverTransfer - Outils de Transfert">
+        <meta property="og:site_name" content="Silvertransfert - Outils de Transfert">
         <meta property="og:image" content="https://www.silverdium.fr/favicon.png">
         <meta property="og:locale" content="fr_FR">
 
-        <title>SilverTransfer | Télécharger : <%= fileName %></title>
+        <title>Silvertransfert | Télécharger : <%= fileName %></title>
 
         <link rel="stylesheet" href="/t/000/assets?file=download&ext=css">
         <script src="/t/000/assets?file=download&ext=js" type="module" defer></script>
@@ -46,7 +46,7 @@
 
             <div class="card">
 
-                <a href="/" target="_blank" style="text-decoration: none; color: white;"><h1>SilverTransfert</h1></a>
+                <a href="/" target="_blank" style="text-decoration: none; color: white;"><h1>Silvertransfert</h1></a>
 
                 <span class="rappel">Ce fichier sera supprimé dans <%= fileExpir %> jours</span>
                 
@@ -92,7 +92,7 @@
 
             <div class="card">
                 
-                <a href="/" target="_blank" style="text-decoration: none; color: white;"><h1 style="margin-top: -2.5rem;">SilverTransfert</h1></a>
+                <a href="/" target="_blank" style="text-decoration: none; color: white;"><h1 style="margin-top: -2.5rem;">Silvertransfert</h1></a>
 
                 <span class="rappel">Ce fichier sera supprimé dans <%= fileExpir %> jours</span>
                 
@@ -168,7 +168,7 @@
 
             <div class="card">
 
-                <a href="/" target="_blank" style="text-decoration: none; color: white;"><h1>SilverTransfert</h1></a>
+                <a href="/" target="_blank" style="text-decoration: none; color: white;"><h1>Silvertransfert</h1></a>
 
                 <span class="rappel">Ce fichier sera supprimé dans <%= fileExpir %> jours</span>
                 
@@ -209,11 +209,10 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
         <ul class="social-contaner">
             
-            <a target="_blank" href="https://www.silvercore.fr"> <li data-tooltip="Site de silvercore" class="social-icon"> <img src="/assets/img/logocore.png" alt="logo silvercore" style="border-radius: 50rem;"> </li> </a>
+            <a target="_blank" href="https://www.silvercore.fr"> <li data-tooltip="Site de silvercore" class="social-icon"> <img src="https://www.silvercore.fr/silvercore_logo.svg" alt="logo silvercore" style="border-radius: 50rem;"> </li> </a>
             <a target="_blank" href="https://discord.gg/ftFhQTJsQ5"> <li data-tooltip="Discord SilverCore" class="social-icon"> <i class="bi bi-discord"> </i> </li> </a>
             <a target="_blank" href="https://discord.gg/mKs3uMTJWM"> <li data-tooltip="Discord support" class="social-icon"> <i class="bi bi-life-preserver"> </i> </li> </a>
-            <a target="_blank" href="https://tipeee.com/silverdium"> <li data-tooltip="Nous aider avec tipeee" class="social-icon"> <i class="bi bi-heart"> </i> </li> </a>
-            <a target="_blank" href="https://github.com/SilverCore-Git/SilverTransfer"> <li data-tooltip="Open source sur GitHub" class="social-icon"> <i class="bi bi-github"> </i> </li> </a>
+            <a target="_blank" href="https://support.silvercore.fr/?page=user-view"> <li data-tooltip="Silvercore support platform" class="social-icon"> <i class="bi bi-question-circle"> </i> </li> </a>
             
         </ul>
 
@@ -231,7 +230,7 @@
             function salert(text, type) {
                 history.pushState(null, "", `?page=main&fname=${name}&fsize=${size}&file=1&salert=1&text=${text}&type=${type}`);
                 Swal.fire({
-                    title: 'SilverTransfer',
+                    title: 'Silvertransfert',
                     html: text,
                     icon: type,
                     confirmButtonText: 'Ok !',
@@ -330,7 +329,7 @@
         </script>
 
 
-<a href="/patchnotes" target="_blank" class="vtext"> SilverTransfer version <span id="vversion">0.0.0</span> </a>
+<a href="/patchnotes" target="_blank" class="vtext"> Silvertransfert version <span id="vversion">0.0.0</span> </a>
 
 <style>
     .vtext {
@@ -356,11 +355,12 @@
     vversion.innerText = await fetch('/version').then(res => res.json());
 </script>
 
-<div class="vtext2">
-    <a href="/patchnotes" target="_blank"> <strong> Patchnotes </strong> </a>
-    <a style="margin-right: 1rem; margin-left: 1rem;">  |  </a>
-    <a href="https://www.silvercore.fr/#savoir" target="_blank"> <strong> En savoir plus </strong> </a>
-</div>
+        <div class="vtext2">
+            <a href="/patchnotes" target="_blank"> <strong> Patchnotes </strong> </a>
+            <a style="margin-right: 1rem; margin-left: 1rem;">  |  </a>
+            <a href="/legale" target="_blank"> <strong> legale
+                 </strong> </a>
+        </div>
 
 <style>
     .vtext2 {
@@ -387,7 +387,7 @@
 </style>
 
         <footer id="footer">
-            <p>&copy; 2024 - <span id="year">0000</span> SilverTransfert | <a href="https://www.silvercore.fr">SilverCore</a>. Tous droits réservés.</p>
+            <p>&copy; 2024 - <span id="year">0000</span> Silvertransfert | <a href="https://www.silvercore.fr">SilverCore</a>. Tous droits réservés.</p>
         </footer>
         <script defer>
             const annee = new Date().getFullYear();

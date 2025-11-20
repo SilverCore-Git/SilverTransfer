@@ -4,7 +4,6 @@
 SilverTransfer outils de transfert de fichiers :
 https://www.silvertransfert.fr
 
-repo avancé par rapport a la prod
 
 ## libs :
 - express
@@ -17,6 +16,5 @@ repo avancé par rapport a la prod
 
 ---
 
-Merci de soutenir les projets SilverCore ❤️ !<br>
 🔐 **L'utilisation de ce code est strictement defendu !!** 🛡️<br>
 ⭐  SilverCore ©️ Tous droits reservés  ⭐
