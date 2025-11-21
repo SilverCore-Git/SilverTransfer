@@ -19,7 +19,7 @@ onMounted(async () => {
   await stats.send();
 
   const close = () => {
-    const url = "https://www.silvertransfert.fr/session/close";
+    const url = "https://www.silvertransfert.fr/api/session/close";
 
     navigator.sendBeacon(url);
   };

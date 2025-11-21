@@ -13,7 +13,7 @@ export default class StatsClient {
     private api: string;
 
     constructor() {
-        this.api = "https://www.silvertransfert.fr";
+        this.api = "https://www.silvertransfert.fr/api";
     }
 
     async create_session(type: string = "temp", premium: boolean = false): Promise<any> {
