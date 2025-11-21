@@ -1,6 +1,9 @@
 // packages
 const express = require("express");
 const router = express.Router();
+const fs = require('fs');
+const session = require('../src/sessions_manager.js');
+const path = require("path");
 
 const Stats = require('../src/stats_manager.js');
 
@@ -84,7 +87,7 @@ router.post('/stats', (req, res) => {
   res.json({ message: 'Stat ajoutée avec succès', ip });
 });
 
-router.get('/stats/view', (req, res) => {
+router.get('/stats/view', async (req, res) => {
 
   const archive = req.query.archive == 1 ? true : false;
   const date = req.query.date;
@@ -93,9 +96,8 @@ router.get('/stats/view', (req, res) => {
 
     try {
 
-      const stats = Stats.load(archive, date);
-      res.setHeader('Content-Type', 'application/json');
-      res.send(JSON.stringify(stats, null, 4));
+      const stats = await fs.promises.readFile('./db/users.json', 'utf-8');
+      res.send({ stats: JSON.parse(stats, null, 2) });
 
     } catch (err) {
       res.status(500).json({ error: true, message: err });
@@ -108,7 +110,7 @@ router.get('/stats/view', (req, res) => {
 
 
 
-const session = require('../src/sessions_manager.js');
+
 
 
 router.get('/session/create', async (req, res) => {

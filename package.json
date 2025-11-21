@@ -3,8 +3,11 @@
   "name": "silvertransfert",
 
   "version": "2.3.0",
+  "dev": true,
 
   "scripts": {
+
+    "dev": "nodemon server.js",
 
     "start": "pm2 start server.js --name silvertransfert --env production",
 

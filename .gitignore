@@ -1,3 +1,5 @@
 /node_modules
 /log
 assets/ads.txt
+db/users.json
+db/database.json

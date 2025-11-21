@@ -20,21 +20,20 @@ require('dotenv').config();
 const cookieParser = require('cookie-parser');
 
 
-const ifdev = false;
-
-
 const formatFileSize = require('./src/filesize.js')
 
 const config = require('./config/config.json');
 let pkg = require('./package.json');
 
+const ifdev = pkg.dev;
+
 
 const session = require('./src/sessions_manager.js');
 const { decryptText } = require("./src/crypt.js");
 const { loadDatabase, resetDatabase } = require('./src/database.js'); 
-const { logToFile, originalConsoleError, originalConsoleLog, originalConsoleWarn } = require('./src/logger.js'); 
 const { archive_stats } = require('./src/interval/archive.js'); archive_stats();
 const { verifyIfExpire } = require('./src/verifyIfExpire.js');
+require('./src/logger.js');
 
 
 async function resetDB() {
@@ -77,7 +76,7 @@ if (ifdev) {
 }
 
 const corsOptions = {
-    origin: 'https://www.silvertransfert.fr',
+    origin: ifdev ? 'http://localhost:84' : 'https://www.silvertransfert.fr',
     methods: ['POST', 'GET'],
     allowedHeaders: ['Content-Type', 'Authorization']
 };
@@ -93,14 +92,9 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.json({ limit: '16gb' }))
 app.use(express.urlencoded({ limit: '16gb', extended: true }))
-// app.use(helmet());
 app.set("view engine", "ejs");
 
 app.use((req, res, next) => {
-
-    if (req.hostname == `premium.silvertransfert.fr`) {
-        return res.redirect(`https://premium.silvertransfert.fr${req.path}`);
-    }
 
     if (req.hostname !== config.hostname) {
         return res.redirect(`https://${config.hostname}${req.path}`);
@@ -110,16 +104,7 @@ app.use((req, res, next) => {
 
 });
 
-app.use((req, res, next) => {
-    const host = req.hostname;
-  
-    if (host === 'premium.silvertransfert.fr') {
-        express.static(path.join(__dirname, 'premium'))(req, res, next);
-    } else {
-        //express.static(path.join(__dirname, 'premium'))(req, res, next);
-        express.static(path.join(__dirname, 'public'))(req, res, next);
-    }
-});
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.get("/assets/:a", (req, res) => {
@@ -356,7 +341,7 @@ app.get('/passwd/:nb', async (req, res) => {
     const nb = req.params.nb;
 
     function genererMotDePasse(longueur = 10) {
-        const caracteres = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_';
+        const caracteres = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         let motDePasse = '';
     
         for (let i = 0; i < longueur; i++) {
@@ -367,7 +352,7 @@ app.get('/passwd/:nb', async (req, res) => {
         return motDePasse;
     }
 
-    res.json(await genererMotDePasse(nb));
+    res.json(genererMotDePasse(nb));
 
 })
 
