@@ -96,8 +96,9 @@ router.get('/stats/view', async (req, res) => {
 
     try {
 
-      const stats = await fs.promises.readFile('./db/users.json', 'utf-8');
-      res.send({ stats: JSON.parse(stats, null, 2) });
+      const stats = await fs.promises.readFile('./db/stats.json', 'utf-8');
+      const users = await fs.promises.readFile('./db/users.json', 'utf-8');
+      res.send({ stats: JSON.parse(stats, null, 2), users: JSON.parse(users, null, 2) });
 
     } catch (err) {
       res.status(500).json({ error: true, message: err });

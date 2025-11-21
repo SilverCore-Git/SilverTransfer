@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Analytique Dynamique</title>
+    <title>Dashboard Analytique - Vue Générale</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -11,64 +11,55 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #F3F4F6; }
-        .card { @apply bg-white rounded-xl shadow-sm border border-gray-100 p-6 transition-all hover:shadow-md; }
-        .chart-container { position: relative; height: 300px; width: 100%; }
-        ::-webkit-scrollbar { width: 8px; height: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #c7c7cc; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #a1a1aa; }
+        body { font-family: 'Inter', sans-serif; background-color: #F9FAFB; }
+        .card { @apply bg-white rounded-xl shadow-sm border border-gray-200 p-6; }
+        .chart-container { position: relative; height: 250px; width: 100%; }
         
-        /* Animation douce pour les transitions */
-        .transition-fade { transition: opacity 0.3s ease; }
-        .disabled-filter { opacity: 0.5; pointer-events: none; background-color: #e5e7eb; }
+        /* Scrollbar personnalisée pour les listes */
+        .custom-scroll::-webkit-scrollbar { width: 6px; }
+        .custom-scroll::-webkit-scrollbar-track { background: #f1f1f1; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 10px; }
+        .custom-scroll::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
     </style>
 </head>
 <body class="text-gray-800">
 
-    <!-- Navigation -->
-    <nav class="bg-white border-b border-gray-200 px-6 py-4 flex flex-col md:flex-row justify-between items-center sticky top-0 z-50 gap-4 md:gap-0">
-        <div class="flex items-center gap-3 w-full md:w-auto">
-            <div class="bg-blue-600 text-white p-2 rounded-lg">
-                <i class="fa-solid fa-chart-line text-xl"></i>
+    <nav class="bg-white border-b border-gray-200 px-6 py-4 flex flex-col md:flex-row justify-between items-center sticky top-0 z-50 gap-4">
+        <div class="flex items-center gap-3">
+            <div class="bg-indigo-600 text-white p-2 rounded-lg shadow-lg shadow-indigo-200">
+                <i class="fa-solid fa-chart-pie text-xl"></i>
             </div>
             <div>
-                <!-- Titre Dynamique -->
-                <h1 class="text-xl font-bold text-gray-900 tracking-tight">Analytics <span id="headerYear" class="text-blue-600">Global</span></h1>
-                <p class="text-xs text-gray-500">Suivi des sessions utilisateurs</p>
+                <h1 class="text-xl font-bold text-gray-900 tracking-tight">Dashboard <span class="text-indigo-600">Analytics</span></h1>
+                <p class="text-xs text-gray-500 font-medium">Vue d'ensemble des statistiques</p>
             </div>
         </div>
 
-        <div class="flex items-center gap-3 w-full md:w-auto justify-end">
-            
-            <!-- NOUVEAU : Filtre Année -->
-            <div class="relative group">
+        <div class="flex items-center gap-3">
+            <div class="relative">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-500">
                     <i class="fa-regular fa-calendar"></i>
                 </div>
-                <select id="yearFilter" onchange="handleYearChange()" class="appearance-none bg-white border border-gray-300 text-gray-700 py-2 pl-9 pr-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm font-bold cursor-pointer hover:bg-gray-50 transition-colors shadow-sm">
+                <select id="yearFilter" onchange="handleYearChange()" class="appearance-none bg-white border border-gray-300 py-2 pl-9 pr-8 rounded-lg text-sm font-semibold text-gray-700 cursor-pointer hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all">
                     <option value="all">Toutes années</option>
-                    <!-- Les années seront injectées ici par JS -->
-                </select>
+                    </select>
                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                     <i class="fa-solid fa-chevron-down text-xs"></i>
                 </div>
             </div>
 
-            <!-- Filtre Période (Jours/Mois) -->
             <div class="relative" id="timeFilterContainer">
-                <select id="timeFilter" onchange="updateDashboard()" class="appearance-none bg-gray-50 border border-gray-300 text-gray-700 py-2 pl-4 pr-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm font-medium cursor-pointer hover:bg-gray-100 transition-colors">
-                    <option value="7">📅 7 derniers jours</option>
-                    <option value="30">📅 Ce mois (30 jours)</option>
-                    <option value="365">📅 Cette année (Glissant)</option>
-                    <option value="all" selected>📅 Tout l'historique</option>
+                <select id="timeFilter" onchange="updateDashboard()" class="appearance-none bg-gray-50 border border-gray-300 py-2 pl-4 pr-8 rounded-lg text-sm font-medium text-gray-700 cursor-pointer hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all">
+                    <option value="7">7 derniers jours</option>
+                    <option value="30">Ce mois (30j)</option>
+                    <option value="all" selected>Tout l'historique</option>
                 </select>
                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                     <i class="fa-solid fa-chevron-down text-xs"></i>
                 </div>
             </div>
             
-            <button onclick="updateDashboard()" class="bg-gray-100 hover:bg-gray-200 text-gray-600 p-2 rounded-lg transition-colors" title="Actualiser">
+            <button onclick="fetchData()" class="p-2 text-gray-400 hover:text-indigo-600 transition-colors" title="Actualiser">
                 <i class="fa-solid fa-rotate-right"></i>
             </button>
         </div>
@@ -76,150 +67,148 @@
 
     <main class="max-w-7xl mx-auto p-6 space-y-6">
         
-        <!-- KPI Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- KPI 1: Visites -->
-            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+            <div class="card flex flex-col justify-between hover:shadow-md transition-shadow">
                 <div class="flex justify-between items-start">
                     <div>
-                        <p class="text-sm font-medium text-gray-500 mb-1">Sessions Totales</p>
-                        <h3 class="text-3xl font-bold text-gray-900" id="kpi-visits">-</h3>
+                        <p class="text-sm font-medium text-gray-500">Pages Vues</p>
+                        <h3 class="text-3xl font-bold text-gray-900 mt-1" id="kpi-all">-</h3>
                     </div>
-                    <div class="bg-blue-50 text-blue-600 p-3 rounded-lg">
-                        <i class="fa-solid fa-users"></i>
+                    <div class="bg-blue-50 text-blue-600 p-3 rounded-xl">
+                        <i class="fa-solid fa-eye"></i>
                     </div>
                 </div>
                 <div class="mt-4 flex items-center text-sm text-gray-500">
-                    <span class="text-blue-600 font-medium bg-blue-50 px-2 py-0.5 rounded mr-2" id="kpi-unique">- Uniques</span>
-                    <span>visiteurs</span>
+                    <span class="text-green-600 font-medium flex items-center gap-1">
+                        <i class="fa-solid fa-chart-simple"></i> Total cumulé
+                    </span>
                 </div>
             </div>
 
-            <!-- KPI 2: Durée Moyenne -->
-            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+            <div class="card flex flex-col justify-between hover:shadow-md transition-shadow">
                 <div class="flex justify-between items-start">
                     <div>
-                        <p class="text-sm font-medium text-gray-500 mb-1">Durée Moyenne</p>
-                        <h3 class="text-3xl font-bold text-gray-900" id="kpi-duration">-</h3>
+                        <p class="text-sm font-medium text-gray-500">Visiteurs Uniques</p>
+                        <h3 class="text-3xl font-bold text-gray-900 mt-1" id="kpi-unique">-</h3>
                     </div>
-                    <div class="bg-indigo-50 text-indigo-600 p-3 rounded-lg">
-                        <i class="fa-solid fa-stopwatch"></i>
+                    <div class="bg-indigo-50 text-indigo-600 p-3 rounded-xl">
+                        <i class="fa-solid fa-fingerprint"></i>
                     </div>
                 </div>
                 <div class="mt-4 flex items-center text-sm text-gray-500">
-                    <span class="text-indigo-600 font-medium mr-2" id="kpi-total-time">-</span>
-                    <span>temps cumulé</span>
+                    <span id="kpi-ratio" class="font-medium text-indigo-600">-</span> &nbsp;de fidélité
                 </div>
             </div>
 
-            <!-- KPI 3: En ligne -->
-            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+            <div class="card flex flex-col justify-between hover:shadow-md transition-shadow">
                 <div class="flex justify-between items-start">
                     <div>
-                        <p class="text-sm font-medium text-gray-500 mb-1">Sessions Actives</p>
-                        <h3 class="text-3xl font-bold text-gray-900" id="kpi-active">-</h3>
+                        <p class="text-sm font-medium text-gray-500">OS Principal</p>
+                        <h3 class="text-2xl font-bold text-gray-900 mt-1" id="kpi-os">-</h3>
                     </div>
-                    <div class="bg-green-50 text-green-600 p-3 rounded-lg relative">
-                        <span class="absolute top-0 right-0 flex h-3 w-3 -mt-1 -mr-1">
-                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                          <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                        </span>
-                        <i class="fa-solid fa-satellite-dish"></i>
+                    <div class="bg-amber-50 text-amber-600 p-3 rounded-xl">
+                        <i class="fa-solid fa-microchip"></i>
                     </div>
                 </div>
-                <div class="mt-4 flex items-center text-sm text-gray-500">
-                    <span class="text-green-600 font-medium mr-2">En temps réel</span>
-                </div>
+                <div class="mt-4 text-sm text-gray-500">Système majoritaire</div>
             </div>
 
-            <!-- KPI 4: Premium -->
-            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+            <div class="card flex flex-col justify-between hover:shadow-md transition-shadow">
                 <div class="flex justify-between items-start">
                     <div>
-                        <p class="text-sm font-medium text-gray-500 mb-1">Utilisateurs Premium</p>
-                        <h3 class="text-3xl font-bold text-gray-900" id="kpi-premium">-</h3>
+                        <p class="text-sm font-medium text-gray-500">Top Source</p>
+                        <h3 class="text-2xl font-bold text-gray-900 mt-1 truncate w-full" id="kpi-referrer">-</h3>
                     </div>
-                    <div class="bg-amber-50 text-amber-600 p-3 rounded-lg">
-                        <i class="fa-solid fa-crown"></i>
-                    </div>
-                </div>
-                <div class="mt-4 flex items-center text-sm text-gray-500">
-                    <div class="w-full bg-gray-200 rounded-full h-1.5 mt-2">
-                        <div class="bg-amber-500 h-1.5 rounded-full" id="kpi-premium-bar" style="width: 0%"></div>
+                    <div class="bg-emerald-50 text-emerald-600 p-3 rounded-xl">
+                        <i class="fa-solid fa-link"></i>
                     </div>
                 </div>
+                <div class="mt-4 text-sm text-gray-500">Source de trafic n°1</div>
             </div>
         </div>
 
-        <!-- Charts Row 1 -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <!-- Trafic -->
-            <div class="lg:col-span-2 bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-                <h2 class="text-lg font-bold text-gray-800 mb-4">Évolution des visites</h2>
+            <div class="lg:col-span-2 card">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-lg font-bold text-gray-800">Évolution du trafic</h2>
+                    <span class="text-xs font-medium bg-gray-100 text-gray-500 px-2 py-1 rounded">Quotidien</span>
+                </div>
                 <div class="chart-container">
                     <canvas id="trafficChart"></canvas>
                 </div>
             </div>
 
-            <!-- Qualité Sessions -->
-            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-                <h2 class="text-lg font-bold text-gray-800 mb-4">Analyse Durée</h2>
-                <div class="chart-container" style="height: 250px;">
-                    <canvas id="durationChart"></canvas>
-                </div>
-                <div class="mt-4 space-y-3">
-                    <div class="flex justify-between text-sm border-b border-gray-50 pb-2">
-                        <span class="text-gray-500 flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-yellow-400"></div>< 1 min (Court)</span>
-                        <span class="font-semibold" id="stat-bounce">-</span>
-                    </div>
-                    <div class="flex justify-between text-sm border-b border-gray-50 pb-2">
-                        <span class="text-gray-500 flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-blue-400"></div>1 - 10 min (Moyen)</span>
-                        <span class="font-semibold" id="stat-engaged">-</span>
-                    </div>
-                    <div class="flex justify-between text-sm">
-                        <span class="text-gray-500 flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-green-400"></div>> 10 min (Long)</span>
-                        <span class="font-semibold" id="stat-intense">-</span>
-                    </div>
+            <div class="card">
+                <h2 class="text-lg font-bold text-gray-800 mb-4">Répartition Géographique</h2>
+                <div class="chart-container">
+                    <canvas id="countryChart"></canvas>
                 </div>
             </div>
         </div>
 
-        <!-- Charts Row 2 -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <div class="card">
                 <h2 class="text-lg font-bold text-gray-800 mb-4">Navigateurs</h2>
-                <div class="chart-container" style="height: 250px;">
+                <div class="chart-container" style="height: 200px;">
                     <canvas id="browserChart"></canvas>
                 </div>
             </div>
-            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+
+            <div class="card">
+                <h2 class="text-lg font-bold text-gray-800 mb-4">Systèmes (OS)</h2>
+                <div class="chart-container" style="height: 200px;">
+                    <canvas id="osChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card">
                 <h2 class="text-lg font-bold text-gray-800 mb-4">Appareils</h2>
-                <div class="chart-container" style="height: 250px;">
+                <div class="chart-container" style="height: 200px;">
                     <canvas id="deviceChart"></canvas>
                 </div>
             </div>
         </div>
 
-        <!-- Table -->
-        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-            <div class="p-6 border-b border-gray-100 flex justify-between items-center">
-                <h2 class="text-lg font-bold text-gray-800">Détail des Sessions</h2>
-                <span class="text-xs text-gray-400 uppercase font-semibold tracking-wider">Trié par date</span>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            
+            <div class="card h-96 flex flex-col">
+                <h2 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <i class="fa-regular fa-file-lines text-indigo-500"></i> Pages les plus vues
+                </h2>
+                <div class="overflow-y-auto custom-scroll flex-1 pr-2">
+                    <ul id="pagesList" class="space-y-3">
+                        </ul>
+                </div>
+            </div>
+
+            <div class="card h-96 flex flex-col">
+                <h2 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-right-to-bracket text-emerald-500"></i> Sources de trafic (Referrers)
+                </h2>
+                <div class="overflow-y-auto custom-scroll flex-1 pr-2">
+                    <ul id="referrersList" class="space-y-3">
+                        </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card overflow-hidden">
+            <div class="border-b border-gray-100 pb-4 mb-4 flex justify-between items-center">
+                <h2 class="text-lg font-bold text-gray-800">Dernières connexions (IP)</h2>
+                <span class="text-xs text-gray-400 font-mono">Source: daily.ips</span>
             </div>
             <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse">
-                    <thead>
-                        <tr class="bg-gray-50 text-gray-500 text-xs uppercase tracking-wider">
-                            <th class="p-4 font-medium">Date / Heure</th>
-                            <th class="p-4 font-medium">IP</th>
-                            <th class="p-4 font-medium">Statut</th>
-                            <th class="p-4 font-medium">Durée</th>
-                            <th class="p-4 font-medium">OS / Navigateur</th>
+                    <thead class="bg-gray-50 text-gray-500 text-xs uppercase font-semibold tracking-wider">
+                        <tr>
+                            <th class="p-3 rounded-l-lg">Date</th>
+                            <th class="p-3">IP Visiteur</th>
+                            <th class="p-3 text-right rounded-r-lg">Requêtes</th>
                         </tr>
                     </thead>
-                    <tbody id="sessionsTableBody" class="text-sm text-gray-700 divide-y divide-gray-100">
-                        <!-- Rows via JS -->
-                    </tbody>
+                    <tbody id="ipTableBody" class="text-sm text-gray-700 divide-y divide-gray-100">
+                        </tbody>
                 </table>
             </div>
         </div>
@@ -227,346 +216,364 @@
     </main>
 
     <script>
-        let serverData;
-        let availableYears = new Set();
+        let rawData = {}; // Contiendra json.stats
+        let charts = {}; 
 
-        // 1. CHARGEMENT ET INITIALISATION
+        // ---------------------------------------------------------
+        // 1. FETCH DATA
+        // ---------------------------------------------------------
         async function fetchData() {
-            // Simulation d'un appel API ou d'une injection EJS
-            console.log("Chargement des données...");
-            
             try {
-                // Remplacer l'URL par votre vraie API
-                const res = await fetch('/api/stats/view?archive=0&date=&mdp=<%= mdp %>');
+                console.log("Fetching data...");
+                // REMPLACEZ PAR VOTRE URL RÉELLE
+                const res = await fetch('/api/stats/view?archive=0&date=&mdp=s6hcwy1EXvdpVg10Kyif7VMgHiK4ft85isUbVU2VN6nqB13o0E'); 
                 const json = await res.json();
-                serverData = json.stats; 
+                
+                if(json && json.stats) {
+                    rawData = json.stats;
+                    initDashboard();
+                } else {
+                    console.error("Format JSON invalide");
+                }
             } catch (e) {
-                console.error("Erreur fetch, utilisation données vides", e);
-                serverData = {}; // Fallback pour éviter le crash si pas d'API
+                console.error("Erreur chargement données", e);
             }
+        }
 
-            // Une fois les données reçues, on initialise les années
-            initYears();
+        // ---------------------------------------------------------
+        // 2. INITIALISATION & LOGIQUE
+        // ---------------------------------------------------------
+        function initDashboard() {
+            const yearsSet = new Set();
+            // On cherche les clés dates dans 'visit' (ex: "2025-05-15")
+            const visitData = rawData.visit || {};
             
-            // Premier rendu
+            Object.keys(visitData).forEach(key => {
+                if (key.match(/^\d{4}-\d{2}-\d{2}$/)) {
+                    const y = key.split('-')[0];
+                    yearsSet.add(y);
+                }
+            });
+
+            const yearSelect = document.getElementById('yearFilter');
+            yearSelect.innerHTML = '<option value="all">Toutes années</option>';
+            
+            Array.from(yearsSet).sort((a, b) => b - a).forEach(y => {
+                const opt = document.createElement('option');
+                opt.value = y;
+                opt.innerText = y;
+                yearSelect.appendChild(opt);
+            });
+
             updateDashboard();
         }
 
-        // NOUVEAU : Scanne les données pour trouver les années disponibles
-        function initYears() {
-            availableYears.clear();
-            const yearSelect = document.getElementById('yearFilter');
-            
-            // On vide le select sauf la première option
-            yearSelect.innerHTML = '<option value="all">Toutes années</option>';
-
-            // Parcours des données pour extraire les années
-            Object.values(serverData || {}).forEach(userData => {
-                Object.keys(userData.sessions || {}).forEach(dateStr => {
-                    // Format "YYYY-M-D" -> on prend le premier élément
-                    const year = dateStr.split('-')[0];
-                    if(year) availableYears.add(year);
-                });
-            });
-
-            // Tri décroissant (2026, 2025, 2024...)
-            const sortedYears = Array.from(availableYears).sort((a, b) => b - a);
-
-            // Ajout des options au DOM
-            sortedYears.forEach(year => {
-                const option = document.createElement('option');
-                option.value = year;
-                option.innerText = year;
-                yearSelect.appendChild(option);
-            });
-        }
-
-        // NOUVEAU : Gère le changement d'année dans le select
         function handleYearChange() {
             const yearVal = document.getElementById('yearFilter').value;
             const timeSelect = document.getElementById('timeFilter');
-            const headerYear = document.getElementById('headerYear');
-
+            
             if (yearVal !== 'all') {
-                // Si une année spécifique est sélectionnée, on désactive le filtre "7 derniers jours"
-                // car cela n'a pas de sens pour une année passée
                 timeSelect.value = 'all';
                 timeSelect.disabled = true;
-                document.getElementById('timeFilterContainer').classList.add('disabled-filter');
-                headerYear.innerText = yearVal;
+                timeSelect.parentElement.classList.add('opacity-50');
             } else {
-                // Réactivation
                 timeSelect.disabled = false;
-                document.getElementById('timeFilterContainer').classList.remove('disabled-filter');
-                headerYear.innerText = "Global";
+                timeSelect.parentElement.classList.remove('opacity-50');
             }
-            
             updateDashboard();
         }
 
-        // 2. MOTEUR DE TRAITEMENT
-        function processData() {
-            // On récupère les filtres directement du DOM
-            const daysFilter = document.getElementById('timeFilter').value;
+        // ---------------------------------------------------------
+        // 3. CALCUL DES STATS (Hybride : Général vs Dates)
+        // ---------------------------------------------------------
+        function getDashboardData() {
             const yearFilter = document.getElementById('yearFilter').value;
+            const dayFilter = parseInt(document.getElementById('timeFilter').value);
+            const visitData = rawData.visit || {};
             
-            const sessions = [];
+            // Récupération de l'objet "général"
+            // Attention aux accents dans la clé JSON
+            const generalData = visitData['général'] || { all: 0, unique: 0, country: {}, device: {}, browser: {}, os: {}, referrer: {}, pages: {} };
+
+            const isAllTime = (yearFilter === 'all' && isNaN(dayFilter)) || (yearFilter === 'all' && document.getElementById('timeFilter').value === 'all');
             const now = new Date();
-            
-            // Calcul date limite pour le filtre jours/mois
-            const filterDate = daysFilter === 'all' ? new Date(0) : new Date(now.getTime() - (daysFilter * 24 * 60 * 60 * 1000));
+            const cutoffDate = isNaN(dayFilter) ? new Date(0) : new Date(now.getTime() - (dayFilter * 24 * 60 * 60 * 1000));
 
-            Object.entries(serverData || {}).forEach(([userId, userData]) => {
-                const isPremium = userData.premium;
-                
-                Object.entries(userData.sessions || {}).forEach(([dateStr, dateSessions]) => {
-                    // Parsing de la date string (ex: "2025-5-19")
-                    const parts = dateStr.split('-').map(Number); // [Year, Month, Day]
-                    const sessionYearStr = parts[0].toString();
+            let dailyPoints = []; // Pour le graphique linéaire
+            let aggregatedStats = {
+                all: 0,
+                unique: 0,
+                countries: {},
+                devices: {},
+                browsers: {}, // Souvent vide dans les daily
+                os: {},       // Souvent vide dans les daily
+                referrers: {},
+                pages: {}
+            };
 
-                    // FILTRE ANNÉE : Si une année est choisie et que ce n'est pas la bonne, on ignore
-                    if (yearFilter !== 'all' && sessionYearStr !== yearFilter) {
-                        return; 
-                    }
+            // 1. Traitement des données journalières (Pour le graphique Ligne et le tableau IP)
+            Object.keys(visitData).forEach(key => {
+                // On filtre sur les dates YYYY-MM-DD
+                if (!key.match(/^\d{4}-\d{2}-\d{2}$/)) return;
 
-                    // Base date (Mois est 0-indexé)
-                    const baseDate = new Date(parts[0], parts[1] - 1, parts[2]);
+                const dateParts = key.split('-');
+                const entryDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
+                const entryYear = dateParts[0];
 
-                    Object.entries(dateSessions).forEach(([sessionId, sessionData]) => {
-                        const sessionDate = new Date(baseDate);
-                        if (sessionData.time) {
-                            sessionDate.setHours(sessionData.time.h || 0);
-                            sessionDate.setMinutes(sessionData.time.mn || 0);
-                            sessionDate.setSeconds(sessionData.time.s || 0);
-                        }
+                // Filtres
+                if (yearFilter !== 'all' && entryYear !== yearFilter) return;
+                if (yearFilter === 'all' && !isNaN(dayFilter) && entryDate < cutoffDate) return;
 
-                        // FILTRE TEMPOREL (Jours) : 
-                        // Appliqué uniquement si on est en mode "Toutes années" (car désactivé sinon par l'UI)
-                        // Ou si on veut garder le comportement strict
-                        if (yearFilter === 'all' && sessionDate < filterDate) {
-                            return;
-                        }
+                const dayData = visitData[key];
 
-                        // Calcul durée
-                        let durationSec = 0;
-                        if (sessionData.duration && typeof sessionData.duration === 'object') {
-                            const d = sessionData.duration;
-                            durationSec = ((d.h || 0) * 3600) + ((d.mn || 0) * 60) + (d.s || 0);
-                        }
-
-                        // Parsing User Agent
-                        const ua = (sessionData.user_agents || "").toLowerCase();
-                        let device = 'Desktop';
-                        if (ua.includes('mobile') || ua.includes('android') || ua.includes('iphone')) device = 'Mobile';
-                        else if (ua.includes('tablet') || ua.includes('ipad')) device = 'Tablet';
-
-                        let browser = 'Autre';
-                        if (ua.includes('chrome') && !ua.includes('edge') && !ua.includes('edg')) browser = 'Chrome';
-                        else if (ua.includes('firefox')) browser = 'Firefox';
-                        else if (ua.includes('safari') && !ua.includes('chrome')) browser = 'Safari';
-                        else if (ua.includes('edge') || ua.includes('edg')) browser = 'Edge';
-                        else if (ua.includes('bot') || ua.includes('google')) browser = 'Bot';
-
-                        sessions.push({
-                            id: sessionId,
-                            userId: userId,
-                            date: sessionDate,
-                            dateStr: dateStr,
-                            status: sessionData.status,
-                            duration: durationSec,
-                            device: device,
-                            browser: browser,
-                            isPremium: isPremium,
-                            ip: sessionData.ip
-                        });
-                    });
+                // Push pour le graphique temporel
+                dailyPoints.push({
+                    dateStr: key,
+                    dateObj: entryDate,
+                    all: dayData.all || 0,
+                    ips: dayData.ips || {}
                 });
+
+                // Si on n'est PAS en mode "All Time", on doit aggréger manuellement
+                if (!isAllTime) {
+                    aggregatedStats.all += (dayData.all || 0);
+                    aggregatedStats.unique += (dayData.unique || 0); // Somme des uniques journaliers (approximation)
+                    
+                    // Merge simple pour charts (si les données existent dans daily)
+                    mergeCounts(aggregatedStats.countries, dayData.country);
+                    mergeCounts(aggregatedStats.devices, dayData.device);
+                    mergeCounts(aggregatedStats.pages, dayData.pages);
+                    // Note: Referrer et Browser/OS sont souvent absents des daily keys dans votre JSON exemple,
+                    // donc ils seront vides si on filtre par date.
+                }
             });
 
-            // Tri par date décroissante
-            return sessions.sort((a, b) => b.date - a.date);
+            dailyPoints.sort((a, b) => a.dateObj - b.dateObj);
+
+            // 2. Décision finale pour les Stats Globales (Camemberts & KPIs)
+            let finalStats;
+
+            if (isAllTime) {
+                // CAS 1 : Tout l'historique -> ON UTILISE DIRECTEMENT .général
+                finalStats = {
+                    all: generalData.all,
+                    unique: generalData.unique,
+                    countries: generalData.country,
+                    devices: generalData.device,
+                    browsers: generalData.browser,
+                    os: generalData.os,
+                    referrers: generalData.referrer,
+                    pages: generalData.pages
+                };
+            } else {
+                // CAS 2 : Filtré (Année ou Jours) -> On utilise l'aggrégation calculée
+                finalStats = aggregatedStats;
+            }
+
+            return {
+                timeline: dailyPoints,
+                stats: finalStats
+            };
         }
 
-        // 3. AFFICHAGE
-        let charts = {}; 
-
-        function updateDashboard() {
-            const data = processData(); // Plus besoin d'argument, la fonction lit le DOM
-
-            // --- KPI ---
-            const totalSessions = data.length;
-            const uniqueUsers = new Set(data.map(s => s.userId)).size;
-            const totalDuration = data.reduce((acc, curr) => acc + curr.duration, 0);
-            const avgDuration = totalSessions > 0 ? totalDuration / totalSessions : 0;
-            const activeSessions = data.filter(s => s.status === 'open').length;
-            const premiumUsers = new Set(data.filter(s => s.isPremium).map(s => s.userId)).size;
-            const premiumRate = uniqueUsers > 0 ? (premiumUsers / uniqueUsers) * 100 : 0;
-
-            document.getElementById('kpi-visits').innerText = totalSessions.toLocaleString();
-            document.getElementById('kpi-unique').innerText = uniqueUsers.toLocaleString();
-            document.getElementById('kpi-duration').innerText = formatTime(avgDuration);
-            document.getElementById('kpi-total-time').innerText = (totalDuration / 3600).toFixed(1) + "h";
-            document.getElementById('kpi-active').innerText = activeSessions;
-            document.getElementById('kpi-premium').innerText = premiumUsers;
-            document.getElementById('kpi-premium-bar').style.width = `${premiumRate}%`;
-
-            // --- Stats Qualité ---
-            const bounce = data.filter(s => s.duration < 60).length;
-            const engaged = data.filter(s => s.duration >= 60 && s.duration < 600).length;
-            const intense = data.filter(s => s.duration >= 600).length;
-
-            document.getElementById('stat-bounce').innerText = bounce + ` (${((bounce/totalSessions)*100 || 0).toFixed(0)}%)`;
-            document.getElementById('stat-engaged').innerText = engaged + ` (${((engaged/totalSessions)*100 || 0).toFixed(0)}%)`;
-            document.getElementById('stat-intense').innerText = intense + ` (${((intense/totalSessions)*100 || 0).toFixed(0)}%)`;
-
-            // --- Table Update ---
-            const tbody = document.getElementById('sessionsTableBody');
-            tbody.innerHTML = '';
-            // Affiche les 15 dernières sessions
-            data.slice(0, 15).forEach(s => {
-                const tr = document.createElement('tr');
-                tr.className = "hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-0";
-                
-                // Ajout de l'année dans l'affichage de la date
-                const dateDisplay = s.date.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
-                const timeDisplay = s.date.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-
-                tr.innerHTML = `
-                    <td class="p-4 py-3">
-                        <div class="font-medium text-gray-900">${dateDisplay}</div>
-                        <div class="text-xs text-gray-400">${timeDisplay}</div>
-                    </td>
-                    <td class="p-4 py-3 font-mono text-xs text-gray-500">${s.ip}</td>
-                    <td class="p-4 py-3">
-                        <span class="px-2 py-1 rounded-full text-xs font-semibold ${s.status === 'open' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'}">
-                            ${s.status === 'open' ? 'En cours' : 'Terminé'}
-                        </span>
-                    </td>
-                    <td class="p-4 py-3 font-mono text-xs text-gray-700">
-                        ${s.duration > 0 ? formatTime(s.duration) : '-'}
-                    </td>
-                    <td class="p-4 py-3">
-                        <div class="flex items-center gap-2 text-gray-600">
-                            <i class="fa-solid ${getDeviceIcon(s.device)}"></i>
-                            <span class="text-sm">${s.browser}</span>
-                        </div>
-                    </td>
-                `;
-                tbody.appendChild(tr);
+        // Helper pour additionner les objets { "fr": 10, "us": 2 }
+        function mergeCounts(target, source) {
+            if (!source) return;
+            Object.entries(source).forEach(([k, v]) => {
+                target[k] = (target[k] || 0) + v;
             });
+        }
 
+        // ---------------------------------------------------------
+        // 4. RENDU DOM & CHARTS
+        // ---------------------------------------------------------
+        function updateDashboard() {
+            const data = getDashboardData();
+            const stats = data.stats;
+
+            // --- KPIs ---
+            document.getElementById('kpi-all').innerText = stats.all.toLocaleString();
+            document.getElementById('kpi-unique').innerText = stats.unique.toLocaleString();
+            
+            const ratio = stats.unique > 0 ? ((stats.unique / stats.all) * 100).toFixed(0) : 0;
+            document.getElementById('kpi-ratio').innerText = ratio + '%';
+
+            const topOS = getTopKey(stats.os);
+            document.getElementById('kpi-os').innerText = topOS;
+
+            const topRef = getTopKey(stats.referrers);
+            document.getElementById('kpi-referrer').innerText = topRef === 'direct' ? 'Accès direct' : topRef;
+
+
+            // --- LISTES (Pages & Referrers) ---
+            renderList('pagesList', stats.pages, 'text-blue-600', '/', true);
+            renderList('referrersList', stats.referrers, 'text-emerald-600', '', false);
+
+
+            // --- TABLEAU IPs (Basé sur la timeline filtrée) ---
+            const tbody = document.getElementById('ipTableBody');
+            tbody.innerHTML = '';
+            // On affiche les plus récents en premier
+            const recentDays = [...data.timeline].reverse();
+            let rowCount = 0;
+
+            recentDays.forEach(day => {
+                if (rowCount > 30) return; // Limite
+                const dateStr = day.dateObj.toLocaleDateString('fr-FR', {day: '2-digit', month: 'short'});
+                
+                Object.entries(day.ips).forEach(([ip, count]) => {
+                    if (rowCount > 30) return;
+                    const tr = document.createElement('tr');
+                    tr.className = "border-b border-gray-50 hover:bg-gray-50 transition-colors";
+                    tr.innerHTML = `
+                        <td class="p-3 font-medium text-gray-500">${dateStr}</td>
+                        <td class="p-3 font-mono text-indigo-600">${ip}</td>
+                        <td class="p-3 text-right font-bold text-gray-800">${count}</td>
+                    `;
+                    tbody.appendChild(tr);
+                    rowCount++;
+                });
+            });
+            if(rowCount === 0) tbody.innerHTML = '<tr><td colspan="3" class="p-4 text-center text-gray-400 italic">Aucune donnée sur cette période</td></tr>';
+
+
+            // --- CHARTS UPDATE ---
             updateCharts(data);
         }
 
+        function renderList(elementId, dataObj, colorClass, emptyLabel, isPath) {
+            const ul = document.getElementById(elementId);
+            ul.innerHTML = '';
+            
+            const sorted = Object.entries(dataObj || {}).sort((a, b) => b[1] - a[1]);
+            
+            if (sorted.length === 0) {
+                ul.innerHTML = '<li class="text-gray-400 italic text-sm">Aucune donnée</li>';
+                return;
+            }
+
+            sorted.forEach(([key, val], index) => {
+                const percent = sorted.length > 0 ? (val / sorted[0][1] * 100) : 0; // % relatif au premier
+                let displayKey = key;
+                if(isPath && key === '/') displayKey = '/ (Accueil)';
+
+                ul.innerHTML += `
+                    <li class="relative flex justify-between items-center p-2 rounded hover:bg-gray-50 group">
+                        <div class="absolute left-0 top-0 bottom-0 bg-gray-100 rounded opacity-0 group-hover:opacity-50 transition-all" style="width: ${percent}%; z-index: 0;"></div>
+                        
+                        <div class="relative z-10 flex items-center gap-2 overflow-hidden">
+                            <span class="text-xs font-bold text-gray-400 w-4">${index + 1}.</span>
+                            <span class="font-mono text-sm truncate ${colorClass}" title="${key}">${displayKey}</span>
+                        </div>
+                        <span class="relative z-10 text-sm font-bold text-gray-700">${val}</span>
+                    </li>
+                `;
+            });
+        }
+
+        function getTopKey(obj) {
+            if (!obj || Object.keys(obj).length === 0) return '-';
+            return Object.entries(obj).sort((a, b) => b[1] - a[1])[0][0];
+        }
+
         function updateCharts(data) {
-            // 1. Traffic par jour
-            const trafficMap = {};
-            data.forEach(s => {
-                const sortKey = s.date.toISOString().split('T')[0]; 
-                trafficMap[sortKey] = (trafficMap[sortKey] || 0) + 1;
-            });
-            const sortedKeys = Object.keys(trafficMap).sort();
-            const labels = sortedKeys.map(k => {
-                const d = new Date(k);
-                return d.toLocaleDateString('fr-FR', {day: '2-digit', month: '2-digit'});
-            });
+            const stats = data.stats;
+
+            // 1. Line Chart (Timeline)
+            const dates = data.timeline.map(d => d.dateObj.toLocaleDateString('fr-FR', {day:'numeric', month:'short'}));
+            const counts = data.timeline.map(d => d.all);
 
             renderChart('trafficChart', 'line', {
+                labels: dates,
+                datasets: [{
+                    label: 'Visites',
+                    data: counts,
+                    borderColor: '#4f46e5', // Indigo 600
+                    backgroundColor: 'rgba(79, 70, 229, 0.1)',
+                    borderWidth: 2,
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 3,
+                    pointHoverRadius: 6
+                }]
+            });
+
+            // 2. Country (Doughnut)
+            // Mapping codes pays -> Noms (optionnel, ici on garde le code)
+            renderDistributionChart('countryChart', stats.countries, 'doughnut');
+
+            // 3. Browser (Bar - Horizontal)
+            renderDistributionChart('browserChart', stats.browsers, 'bar');
+
+            // 4. Device (Pie)
+            renderDistributionChart('deviceChart', stats.devices, 'pie');
+
+            // 5. OS (Doughnut)
+            renderDistributionChart('osChart', stats.os, 'doughnut');
+        }
+
+        function renderDistributionChart(id, dataObj, type) {
+            // Tri pour avoir les plus gros morceaux en premier
+            const sorted = Object.entries(dataObj || {}).sort((a, b) => b[1] - a[1]);
+            // On garde Top 10 max pour pas surcharger le graph
+            const topData = sorted.slice(0, 10);
+            
+            const labels = topData.map(i => i[0].toUpperCase());
+            const values = topData.map(i => i[1]);
+
+            // Palette de couleurs
+            const colors = [
+                '#4f46e5', '#10b981', '#f59e0b', '#ef4444', 
+                '#8b5cf6', '#ec4899', '#06b6d4', '#84cc16'
+            ];
+
+            renderChart(id, type, {
                 labels: labels,
                 datasets: [{
-                    label: 'Nombre de sessions',
-                    data: sortedKeys.map(k => trafficMap[k]),
-                    borderColor: '#2563eb',
-                    backgroundColor: 'rgba(37, 99, 235, 0.1)',
-                    tension: 0.3,
-                    fill: true,
-                    pointRadius: 4
-                }]
-            });
-
-            // 2. Duration Distro
-            const bounce = data.filter(s => s.duration < 60).length;
-            const mid = data.filter(s => s.duration >= 60 && s.duration < 600).length;
-            const long = data.filter(s => s.duration >= 600).length;
-
-            renderChart('durationChart', 'doughnut', {
-                labels: ['< 1min', '1-10 min', '> 10 min'],
-                datasets: [{
-                    data: [bounce, mid, long],
-                    backgroundColor: ['#facc15', '#60a5fa', '#4ade80'],
-                    borderWidth: 0
-                }]
-            }, { cutout: '70%' });
-
-            // 3. Browser
-            const browsers = {};
-            data.forEach(s => browsers[s.browser] = (browsers[s.browser] || 0) + 1);
-            renderChart('browserChart', 'bar', {
-                labels: Object.keys(browsers),
-                datasets: [{
-                    label: 'Sessions',
-                    data: Object.values(browsers),
-                    backgroundColor: '#6366f1',
+                    label: 'Total',
+                    data: values,
+                    backgroundColor: colors,
+                    borderWidth: 0,
                     borderRadius: 4
                 }]
-            });
-
-            // 4. Device
-            const devices = {};
-            data.forEach(s => devices[s.device] = (devices[s.device] || 0) + 1);
-            renderChart('deviceChart', 'pie', {
-                labels: Object.keys(devices),
-                datasets: [{
-                    data: Object.values(devices),
-                    backgroundColor: ['#3b82f6', '#ec4899', '#8b5cf6']
-                }]
+            }, { 
+                indexAxis: type === 'bar' ? 'y' : 'x', // Bar horizontal
+                cutout: type === 'doughnut' ? '65%' : 0 
             });
         }
 
-        function renderChart(canvasId, type, dataConfig, extraOptions = {}) {
-            if (charts[canvasId]) {
-                charts[canvasId].destroy();
-            }
-            const ctx = document.getElementById(canvasId).getContext('2d');
-            charts[canvasId] = new Chart(ctx, {
+        function renderChart(id, type, data, options = {}) {
+            const ctx = document.getElementById(id).getContext('2d');
+            if (charts[id]) charts[id].destroy();
+            
+            const defaultOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { 
+                    legend: { 
+                        display: type !== 'bar', // Pas de légende pour les barres horizontales
+                        position: 'bottom', 
+                        labels: { usePointStyle: true, padding: 20 } 
+                    } 
+                },
+                scales: (type === 'bar' || type === 'line') 
+                    ? { 
+                        x: { grid: { display: false } }, 
+                        y: { beginAtZero: true, grid: { color: '#f3f4f6' } } 
+                      } 
+                    : { x: { display: false }, y: { display: false } }
+            };
+
+            charts[id] = new Chart(ctx, {
                 type: type,
-                data: dataConfig,
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { position: 'bottom', labels: { usePointStyle: true, padding: 15 } }
-                    },
-                    scales: type === 'line' || type === 'bar' ? {
-                        y: { beginAtZero: true, grid: { borderDash: [2, 4], color: '#f3f4f6' } },
-                        x: { grid: { display: false } }
-                    } : {
-                        x: { display: false },
-                        y: { display: false }
-                    },
-                    ...extraOptions
-                }
+                data: data,
+                options: { ...defaultOptions, ...options }
             });
         }
 
-        // Helpers
-        function formatTime(seconds) {
-            const h = Math.floor(seconds / 3600);
-            const m = Math.floor((seconds % 3600) / 60);
-            const s = Math.floor(seconds % 60);
-            if (h > 0) return `${h}h ${m}m`;
-            if (m > 0) return `${m}m ${s}s`;
-            return `${s}s`;
-        }
+        // Start
+        fetchData();
 
-        function getDeviceIcon(device) {
-            if (device === 'Mobile') return 'fa-mobile-screen';
-            if (device === 'Tablet') return 'fa-tablet-screen-button';
-            return 'fa-desktop';
-        }
-
-        // Init
-        fetchData()
     </script>
 </body>
 </html>
