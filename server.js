@@ -16,6 +16,7 @@ const path = require("path");
 const ejs = require("ejs");
 const crypto = require("crypto");
 const bodyParser = require('body-parser');
+const { SilverIssueMiddleware } = require('./src/lib/silverissue');
 require('dotenv').config();
 const cookieParser = require('cookie-parser');
 
@@ -32,6 +33,7 @@ const session = require('./src/sessions_manager.js');
 const { decryptText } = require("./src/crypt.js");
 const { loadDatabase, resetDatabase } = require('./src/database.js'); 
 const { archive_stats } = require('./src/interval/archive.js'); archive_stats();
+const Stats = require('./src/stats_manager.js');
 const { verifyIfExpire } = require('./src/verifyIfExpire.js');
 require('./src/logger.js');
 
@@ -87,6 +89,8 @@ const app = express();
 console.log("🔄 Démarrage de Express...");
 
 app.set('trust proxy', true);
+
+app.use(SilverIssueMiddleware);
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -364,6 +368,11 @@ app.use((req, res) => {
 
 
 verifyIfExpire();
+
+setTimeout(() => {
+    console.log('Run stats fix');
+    Stats.fix();
+}, 2000);
 
 
 const PORT = config.Port;

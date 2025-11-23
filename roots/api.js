@@ -13,6 +13,11 @@ router.post('/stats', (req, res) => {
   const now = new Date();
   const dateStr = now.toISOString().slice(0, 10); // format yyyy-mm-dd
   
+    // Récupère l’IP client
+  const ip =
+    req.headers['x-forwarded-for']?.split(',')[0] || // derrière proxy
+    req.socket?.remoteAddress || // standard
+    req.ip; // fallback
 
   const stats = Stats.load();
 
@@ -30,15 +35,9 @@ router.post('/stats', (req, res) => {
 
   // Incrément global
   stats.visit.général.all += 1;
-  stats.visit.général.unique += unique;
+  stats.visit.général.unique += stats.visit[dateStr].ips.include(ip) ? 0 : 1;
   stats.visit[dateStr].all += 1;
-  stats.visit[dateStr].unique += unique;
-
-  // Récupère l’IP client
-  const ip =
-    req.headers['x-forwarded-for']?.split(',')[0] || // derrière proxy
-    req.socket?.remoteAddress || // standard
-    req.ip; // fallback
+  stats.visit[dateStr].unique += stats.visit[dateStr].ips.include(ip) ? 0 : 1;
 
   if (ip) {
     // Assure-toi que l'IP est correctement initialisée dans le cas où il n'y a pas d'IP pour aujourd'hui
