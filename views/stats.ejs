@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Analytique - Vue Générale</title>
+    <title>Dashboard Analytique - Vue Unifiée</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -13,9 +13,8 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; background-color: #F9FAFB; }
         .card { @apply bg-white rounded-xl shadow-sm border border-gray-200 p-6; }
-        .chart-container { position: relative; height: 250px; width: 100%; }
+        .chart-container { position: relative; height: 300px; width: 100%; } /* J'ai légèrement augmenté la hauteur */
         
-        /* Scrollbar personnalisée pour les listes */
         .custom-scroll::-webkit-scrollbar { width: 6px; }
         .custom-scroll::-webkit-scrollbar-track { background: #f1f1f1; }
         .custom-scroll::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 10px; }
@@ -37,19 +36,16 @@
 
         <div class="flex items-center gap-3">
             <div class="relative">
-                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-500">
-                    <i class="fa-regular fa-calendar"></i>
-                </div>
-                <select id="yearFilter" onchange="handleYearChange()" class="appearance-none bg-white border border-gray-300 py-2 pl-9 pr-8 rounded-lg text-sm font-semibold text-gray-700 cursor-pointer hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all">
+                <select id="yearFilter" onchange="handleYearChange()" class="appearance-none bg-white border border-gray-300 py-2 pl-4 pr-8 rounded-lg text-sm font-semibold text-gray-700 cursor-pointer hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500">
                     <option value="all">Toutes années</option>
-                    </select>
+                </select>
                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                     <i class="fa-solid fa-chevron-down text-xs"></i>
                 </div>
             </div>
 
             <div class="relative" id="timeFilterContainer">
-                <select id="timeFilter" onchange="updateDashboard()" class="appearance-none bg-gray-50 border border-gray-300 py-2 pl-4 pr-8 rounded-lg text-sm font-medium text-gray-700 cursor-pointer hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all">
+                <select id="timeFilter" onchange="updateDashboard()" class="appearance-none bg-gray-50 border border-gray-300 py-2 pl-4 pr-8 rounded-lg text-sm font-medium text-gray-700 cursor-pointer hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500">
                     <option value="7">7 derniers jours</option>
                     <option value="30">Ce mois (30j)</option>
                     <option value="all" selected>Tout l'historique</option>
@@ -59,7 +55,7 @@
                 </div>
             </div>
             
-            <button onclick="fetchData()" class="p-2 text-gray-400 hover:text-indigo-600 transition-colors" title="Actualiser">
+            <button onclick="fetchData()" class="p-2 text-gray-400 hover:text-indigo-600 transition-colors">
                 <i class="fa-solid fa-rotate-right"></i>
             </button>
         </div>
@@ -79,9 +75,7 @@
                     </div>
                 </div>
                 <div class="mt-4 flex items-center text-sm text-gray-500">
-                    <span class="text-green-600 font-medium flex items-center gap-1">
-                        <i class="fa-solid fa-chart-simple"></i> Total cumulé
-                    </span>
+                    <span class="text-green-600 font-medium flex items-center gap-1">Total cumulé</span>
                 </div>
             </div>
 
@@ -128,17 +122,21 @@
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
             <div class="lg:col-span-2 card">
                 <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-lg font-bold text-gray-800">Évolution du trafic</h2>
-                    <span class="text-xs font-medium bg-gray-100 text-gray-500 px-2 py-1 rounded">Quotidien</span>
+                    <h2 class="text-lg font-bold text-gray-800">Évolution de l'audience</h2>
+                    <div class="flex gap-2">
+                        <span class="text-xs font-medium bg-blue-50 text-blue-600 px-2 py-1 rounded">Vues</span>
+                        <span class="text-xs font-medium bg-indigo-50 text-indigo-600 px-2 py-1 rounded">Uniques</span>
+                    </div>
                 </div>
                 <div class="chart-container">
                     <canvas id="trafficChart"></canvas>
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card h-fit">
                 <h2 class="text-lg font-bold text-gray-800 mb-4">Répartition Géographique</h2>
                 <div class="chart-container">
                     <canvas id="countryChart"></canvas>
@@ -147,21 +145,18 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            
             <div class="card">
                 <h2 class="text-lg font-bold text-gray-800 mb-4">Navigateurs</h2>
                 <div class="chart-container" style="height: 200px;">
                     <canvas id="browserChart"></canvas>
                 </div>
             </div>
-
             <div class="card">
                 <h2 class="text-lg font-bold text-gray-800 mb-4">Systèmes (OS)</h2>
                 <div class="chart-container" style="height: 200px;">
                     <canvas id="osChart"></canvas>
                 </div>
             </div>
-
             <div class="card">
                 <h2 class="text-lg font-bold text-gray-800 mb-4">Appareils</h2>
                 <div class="chart-container" style="height: 200px;">
@@ -171,32 +166,27 @@
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            
             <div class="card h-96 flex flex-col">
                 <h2 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
                     <i class="fa-regular fa-file-lines text-indigo-500"></i> Pages les plus vues
                 </h2>
                 <div class="overflow-y-auto custom-scroll flex-1 pr-2">
-                    <ul id="pagesList" class="space-y-3">
-                        </ul>
+                    <ul id="pagesList" class="space-y-3"></ul>
                 </div>
             </div>
-
             <div class="card h-96 flex flex-col">
                 <h2 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
-                    <i class="fa-solid fa-arrow-right-to-bracket text-emerald-500"></i> Sources de trafic (Referrers)
+                    <i class="fa-solid fa-arrow-right-to-bracket text-emerald-500"></i> Sources de trafic
                 </h2>
                 <div class="overflow-y-auto custom-scroll flex-1 pr-2">
-                    <ul id="referrersList" class="space-y-3">
-                        </ul>
+                    <ul id="referrersList" class="space-y-3"></ul>
                 </div>
             </div>
         </div>
 
         <div class="card overflow-hidden">
             <div class="border-b border-gray-100 pb-4 mb-4 flex justify-between items-center">
-                <h2 class="text-lg font-bold text-gray-800">Dernières connexions (IP)</h2>
-                <span class="text-xs text-gray-400 font-mono">Source: daily.ips</span>
+                <h2 class="text-lg font-bold text-gray-800">Journal des connexions</h2>
             </div>
             <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse">
@@ -207,8 +197,7 @@
                             <th class="p-3 text-right rounded-r-lg">Requêtes</th>
                         </tr>
                     </thead>
-                    <tbody id="ipTableBody" class="text-sm text-gray-700 divide-y divide-gray-100">
-                        </tbody>
+                    <tbody id="ipTableBody" class="text-sm text-gray-700 divide-y divide-gray-100"></tbody>
                 </table>
             </div>
         </div>
@@ -216,62 +205,46 @@
     </main>
 
     <script>
-        let rawData = {}; // Contiendra json.stats
+        let rawData = {};
         let charts = {}; 
 
-        // ---------------------------------------------------------
-        // 1. FETCH DATA
-        // ---------------------------------------------------------
         async function fetchData() {
             try {
-                console.log("Fetching data...");
-                // REMPLACEZ PAR VOTRE URL RÉELLE
+                // REMPLACEZ PAR VOTRE URL
                 const res = await fetch('/api/stats/view?archive=0&date=&mdp=s6hcwy1EXvdpVg10Kyif7VMgHiK4ft85isUbVU2VN6nqB13o0E'); 
                 const json = await res.json();
                 
                 if(json && json.stats) {
                     rawData = json.stats;
                     initDashboard();
-                } else {
-                    console.error("Format JSON invalide");
                 }
             } catch (e) {
                 console.error("Erreur chargement données", e);
             }
         }
 
-        // ---------------------------------------------------------
-        // 2. INITIALISATION & LOGIQUE
-        // ---------------------------------------------------------
         function initDashboard() {
             const yearsSet = new Set();
-            // On cherche les clés dates dans 'visit' (ex: "2025-05-15")
             const visitData = rawData.visit || {};
-            
             Object.keys(visitData).forEach(key => {
                 if (key.match(/^\d{4}-\d{2}-\d{2}$/)) {
-                    const y = key.split('-')[0];
-                    yearsSet.add(y);
+                    yearsSet.add(key.split('-')[0]);
                 }
             });
-
             const yearSelect = document.getElementById('yearFilter');
             yearSelect.innerHTML = '<option value="all">Toutes années</option>';
-            
             Array.from(yearsSet).sort((a, b) => b - a).forEach(y => {
                 const opt = document.createElement('option');
                 opt.value = y;
                 opt.innerText = y;
                 yearSelect.appendChild(opt);
             });
-
             updateDashboard();
         }
 
         function handleYearChange() {
             const yearVal = document.getElementById('yearFilter').value;
             const timeSelect = document.getElementById('timeFilter');
-            
             if (yearVal !== 'all') {
                 timeSelect.value = 'all';
                 timeSelect.disabled = true;
@@ -283,100 +256,65 @@
             updateDashboard();
         }
 
-        // ---------------------------------------------------------
-        // 3. CALCUL DES STATS (Hybride : Général vs Dates)
-        // ---------------------------------------------------------
         function getDashboardData() {
             const yearFilter = document.getElementById('yearFilter').value;
             const dayFilter = parseInt(document.getElementById('timeFilter').value);
             const visitData = rawData.visit || {};
-            
-            // Récupération de l'objet "général"
-            // Attention aux accents dans la clé JSON
             const generalData = visitData['général'] || { all: 0, unique: 0, country: {}, device: {}, browser: {}, os: {}, referrer: {}, pages: {} };
 
             const isAllTime = (yearFilter === 'all' && isNaN(dayFilter)) || (yearFilter === 'all' && document.getElementById('timeFilter').value === 'all');
             const now = new Date();
             const cutoffDate = isNaN(dayFilter) ? new Date(0) : new Date(now.getTime() - (dayFilter * 24 * 60 * 60 * 1000));
 
-            let dailyPoints = []; // Pour le graphique linéaire
-            let aggregatedStats = {
-                all: 0,
-                unique: 0,
-                countries: {},
-                devices: {},
-                browsers: {}, // Souvent vide dans les daily
-                os: {},       // Souvent vide dans les daily
-                referrers: {},
-                pages: {}
-            };
+            let dailyPoints = [];
+            let aggregatedStats = { all: 0, unique: 0, countries: {}, devices: {}, browsers: {}, os: {}, referrers: {}, pages: {} };
 
-            // 1. Traitement des données journalières (Pour le graphique Ligne et le tableau IP)
             Object.keys(visitData).forEach(key => {
-                // On filtre sur les dates YYYY-MM-DD
                 if (!key.match(/^\d{4}-\d{2}-\d{2}$/)) return;
 
                 const dateParts = key.split('-');
                 const entryDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
                 const entryYear = dateParts[0];
 
-                // Filtres
                 if (yearFilter !== 'all' && entryYear !== yearFilter) return;
                 if (yearFilter === 'all' && !isNaN(dayFilter) && entryDate < cutoffDate) return;
 
                 const dayData = visitData[key];
 
-                // Push pour le graphique temporel
+                // On stocke les deux valeurs ici
                 dailyPoints.push({
                     dateStr: key,
                     dateObj: entryDate,
                     all: dayData.all || 0,
+                    unique: dayData.unique || 0, 
                     ips: dayData.ips || {}
                 });
 
-                // Si on n'est PAS en mode "All Time", on doit aggréger manuellement
                 if (!isAllTime) {
                     aggregatedStats.all += (dayData.all || 0);
-                    aggregatedStats.unique += (dayData.unique || 0); // Somme des uniques journaliers (approximation)
-                    
-                    // Merge simple pour charts (si les données existent dans daily)
+                    aggregatedStats.unique += (dayData.unique || 0);
                     mergeCounts(aggregatedStats.countries, dayData.country);
                     mergeCounts(aggregatedStats.devices, dayData.device);
                     mergeCounts(aggregatedStats.pages, dayData.pages);
-                    // Note: Referrer et Browser/OS sont souvent absents des daily keys dans votre JSON exemple,
-                    // donc ils seront vides si on filtre par date.
                 }
             });
 
             dailyPoints.sort((a, b) => a.dateObj - b.dateObj);
 
-            // 2. Décision finale pour les Stats Globales (Camemberts & KPIs)
-            let finalStats;
+            let finalStats = isAllTime ? {
+                all: generalData.all,
+                unique: generalData.unique,
+                countries: generalData.country,
+                devices: generalData.device,
+                browsers: generalData.browser,
+                os: generalData.os,
+                referrers: generalData.referrer,
+                pages: generalData.pages
+            } : aggregatedStats;
 
-            if (isAllTime) {
-                // CAS 1 : Tout l'historique -> ON UTILISE DIRECTEMENT .général
-                finalStats = {
-                    all: generalData.all,
-                    unique: generalData.unique,
-                    countries: generalData.country,
-                    devices: generalData.device,
-                    browsers: generalData.browser,
-                    os: generalData.os,
-                    referrers: generalData.referrer,
-                    pages: generalData.pages
-                };
-            } else {
-                // CAS 2 : Filtré (Année ou Jours) -> On utilise l'aggrégation calculée
-                finalStats = aggregatedStats;
-            }
-
-            return {
-                timeline: dailyPoints,
-                stats: finalStats
-            };
+            return { timeline: dailyPoints, stats: finalStats };
         }
 
-        // Helper pour additionner les objets { "fr": 10, "us": 2 }
         function mergeCounts(target, source) {
             if (!source) return;
             Object.entries(source).forEach(([k, v]) => {
@@ -384,90 +322,52 @@
             });
         }
 
-        // ---------------------------------------------------------
-        // 4. RENDU DOM & CHARTS
-        // ---------------------------------------------------------
         function updateDashboard() {
             const data = getDashboardData();
             const stats = data.stats;
 
-            // --- KPIs ---
             document.getElementById('kpi-all').innerText = stats.all.toLocaleString();
             document.getElementById('kpi-unique').innerText = stats.unique.toLocaleString();
-            
             const ratio = stats.unique > 0 ? ((stats.unique / stats.all) * 100).toFixed(0) : 0;
             document.getElementById('kpi-ratio').innerText = ratio + '%';
-
-            const topOS = getTopKey(stats.os);
-            document.getElementById('kpi-os').innerText = topOS;
-
+            document.getElementById('kpi-os').innerText = getTopKey(stats.os);
             const topRef = getTopKey(stats.referrers);
             document.getElementById('kpi-referrer').innerText = topRef === 'direct' ? 'Accès direct' : topRef;
 
-
-            // --- LISTES (Pages & Referrers) ---
             renderList('pagesList', stats.pages, 'text-blue-600', '/', true);
             renderList('referrersList', stats.referrers, 'text-emerald-600', '', false);
 
-
-            // --- TABLEAU IPs (Basé sur la timeline filtrée) ---
             const tbody = document.getElementById('ipTableBody');
             tbody.innerHTML = '';
-            // On affiche les plus récents en premier
             const recentDays = [...data.timeline].reverse();
             let rowCount = 0;
-
             recentDays.forEach(day => {
-                if (rowCount > 30) return; // Limite
+                if (rowCount > 30) return;
                 const dateStr = day.dateObj.toLocaleDateString('fr-FR', {day: '2-digit', month: 'short'});
-                
                 Object.entries(day.ips).forEach(([ip, count]) => {
                     if (rowCount > 30) return;
                     const tr = document.createElement('tr');
                     tr.className = "border-b border-gray-50 hover:bg-gray-50 transition-colors";
-                    tr.innerHTML = `
-                        <td class="p-3 font-medium text-gray-500">${dateStr}</td>
-                        <td class="p-3 font-mono text-indigo-600">${ip}</td>
-                        <td class="p-3 text-right font-bold text-gray-800">${count}</td>
-                    `;
+                    tr.innerHTML = `<td class="p-3 font-medium text-gray-500">${dateStr}</td><td class="p-3 font-mono text-indigo-600">${ip}</td><td class="p-3 text-right font-bold text-gray-800">${count}</td>`;
                     tbody.appendChild(tr);
                     rowCount++;
                 });
             });
-            if(rowCount === 0) tbody.innerHTML = '<tr><td colspan="3" class="p-4 text-center text-gray-400 italic">Aucune donnée sur cette période</td></tr>';
+            if(rowCount === 0) tbody.innerHTML = '<tr><td colspan="3" class="p-4 text-center text-gray-400 italic">Aucune donnée</td></tr>';
 
-
-            // --- CHARTS UPDATE ---
             updateCharts(data);
         }
 
         function renderList(elementId, dataObj, colorClass, emptyLabel, isPath) {
             const ul = document.getElementById(elementId);
             ul.innerHTML = '';
-            
             const sorted = Object.entries(dataObj || {}).sort((a, b) => b[1] - a[1]);
-            
-            if (sorted.length === 0) {
-                ul.innerHTML = '<li class="text-gray-400 italic text-sm">Aucune donnée</li>';
-                return;
-            }
-
+            if (sorted.length === 0) { ul.innerHTML = '<li class="text-gray-400 italic text-sm">Aucune donnée</li>'; return; }
             sorted.forEach(([key, val], index) => {
-                const percent = sorted.length > 0 ? (val / sorted[0][1] * 100) : 0; // % relatif au premier
+                const percent = sorted.length > 0 ? (val / sorted[0][1] * 100) : 0;
                 let displayKey = key;
                 if(isPath && key === '/') displayKey = '/ (Accueil)';
-
-                ul.innerHTML += `
-                    <li class="relative flex justify-between items-center p-2 rounded hover:bg-gray-50 group">
-                        <div class="absolute left-0 top-0 bottom-0 bg-gray-100 rounded opacity-0 group-hover:opacity-50 transition-all" style="width: ${percent}%; z-index: 0;"></div>
-                        
-                        <div class="relative z-10 flex items-center gap-2 overflow-hidden">
-                            <span class="text-xs font-bold text-gray-400 w-4">${index + 1}.</span>
-                            <span class="font-mono text-sm truncate ${colorClass}" title="${key}">${displayKey}</span>
-                        </div>
-                        <span class="relative z-10 text-sm font-bold text-gray-700">${val}</span>
-                    </li>
-                `;
+                ul.innerHTML += `<li class="relative flex justify-between items-center p-2 rounded hover:bg-gray-50 group"><div class="absolute left-0 top-0 bottom-0 bg-gray-100 rounded opacity-0 group-hover:opacity-50 transition-all" style="width: ${percent}%; z-index: 0;"></div><div class="relative z-10 flex items-center gap-2 overflow-hidden"><span class="text-xs font-bold text-gray-400 w-4">${index + 1}.</span><span class="font-mono text-sm truncate ${colorClass}" title="${key}">${displayKey}</span></div><span class="relative z-10 text-sm font-bold text-gray-700">${val}</span></li>`;
             });
         }
 
@@ -476,56 +376,59 @@
             return Object.entries(obj).sort((a, b) => b[1] - a[1])[0][0];
         }
 
+        // ------------------------------------------------------------------
+        // FONCTION DE CHARTS MODIFIÉE : MULTI-DATASETS
+        // ------------------------------------------------------------------
         function updateCharts(data) {
             const stats = data.stats;
-
-            // 1. Line Chart (Timeline)
             const dates = data.timeline.map(d => d.dateObj.toLocaleDateString('fr-FR', {day:'numeric', month:'short'}));
-            const counts = data.timeline.map(d => d.all);
+            
+            // On prépare les deux tableaux de données
+            const countsAll = data.timeline.map(d => d.all);
+            const countsUnique = data.timeline.map(d => d.unique);
 
+            // Graphique UNIQUE combiné
             renderChart('trafficChart', 'line', {
                 labels: dates,
-                datasets: [{
-                    label: 'Visites',
-                    data: counts,
-                    borderColor: '#4f46e5', // Indigo 600
-                    backgroundColor: 'rgba(79, 70, 229, 0.1)',
-                    borderWidth: 2,
-                    fill: true,
-                    tension: 0.4,
-                    pointRadius: 3,
-                    pointHoverRadius: 6
-                }]
+                datasets: [
+                    {
+                        label: 'Vues Totales',
+                        data: countsAll,
+                        borderColor: '#2563eb', // Bleu
+                        backgroundColor: 'rgba(37, 99, 235, 0.05)', // Très transparent
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 3,
+                        pointHoverRadius: 6
+                    },
+                    {
+                        label: 'Visiteurs Uniques',
+                        data: countsUnique,
+                        borderColor: '#8b2c95', // Indigo (plus foncé/vif)
+                        backgroundColor: 'rgba(79, 70, 229, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 3,
+                        pointHoverRadius: 6,
+                        borderDash: [] // Ligne pleine
+                    }
+                ]
             });
 
-            // 2. Country (Doughnut)
-            // Mapping codes pays -> Noms (optionnel, ici on garde le code)
             renderDistributionChart('countryChart', stats.countries, 'doughnut');
-
-            // 3. Browser (Bar - Horizontal)
             renderDistributionChart('browserChart', stats.browsers, 'bar');
-
-            // 4. Device (Pie)
             renderDistributionChart('deviceChart', stats.devices, 'pie');
-
-            // 5. OS (Doughnut)
             renderDistributionChart('osChart', stats.os, 'doughnut');
         }
 
         function renderDistributionChart(id, dataObj, type) {
-            // Tri pour avoir les plus gros morceaux en premier
             const sorted = Object.entries(dataObj || {}).sort((a, b) => b[1] - a[1]);
-            // On garde Top 10 max pour pas surcharger le graph
             const topData = sorted.slice(0, 10);
-            
             const labels = topData.map(i => i[0].toUpperCase());
             const values = topData.map(i => i[1]);
-
-            // Palette de couleurs
-            const colors = [
-                '#4f46e5', '#10b981', '#f59e0b', '#ef4444', 
-                '#8b5cf6', '#ec4899', '#06b6d4', '#84cc16'
-            ];
+            const colors = ['#4f46e5', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#84cc16'];
 
             renderChart(id, type, {
                 labels: labels,
@@ -537,7 +440,7 @@
                     borderRadius: 4
                 }]
             }, { 
-                indexAxis: type === 'bar' ? 'y' : 'x', // Bar horizontal
+                indexAxis: type === 'bar' ? 'y' : 'x', 
                 cutout: type === 'doughnut' ? '65%' : 0 
             });
         }
@@ -549,18 +452,23 @@
             const defaultOptions = {
                 responsive: true,
                 maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index', // Affiche les deux points au survol
+                    intersect: false,
+                },
                 plugins: { 
                     legend: { 
-                        display: type !== 'bar', // Pas de légende pour les barres horizontales
+                        display: type !== 'bar', 
                         position: 'bottom', 
                         labels: { usePointStyle: true, padding: 20 } 
-                    } 
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false
+                    }
                 },
                 scales: (type === 'bar' || type === 'line') 
-                    ? { 
-                        x: { grid: { display: false } }, 
-                        y: { beginAtZero: true, grid: { color: '#f3f4f6' } } 
-                      } 
+                    ? { x: { grid: { display: false } }, y: { beginAtZero: true, grid: { color: '#f3f4f6' } } } 
                     : { x: { display: false }, y: { display: false } }
             };
 
@@ -571,9 +479,7 @@
             });
         }
 
-        // Start
         fetchData();
-
     </script>
 </body>
 </html>
