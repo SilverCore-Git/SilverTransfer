@@ -34,10 +34,16 @@ router.post('/stats', (req, res) => {
   }
 
   // Incrément global
+  const isUnique = !Object.hasOwn(stats.visit[dateStr].ips, ip);
+
   stats.visit.général.all += 1;
-  stats.visit.général.unique += stats.visit[dateStr].ips.include(ip) ? 0 : 1;
+  stats.visit.général.unique += isUnique ? 1 : 0;
+
   stats.visit[dateStr].all += 1;
-  stats.visit[dateStr].unique += stats.visit[dateStr].ips.include(ip) ? 0 : 1;
+  stats.visit[dateStr].unique += isUnique ? 1 : 0;
+
+  // Ajouter ou incrémenter l'IP
+  stats.visit[dateStr].ips[ip] = (stats.visit[dateStr].ips[ip] || 0) + 1;
 
   if (ip) {
     // Assure-toi que l'IP est correctement initialisée dans le cas où il n'y a pas d'IP pour aujourd'hui
