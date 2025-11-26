@@ -183,14 +183,10 @@ const send_file = async () => {
     const passwd: string = await fetch(`https://www.silvertransfert.fr/passwd/${crypt_strong.value}`).then(res => res.json());
 
     query('id', String(id));
-
-    setTimeout(() => {
-        query('passwd', passwd);
-    }, 100)
-
-    setTimeout(() => {
-        query('link', '1');
-    }, 100)
+    await nextTick();
+    query('passwd', passwd);
+    await nextTick();
+    query('link', '1');
 
     final_link_data.value = {
         id,
@@ -206,16 +202,11 @@ const send_file = async () => {
             upload_progress.value = percent;
             console.log(`Progress: ${percent}%`, eta);
             timeLeft.value = eta || "0mn 0s";
-
-            if (percent == 100) {
-                setTimeout(() => {
-                    form('done');
-                }, 2000)
-            }
         },
 
         onSuccess: (res) => {
             console.log('Récéption terminé !', res);
+            form('done');
         },
 
         onError: (msg) => {
