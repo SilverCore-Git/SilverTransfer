@@ -75,7 +75,7 @@ const interval = setInterval(() => {
 
     if (props.value < 100) {
     } else {
-        statusMessage.value = 'Téléversement terminé !'
+        statusMessage.value = 'Finalisation...'
         clearInterval(interval)
         ending_bar.value = true
     }

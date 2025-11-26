@@ -182,11 +182,7 @@ const send_file = async () => {
     const id: number = await fetch(`https://www.silvertransfert.fr/upload/create/id`).then(res => res.json()).then(res => res.id);
     const passwd: string = await fetch(`https://www.silvertransfert.fr/passwd/${crypt_strong.value}`).then(res => res.json());
 
-    query('id', String(id));
     await nextTick();
-    query('passwd', passwd);
-    await nextTick();
-    query('link', '1');
 
     final_link_data.value = {
         id,
@@ -196,7 +192,7 @@ const send_file = async () => {
     send({
 
         file: selectedFile.value,
-        url: `https://www.silvertransfert.fr/upload/file?passwd=${passwd}&id=${id}&user=ip&premium=0&premium_expire_date=15`,
+        url: `https://www.silvertransfert.fr/upload/file?passwd=${passwd}&id=${id}&user=ip&premium=0&premium_expire_date=30`,
 
         onProgress: (percent, eta) => {
             upload_progress.value = percent;

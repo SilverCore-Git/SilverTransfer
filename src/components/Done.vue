@@ -66,11 +66,8 @@
 <script setup lang="ts">
 
 import { ref } from 'vue'
-import { useRoute } from 'vue-router';
-
 import Social_contaner from './Social_contaner.vue'
-
-const route = useRoute();
+import { onMounted } from 'vue';
 
 const props = defineProps<{
     data: {
@@ -82,11 +79,9 @@ const props = defineProps<{
 const downloadLink = ref<string>('') 
 const copied = ref(false)
 
-if (route.query.link == '1') {
-    downloadLink.value = window.location.origin + '/t/' + route.query.id + '/' + route.query.passwd;
-} else {
+onMounted(() => {
     downloadLink.value = window.location.origin + '/t/' + props.data.id + '/' + props.data.passwd;
-}
+})
 
 function copyLink() {
   navigator.clipboard.writeText(downloadLink.value).then(() => {
