@@ -1,27 +1,21 @@
-/**
- * @author SilverCore
- * @author SilverTransfert
- * @author MisterPapaye
- */
+import crypto from 'crypto';
 
-const crypto = require('crypto');
-const fs = require('fs');
-require('dotenv').config();
-const fatherKey = Buffer.from(process.env.SECRET_KEY, 'hex');
-const babyKey = Buffer.from(process.env.TEXT_SECRET_KEY, 'hex'); // clée de 32bytes
-if (fatherKey.length !== 32) {
-    return console.error("FATHER_KEY doit être de 32 octets en hexadécimal !");
-}
+export default async function
+({
+    inputFolder, 
+    outputFile = 'temp/undefined', 
+    privateKey, 
+    passwd
+}:{
+    inputFolder: string, 
+    outputFile: string, 
+    privateKey: string, 
+    passwd: string
+})
+{
 
-CHUNK_SIZE = 100 * 1024 * 1024; // 100 mo par parti (augementé ??)
-
-
-
-
-
-
-async function decryptFile(inputFolder, outputFile = 'temp/undefined', privateKey, passwd) {
     try {
+
         const filePlanPath = `${inputFolder}/layout.json`;
         const filePlan = JSON.parse(await fs.promises.readFile(filePlanPath, 'utf-8'));
         const sortedFiles = (await fs.promises.readdir(inputFolder))
@@ -97,66 +91,5 @@ async function decryptFile(inputFolder, outputFile = 'temp/undefined', privateKe
     } catch (error) {
         console.error('❌ Erreur lors du déchiffrement du fichier :', error);
     }
+    
 }
-
-
-
-
-
-
-
-
-
-async function verifyPassword(inputFolder, privateKey, passwd) {  
-
-    try {
-        // Lire le fichier de layout pour obtenir la clé AES chiffrée
-        const layout = require(`${inputFolder}/witness_layout.json`);
-        const encryptedAesKey = Buffer.from(layout.aesKey, 'hex'); // Assurez-vous que la clé est un Buffer
-
-        // 🔥 Essayer de décrypter la clé AES avec la clé privée et le mot de passe
-        const decryptedAesKey = crypto.privateDecrypt(
-            {
-                key: privateKey,
-                passphrase: passwd,
-            },
-            encryptedAesKey
-        );
-
-        // Si le décryptage est réussi, cela signifie que le mot de passe est valide
-        console.log('✅ Mot de passe valide');
-        return true;
-    } catch (err) {
-        // Si erreur → mot de passe invalide
-        console.log('❌ Mot de passe invalide ou erreur lors du décryptage :', err.message);
-        return false;
-    };
-
-}
-
-
-
-
-const algorithm = 'AES-256-ECB';
-
-// for text
-// Fonction pour chiffrer un texte
-function encryptText(text) {
-
-}
-
-// Fonction pour déchiffrer un texte
-function decryptText(encryptedData) {
-    const decipher = crypto.createDecipheriv(algorithm, babyKey, null); 
-    let decrypted = decipher.update(encryptedData, 'hex', 'utf8');
-    decrypted += decipher.final('utf8');
-    return decrypted;
-}
-
-module.exports = {
-    encryptFile,
-    decryptFile,
-    encryptText,
-    decryptText,
-    verifyPassword
-};
