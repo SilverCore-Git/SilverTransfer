@@ -9,13 +9,11 @@ console.log('🔄 Démarrage du serveur...');
 // Importation des bibliothèques
 const express = require("express");
 const fs = require("fs");
-const https = require("https");
 const http = require("http");
 const cors = require("cors");
 const path = require("path");
 const ejs = require("ejs");
 const crypto = require("crypto");
-const bodyParser = require('body-parser');
 const { SilverIssueMiddleware } = require('./src/lib/silverissue');
 require('dotenv').config();
 const cookieParser = require('cookie-parser');
@@ -65,18 +63,6 @@ setInterval(() => {
 }, 24 * 3600 * 1000); // check for expire file
 
 
-let options;
-
-if (ifdev) {
-    options = null;
-} else {
-    // SSL key & cert path
-    options = {
-        key: fs.readFileSync(config.SSLkeyPath, "utf8"),
-        cert: fs.readFileSync(config.SSLcertPath, "utf8"),
-    };
-}
-
 const corsOptions = {
     origin: ifdev ? 'http://localhost:84' : 'https://www.silvertransfert.fr',
     methods: ['POST', 'GET'],
@@ -92,7 +78,6 @@ app.set('trust proxy', true);
 
 app.use(SilverIssueMiddleware);
 app.use(cors(corsOptions));
-app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.json({ limit: '16gb' }))
 app.use(express.urlencoded({ limit: '16gb', extended: true }))
@@ -377,15 +362,6 @@ setTimeout(() => {
 
 const PORT = config.Port;
 
-if (ifdev) {
-    http.createServer(app).listen(PORT, () => {
-        console.log(`✅ Serveur HTTP en ligne sur ${config.hostname}:${PORT}`);
-    });
-} else {
-    https.createServer(options, app).listen(PORT, () => {
-        console.log(`✅ Serveur HTTPS en ligne sur ${config.hostname}:${PORT}`);
-    });
-}
-
-
-
+http.createServer(app).listen(PORT, () => {
+    console.log(`✅ Serveur HTTP en ligne sur ${config.hostname}:${PORT}`);
+});
