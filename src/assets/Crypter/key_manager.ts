@@ -1,16 +1,18 @@
-const path = require('path');
-const fs = require('fs');
-const crypto = require('crypto');
+import path from 'path';
+import fs from 'fs';
+import crypto from 'crypto';
 
 class Key {
 
-    async generate(id, passwd, opt = 'all') {
+    async generate(id: string, passwd: string, opt: string = 'all') 
+    {
         const dirPath = path.join('key', 'live', id);
         try {
             await fs.promises.mkdir(dirPath, { recursive: true });
 
             if (opt === 'all') {
-                const { publicKey, privateKey } = await new Promise((resolve, reject) => {
+                const { publicKey, privateKey }: { publicKey: string, privateKey: string } = await new Promise(
+                    (resolve, reject) => {
                     crypto.generateKeyPair('rsa', {
                         modulusLength: 4096,
                         publicKeyEncoding: {
@@ -40,7 +42,7 @@ class Key {
         }
     }
 
-    async remove(id, opt = 'all') {
+    async remove(id: string, opt: string = 'all') {
         try {
             if (opt === 'all') {
                 fs.rmSync(`key/live/${id}/public_key.pem`);
@@ -58,7 +60,7 @@ class Key {
         }
     }
 
-    async read(id, opt = 'all') {
+    async read(id: string, opt: string = 'all') {
         try {
             if (opt === 'all') {
                 const publicKey = await fs.promises.readFile(`key/live/${id}/public_key.pem`, 'utf8');
@@ -79,4 +81,4 @@ class Key {
     }
 }
 
-module.exports = new Key();
+export default new Key();
