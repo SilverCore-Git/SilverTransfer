@@ -8,7 +8,7 @@ const { getCurrentDate, getCurrentTime } = require('./datemanager.js')
 const path = require('path')
 const fs = require('fs')
 
-const config = require('../config/config.json');
+const config = require('../../config/config.json');
 
 const logToFile = (message) => {
     const date = getCurrentDate();

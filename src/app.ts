@@ -1,39 +1,32 @@
-/**
- * @author SilverCore
- * @author SilverTransfer
- * @author MisterPapaye
- */
-
 console.log('🔄 Démarrage du serveur...');
 
 // Importation des bibliothèques
-const express = require("express");
-const fs = require("fs");
-const http = require("http");
-const cors = require("cors");
-const path = require("path");
-const ejs = require("ejs");
-const crypto = require("crypto");
-const { SilverIssueMiddleware } = require('./src/lib/silverissue');
-require('dotenv').config();
-const cookieParser = require('cookie-parser');
+import express from "express";
+import fs from "fs";
+import http from "http";
+import cors from "cors";
+import path from "path";
+import crypto from "crypto";
+import { SilverIssueMiddleware } from './assets/lib/silverissue';
+import 'dotenv/config';
+import cookieParser from 'cookie-parser';
 
 
-const formatFileSize = require('./src/filesize.js')
+import formatFileSize from './assets/filesize.js';
 
-const config = require('./config/config.json');
-let pkg = require('./package.json');
+import config from './config/config.json';
+import pkg from '../package.json';
 
-const ifdev = pkg.dev;
+import ifdev = pkg.dev;
 
 
-const session = require('./src/sessions_manager.js');
-const { decryptText } = require("./src/crypt.js");
-const { loadDatabase, resetDatabase } = require('./src/database.js'); 
-const { archive_stats } = require('./src/interval/archive.js'); archive_stats();
-const Stats = require('./src/stats_manager.js');
-const { verifyIfExpire } = require('./src/verifyIfExpire.js');
-require('./src/logger.js');
+import session from './assets/sessions_manager.js';
+import { decryptText } from "./assets/crypt.js";
+import { loadDatabase, resetDatabase } from './assets/database.js'; 
+import { archive_stats } from './assets/interval/archive.js'; archive_stats();
+import Stats from './assets/stats_manager.js';
+import { verifyIfExpire } from './assets/verifyIfExpire.js';
+require('./assets/logger.js');
 
 
 async function resetDB() {
@@ -231,9 +224,9 @@ app.get("/t/:id/:passwd", async (req, res) => {
 
             //assets
             if (passwd == 'assets') {
-                const fileName = req.query.file
-                const ext = req.query.ext
-                res.sendFile(path.join(__dirname, 'views', 'assets', ext, `${fileName}.${ext}`))
+                const fileName = String(req.query.file);
+                const ext = String(req.query.ext);
+                res.sendFile(path.join(__dirname, 'views', 'assets', ext, `${fileName}.${ext}`));
                 return
             }
 
