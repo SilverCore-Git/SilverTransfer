@@ -1,16 +1,10 @@
-/**
- * @author SilverCore
- * @author SilverTransfer
- * @author MisterPapaye
- */
+import { getCurrentDate, getCurrentTime } from './utils/getDate';
+import path from 'path';
+import fs from 'fs';
 
-const { getCurrentDate, getCurrentTime } = require('./datemanager.js')
-const path = require('path')
-const fs = require('fs')
+import config from '../config/config.json';
 
-const config = require('../../config/config.json');
-
-const logToFile = (message) => {
+const logToFile = (message: string) => {
     const date = getCurrentDate();
     const time = getCurrentTime();
     const logDir = path.join(__dirname, `../${config.LOGDir}`);
@@ -41,8 +35,7 @@ console.warn = (...args) => {
 };
 
 
-
-module.exports = {
+export {
     logToFile,
     originalConsoleError, 
     originalConsoleLog,

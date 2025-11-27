@@ -7,25 +7,14 @@ import http from "http";
 import cors from "cors";
 import path from "path";
 import crypto from "crypto";
-import { SilverIssueMiddleware } from './assets/lib/silverissue';
 import 'dotenv/config';
 import cookieParser from 'cookie-parser';
-
-
-import formatFileSize from './assets/filesize.js';
 
 import config from './config/config.json';
 import pkg from '../package.json';
 
 import ifdev = pkg.dev;
 
-
-import session from './assets/sessions_manager.js';
-import { decryptText } from "./assets/crypt.js";
-import { loadDatabase, resetDatabase } from './assets/database.js'; 
-import { archive_stats } from './assets/interval/archive.js'; archive_stats();
-import Stats from './assets/stats_manager.js';
-import { verifyIfExpire } from './assets/verifyIfExpire.js';
 require('./assets/logger.js');
 
 
@@ -208,84 +197,6 @@ app.use('/api', root_api);
 
 
 
-
-
-
-
-// Route pour afficher le bouton de téléchargement
-app.get("/t/:id/:passwd", async (req, res) => {
-
-    if (req.hostname === config.hostname) {
-
-        console.log("📥 Réception d'une requête : ", `'/t/${req.params.id}'`);
-
-        const fileID = req.params.id;
-        const passwd = req.params.passwd;
-
-            //assets
-            if (passwd == 'assets') {
-                const fileName = String(req.query.file);
-                const ext = String(req.query.ext);
-                res.sendFile(path.join(__dirname, 'views', 'assets', ext, `${fileName}.${ext}`));
-                return
-            }
-
-            // dev access
-            const dev = req.query.dev
-
-            if (dev === 'true') {
-
-                console.warn('⚠️ </> Acces développeur ! ?id=',fileID)
-
-                const type = req.query.type
-                const err = req.query.err
-
-                if (type === 'err') {
-
-                    if (err === '500') {
-
-                    }
-
-                } else {
-                    return await res.render("download", { fileName: 'fileName', fileID: 'fileID', fileSize: 'fSize', passwd: 'e', fileExpir: config.expiretime || 30, version: 'version', v: pkg.version });
-                }
-
-            }
-
-        
-        const fileEntry = fileDatabase[fileID];
-
-        if (!fileEntry) {
-            return res.status(404).render("errfile", { status: "ID de fichier non trouver...", v: pkg.version });
-        }
-
-        const fSize = await formatFileSize(fileEntry.size);
-        
-        const fileName = fileEntry.fileName.split('.')[1];
-        const decryptedFileName = decryptText(fileName);
-
-        const input = fileEntry.date;
-        const parsedDate = new Date(input.replace(" - ", "T"));
-        
-        const now = new Date();
-        const fifteenDaysLater = new Date(parsedDate.getTime() + (Number(fileEntry.premium_data.expire_day) || config.expiretime || 30) * 24 * 60 * 60 * 1000);
-        
-        const diffMs = fifteenDaysLater - now;
-        
-        if (diffMs <= 0) {
-          return res.status(410).render("errfile", { status: "Le fichier a expiré !", v: pkg.version });
-        } else {
-          const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-        
-          res.status(200).render("download", { fileName: decryptedFileName, passwd: passwd,  fileExpir: diffDays, fileID: fileID, fileSize: fSize, v: pkg.version });
-
-        }
-
-    }
-
-});
-
-
 // Générer une clé
 app.get("/key/:bytes", (req, res) => {
     console.log("📥 Réception d'une requête : ", `'/key/${req.params.bytes}'`)
@@ -343,15 +254,6 @@ app.get('/passwd/:nb', async (req, res) => {
 app.use((req, res) => {
     res.status(404).send(`<h1>Erreur 404 page non trouvée</h1>`);
 });
-
-
-verifyIfExpire();
-
-setTimeout(() => {
-    console.log('Run stats fix');
-    Stats.fix();
-}, 2000);
-
 
 const PORT = config.Port;
 
