@@ -1,4 +1,5 @@
 import crypto from 'crypto';
+import { Layout } from './CrypterTypes';
 
 export default async function
 ({
@@ -15,6 +16,7 @@ export default async function
 {
 
     try {
+
         const fileStats = await fs.promises.stat(inputFile);
         const totalSize = fileStats.size;
         const chunkSize = 100 * 1024 * 1024; // 100 mo / chunck
@@ -23,13 +25,13 @@ export default async function
         await fs.promises.mkdir(outputFolder, { recursive: true });
 
         let chunkIndex = 0;
-        let filePlan = {
+        let filePlan: Layout = {
             chunks: [],
             originalFileHash: '',
             aesKey: ''
         };
 
-        // 🔥 Générer une clé AES pour ce fichier
+        // Générer une clé AES pour ce fichier
         const aesKey = crypto.randomBytes(32); // 32 bytes = AES-256
         const encryptedAesKey = crypto.publicEncrypt(
             {
@@ -39,17 +41,17 @@ export default async function
             aesKey
         );
 
-        // ⚡️ Calculer le hash sans charger tout le fichier en RAM
+        // Calculer le hash sans charger tout le fichier en RAM
         const hash = crypto.createHash('sha256');
         await new Promise((resolve, reject) => {
             const hashStream = fs.createReadStream(inputFile);
-            hashStream.on('data', (chunk) => {
+            hashStream.on('data', (chunk: any) => {
                 hash.update(chunk);
             });
             hashStream.on('end', () => {
                 filePlan.originalFileHash = hash.digest('hex');
                 filePlan.aesKey = encryptedAesKey.toString('hex');
-                resolve();
+                resolve(null);
             });
             hashStream.on('error', reject);
         });
@@ -77,7 +79,8 @@ export default async function
         console.log(`✅ Layout du fichier témoin écrit dans witness_layout.json`);
 
         // Fonction pour traiter un morceau du fichier principal
-        async function processChunk(startPosition) {
+        async function processChunk(startPosition: number)
+        {
             const outputFile = `${outputFolder}/part${chunkIndex}.enc`;
             const output = fs.createWriteStream(outputFile);
 
@@ -96,7 +99,7 @@ export default async function
             const inputStream = fs.createReadStream(inputFile, { start: startPosition, end: Math.min(startPosition + chunkSize - 1, totalSize - 1) });
 
             return new Promise((resolve, reject) => {
-                inputStream.on('data', (chunk) => {
+                inputStream.on('data', (chunk: any) => {
                     const encryptedChunk = cipher.update(chunk);
                     output.write(encryptedChunk);
                 });
@@ -107,7 +110,7 @@ export default async function
                     output.end();
                     console.log(`✅ Partie ${chunkIndex} chiffrée avec succès : ${outputFile}`);
                     chunkIndex++;
-                    resolve();
+                    resolve(null);
                 });
 
                 inputStream.once('error', reject);
@@ -115,7 +118,7 @@ export default async function
             });
         }
 
-        // ➡️ Boucle de découpage
+        // Boucle de découpage
         while ((chunkIndex * chunkSize) < totalSize) {
             await processChunk(chunkIndex * chunkSize);
         }
@@ -134,5 +137,5 @@ export default async function
     } catch (error) {
         console.error('❌ Erreur lors du chiffrement :', error);
     }
-    
+
 }

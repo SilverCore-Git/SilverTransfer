@@ -1,4 +1,5 @@
 import crypto from 'crypto';
+import { Layout } from './CrypterTypes';
 
 export default async function
 ({
@@ -17,10 +18,10 @@ export default async function
     try {
 
         const filePlanPath = `${inputFolder}/layout.json`;
-        const filePlan = JSON.parse(await fs.promises.readFile(filePlanPath, 'utf-8'));
+        const filePlan: Layout = JSON.parse(await fs.promises.readFile(filePlanPath, 'utf-8'));
         const sortedFiles = (await fs.promises.readdir(inputFolder))
-                .filter(file => file.endsWith('.enc'))
-                .sort((a, b) => {
+                .filter((file: any) => file.endsWith('.enc'))
+                .sort((a: any, b: any) => {
                     // Extraire les numéros dans "partX.enc"
                     const aNum = parseInt(a.match(/\d+/)[0], 10);
                     const bNum = parseInt(b.match(/\d+/)[0], 10);
@@ -54,7 +55,7 @@ export default async function
             console.log(`🔍 Décryptage du fichier : ${file}`);
 
             await new Promise((resolve, reject) => {
-                inputStream.on('data', (chunk) => {
+                inputStream.on('data', (chunk: any) => {
                     const decryptedChunk = decipher.update(chunk);
                     outputStream.write(decryptedChunk);
                     hash.update(decryptedChunk); // Mettre à jour le hash en direct
@@ -65,7 +66,7 @@ export default async function
                         const finalDecrypted = decipher.final();
                         outputStream.write(finalDecrypted);
                         hash.update(finalDecrypted); // Finaliser le hash aussi
-                        resolve();
+                        resolve(null);
                     } catch (error) {
                         reject(error);
                     }
@@ -91,5 +92,5 @@ export default async function
     } catch (error) {
         console.error('❌ Erreur lors du déchiffrement du fichier :', error);
     }
-    
+
 }
