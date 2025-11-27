@@ -1,11 +1,5 @@
-/**
- * @author SilverCore
- * @author SilverTransfer
- * @author MisterPapaye
- */
-
-
-function formatFileSize(fileSizeInBytes) {
+function formatFileSize(fileSizeInBytes: number) 
+{
     const ko = 1024;               // 1 Ko = 1024 octets
     const mo = ko * 1024;          // 1 Mo = 1024 Ko
     const go = mo * 1024;          // 1 Go = 1024 Mo
@@ -34,4 +28,4 @@ function formatFileSize(fileSizeInBytes) {
     return `${size} ${unit}`;  // Retourner la taille formatée
 }
 
-module.exports = formatFileSize;
+export default formatFileSize;
