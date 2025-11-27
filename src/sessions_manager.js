@@ -6,8 +6,6 @@ const { isTypedArray } = require('util/types');
 
 const user_db_file = path.join(__dirname, '../db/users.json');
 
-
-
 class session {
 
     create_id(type = 'session') {

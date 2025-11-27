@@ -76,6 +76,51 @@ class stats {
 
     }
 
+    fix() {
+        try {
+
+            console.log('Run stats fix');
+
+            const stats = this.load();
+            const fixedStats = JSON.parse(JSON.stringify(stats));
+
+            let totalAll = 0;
+            let totalUnique = 0;
+
+            for (const day in fixedStats.visit)
+            {
+                if (day === "général") continue;
+
+                const dayData = fixedStats.visit[day];
+                if (!dayData || typeof dayData !== "object") continue;
+
+                const ips = dayData.ips && typeof dayData.ips === "object" ? dayData.ips : {};
+
+                const unique = Object.keys(ips).length;
+
+                const all = Object.values(ips)
+                    .reduce((sum, n) => sum + (typeof n === "number" ? n : 0), 0);
+
+                dayData.unique = unique;
+                dayData.all = all;
+
+                totalAll += all;
+                totalUnique += unique;
+            }
+
+            fixedStats.visit.général = {
+                ...fixedStats.visit.général,
+                all: totalAll,
+                unique: totalUnique
+            };
+
+            this.save(fixedStats);
+
+        } catch (err) {
+            console.error('Une erreur est survenue lors du fix des stats : ', err);
+        }
+    }
+
     archive(data) {
 
         try {

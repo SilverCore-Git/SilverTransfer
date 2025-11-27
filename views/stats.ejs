@@ -1,200 +1,489 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>📊 Statistiques du site</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      background-color: #f0f2f5;
-      color: #1e1e2f;
-      padding: 2rem;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Analytique - Vue Unifiée</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
-    h1 {
-      color: #3344aa;
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .card {
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-      margin-bottom: 2rem;
-      padding: 1.5rem;
-      transition: transform 0.2s;
-    }
-
-    .card:hover {
-      transform: translateY(-2px);
-    }
-
-    .card h2 {
-      margin-top: 0;
-      color: #2c3e50;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .stat {
-      background: #f9f9fb;
-      padding: 1rem;
-      border-radius: 8px;
-      text-align: center;
-    }
-
-    .stat .label {
-      font-size: 0.9rem;
-      color: #666;
-    }
-
-    .stat .value {
-      font-size: 1.4rem;
-      font-weight: bold;
-      color: #222;
-    }
-
-    pre {
-      margin-top: 1rem;
-      background-color: #f4f4f4;
-      padding: 1rem;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      overflow-x: auto;
-    }
-
-    .charts {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-      margin-top: 2rem;
-    }
-
-    .chart-container {
-      width: 300px;
-      background: #fff;
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-  </style>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #F9FAFB; }
+        .card { @apply bg-white rounded-xl shadow-sm border border-gray-200 p-6; }
+        .chart-container { position: relative; height: 300px; width: 100%; } /* J'ai légèrement augmenté la hauteur */
+        
+        .custom-scroll::-webkit-scrollbar { width: 6px; }
+        .custom-scroll::-webkit-scrollbar-track { background: #f1f1f1; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 10px; }
+        .custom-scroll::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+    </style>
 </head>
-<body>
-  <div class="container">
-    <h1>📊 Statistiques du site</h1>
-    <div id="stats-container">Chargement...</div>
-  </div>
+<body class="text-gray-800">
 
-  <script>
-    fetch('/api/stats/view?archive=<%= ifarchive %>&date=<%= date %>&mdp=<%= mdp %>')
-      .then(res => res.json())
-      .then(data => {
-        const container = document.getElementById('stats-container');
-        container.innerHTML = "";
-
-        const general = data.visit?.général;
-        if (general) {
-          const generalCard = document.createElement("div");
-          generalCard.className = "card";
-          generalCard.innerHTML = `
-            <h2>📌 Statistiques générales</h2>
-            <div class="stats-grid">
-              <div class="stat">
-                <div class="label">Total visites</div>
-                <div class="value">${general.all}</div>
-              </div>
-              <div class="stat">
-                <div class="label">Visites uniques</div>
-                <div class="value">${general.unique}</div>
-              </div>
+    <nav class="bg-white border-b border-gray-200 px-6 py-4 flex flex-col md:flex-row justify-between items-center sticky top-0 z-50 gap-4">
+        <div class="flex items-center gap-3">
+            <div class="bg-indigo-600 text-white p-2 rounded-lg shadow-lg shadow-indigo-200">
+                <i class="fa-solid fa-chart-pie text-xl"></i>
             </div>
-            <div class="charts">
-              <div class="chart-container">
-                <canvas id="chartBrowser"></canvas>
-                <div class="label">Navigateur</div>
-              </div>
-              <div class="chart-container">
-                <canvas id="chartDevice"></canvas>
-                <div class="label">Appareil</div>
-              </div>
-              <div class="chart-container">
-                <canvas id="chartOS"></canvas>
-                <div class="label">Système d'exploitation</div>
-              </div>
+            <div>
+                <h1 class="text-xl font-bold text-gray-900 tracking-tight">Dashboard <span class="text-indigo-600">Analytics</span></h1>
+                <p class="text-xs text-gray-500 font-medium">Vue d'ensemble des statistiques</p>
             </div>
-            <pre>${JSON.stringify(general, null, 2)}</pre>
-          `;
-          container.appendChild(generalCard);
+        </div>
 
-          // Données pour les graphiques
-          const browserLabels = Object.keys(general.browser);
-          const browserData = Object.values(general.browser);
-          const deviceLabels = Object.keys(general.device);
-          const deviceData = Object.values(general.device);
-          const osLabels = Object.keys(general.os);
-          const osData = Object.values(general.os);
+        <div class="flex items-center gap-3">
+            <div class="relative">
+                <select id="yearFilter" onchange="handleYearChange()" class="appearance-none bg-white border border-gray-300 py-2 pl-4 pr-8 rounded-lg text-sm font-semibold text-gray-700 cursor-pointer hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <option value="all">Toutes années</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <i class="fa-solid fa-chevron-down text-xs"></i>
+                </div>
+            </div>
 
-          // Graphique Navigateur
-          new Chart(document.getElementById('chartBrowser'), {
-            type: 'pie',
-            data: { labels: browserLabels, datasets: [{ data: browserData }] }
-          });
+            <div class="relative" id="timeFilterContainer">
+                <select id="timeFilter" onchange="updateDashboard()" class="appearance-none bg-gray-50 border border-gray-300 py-2 pl-4 pr-8 rounded-lg text-sm font-medium text-gray-700 cursor-pointer hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <option value="7">7 derniers jours</option>
+                    <option value="30">Ce mois (30j)</option>
+                    <option value="all" selected>Tout l'historique</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <i class="fa-solid fa-chevron-down text-xs"></i>
+                </div>
+            </div>
+            
+            <button onclick="fetchData()" class="p-2 text-gray-400 hover:text-indigo-600 transition-colors">
+                <i class="fa-solid fa-rotate-right"></i>
+            </button>
+        </div>
+    </nav>
 
-          // Graphique Appareil
-          new Chart(document.getElementById('chartDevice'), {
-            type: 'pie',
-            data: { labels: deviceLabels, datasets: [{ data: deviceData }] }
-          });
+    <main class="max-w-7xl mx-auto p-6 space-y-6">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="card flex flex-col justify-between hover:shadow-md transition-shadow">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-sm font-medium text-gray-500">Pages Vues</p>
+                        <h3 class="text-3xl font-bold text-gray-900 mt-1" id="kpi-all">-</h3>
+                    </div>
+                    <div class="bg-blue-50 text-blue-600 p-3 rounded-xl">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center text-sm text-gray-500">
+                    <span class="text-green-600 font-medium flex items-center gap-1">Total cumulé</span>
+                </div>
+            </div>
 
-          // Graphique OS
-          new Chart(document.getElementById('chartOS'), {
-            type: 'pie',
-            data: { labels: osLabels, datasets: [{ data: osData }] }
-          });
+            <div class="card flex flex-col justify-between hover:shadow-md transition-shadow">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-sm font-medium text-gray-500">Visiteurs Uniques</p>
+                        <h3 class="text-3xl font-bold text-gray-900 mt-1" id="kpi-unique">-</h3>
+                    </div>
+                    <div class="bg-indigo-50 text-indigo-600 p-3 rounded-xl">
+                        <i class="fa-solid fa-fingerprint"></i>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center text-sm text-gray-500">
+                    <span id="kpi-ratio" class="font-medium text-indigo-600">-</span> &nbsp;de fidélité
+                </div>
+            </div>
+
+            <div class="card flex flex-col justify-between hover:shadow-md transition-shadow">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-sm font-medium text-gray-500">OS Principal</p>
+                        <h3 class="text-2xl font-bold text-gray-900 mt-1" id="kpi-os">-</h3>
+                    </div>
+                    <div class="bg-amber-50 text-amber-600 p-3 rounded-xl">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                </div>
+                <div class="mt-4 text-sm text-gray-500">Système majoritaire</div>
+            </div>
+
+            <div class="card flex flex-col justify-between hover:shadow-md transition-shadow">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-sm font-medium text-gray-500">Top Source</p>
+                        <h3 class="text-2xl font-bold text-gray-900 mt-1 truncate w-full" id="kpi-referrer">-</h3>
+                    </div>
+                    <div class="bg-emerald-50 text-emerald-600 p-3 rounded-xl">
+                        <i class="fa-solid fa-link"></i>
+                    </div>
+                </div>
+                <div class="mt-4 text-sm text-gray-500">Source de trafic n°1</div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <div class="lg:col-span-2 card">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-lg font-bold text-gray-800">Évolution de l'audience</h2>
+                    <div class="flex gap-2">
+                        <span class="text-xs font-medium bg-blue-50 text-blue-600 px-2 py-1 rounded">Vues</span>
+                        <span class="text-xs font-medium bg-indigo-50 text-indigo-600 px-2 py-1 rounded">Uniques</span>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="trafficChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card h-fit">
+                <h2 class="text-lg font-bold text-gray-800 mb-4">Répartition Géographique</h2>
+                <div class="chart-container">
+                    <canvas id="countryChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="card">
+                <h2 class="text-lg font-bold text-gray-800 mb-4">Navigateurs</h2>
+                <div class="chart-container" style="height: 200px;">
+                    <canvas id="browserChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <h2 class="text-lg font-bold text-gray-800 mb-4">Systèmes (OS)</h2>
+                <div class="chart-container" style="height: 200px;">
+                    <canvas id="osChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <h2 class="text-lg font-bold text-gray-800 mb-4">Appareils</h2>
+                <div class="chart-container" style="height: 200px;">
+                    <canvas id="deviceChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="card h-96 flex flex-col">
+                <h2 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <i class="fa-regular fa-file-lines text-indigo-500"></i> Pages les plus vues
+                </h2>
+                <div class="overflow-y-auto custom-scroll flex-1 pr-2">
+                    <ul id="pagesList" class="space-y-3"></ul>
+                </div>
+            </div>
+            <div class="card h-96 flex flex-col">
+                <h2 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-right-to-bracket text-emerald-500"></i> Sources de trafic
+                </h2>
+                <div class="overflow-y-auto custom-scroll flex-1 pr-2">
+                    <ul id="referrersList" class="space-y-3"></ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card overflow-hidden">
+            <div class="border-b border-gray-100 pb-4 mb-4 flex justify-between items-center">
+                <h2 class="text-lg font-bold text-gray-800">Journal des connexions</h2>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead class="bg-gray-50 text-gray-500 text-xs uppercase font-semibold tracking-wider">
+                        <tr>
+                            <th class="p-3 rounded-l-lg">Date</th>
+                            <th class="p-3">IP Visiteur</th>
+                            <th class="p-3 text-right rounded-r-lg">Requêtes</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ipTableBody" class="text-sm text-gray-700 divide-y divide-gray-100"></tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        let rawData = {};
+        let charts = {}; 
+
+        async function fetchData() {
+            try {
+                // REMPLACEZ PAR VOTRE URL
+                const res = await fetch('/api/stats/view?archive=0&date=&mdp=s6hcwy1EXvdpVg10Kyif7VMgHiK4ft85isUbVU2VN6nqB13o0E'); 
+                const json = await res.json();
+                
+                if(json && json.stats) {
+                    rawData = json.stats;
+                    initDashboard();
+                }
+            } catch (e) {
+                console.error("Erreur chargement données", e);
+            }
         }
 
-        Object.entries(data.visit || {})
-          .filter(([key]) => key !== 'général')
-          .forEach(([date, stats]) => {
-            const dayCard = document.createElement("div");
-            dayCard.className = "card";
-            dayCard.innerHTML = `
-              <h2>📅 ${date}</h2>
-              <div class="stats-grid">
-                <div class="stat">
-                  <div class="label">Visites</div>
-                  <div class="value">${stats.all}</div>
-                </div>
-                <div class="stat">
-                  <div class="label">Uniques</div>
-                  <div class="value">${stats.unique}</div>
-                </div>
-              </div>
-              <pre>${JSON.stringify(stats, null, 2)}</pre>
-            `;
-            container.appendChild(dayCard);
-          });
-      })
-      .catch(err => {
-        document.getElementById('stats-container').innerHTML = "Erreur de chargement des données.";
-        console.error(err);
-      });
-  </script>
+        function initDashboard() {
+            const yearsSet = new Set();
+            const visitData = rawData.visit || {};
+            Object.keys(visitData).forEach(key => {
+                if (key.match(/^\d{4}-\d{2}-\d{2}$/)) {
+                    yearsSet.add(key.split('-')[0]);
+                }
+            });
+            const yearSelect = document.getElementById('yearFilter');
+            yearSelect.innerHTML = '<option value="all">Toutes années</option>';
+            Array.from(yearsSet).sort((a, b) => b - a).forEach(y => {
+                const opt = document.createElement('option');
+                opt.value = y;
+                opt.innerText = y;
+                yearSelect.appendChild(opt);
+            });
+            updateDashboard();
+        }
+
+        function handleYearChange() {
+            const yearVal = document.getElementById('yearFilter').value;
+            const timeSelect = document.getElementById('timeFilter');
+            if (yearVal !== 'all') {
+                timeSelect.value = 'all';
+                timeSelect.disabled = true;
+                timeSelect.parentElement.classList.add('opacity-50');
+            } else {
+                timeSelect.disabled = false;
+                timeSelect.parentElement.classList.remove('opacity-50');
+            }
+            updateDashboard();
+        }
+
+        function getDashboardData() {
+            const yearFilter = document.getElementById('yearFilter').value;
+            const dayFilter = parseInt(document.getElementById('timeFilter').value);
+            const visitData = rawData.visit || {};
+            const generalData = visitData['général'] || { all: 0, unique: 0, country: {}, device: {}, browser: {}, os: {}, referrer: {}, pages: {} };
+
+            const isAllTime = (yearFilter === 'all' && isNaN(dayFilter)) || (yearFilter === 'all' && document.getElementById('timeFilter').value === 'all');
+            const now = new Date();
+            const cutoffDate = isNaN(dayFilter) ? new Date(0) : new Date(now.getTime() - (dayFilter * 24 * 60 * 60 * 1000));
+
+            let dailyPoints = [];
+            let aggregatedStats = { all: 0, unique: 0, countries: {}, devices: {}, browsers: {}, os: {}, referrers: {}, pages: {} };
+
+            Object.keys(visitData).forEach(key => {
+                if (!key.match(/^\d{4}-\d{2}-\d{2}$/)) return;
+
+                const dateParts = key.split('-');
+                const entryDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
+                const entryYear = dateParts[0];
+
+                if (yearFilter !== 'all' && entryYear !== yearFilter) return;
+                if (yearFilter === 'all' && !isNaN(dayFilter) && entryDate < cutoffDate) return;
+
+                const dayData = visitData[key];
+
+                // On stocke les deux valeurs ici
+                dailyPoints.push({
+                    dateStr: key,
+                    dateObj: entryDate,
+                    all: dayData.all || 0,
+                    unique: dayData.unique || 0, 
+                    ips: dayData.ips || {}
+                });
+
+                if (!isAllTime) {
+                    aggregatedStats.all += (dayData.all || 0);
+                    aggregatedStats.unique += (dayData.unique || 0);
+                    mergeCounts(aggregatedStats.countries, dayData.country);
+                    mergeCounts(aggregatedStats.devices, dayData.device);
+                    mergeCounts(aggregatedStats.pages, dayData.pages);
+                }
+            });
+
+            dailyPoints.sort((a, b) => a.dateObj - b.dateObj);
+
+            let finalStats = isAllTime ? {
+                all: generalData.all,
+                unique: generalData.unique,
+                countries: generalData.country,
+                devices: generalData.device,
+                browsers: generalData.browser,
+                os: generalData.os,
+                referrers: generalData.referrer,
+                pages: generalData.pages
+            } : aggregatedStats;
+
+            return { timeline: dailyPoints, stats: finalStats };
+        }
+
+        function mergeCounts(target, source) {
+            if (!source) return;
+            Object.entries(source).forEach(([k, v]) => {
+                target[k] = (target[k] || 0) + v;
+            });
+        }
+
+        function updateDashboard() {
+            const data = getDashboardData();
+            const stats = data.stats;
+
+            document.getElementById('kpi-all').innerText = stats.all.toLocaleString();
+            document.getElementById('kpi-unique').innerText = stats.unique.toLocaleString();
+            const ratio = stats.unique > 0 ? ((stats.unique / stats.all) * 100).toFixed(0) : 0;
+            document.getElementById('kpi-ratio').innerText = ratio + '%';
+            document.getElementById('kpi-os').innerText = getTopKey(stats.os);
+            const topRef = getTopKey(stats.referrers);
+            document.getElementById('kpi-referrer').innerText = topRef === 'direct' ? 'Accès direct' : topRef;
+
+            renderList('pagesList', stats.pages, 'text-blue-600', '/', true);
+            renderList('referrersList', stats.referrers, 'text-emerald-600', '', false);
+
+            const tbody = document.getElementById('ipTableBody');
+            tbody.innerHTML = '';
+            const recentDays = [...data.timeline].reverse();
+            let rowCount = 0;
+            recentDays.forEach(day => {
+                if (rowCount > 30) return;
+                const dateStr = day.dateObj.toLocaleDateString('fr-FR', {day: '2-digit', month: 'short'});
+                Object.entries(day.ips).forEach(([ip, count]) => {
+                    if (rowCount > 30) return;
+                    const tr = document.createElement('tr');
+                    tr.className = "border-b border-gray-50 hover:bg-gray-50 transition-colors";
+                    tr.innerHTML = `<td class="p-3 font-medium text-gray-500">${dateStr}</td><td class="p-3 font-mono text-indigo-600">${ip}</td><td class="p-3 text-right font-bold text-gray-800">${count}</td>`;
+                    tbody.appendChild(tr);
+                    rowCount++;
+                });
+            });
+            if(rowCount === 0) tbody.innerHTML = '<tr><td colspan="3" class="p-4 text-center text-gray-400 italic">Aucune donnée</td></tr>';
+
+            updateCharts(data);
+        }
+
+        function renderList(elementId, dataObj, colorClass, emptyLabel, isPath) {
+            const ul = document.getElementById(elementId);
+            ul.innerHTML = '';
+            const sorted = Object.entries(dataObj || {}).sort((a, b) => b[1] - a[1]);
+            if (sorted.length === 0) { ul.innerHTML = '<li class="text-gray-400 italic text-sm">Aucune donnée</li>'; return; }
+            sorted.forEach(([key, val], index) => {
+                const percent = sorted.length > 0 ? (val / sorted[0][1] * 100) : 0;
+                let displayKey = key;
+                if(isPath && key === '/') displayKey = '/ (Accueil)';
+                ul.innerHTML += `<li class="relative flex justify-between items-center p-2 rounded hover:bg-gray-50 group"><div class="absolute left-0 top-0 bottom-0 bg-gray-100 rounded opacity-0 group-hover:opacity-50 transition-all" style="width: ${percent}%; z-index: 0;"></div><div class="relative z-10 flex items-center gap-2 overflow-hidden"><span class="text-xs font-bold text-gray-400 w-4">${index + 1}.</span><span class="font-mono text-sm truncate ${colorClass}" title="${key}">${displayKey}</span></div><span class="relative z-10 text-sm font-bold text-gray-700">${val}</span></li>`;
+            });
+        }
+
+        function getTopKey(obj) {
+            if (!obj || Object.keys(obj).length === 0) return '-';
+            return Object.entries(obj).sort((a, b) => b[1] - a[1])[0][0];
+        }
+
+        // ------------------------------------------------------------------
+        // FONCTION DE CHARTS MODIFIÉE : MULTI-DATASETS
+        // ------------------------------------------------------------------
+        function updateCharts(data) {
+            const stats = data.stats;
+            const dates = data.timeline.map(d => d.dateObj.toLocaleDateString('fr-FR', {day:'numeric', month:'short'}));
+            
+            // On prépare les deux tableaux de données
+            const countsAll = data.timeline.map(d => d.all);
+            const countsUnique = data.timeline.map(d => d.unique);
+
+            // Graphique UNIQUE combiné
+            renderChart('trafficChart', 'line', {
+                labels: dates,
+                datasets: [
+                    {
+                        label: 'Vues Totales',
+                        data: countsAll,
+                        borderColor: '#2563eb', // Bleu
+                        backgroundColor: 'rgba(37, 99, 235, 0.05)', // Très transparent
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 3,
+                        pointHoverRadius: 6
+                    },
+                    {
+                        label: 'Visiteurs Uniques',
+                        data: countsUnique,
+                        borderColor: '#8b2c95', // Indigo (plus foncé/vif)
+                        backgroundColor: 'rgba(79, 70, 229, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 3,
+                        pointHoverRadius: 6,
+                        borderDash: [] // Ligne pleine
+                    }
+                ]
+            });
+
+            renderDistributionChart('countryChart', stats.countries, 'doughnut');
+            renderDistributionChart('browserChart', stats.browsers, 'bar');
+            renderDistributionChart('deviceChart', stats.devices, 'pie');
+            renderDistributionChart('osChart', stats.os, 'doughnut');
+        }
+
+        function renderDistributionChart(id, dataObj, type) {
+            const sorted = Object.entries(dataObj || {}).sort((a, b) => b[1] - a[1]);
+            const topData = sorted.slice(0, 10);
+            const labels = topData.map(i => i[0].toUpperCase());
+            const values = topData.map(i => i[1]);
+            const colors = ['#4f46e5', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#84cc16'];
+
+            renderChart(id, type, {
+                labels: labels,
+                datasets: [{
+                    label: 'Total',
+                    data: values,
+                    backgroundColor: colors,
+                    borderWidth: 0,
+                    borderRadius: 4
+                }]
+            }, { 
+                indexAxis: type === 'bar' ? 'y' : 'x', 
+                cutout: type === 'doughnut' ? '65%' : 0 
+            });
+        }
+
+        function renderChart(id, type, data, options = {}) {
+            const ctx = document.getElementById(id).getContext('2d');
+            if (charts[id]) charts[id].destroy();
+            
+            const defaultOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index', // Affiche les deux points au survol
+                    intersect: false,
+                },
+                plugins: { 
+                    legend: { 
+                        display: type !== 'bar', 
+                        position: 'bottom', 
+                        labels: { usePointStyle: true, padding: 20 } 
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false
+                    }
+                },
+                scales: (type === 'bar' || type === 'line') 
+                    ? { x: { grid: { display: false } }, y: { beginAtZero: true, grid: { color: '#f3f4f6' } } } 
+                    : { x: { display: false }, y: { display: false } }
+            };
+
+            charts[id] = new Chart(ctx, {
+                type: type,
+                data: data,
+                options: { ...defaultOptions, ...options }
+            });
+        }
+
+        fetchData();
+        setInterval(() => {
+            fetchData();
+        }, 10000);
+        
+    </script>
 </body>
 </html>

@@ -1,6 +1,9 @@
 // packages
 const express = require("express");
 const router = express.Router();
+const fs = require('fs');
+const session = require('../src/sessions_manager.js');
+const path = require("path");
 
 const Stats = require('../src/stats_manager.js');
 
@@ -10,6 +13,11 @@ router.post('/stats', (req, res) => {
   const now = new Date();
   const dateStr = now.toISOString().slice(0, 10); // format yyyy-mm-dd
   
+    // Récupère l’IP client
+  const ip =
+    req.headers['x-forwarded-for']?.split(',')[0] || // derrière proxy
+    req.socket?.remoteAddress || // standard
+    req.ip; // fallback
 
   const stats = Stats.load();
 
@@ -26,16 +34,16 @@ router.post('/stats', (req, res) => {
   }
 
   // Incrément global
-  stats.visit.général.all += 1;
-  stats.visit.général.unique += unique;
-  stats.visit[dateStr].all += 1;
-  stats.visit[dateStr].unique += unique;
+  const isUnique = !Object.hasOwn(stats.visit[dateStr].ips, ip);
 
-  // Récupère l’IP client
-  const ip =
-    req.headers['x-forwarded-for']?.split(',')[0] || // derrière proxy
-    req.socket?.remoteAddress || // standard
-    req.ip; // fallback
+  stats.visit.général.all += 1;
+  stats.visit.général.unique += isUnique ? 1 : 0;
+
+  stats.visit[dateStr].all += 1;
+  stats.visit[dateStr].unique += isUnique ? 1 : 0;
+
+  // Ajouter ou incrémenter l'IP
+  stats.visit[dateStr].ips[ip] = (stats.visit[dateStr].ips[ip] || 0) + 1;
 
   if (ip) {
     // Assure-toi que l'IP est correctement initialisée dans le cas où il n'y a pas d'IP pour aujourd'hui
@@ -84,7 +92,7 @@ router.post('/stats', (req, res) => {
   res.json({ message: 'Stat ajoutée avec succès', ip });
 });
 
-router.get('/stats/view', (req, res) => {
+router.get('/stats/view', async (req, res) => {
 
   const archive = req.query.archive == 1 ? true : false;
   const date = req.query.date;
@@ -93,9 +101,9 @@ router.get('/stats/view', (req, res) => {
 
     try {
 
-      const stats = Stats.load(archive, date);
-      res.setHeader('Content-Type', 'application/json');
-      res.send(JSON.stringify(stats, null, 4));
+      const stats = await fs.promises.readFile('./db/stats.json', 'utf-8');
+      const users = await fs.promises.readFile('./db/users.json', 'utf-8');
+      res.send({ stats: JSON.parse(stats, null, 2), users: JSON.parse(users, null, 2) });
 
     } catch (err) {
       res.status(500).json({ error: true, message: err });
@@ -108,7 +116,7 @@ router.get('/stats/view', (req, res) => {
 
 
 
-const session = require('../src/sessions_manager.js');
+
 
 
 router.get('/session/create', async (req, res) => {
