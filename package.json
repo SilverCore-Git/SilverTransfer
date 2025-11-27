@@ -8,7 +8,9 @@
 
   "scripts": {
 
-    "dev": "nodemon server.js",
+    "dev": "tsc --watch",
+
+    "build": "tsc",
 
     "start": "pm2 start server.js --name silvertransfert --env production",
 
@@ -67,6 +69,14 @@
     "path": "^0.12.7",
 
     "pm2": "^6.0.6"
+
+  },
+
+  "devDependencies": {
+
+    "@types/node": "^24.10.1",
+
+    "typescript": "^5.9.3"
 
   }
 
