@@ -11,11 +11,9 @@ import 'dotenv/config';
 import cookieParser from 'cookie-parser';
 
 import config from './config/config.json';
-import pkg from '../package.json';
+import { dev, version } from '../package.json';
 
-import ifdev = pkg.dev;
-
-require('./assets/logger.js');
+import './assets/logger';
 
 
 async function resetDB() {
@@ -24,46 +22,31 @@ async function resetDB() {
 
         await resetDatabase(); 
 
-        const { setTimeout } = require('timers/promises');
-        await setTimeout(1000);
+        setTimeout(() => {}, 1000);
 
     };
 
 };
 resetDB();
 
- 
-let fileDatabase = {};
-fileDatabase = loadDatabase();
-
-setInterval(() => {
-    fileDatabase = loadDatabase();
-}, 5000);
-
-setInterval(() => {
-    verifyIfExpire();
-}, 24 * 3600 * 1000); // check for expire file
-
 
 const corsOptions = {
-    origin: ifdev ? 'http://localhost:84' : 'https://www.silvertransfert.fr',
+    origin: dev ? 'http://localhost:84' : 'https://www.silvertransfert.fr',
     methods: ['POST', 'GET'],
     allowedHeaders: ['Content-Type', 'Authorization']
 };
-
 
 
 const app = express();
 console.log("🔄 Démarrage de Express...");
 
 app.set('trust proxy', true);
+app.set("view engine", "ejs");
 
-app.use(SilverIssueMiddleware);
 app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(express.json({ limit: '16gb' }))
 app.use(express.urlencoded({ limit: '16gb', extended: true }))
-app.set("view engine", "ejs");
 
 app.use((req, res, next) => {
 
@@ -76,11 +59,7 @@ app.use((req, res, next) => {
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
-
-
-app.get("/assets/:a", (req, res) => {
-    res.status(200).sendFile(path.join(__dirname, `public/assets/${req.params.a}`))
-});
+app.use("/assets", express.static(path.join(__dirname, 'public/assets')));
 
 
 console.log("✅ Express chargé");
@@ -149,11 +128,8 @@ app.get('/assets/img/:file', (req, res) => {
 
 
 app.get('/version', (req, res) => {
-    res.status(200).json(pkg.version);
+    res.status(200).json(version);
 });
-app.get("/index.js", (req, res) => {
-    res.status(200).sendFile(path.join(__dirname, 'public/index.js'))
-})
 
 app.get('/admin/stats', (req, res) => {
  
@@ -164,26 +140,6 @@ app.get('/admin/stats', (req, res) => {
     } else { res.json(false) }
 
 })
-
-app.get('/premium/user/profil', async (req, res) => {
-    if (req.query.res == 'view') {
-        res.status(200).render('premium/profil');
-    } else if (req.query.res == 'data') {
-
-        res.status(200).json(
-            { 
-                lasts_transferts: await session.verify(req.cookies.user_id, null, 'transferts')
-            }
-        );
-
-    } else {
-        res.redirect('/premium/user/profil?req=view')
-    }
-});
-
-app.post('/premium/user/profil/del_transfert', (req, res) => {
-    // suprimer le transfert avec req.query.id
-});
 
 
 // root déportés
@@ -231,9 +187,9 @@ app.get("/key/:bytes", (req, res) => {
 
 app.get('/passwd/:nb', async (req, res) => {
 
-    const nb = req.params.nb;
+    const nb = Number(req.params.nb);
 
-    function genererMotDePasse(longueur = 10) {
+    function genererMotDePasse(longueur: number = 10) {
         const caracteres = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         let motDePasse = '';
     
