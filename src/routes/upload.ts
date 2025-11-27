@@ -10,7 +10,7 @@ import { loadDatabase, saveDatabase } from '../assets/database/db';
 import { getCurrentDate, getCurrentTime } from '../assets/datemanager'
 import { encryptFile, encryptText } from "../assets/crypt";
 import session from '../assets/sessions_manager';
-import key from '../assets/key_manager';
+import key from '../assets/Crypter/key_manager';
 
 let fileDatabase = {};
 fileDatabase = loadDatabase();
