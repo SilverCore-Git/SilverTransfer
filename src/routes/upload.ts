@@ -1,23 +1,16 @@
-/**
- * @author SilverCore
- * @author SilverTransfer
- * @author MisterPapaye
- */
-
-
 // packages
-const express = require("express");
-const router = express.Router();
-const multer = require("multer");
-const path = require('path');
+import { Router } from "express";
+const router = Router();
+import multer from "multer";
+import path from 'path';
 
 
-const config = require('../config/config.json');
-const { loadDatabase, saveDatabase } = require('../src/database.js');
-const { getCurrentDate, getCurrentTime } = require('../src/datemanager.js')
-const { encryptFile, encryptText } = require("../src/crypt.js");
-const session = require('../src/sessions_manager.js');
-const key = require('../src/key_manager.js');
+import config from '../config/config.json';
+import { loadDatabase, saveDatabase } from '../assets/database/db';
+import { getCurrentDate, getCurrentTime } from '../assets/datemanager'
+import { encryptFile, encryptText } from "../assets/crypt";
+import session from '../assets/sessions_manager';
+import key from '../assets/key_manager';
 
 let fileDatabase = {};
 fileDatabase = loadDatabase();
@@ -188,12 +181,5 @@ router.post('/file', upload.single("file"), async (req, res) => {
 
 });
 
-router.use((err, req, res, next) => {
-    if (err instanceof multer.MulterError) {
-        return res.status(400).json({ message: `Erreur Multer : ${err.message}` });
-    }
-    console.error('Erreur inconnue:', err);
-    res.status(500).json({ message: 'Erreur serveur lors du transfert' });
-});
 
-module.exports = router;
+export default router;
