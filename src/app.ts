@@ -69,6 +69,12 @@ if (!fs.existsSync(path.join(__dirname, config.LOGDir))) {
     console.log('✅ Répertoire "',config.LOGDir,'" créé'); 
 }
 
+if (!fs.existsSync(path.join(__dirname, config.DBFile))) {
+    fs.mkdirSync(path.join(__dirname, path.dirname(config.DBFile)));
+    fs.writeFileSync(path.join(__dirname, config.DBFile), JSON.stringify([]), 'utf-8');
+    console.log('✅ Répertoire "',config.DBFile,'" créé'); 
+}
+
 
 // root déportés
 import root_upload from './routes/upload/upload';

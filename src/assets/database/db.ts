@@ -1,25 +1,15 @@
 import fs from "fs";
 const fsp = fs.promises;
+import path from "path";
 
 import config from '../../config/config.json';
 import type { Transfert } from "./dbTypes";
 
-const DB_FILE = config.DBFile;
+const DB_FILE = path.join(__dirname, '../../', config.DBFile);
 
 
 class db 
 {
-
-    constructor()
-    {
-        this.init();
-    }
-
-
-    private async init(): Promise<void>
-    {
-        if (!fs.existsSync(DB_FILE)) await fsp.writeFile(DB_FILE, JSON.stringify([]), 'utf-8');
-    }
     
     private async getDB(): Promise<Transfert[]>
     {

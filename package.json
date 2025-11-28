@@ -9,8 +9,8 @@
   "scripts": {
 
     "dev": "tsc --watch",
-
     "build": "tsc",
+    "node:start": "node dist/app",
 
     "start": "pm2 start server.js --name silvertransfert --env production",
 
@@ -28,7 +28,7 @@
 
     "clear": "node scripts/cleardir.js",
 
-    "jobs": "node dist/jobs"
+    "jobs": "node dist/jobs/nodeRun"
 
   },
 

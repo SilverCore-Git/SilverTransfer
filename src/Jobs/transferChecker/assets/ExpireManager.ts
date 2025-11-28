@@ -92,7 +92,7 @@ export default class ExpireManager {
     }
 
     private async listAllUUIDs(): Promise<string[]> {
-        const file = await fs.promises.readFile(config.DBFile, "utf-8");
+        const file = await fs.promises.readFile(path.join(__dirname, '../../..', config.DBFile), "utf-8");
         const arr: Transfert[] = JSON.parse(file);
         return arr.map(tr => tr.UUID);
     }

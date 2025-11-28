@@ -2,7 +2,7 @@ import checkDiskSpace from "check-disk-space";
 import fs from "fs";
 import path from "path";
 import axios from "axios";
-
+import { dev } from '../../../../package.json';
 
 export default class DiskReporter {
         
@@ -27,7 +27,7 @@ export default class DiskReporter {
         return Object.values(JSON.parse(raw));
     }
 
-    private async buildReport(): Promise<string> {
+    private async buildReport(): Promise<any> {
         const entries = this.loadDatabase();
         const totalTransfers = entries.length;
 
@@ -38,31 +38,42 @@ export default class DiskReporter {
         }
 
         // Disk info
-        const disk = await checkDiskSpace("/mnt/data");
+        const disk = await checkDiskSpace(dev ? "C:\\Users\\felix\\OneDrive\\Documents\\SilverCore\\app\\SilverTransfert\\app\\dist\\data" : "/mnt/data");
 
         // Formatting
         const totalSizeFormatted = this.formatBytes(totalSize);
         const diskSizeFormatted = this.formatBytes(disk.size);
         const freeSizeFormatted = this.formatBytes(disk.free);
-
         const percentUsed = ((totalSize / disk.size) * 100).toFixed(2) + "%";
 
-        return (
-            `📦 **Rapport SilverTransfer — Stockage**\n\n` +
-            `🗂️ **Nombre de transferts :** ${totalTransfers}\n` +
-            `💾 **Taille totale utilisée :** ${totalSizeFormatted}\n\n` +
-            `🖥️ **Disque /mnt/data**\n` +
-            `• Taille totale : ${diskSizeFormatted}\n` +
-            `• Libre : ${freeSizeFormatted}\n` +
-            `• Utilisation estimée : ${percentUsed}\n\n` +
-            `⏰ Rapport généré à : <t:${Math.floor(Date.now() / 1000)}:F>`
-        );
+        const timestamp = Math.floor(Date.now() / 1000);
+
+        // Embed Discord
+        return {
+            embeds: [
+                {
+                    title: "📦 Rapport Silvertransfert — Stockage",
+                    color: 0x0099ff, // Bleu
+                    fields: [
+                        { name: "🗂️ Nombre de transferts", value: `${totalTransfers}`, inline: true },
+                        { name: "💾 Taille totale utilisée", value: `${totalSizeFormatted}`, inline: true },
+                        { name: "\u200B", value: "\u200B", inline: false }, // ligne vide
+                        { name: "🖥️ Disque", value: '', inline: false },
+                        { name: "Taille totale", value: `${diskSizeFormatted}`, inline: true },
+                        { name: "Libre", value: `${freeSizeFormatted}`, inline: true },
+                        { name: "Utilisation estimée", value: `${percentUsed}`, inline: true },
+                    ],
+                    footer: {
+                        text: `Rapport généré`,
+                    },
+                    timestamp: new Date().toISOString()
+                }
+            ]
+        };
     }
 
-    private async sendToDiscord(message: string) {
-        await axios.post(this.webhookUrl, {
-            content: message,
-        });
+    private async sendToDiscord(payload: any) {
+        await axios.post(this.webhookUrl, payload);
     }
 
     public async run() {

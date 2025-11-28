@@ -3,6 +3,12 @@ import path from 'path';
 import fs from 'fs';
 
 import config from '../config/config.json';
+const LOGDir = path.join(__dirname, '../', config.LOGDir);
+
+const a = async () => {
+    if (!fs.existsSync(LOGDir)) await fs.promises.mkdir(LOGDir);
+}
+a();
 
 const logToFile = (message: string) => {
     const date = getCurrentDate();
