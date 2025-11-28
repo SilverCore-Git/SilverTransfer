@@ -6,5 +6,5 @@ export interface Transfert {
     size: number; // size on o
     senderIp: string;
     date: string; // date - time 
-    statu: 'ready' | 'await_crypting' | 'expired';
+    status: 'ready' | 'await_crypting' | 'expired';
 }
