@@ -11,7 +11,7 @@ export default async function
     inputFile: any, 
     outputFolder: string, 
     publicKey: string, 
-    dev_env: boolean
+    dev_env?: boolean
 })
 {
 

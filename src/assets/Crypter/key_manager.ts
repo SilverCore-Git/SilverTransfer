@@ -4,7 +4,7 @@ import crypto from 'crypto';
 
 class Key {
 
-    async generate(id: string, passwd: string, opt: string = 'all') 
+    async generate(id: string, passwd: string, opt: 'all' | 'public' | 'private' = 'all') 
     {
         const dirPath = path.join('key', 'live', id);
         try {
@@ -42,7 +42,7 @@ class Key {
         }
     }
 
-    async remove(id: string, opt: string = 'all') {
+    async remove(id: string, opt: 'all' | 'public' | 'private' = 'all') {
         try {
             if (opt === 'all') {
                 fs.rmSync(`key/live/${id}/public_key.pem`);
@@ -60,7 +60,7 @@ class Key {
         }
     }
 
-    async read(id: string, opt: string = 'all') {
+    async read(id: string, opt: 'all' | 'public' | 'private' = 'all') {
         try {
             if (opt === 'all') {
                 const publicKey = await fs.promises.readFile(`key/live/${id}/public_key.pem`, 'utf8');
