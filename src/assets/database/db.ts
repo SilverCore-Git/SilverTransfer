@@ -1,6 +1,5 @@
 import fs from "fs";
 const fsp = fs.promises;
-import path from "path";
 
 import config from '../../config/config.json';
 import type { Transfert } from "./dbTypes";
@@ -60,10 +59,23 @@ class db
 
     }
 
+    public async update(transfer: Transfert)
+    {
+
+        await this.delete(transfer.UUID);
+
+        await this.push(transfer);
+
+    }
+
     public async delete(uuid: string): Promise<void>
     {
 
         const db = await this.getDB();
+
+        const newDb = db.filter(tr => tr.UUID !== uuid);
+
+        await this.saveDB(newDb);
 
     }
 
