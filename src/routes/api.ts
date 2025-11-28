@@ -1,11 +1,10 @@
 // packages
-const express = require("express");
-const router = express.Router();
-const fs = require('fs');
-const session = require('../src/sessions_manager.js');
-const path = require("path");
+import { Router } from "express";
+import router = Router();
+import fs from 'fs';
+import path from "path";
 
-const Stats = require('../src/stats_manager.js');
+import Stats from '../assets/stats_manager';
 
 // Route pour ajouter des stats
 router.post('/stats', (req, res) => {
@@ -112,151 +111,6 @@ router.get('/stats/view', async (req, res) => {
 
   } else { res.json(false) }
 });
-
-
-
-
-
-
-
-router.get('/session/create', async (req, res) => {
-
-  const type = req.query?.type;
-
-  const user_id = req.cookies?.user_id;
-  const session_id = req.cookies?.session_id;
-  let premium = req.query?.premium;
-
-  if (!type) return res.json("query incomplet");
-
-  if (type == "first") {
-
-    if (user_id) return res.status(400).json({ error: true, message: "user déjà identifié" });
-    if (!premium) return res.json("query incomplet");
-    premium = premium == "1" ? true : false;
-
-    session.create(
-      "first",
-      {
-        user_agent: req.headers['user-agent'],
-        user_ip: req.headers['x-forwarded-for'] || req.socket.remoteAddress || req.ip,
-        premium: premium,
-        premium_parms: {}
-      }
-    ).then(resp => {
-      if (resp.error) {
-        return res.status(500).json(resp);
-      } else {
-        res.cookie('user_id', resp.id, {
-          httpOnly: true,    // ne peut pas être lu par le JS client
-          maxAge: 100 * 365 * 24 * 60 * 60 * 1000,   // expire dans 100 ans
-          signed: false
-        });
-        return res.status(200).json(resp);
-      }
-    }).catch(err => {
-      console.error("Erreur lors de la création de session :", err);
-      return res.status(500).json({ error: true, message: "Erreur interne du serveur" });
-    });
-
-  } else {
-
-    let verify;
-    if (!user_id) verify = true;
-    if (!session_id) verify = true;
-    if (user_id && session_id) verify = true;
-
-    if (verify) {
-    
-      const Session = await session.create(
-                        "temp",
-                        {
-                          user_agent: req.headers['user-agent'],
-                          user_ip: req.headers['x-forwarded-for'] || req.socket.remoteAddress || req.ip,
-                          premium: req.query.premium == "1" ? true : false,
-                          premium_parms: {}
-                        },
-                        user_id
-                      );
-
-      if (Session.error) {
-        return res.status(500).json(Session);
-      }
-
-      else {
-        res.cookie('session_id', Session.id, {
-          httpOnly: true,    // ne peut pas être lu par le JS client  
-          signed: false
-        });
-        return res.status(200).json(Session);
-      };
-  
-    } else {
-      return res.status(200).json({ message: "une session est déjà existante", data: session.verify(user_id, session_id) || null });
-    };
-
-  };
-
-});
-
-router.get('/session/verify', async (req, res) => {
-
-  const user_id = req.cookies?.user_id;
-  const session_id = req.cookies?.session_id;
-  
-  if (!user_id) return res.json("query incomplet");
-  if (!session_id) return res.json("query incomplet");
-
-  console.log(user_id, '\n', session_id )
-  console.log(await session.verify(user_id, session_id))
-
-  if (await session.verify(user_id, session_id) == false) {
-
-    return res.status(400).json({ error: true, message: "session inexistante" });
-
-  } else {
-    return res.status(200).json(await session.verify(user_id, session_id));
-  }
-
-});
-
-
-router.get('/session/close', async (req, res) => {
-
-  const user_id = req.cookies?.user_id;
-  const session_id = req.cookies?.session_id;
-  
-  if (!user_id) return res.json("query incomplet");
-  if (!session_id) return res.json("query incomplet");
-
-  if (await session.verify(user_id, session_id) == false) {
-
-    return res.status(400).json({ error: true, message: "session inexistante" });
-
-  } else {
-    session.close(user_id, session_id).then(r => {
-
-      if (r.error) {
-        return res.status(500).json(r);
-      }
-
-      if (r) {
-        res.clearCookie('session_id', {
-          httpOnly: true,    // ne peut pas être lu par le JS client  
-          signed: false
-        });
-        return res.status(200).json(true);
-      }
-
-    })
-  }
-
-});
-
-
-
-
-
 
 
 

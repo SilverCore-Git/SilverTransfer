@@ -1,6 +1,6 @@
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 const statsPath = path.join(__dirname, '../db/stats.json');
 const archive_dir = path.join(__dirname, '../db/archives');
@@ -8,14 +8,14 @@ const stats_archive_dir = path.join(__dirname, '../db/archives/stats');
 
 class stats {
     
-    load(archive = false, date = null) {
+    load(archive: boolean = false, date: string | null = null) {
 
         try {
 
             if (archive == true) {
 
-                const ddate = date.replace('-', '.');
-                const sStatsPath = path.join(__dirname, `../db/archives/stats_silvertransfert_${ddate}.json`);
+                const ddate = date?.replace('-', '.');
+                const sStatsPath: string = path.join(__dirname, `../db/archives/stats_silvertransfert_${ddate}.json`);
 
                 if (!fs.existsSync(sStatsPath)) {
                     return {
@@ -39,7 +39,7 @@ class stats {
                     };
                 }
 
-                return JSON.parse(fs.readFileSync(sStatsPath));
+                return fs.readFileSync(sStatsPath);
 
             }
 
@@ -66,7 +66,7 @@ class stats {
                 };
             }
 
-            return JSON.parse(fs.readFileSync(statsPath));
+            return fs.readFileSync(statsPath);
 
         }
         catch (err) {
@@ -84,8 +84,8 @@ class stats {
             const stats = this.load();
             const fixedStats = JSON.parse(JSON.stringify(stats));
 
-            let totalAll = 0;
-            let totalUnique = 0;
+            let totalAll: number = 0;
+            let totalUnique: number = 0;
 
             for (const day in fixedStats.visit)
             {
