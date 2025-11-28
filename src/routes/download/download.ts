@@ -6,13 +6,45 @@ import fs from 'fs';
 import db from "../../assets/database/db";
 import { Transfert } from "../../assets/database/dbTypes";
 import decrypteFile from "./decrypteFile";
+import VerifyPasswd from "../../assets/Crypter/VerifyPasswd";
+import key from "../../assets/Crypter/key_manager";
+import downloadFile from "./downloadFile";
 
 
-router.get('/download', (req, res) => {
+router.get('/download', async (req, res) => {
 
     const { id, passwd }: { id: string, passwd: string } = req.body;
 
+    const transfer = await db.get(id);
+    if (!transfer) return res.status(404).json({ error: true, message: 'transfer not found' });
+
+    const encryptedFilePath = path.join(__dirname, "../data", transfer.cryptedFileName);
+    const decryptedFilePath = path.join(__dirname, "../temp", transfer.tempFileName);
+    const privateKey: string = await key.read(id, 'private') as string;
+
+    const verifyPasswd: boolean = VerifyPasswd(
+        encryptedFilePath,
+        privateKey,
+        passwd
+    );
+
+    if (!verifyPasswd) {
+        res.status(400).json({ message: 'Invalid password' })
+        return;
+    }
+
+    try {
+        await fs.promises.access(decryptedFilePath);   // verify exist file
+    } catch (e) {
+        return res.status(404).json({ error: true, message: 'File not found' });
+    }
     
+    return await downloadFile({
+        transferID: id,
+        decryptedFilePath,
+        res
+    });
+
 
 })
 
@@ -30,6 +62,18 @@ router.get('/decrypt', async (req, res) => {
 
     const encryptedFilePath = path.join(__dirname, "../data", transfer.cryptedFileName);
     const decryptedFilePath = path.join(__dirname, "../temp", transfer.tempFileName);
+    const privateKey: string = await key.read(id, 'private') as string;
+
+    const verifyPasswd: boolean = VerifyPasswd(
+        encryptedFilePath,
+        privateKey,
+        passwd
+    );
+
+    if (!verifyPasswd) {
+        res.status(400).json({ message: 'Invalid password' })
+        return;
+    }
 
     res.json({ status: 'processing' });
 

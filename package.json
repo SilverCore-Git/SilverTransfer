@@ -62,6 +62,8 @@
 
     "https": "^1.0.0",
 
+    "mime-types": "^3.0.2",
+
     "multer": "^1.4.5-lts.1",
 
     "node": "^20.19.6",
@@ -83,6 +85,8 @@
     "@types/express": "^5.0.5",
 
     "@types/helmet": "^0.0.48",
+
+    "@types/mime-types": "^3.0.1",
 
     "@types/multer": "^2.0.0",
 

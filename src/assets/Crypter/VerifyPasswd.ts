@@ -10,7 +10,7 @@ export default function (inputFolder: string, privateKey: string, passwd: string
         const encryptedAesKey = Buffer.from(layout.aesKey, 'hex'); // Assurez-vous que la clé est un Buffer
 
         // 🔥 Essayer de décrypter la clé AES avec la clé privée et le mot de passe
-        const decryptedAesKey = crypto.privateDecrypt(
+        crypto.privateDecrypt(
             {
                 key: privateKey,
                 passphrase: passwd,
