@@ -1,15 +1,15 @@
 import type { Response } from "express";
 import mime from "mime-types";
+import fs from 'fs';
+import path from 'path';
 
 export default async function
 (
     {
-        transferID,
         res,
         decryptedFilePath
     }:
     {
-        transferID: string,
         res: Response,
         decryptedFilePath: string
     }

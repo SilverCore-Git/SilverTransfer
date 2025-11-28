@@ -5,3 +5,4 @@ db/users.json
 db/database.json
 /dist
 db/stats.json
+.env

@@ -26,7 +26,9 @@
 
     "datasize": "node scripts/get_data_size.js",
 
-    "clear": "node scripts/cleardir.js"
+    "clear": "node scripts/cleardir.js",
+
+    "jobs": "node dist/jobs"
 
   },
 
@@ -39,6 +41,8 @@
   "main": "server.js",
 
   "dependencies": {
+
+    "axios": "^1.13.2",
 
     "check-disk-space": "^3.4.0",
 

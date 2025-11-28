@@ -6,9 +6,6 @@
 
     "maxbyteforkey": 256,
 
-    "pushfilepath": "/upload/file",
-
-
 
     "hostname": "localhost",
 
