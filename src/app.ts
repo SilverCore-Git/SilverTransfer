@@ -13,21 +13,8 @@ import cookieParser from 'cookie-parser';
 import config from './config/config.json';
 import { dev, version } from '../package.json';
 
-import './assets/logger';
-
-
-async function resetDB() {
-
-    if (config.resetDB) {
-
-        await resetDatabase(); 
-
-        setTimeout(() => {}, 1000);
-
-    };
-
-};
-resetDB();
+import './assets/Logger';
+import './Jobs';
 
 
 const corsOptions = {
@@ -58,8 +45,8 @@ app.use((req, res, next) => {
 
 });
 
+
 app.use(express.static(path.join(__dirname, 'public')));
-app.use("/assets", express.static(path.join(__dirname, 'public/assets')));
 
 
 console.log("✅ Express chargé");
@@ -82,75 +69,20 @@ if (!fs.existsSync(path.join(__dirname, config.LOGDir))) {
     console.log('✅ Répertoire "',config.LOGDir,'" créé'); 
 }
 
-if (!fs.existsSync(path.join(__dirname, config.DBFile)))  {
-    resetDatabase();
-};
-
-
-
-
-// route fontend
-app.get("/sitemap.xml", (req, res) => {
-    res.status(200).sendFile(path.join(__dirname, 'assets/sitemap.xml'))
-});
-app.get("/patchnotes", (req, res) => {
-    res.status(200).sendFile(path.join(__dirname, 'public/patchnotes.html'))
-});
-app.get("/politiques", (req, res) => {
-    res.status(200).sendFile(path.join(__dirname, 'public/politiques.html'))
-});
-app.get("/legale", (req, res) => {
-    res.status(200).sendFile(path.join(__dirname, 'public/politiques.html'))
-});
-app.get("/favicon.ico", (req, res) => {
-    res.status(200).sendFile(path.join(__dirname, 'assets/favicon.ico'))
-});
-app.get("/favicon", (req, res) => {
-    res.status(200).sendFile(path.join(__dirname, 'assets/favicon.ico'))
-});
-app.get("/ads.txt", (req, res) => {
-    res.status(200).sendFile(path.join(__dirname, 'assets/ads.txt'))
-});
-app.get("/favicon.png", (req, res) => {
-    res.status(200).sendFile(path.join(__dirname, 'public/assets/img/logo.png'))
-});
-app.get("/robots.txt", (req, res) => {
-    res.status(200).sendFile(path.join(__dirname, 'assets/robots.txt'))
-});
-
-app.get('/assets/img/background/:file', (req, res) => {
-    res.status(200).sendFile(path.join( __dirname, `public/assets/img/background/${req.params.file}.jpg` ));
-});
-
-app.get('/assets/img/:file', (req, res) => {
-    res.status(200).sendFile(path.join( __dirname, `public/assets/img/${req.params.file.endsWith('gnp') ? req.params.file : req.params.file+'.png'}` ));
-});
-
-
-app.get('/version', (req, res) => {
-    res.status(200).json(version);
-});
-
-app.get('/admin/stats', (req, res) => {
- 
-    if (req.query.mdp == process.env.stats_mdp) {
-
-        res.render('stats', { mdp: process.env.stats_mdp_api, ifarchive: req.query.archive || 0, date: req.query.date || null });
-
-    } else { res.json(false) }
-
-})
-
 
 // root déportés
-const root_upload = require('./roots/upload.js');
-const root_download = require('./roots/download.js');
-const root_api = require('./roots/api.js');
+import root_upload from './routes/upload/upload';
+import root_download from './routes/download/download';
+import root_api from './routes/api';
 
 app.use('/upload', root_upload);
 app.use('/data', root_download);
 app.use('/api', root_api);
 
+
+app.get('/version', (req, res) => {
+    res.status(200).json(version);
+});
 
 
 // Générer une clé
