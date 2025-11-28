@@ -34,15 +34,9 @@ const upload = multer({
  });
 
 
-
-
-router.get('/file', async (req, res) => {
-    res.send('ok')
-})
-
 router.post('/file', upload.single("file"), async (req, res) => {
 
-    const { id, passwd }: { id: string, passwd: string } = req.body;
+    let { id, passwd }: { id: string, passwd: string } = req.body;
     const ip: string = getClientIp(req);
 
     if (!req.file) {
@@ -52,10 +46,13 @@ router.post('/file', upload.single("file"), async (req, res) => {
     console.log('New transfer : ', req.body.id);
 
     await key.generate(id, passwd);
-    const tempFilePath = req.file.path;
-    const encryptedFileName = `${id}.${req.file.filename}.enc`;
-    const encryptedFilePath = path.join(__dirname, `../${config.DATAdir}`, encryptedFileName);
+    const tempFilePath: string = req.file.path;
+    const encryptedFileName: string = `${id}.${req.file.filename}.enc`;
+    const encryptedFilePath: string = path.join(__dirname, `../${config.DATAdir}`, encryptedFileName);
     const downloadPath: string = `https://t.silvertransfert.fr/${id}-${passwd}`;
+
+    // remove passwd on ram
+    passwd = 'AZERTYmlkj123';
 
     const transfer: Transfert = {
         UUID: req.body.id as string,

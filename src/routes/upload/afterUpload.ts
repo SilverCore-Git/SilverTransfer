@@ -32,7 +32,7 @@ export default async function
         const transfer = await db.get(transferID);
         if (!transfer) return;
 
-        transfer.status = 'ready';
+        transfer.status = 'ready_to_decrypt';
         
         await db.update(transfer);
 
