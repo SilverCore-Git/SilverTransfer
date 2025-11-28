@@ -40,7 +40,6 @@ router.get('/download', async (req, res) => {
     }
     
     return await downloadFile({
-        transferID: id,
         decryptedFilePath,
         res
     });

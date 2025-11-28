@@ -1,5 +1,6 @@
 import crypto from 'crypto';
 import { Layout } from './CrypterTypes';
+import fs from 'fs';
 
 export default async function
 ({

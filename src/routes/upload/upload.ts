@@ -10,6 +10,7 @@ import getClientIp from "../../assets/utils/getClientIp";
 import { getCurrentDate, getCurrentTime } from "../../assets/utils/getDate";
 import { Transfert } from "../../assets/database/dbTypes";
 import afterUpload from "./afterUpload";
+import config from '../../config/config.json';
 
 const uploadDir = path.join(__dirname, '../', config.TEMPdir);
 
