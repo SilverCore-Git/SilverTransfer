@@ -14,29 +14,52 @@ useHead({
   }
 })
 
-const title = 'Nuxt Starter Template'
-const description = 'A production-ready starter template powered by Nuxt UI. Build beautiful, accessible, and performant applications in minutes, not hours.'
+const title = 'SilverTransfert'
+const description = 'Transfert de fichiers sécurisé et rapide'
 
 useSeoMeta({
   title,
   description,
   ogTitle: title,
   ogDescription: description,
-  ogImage: 'https://ui.nuxt.com/assets/templates/nuxt/starter-light.png',
-  twitterImage: 'https://ui.nuxt.com/assets/templates/nuxt/starter-light.png',
   twitterCard: 'summary_large_image'
 })
 
 </script>
 
 <template>
-  
-  <Header />
 
-  <NuxtPage />
+  <div 
+    id="inerApp" 
+    class="
+      min-h-screen
+      background text-white
+    "
+  >
+    
+    <Header />
 
-  <USeparator />
+    <main class="flex-1 max-w-7xl mx-auto w-full px-6 py-12">
+      <NuxtPage />
+    </main>
 
-  <Footer />
+    <Footer />
+
+  </div>
 
 </template>
+
+<style>
+
+.background {
+  @apply bg-bg;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, white, transparent),
+    radial-gradient(1.5px 1.5px at 80px 120px, white, transparent),
+    radial-gradient(2px 2px at 200px 50px, white, transparent),
+    radial-gradient(1.5px 1.5px at 300px 100px, white, transparent),
+    radial-gradient(1.8px 1.8px at 150px 200px, white, transparent);
+  background-size: 400px 400px;
+}
+
+</style>
