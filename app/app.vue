@@ -1,4 +1,7 @@
 <script setup>
+import Footer from './components/app/footer.vue';
+import Header from './components/app/header.vue';
+
 useHead({
   meta: [
     { name: 'viewport', content: 'width=device-width, initial-scale=1' }
@@ -23,61 +26,17 @@ useSeoMeta({
   twitterImage: 'https://ui.nuxt.com/assets/templates/nuxt/starter-light.png',
   twitterCard: 'summary_large_image'
 })
+
 </script>
 
 <template>
-  <UApp>
+  
+  <Header />
 
-    <!-- navbar -->
-    <UHeader>
-      <template #left>
-        <NuxtLink to="/">
-          <AppLogo class="w-auto h-6 shrink-0" />
-        </NuxtLink>
+  <NuxtPage />
 
-        <TemplateMenu />
-      </template>
+  <USeparator />
 
-      <template #right>
-        <UColorModeButton />
-
-        <UButton
-          to="https://github.com/nuxt-ui-templates/starter"
-          target="_blank"
-          icon="i-simple-icons-github"
-          aria-label="GitHub"
-          color="neutral"
-          variant="ghost"
-        />
-      </template>
-    </UHeader>
-
-    <UMain>
-      <NuxtPage />
-    </UMain>
-
-    <USeparator icon="i-simple-icons-nuxtdotjs" />
-
-    <!-- footer -->
-    <UFooter>
-      <template #left>
-        <p class="text-sm text-muted">
-          Built with Nuxt UI • © {{ new Date().getFullYear() }}
-        </p>
-      </template>
-
-      <template #right>
-        <UButton
-          to="https://github.com/nuxt-ui-templates/starter"
-          target="_blank"
-          icon="i-simple-icons-github"
-          aria-label="GitHub"
-          color="neutral"
-          variant="ghost"
-        />
-      </template>
-    </UFooter>
-
-  </UApp>
+  <Footer />
 
 </template>
