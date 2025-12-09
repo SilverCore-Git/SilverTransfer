@@ -69,9 +69,9 @@ if (!fs.existsSync(path.join(__dirname, config.LOGDir))) {
     console.log('✅ Répertoire "',config.LOGDir,'" créé'); 
 }
 
-if (!fs.existsSync(path.join(__dirname, config.MIRROR_DATA_DIR))) {
-    fs.mkdirSync(path.join(__dirname, config.MIRROR_DATA_DIR));
-    console.log('✅ Répertoire "',config.MIRROR_DATA_DIR,'" créé'); 
+if (!fs.existsSync(path.join(__dirname, config.BACKUP_DATA_DIR))) {
+    fs.mkdirSync(path.join(__dirname, config.BACKUP_DATA_DIR));
+    console.log('✅ Répertoire "',config.BACKUP_DATA_DIR,'" créé'); 
 }
 
 if (!fs.existsSync(path.join(__dirname, config.DBFile))) {

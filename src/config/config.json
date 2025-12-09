@@ -8,8 +8,8 @@
 
     "DBFile": "db/database.json",
 
-    "COPY_DATA": false,
-    "MIRROR_DATA_DIR": "mirror",
+    "BACKUP": false,
+    "BACKUP_DATA_DIR": "mirror",
 
     "DATAdir": "data",
     "TEMPdir": "temp",
