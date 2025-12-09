@@ -1,26 +1,20 @@
 {
 
-    "resetDB": false,
-
     "expiretime": 30,
-
-    "maxbyteforkey": 256,
-
 
     "hostname": "localhost",
 
     "Port": 84,
 
-
-
     "DBFile": "db/database.json",
+
+    "COPY_DATA": false,
+    "MIRROR_DATA_DIR": "mirror",
 
     "DATAdir": "data",
     "TEMPdir": "temp",
     "LOGDir": "log",
 
-
-    "SSLkeyPath": "/etc/letsencrypt/live/www.silvertransfert.fr/privkey.pem",
-    "SSLcertPath": "/etc/letsencrypt/live/www.silvertransfert.fr/fullchain.pem"
+    "maxbyteforkey": 256
 
 }
