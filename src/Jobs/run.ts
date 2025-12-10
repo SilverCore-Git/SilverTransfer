@@ -6,8 +6,20 @@ export default () => {
 
     console.log('Run jobs');
     
-    transferChecker();
-    
-    transferBackup.run();
+    try {
+        console.log('[JOBS]: starting transferChecker...');
+        transferChecker();
+        console.log('[JOBS]: transferChecker completed');
+    } catch (err) {
+        console.error('[JOBS]: transferChecker failed:', err);
+    }
+
+    try {
+        console.log('[JOBS]: starting transferBackup...');
+        transferBackup.run();
+        console.log('[JOBS]: transferBackup completed');
+    } catch (err) {
+        console.error('[JOBS]: transferBackup failed:', err);
+    }
 
 }
