@@ -11,7 +11,7 @@ const DB_FILE = path.join(__dirname, '../../', config.DBFile);
 class db 
 {
     
-    private async getDB(): Promise<Transfert[]>
+    public async getDB(): Promise<Transfert[]>
     {
 
         let db: Transfert[];

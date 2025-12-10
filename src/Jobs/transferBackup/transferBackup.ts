@@ -1,6 +1,8 @@
 import config from '../../config/config.json';
 import fs from 'fs';
 import path from 'path';
+import db from '../../assets/database/db';
+import copyFile from './assets/copyFolder';
 
 
 export default class transferBackup
@@ -27,7 +29,7 @@ export default class transferBackup
     }
 
 
-    public run ()
+    public async run ()
     {
 
         if (!config.BACKUP) return;
@@ -45,8 +47,26 @@ export default class transferBackup
             return;
         }
 
+        const transfers = await db.getDB();
 
+        for (const transfer of transfers)
+        {
 
+            try {
+
+                const outDir: string = path.join(this.BACKUP_DATA_DIR, transfer.cryptedFileName);
+                const srcDir: string = path.join(__dirname, '../', config.DATAdir, transfer.cryptedFileName);
+                copyFile(srcDir, outDir);
+
+            }
+            catch (err) {
+                console.error('[JOBS:transferBackup]: an error ocured on backup a transfer : ', err);
+                continue;
+            }
+
+        }
+        
+        console.log('[JOBS:transferBackup]: success');
 
     }
 
