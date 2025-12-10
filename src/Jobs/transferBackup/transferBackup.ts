@@ -5,7 +5,7 @@ import db from '../../assets/database/db';
 import copyFile from './assets/copyFolder';
 
 
-export default class transferBackup
+class transferBackup
 {
 
     private jobs_run: boolean;
@@ -72,3 +72,4 @@ export default class transferBackup
 
 }
 
+export default new transferBackup();
