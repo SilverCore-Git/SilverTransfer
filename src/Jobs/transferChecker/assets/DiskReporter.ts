@@ -83,7 +83,7 @@ export default class DiskReporter {
             await this.sendToDiscord(report);
             console.log("✅ Rapport envoyé avec succès !");
         } catch (err) {
-            console.error("❌ Erreur lors du rapport :", err);
+            throw new Error(`❌ Erreur lors du rapport : ${err}`);
         }
     }
 
