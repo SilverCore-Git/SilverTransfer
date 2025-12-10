@@ -32,7 +32,10 @@ class transferBackup
     public async run ()
     {
 
-        if (!config.BACKUP) return;
+        if (!config.BACKUP) {
+            console.log('[JOBS:transferBackup]: backup disabled in config.');
+            return;
+        }
         if (this.jobs_run)
         {
             console.error('[JOBS:transferBackup]: jobs already run.');
@@ -40,6 +43,7 @@ class transferBackup
         }
 
         this.jobs_run = true;
+        console.log('[JOBS:transferBackup]: starting backup process...');
 
         if (!config.BACKUP_DATA_DIR) {
             console.error('[JOBS:transferBackup]: config.BACKUP_DATA_DIR not defined.');
@@ -47,7 +51,13 @@ class transferBackup
             return;
         }
 
+        console.log(`[JOBS:transferBackup]: backup directory: ${this.BACKUP_DATA_DIR}`);
+
         const transfers = await db.getDB();
+        console.log(`[JOBS:transferBackup]: found ${transfers.length} transfers to backup`);
+
+        let successCount = 0;
+        let failCount = 0;
 
         for (const transfer of transfers)
         {
@@ -56,17 +66,25 @@ class transferBackup
 
                 const outDir: string = path.join(this.BACKUP_DATA_DIR, transfer.cryptedFileName);
                 const srcDir: string = path.join(__dirname, '../', config.DATAdir, transfer.cryptedFileName);
+                
+                console.log(`[JOBS:transferBackup]: backing up transfer: ${transfer.cryptedFileName}`);
+                console.log(`[JOBS:transferBackup]: from ${srcDir} to ${outDir}`);
+                
                 copyFile(srcDir, outDir);
+                
+                console.log(`[JOBS:transferBackup]: successfully backed up: ${transfer.cryptedFileName}`);
+                successCount++;
 
             }
             catch (err) {
-                console.error('[JOBS:transferBackup]: an error ocured on backup a transfer : ', err);
+                console.error(`[JOBS:transferBackup]: failed to backup transfer ${transfer.cryptedFileName}:`, err);
+                failCount++;
                 continue;
             }
 
         }
         
-        console.log('[JOBS:transferBackup]: success');
+        console.log(`[JOBS:transferBackup]: backup complete - Success: ${successCount}, Failed: ${failCount}`);
 
     }
 
