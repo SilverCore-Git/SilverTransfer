@@ -12,11 +12,12 @@
     "build": "tsc",
     "node:start": "node dist/app",
 
-    "start": "pm2 start server.js --name silvertransfert --env production",
+    "start": "pm2 start app.js --name silvertransfert --env production",
+    "start:dev": "pm2 start dist/app.js --name silvertransfert --env production",
 
     "stop": "pm2 stop silvertransfert",
 
-    "restart": "pm2 stop silvertransfert && pm2 start server.js --name silvertransfert --env production",
+    "restart": "pm2 stop silvertransfert && pm2 start app.js --name silvertransfert --env production",
 
     "status": "pm2 status",
 
