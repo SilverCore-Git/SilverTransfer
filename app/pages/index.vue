@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Card from '~/components/card.vue';
+import FileDrop from '~/components/FileDrop.vue';
 
 
 
@@ -18,7 +19,7 @@ import Card from '~/components/card.vue';
       @btn-click="navigateTo('/upload')"
     >
 
-
+      <FileDrop />
 
     </Card>
 
