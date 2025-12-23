@@ -16,7 +16,11 @@
 
         <slot />
 
-        <button @click="emit('btnClick')" class="w-full">
+        <button 
+            v-if="btn"
+            @click="emit('btnClick')" 
+            class="w-full"
+        >
             {{ btn }}
         </button>
     
@@ -28,7 +32,7 @@
 
 defineProps<{
     title: string;
-    btn: string;
+    btn?: string;
 }>();
 
 const emit = defineEmits<{
