@@ -33,7 +33,8 @@ useSeoMeta({
     id="inerApp" 
     class="
       min-h-screen
-      background text-white
+      background text-text
+      border-gray
     "
   >
     
