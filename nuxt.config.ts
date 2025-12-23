@@ -9,7 +9,10 @@ export default defineNuxtConfig({
     enabled: true
   },
 
-  css: ['~/assets/css/main.css'],
+  css: [
+    '~/assets/css/main.css',
+    'bootstrap-icons/font/bootstrap-icons.css'
+  ],
 
   routeRules: {
     '/': { prerender: true }

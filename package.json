@@ -13,6 +13,7 @@
   "dependencies": {
     "@iconify-json/lucide": "^1.2.74",
     "@iconify-json/simple-icons": "^1.2.59",
+    "bootstrap-icons": "^1.13.1",
     "nuxt": "^4.2.1"
   },
   "devDependencies": {
