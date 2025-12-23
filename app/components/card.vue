@@ -5,7 +5,9 @@
             bg-bg2 max-w-xl max-w-2xl
             rounded-xl p-6 gap-[25px] text-center
             flex justify-start items-center flex-col
+            shadow-primary/20
         "
+        style="box-shadow: 0 0 40px var(--tw-shadow-color);"
     >
     
         <h1

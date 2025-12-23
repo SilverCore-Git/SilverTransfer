@@ -9,6 +9,7 @@
             flex flex-col items-center justify-center gap-3
             text-center cursor-pointer
             transition-all duration-200
+            bg-bg3
 
             hover:border-primary
             hover:bg-primary/5
@@ -53,6 +54,7 @@
 <script setup lang="ts">
 
 import { ref } from "vue";
+import files from "~/assets/ts/Files";
 
 const props = defineProps<{
   multiple?: boolean;
@@ -62,7 +64,6 @@ const emit = defineEmits<{
   (e: "files", files: File[]): void;
 }>();
 
-const files = ref<File[]>([]);
 const isDragging = ref(false);
 
 const onDragEnter = () => {

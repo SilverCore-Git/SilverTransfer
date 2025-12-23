@@ -1,6 +1,6 @@
 <script setup>
-import Footer from './components/app/footer.vue';
-import Header from './components/app/header.vue';
+import Footer from './components/general/footer.vue';
+import Header from './components/general/header.vue';
 
 useHead({
   meta: [
