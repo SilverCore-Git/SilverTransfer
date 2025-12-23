@@ -1,0 +1,109 @@
+{
+
+  "name": "api.silvertransfert.fr",
+
+  "version": "2.3.0",
+
+  "dev": true,
+
+  "scripts": {
+
+    "dev": "tsc --watch",
+    "build": "tsc",
+    "node:start": "node dist/app",
+
+    "start": "pm2 start app.js --name api.silvertransfert.fr --env production",
+    "start:dev": "pm2 start dist/app.js --name api.silvertransfert.fr --env production",
+
+    "stop": "pm2 stop api.silvertransfert.fr",
+
+    "restart": "pm2 stop api.silvertransfert.fr && pm2 start app.js --name api.silvertransfert.fr --env production",
+
+    "status": "pm2 status",
+
+    "log": "pm2 logs api.silvertransfert.fr",
+
+    "testcrypt": "node scripts/check_crypt.js",
+
+    "datasize": "node scripts/get_data_size.js",
+
+    "clear": "node scripts/cleardir.js",
+
+    "jobs": "node dist/jobs/nodeRun"
+
+  },
+
+  "author": "SilverCore, SilverTransfert, MisterPapaye",
+
+  "license": "",
+
+  "description": "",
+
+  "main": "server.js",
+
+  "dependencies": {
+
+    "axios": "^1.13.2",
+
+    "check-disk-space": "^3.4.0",
+
+    "cookie-parser": "^1.4.7",
+
+    "cors": "^2.8.5",
+
+    "crypto": "^1.0.1",
+
+    "dotenv": "^16.4.7",
+
+    "ejs": "^3.1.10",
+
+    "express": "^4.21.2",
+
+    "fs": "^0.0.1-security",
+
+    "helmet": "^8.1.0",
+
+    "http": "^0.0.1-security",
+
+    "https": "^1.0.0",
+
+    "mime-types": "^3.0.2",
+
+    "multer": "^1.4.5-lts.1",
+
+    "node": "^20.19.6",
+
+    "node-cron": "^4.2.1",
+
+    "node-fetch": "^3.3.2",
+
+    "path": "^0.12.7",
+
+    "pm2": "^6.0.6"
+
+  },
+
+  "devDependencies": {
+
+    "@types/cookie-parser": "^1.4.10",
+
+    "@types/cors": "^2.8.19",
+
+    "@types/express": "^5.0.5",
+
+    "@types/helmet": "^0.0.48",
+
+    "@types/mime-types": "^3.0.1",
+
+    "@types/multer": "^2.0.0",
+
+    "@types/node": "^24.10.1",
+
+    "@types/node-fetch": "^2.6.13",
+
+    "typescript": "^5.9.3"
+
+  }
+
+}
+

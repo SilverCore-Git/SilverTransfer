@@ -1,0 +1,20 @@
+{
+
+    "expiretime": 30,
+
+    "hostname": "localhost",
+
+    "Port": 84,
+
+    "DBFile": "db/database.json",
+
+    "BACKUP": false,
+    "BACKUP_DATA_DIR": "mirror",
+
+    "DATAdir": "data",
+    "TEMPdir": "temp",
+    "LOGDir": "log",
+
+    "maxbyteforkey": 256
+
+}
