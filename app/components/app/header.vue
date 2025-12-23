@@ -1,3 +1,3 @@
 <template>
-header
+    <!-- none -->
 </template>

@@ -1,4 +1,9 @@
 <template>
 
-Silvertransfert • © {{ new Date().getFullYear() }}
+    <div class="fixed bottom-0 p-4">
+        <p>
+            &copy; {{ new Date().getFullYear() }} Silvertransfert. Tous droits réservés.
+        </p>
+    </div>
+
 </template>
