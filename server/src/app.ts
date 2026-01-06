@@ -18,7 +18,7 @@ import './Jobs';
 
 
 const corsOptions = {
-    origin: dev ? 'http://localhost:84' : 'https://www.silvertransfert.fr',
+    origin: dev ? '*' : 'https://www.silvertransfert.fr',
     methods: ['POST', 'GET'],
     allowedHeaders: ['Content-Type', 'Authorization']
 };

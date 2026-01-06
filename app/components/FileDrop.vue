@@ -28,7 +28,6 @@
         <input
             type="file"
             class="hidden"
-            multiple
             @change="onFileSelect"
         />
 
@@ -43,7 +42,7 @@
         </p>
 
         <p v-if="files.length" class="text-sm text-primary">
-            {{ files.length }} fichier(s) sélectionné(s)
+            "{{ files[0]?.name }}"" sélectionné
         </p>
 
     </label>
