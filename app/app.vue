@@ -32,9 +32,9 @@ useSeoMeta({
   <div 
     id="inerApp" 
     class="
-      min-h-screen
-      background text-text
-      border-gray
+      min-h-screen text-text
+      border-gray bg-bg
+      overflow-x-hidden
     "
   >
     
@@ -49,18 +49,3 @@ useSeoMeta({
   </div>
 
 </template>
-
-<style>
-
-.background {
-  @apply bg-bg;
-  background-image:
-    radial-gradient(2px 2px at 20px 30px, white, transparent),
-    radial-gradient(1.5px 1.5px at 80px 120px, white, transparent),
-    radial-gradient(2px 2px at 200px 50px, white, transparent),
-    radial-gradient(1.5px 1.5px at 300px 100px, white, transparent),
-    radial-gradient(1.8px 1.8px at 150px 200px, white, transparent);
-  background-size: 400px 400px;
-}
-
-</style>

@@ -8,7 +8,7 @@ import files from '~/assets/ts/Files';
 <template>
 
     <div
-        class="absolute inset-0 flex justify-center items-center"
+        class="fixed inset-0 flex justify-center items-center h-screen bg-bg"
     >
 
         <Card
